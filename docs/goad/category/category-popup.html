@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .popup-container {
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      max-width: 32rem;
+      margin: 0 auto;
+      font-size: 0.875rem;
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      padding: 0.5rem;
+      text-align: left;
+      font-weight: 500;
+      background: linear-gradient(to right, #1e293b, #334155);
+      color: white;
+    }
+    th {
+      text-align: center;
+    }
+    td {
+      padding: 0.5rem;
+      border: 1px solid #e2e8f0;
+    }
+    .type-cell {
+      text-align: center;
+      vertical-align: middle;
+      font-weight: 500;
+      color: #1e293b;
+    }
+    .content-cell {
+      padding: 0;
+    }
+    .content-item {
+      padding: 0.5rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .content-item:last-child {
+      border-bottom: none;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+    .general-ad .type-cell {
+      background-color: #f8fafc;
+    }
+    .sponsored-ad {
+      background-color: rgba(239, 246, 255, 0.4);
+    }
+    .sponsored-ad .type-cell {
+      background-color: rgba(239, 246, 255, 0.8);
+    }
+    .production {
+      background-color: rgba(254, 243, 199, 0.4);
+    }
+    .production .type-cell {
+      background-color: rgba(254, 243, 199, 0.8);
+    }
+    .dash {
+      color: #64748b;
+    }
+    tr:hover {
+      background-color: rgba(241, 245, 249, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-container">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%">의뢰유형</th>
+          <th style="width: 25%">매체구분</th>
+          <th style="width: 25%">내용구분</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 일반광고 -->
+        <tr class="general-ad">
+          <td class="type-cell" rowspan="4">일반광고</td>
+          <td>인쇄</td>
+          <td class="content-cell">
+            <div class="content-item"><a href="#">홍보</a></div>
+            <div class="content-item"><a href="#">공고</a></div>
+          </td>
+        </tr>
+        <tr class="general-ad">
+          <td><a href="#">인터넷</a></td>
+          <td class="dash">-</td>
+        </tr>
+        <tr class="general-ad">
+          <td><a href="#">방송</a></td>
+          <td class="dash">-</td>
+        </tr>
+        <tr class="general-ad">
+          <td><a href="#">옥외</a></td>
+          <td class="dash">-</td>
+        </tr>
+
+        <!-- 협찬광고 -->
+        <tr class="sponsored-ad">
+          <td class="type-cell" rowspan="3">협찬광고</td>
+          <td>인쇄</td>
+          <td class="content-cell">
+            <div class="content-item"><a href="#">기사형 광고</a></div>
+            <div class="content-item"><a href="#">일반 협찬</a></div>
+          </td>
+        </tr>
+        <tr class="sponsored-ad">
+          <td>인터넷</td>
+          <td class="content-cell">
+            <div class="content-item"><a href="#">기사형 광고</a></div>
+            <div class="content-item"><a href="#">일반 협찬</a></div>
+          </td>
+        </tr>
+        <tr class="sponsored-ad">
+          <td><a href="#">방송</a></td>
+          <td class="dash">-</td>
+        </tr>
+
+        <!-- 제작/기타 -->
+        <tr class="production">
+          <td class="type-cell">제작/기타</td>
+          <td><a href="#">제작/기타</a></td>
+          <td class="dash">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
