@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+//
+// UI 리뉴얼
+//
+
+// variables
+@import "scss/variables";
+
+// funtions
+@import "scss/breakpoints";
+@import "scss/mixins";
+
+// global
+@import "scss/webfonts";
+@import "scss/default";
+
+// utilities
+// @import "scss/utilities/spacing";
+// @import "scss/utilities/align";
+// @import "scss/utilities/colors";
+// @import "scss/utilities/typo";
+// @import "scss/utilities/border";
+
+// plugins
+// @import "scss/plugins/slick";
+@import "scss/plugins/grid";
+
+// layout
+@import "scss/layout/base";
+@import "scss/layout/header";
+@import "scss/layout/breadcrumb";
+@import "scss/layout/container";
+@import "scss/layout/sidebar";
+@import "scss/layout/contents";
+@import "scss/layout/footer";
+
+// components
+@import "scss/components/typo"; // 타이틀, 글꼴
+// @import "scss/components/icons"; // 아이콘 모음
+// @import "scss/components/lists"; // 목록 불릿 (UI)
+@import "scss/components/buttons"; // 버튼
+@import "scss/components/forms"; // 입력폼
+// @import "scss/components/boxs"; // 박스
+// @import "scss/components/tabmenus"; // 탭메뉴
+@import "scss/components/popups"; // 팝업, 레이어팝업
+@import "scss/components/tables"; // 테이블, 표
+
+// pages
+// [필독] SCSS 작업방법 안내
+// 1. IA에 정의된 대메뉴별 path명과 맞춰 scss 파일 추가 후 사용
+//    예) path명 + Pages
+// 2. 반응형 사이트인 경우 breakpoint mixin 사용 필수 : 사용법 _guidePages.scss 참고
+// 3. 색상값 등 변수 사용 필수 : _variables.scss 참고
+// @import "scss/pages/guidePages"; // SCSS 작성방법 가이드
+
+// @import "scss/pages/homePages"; // 메인 

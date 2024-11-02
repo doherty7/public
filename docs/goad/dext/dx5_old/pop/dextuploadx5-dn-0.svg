@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg 
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	version="1.1"
+	id="UIC-DEXTUPLOADX5-PROGRESSIVE"
+	onload="onLoadHandler(evt)" width="100%" height="100%">
+	<script type="application/ecmascript" xlink:href="../dextuploadx5-common.js"/>
+	<script type="application/ecmascript" xlink:href="../dextuploadx5-svg.js"/>
+	<script type="application/ecmascript"><![CDATA[
+		var hp = new SVGHelper();
+		var globals = {};
+		var active = false;
+    var hostId = "";
+		
+		function updateUILayout() {
+			var root = hp.get("UIC-DEXTUPLOADX5-PROGRESSIVE");
+			var s = getElementComputedSize(root);
+			if (s.w > 0 || s.h > 0) {
+				relayoutDX5(hp.get("UIC-MAIN-AREA"), s.w, s.h);
+			}
+		}
+		
+		function progress(t) {
+		
+			var status = t.getDownloadStatus(),
+				txtSendSize = hp.get("UIC-TXT-TOTAL-SEND"),
+				txtTotalSize = hp.get("UIC-TXT-TOTAL-SIZE"),
+				txtPercent = hp.get("UIC-TXT-TOTAL-PERCENTAGE"),
+				txtRemainTime = hp.get("UIC-TXT-TOTAL-RTIME"),
+				txtSpeed = hp.get("UIC-TXT-TOTAL-SPEED"),
+				txtName = hp.get("UIC-TXT-FILENAME"),
+				bar = hp.get("UIC-PROGRESS-BAR");
+			
+			hp.attr(bar, "width", status.totalRate + "%");
+				
+			if (status.totalRate <= 100) {
+				hp.attr(bar, "fill", "#03A9F4");
+				hp.get("UIC-PROGRESS-INFO").style.display = "block";
+				hp.get("UIC-WAIT-INFO").style.display = "none";
+				hp.replaceText(txtSpeed, "" + getFriendlySpeed(status.totalSpeed, 2));
+				hp.replaceText(txtPercent, "" + status.totalRate);
+				hp.replaceText(txtSendSize, "" + getFriendlySize(status.totalReceiveSize));
+				hp.replaceText(txtTotalSize, "" + getFriendlySize(status.totalSize));
+				hp.replaceText(txtRemainTime, "" + msecToTimeFormat(status.remainedTotalTime));
+				hp.replaceText(txtName, "" + status.currentName);
+			} 
+      
+      if (status.totalRate >= 100) {
+        setTimeout(function () {
+				  hp.attr(bar, "fill", "#4CAF50");
+				  hp.get("UIC-PROGRESS-INFO").style.display = "none";
+				  hp.get("UIC-WAIT-INFO").style.display = "block";
+				  hp.replaceText(txtName, "");
+          // change active to false.
+          active = false;
+        }, 100);
+			} else if (active && status.totalRate < 100) {
+				setTimeout(function () { progress(t); }, 100);
+			}
+		}
+		
+		document["stopUI"] = function (lazy) {
+			if (lazy) {
+				return !active;
+			} else {
+				active = false;
+				return true;
+			}
+		};
+		
+		document["updateUI"] = function (t) {
+			updateUILayout();
+			active = true;
+      hostId = t.domObject.id;
+			progress(t);
+		};
+		
+		function onLoadHandler(evt) {
+			var parameters = {}, lang = "auto";
+		
+			var tokens = document.defaultView.location.href.split("?");
+			if (tokens.length == 2) {
+				var p = tokens[1].split(/&|;/);
+				if (p.length > 0) {
+					for (var i = 0; i < p.length; i++) {
+						var vals = p[i].split("=");
+						parameters[unescape(vals[0])] = unescape(vals[1]);
+					}
+				}
+			}
+			
+			if (!parameters.lang || parameters.lang == "auto") {
+				lang = navigator.language || navigator.browserLanguage || navigator.systemLanguage;
+				lang = lang ? lang.split("-")[0] : "";
+			} else {
+				lang = parameters.lang;
+			}
+			
+			var worker = new Worker("../dextuploadx5-worker-resource.js");
+			worker.onmessage = function (evt) {
+				var gRB = new ResourceBundle();
+				gRB.init(evt.data);
+				
+				hp.replaceText(hp.get("UIC-TITLE-TXT"), gRB.get("RB-POPDN-0-0001", "_파일을 다운로드하는 중 입니다."));
+				hp.replaceText(hp.get("UIC-TXT-WAIT"), gRB.get("RB-POPDN-0-0002", "_마무리 작업을 대기하고 있습니다."));				
+				
+				hp.get("UIC-TITLE-BTN-CANCEL").addEventListener("click", function (evt) {
+					evt.stopPropagation();
+					evt.preventDefault();
+					active = false;
+					if (window.parent.dx5) {
+						window.parent.dx5.popupManager.dn.hide(hostId, true);
+            hostId = "";
+					}
+				}, false);
+				
+				updateUILayout();
+	
+				console.log("DX5: dextuploadx5-dn-0 loaded");
+			};
+      worker.onerror = function (evt) {
+        console.log("DX5: Text resource(dextuploadx5-dn-0.svg) loading failed!\n" + evt.message);
+      };
+			
+			worker.postMessage(lang);
+		}
+	]]></script>
+	<style type="text/css">
+		* { font-family: '맑은 고딕', Tahoma }
+		.css-txt-title { font-size: 10pt; fill: #fff; font-weight: bold; }	
+		.css-txt-progressive { font-size: 9pt; fill: #fff; }
+		.css-txt-filename { font-size: 8.5pt; fill: #212121; }
+	</style>
+	<defs>
+		<symbol id="UIS-CANCEL" viewBox="0 0 16 16">
+			<rect x="0" y="0" width="100%" height="100%"/>
+			<path d="M0,3 l3,-3 l5,5 l5,-5 l3,3 l-5,5 l5,5 l-3,3 l-5,-5 l-5,5 l-3,-3 l5,-5 z" stroke="none" fill="white"/>		
+		</symbol>
+	</defs>
+	<svg id="UIC-MAIN-AREA" x="0" y="0" width="100%" height="100%">
+		<svg x="0" y="0" width="100%" height="40">
+			<rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#465b70"/>
+			<text id="UIC-TITLE-TXT" x="10" y="26" class="css-txt-title">DOWNLOADING</text>
+			<use id="UIC-TITLE-BTN-CANCEL" xlink:href="#UIS-CANCEL" y="15" width="12" height="12" layout-dx5="x:100%-12px-10px;" style="cursor:pointer;" fill="#465b70"/>
+		</svg>
+		<svg x="0" y="40" width="100%" height="100">
+			<rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#ebebeb"/>
+			<svg x="20" y="20" height="34" layout-dx5="width:100%-40px;">
+				<rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#d7d7d7"/>
+				<rect id="UIC-PROGRESS-BAR" x="0" y="0" width="0%" height="100%" stroke="none" fill="#03A9F4"/>
+				<g id="UIC-PROGRESS-INFO" style="display:block;">
+					<text x="10" y="23" class="css-txt-progressive">
+						<tspan id="UIC-TXT-TOTAL-SEND">MB</tspan> / <tspan id="UIC-TXT-TOTAL-SIZE">MB</tspan> ( <tspan id="UIC-TXT-TOTAL-PERCENTAGE">0</tspan>% )
+					</text>			
+					<text y="23" text-anchor="end" layout-dx5="x:100%-10px;" class="css-txt-progressive">
+						<tspan id="UIC-TXT-TOTAL-RTIME">00:00:00</tspan>
+						( <tspan id="UIC-TXT-TOTAL-SPEED">3.75</tspan> )
+					</text>
+				</g>
+				<g id="UIC-WAIT-INFO" style="display:none;">
+					<text id="UIC-TXT-WAIT" x="50%" y="23" text-anchor="middle" class="css-txt-progressive">Waiting server response...</text>
+				</g>
+			</svg>
+			<svg x="20" y="64" width="50%" height="20">
+				<text id="UIC-TXT-FILENAME" x="0" y="10" class="css-txt-filename"></text>	
+			</svg>
+		</svg>
+	</svg>
+</svg>

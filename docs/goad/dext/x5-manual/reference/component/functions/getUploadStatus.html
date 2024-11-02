@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>getUploadStatus</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; getUploadStatus</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">getUploadStatus</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+status = object.getUploadStatus();</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd></dd>
+					<dt>반환 값</dt>
+					<dd>
+						<p>업로드 전송 상태 값을 갖는 객체</p>
+						<p>다음은 객체가 갖는 속성에 대한 설명입니다.</p>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>								
+								<tr>
+									<td>completeCount</td>
+									<td>Number</td>
+									<td>업로드가 완료된 파일의 개수</td>
+								</tr>
+								<tr>
+									<td>currentName</td>
+									<td>String</td>
+									<td>업로드 중인 파일의 이름</td>
+								</tr>
+								<tr>
+									<td>currentSize</td>
+									<td>Number</td>
+									<td>업로드 중인 파일의 크기</td>
+								</tr>
+								<tr>
+									<td>currentSendSize</td>
+									<td>Number</td>
+									<td>업로드 중인 파일이 진행된 크기</td>
+								</tr>
+								<tr>
+									<td>currentRate</td>
+									<td>Number</td>
+									<td>업로드 중인 파일의 진행률</td>
+								</tr>
+								<tr>
+									<td>currentTime</td>
+									<td>Number, String</td>
+									<td>업로드 중인 파일이 업로드가 진행된 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+								<tr>
+									<td>remainedCurrentTime</td>
+									<td>Number, String</td>
+									<td>업로즈 중인 파일이 완료되기까지 남은 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+								<tr>
+									<td>totalSize</td>
+									<td>Number</td>
+									<td>업로드할 전체 크기</td>
+								</tr>
+								<tr>
+									<td>totalCount</td>
+									<td>Number</td>
+									<td>업로드할 파일의 개수</td>
+								</tr>
+								<tr>
+									<td>totalSendSize</td>
+									<td>Number</td>
+									<td>업로드가 진행된 전체 크기</td>
+								</tr>
+								<tr>
+									<td>totalRate</td>
+									<td>Number</td>
+									<td>전체 업로드 진행률</td>
+								</tr>
+								<tr>
+									<td>totalSpeed</td>
+									<td>Number</td>
+									<td>전체 업로드 속도(bytes/sec)</td>
+								</tr>
+								<tr>
+									<td>totalTime</td>
+									<td>Number, String</td>
+									<td>전체 업로드 진행 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+								<tr>
+									<td>remainedTotalTime</td>
+									<td>Number, String</td>
+									<td>전체 업로드가 남은 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>현재 업로드 상태 정보를 갖는 객체를 반환합니다.</p>
+						<p>파일이 업로드 중인 과정에 사용하면, 업로드 상태 정보를 알아낼 수 있습니다.</p>
+						<p>이 함수를 사용하여 반환된 객체는 시간에 따라 다른 값을 갖는 것이 아니라, 함수 호출 시점의 상태를 복사한 값만 갖습니다.</p>
+						<p class="notice">업로드하는 과정의 변화를 계속 얻으려면 setTimeout과 같은 함수를 사용해야 합니다.</p>
+						<pre class="prettyprint">
+function toggleUploadStatus(isBegin) {
+  function uploadProgress() {			
+    var dx = dx5.get("dext5"), 
+        out = document.getElementById("upstatus-value"), 
+        status = dx.getUploadStatus();
+    out.innerHTML = "" + 
+      "name: " + status.currentName + "&lt;br/&gt;" + 
+      "speed: " + status.totalSpeed + "(sec)&lt;br/&gt;" + 
+      "count(completed/total): " + status.completeCount + "/" + status.totalCount + "&lt;br/&gt;" + 
+      "current rate: " + status.currentRate + " % &lt;br/&gt;" + 
+      "current size(sended/total): " + status.currentSendSize + "/" + status.currentSize + " (bytes)&lt;br/&gt;" + 
+      "current time(past/remained): " + status.currentTime + "/" + status.remainedCurrentTime + "&lt;br/&gt;" + 
+      "total rate: " + status.totalRate + " % &lt;br/&gt;" + 
+      "total size(sended/total): " + status.totalSendSize + "/" + status.totalSize + " (bytes)&lt;br/&gt;" + 
+      "total time(past/remained): " + status.totalTime + "/" + status.remainedTotalTime + "&lt;br/&gt;" + 
+      "";
+    if (window.isUploading === true) {
+      setTimeout(uploadProgress, 1000);
+    }
+  }
+  window.isUploading = isBegin;
+  if (isBegin) uploadProgress();
+}</pre>
+						<p class="notice">멀티 모듈에서 ORAF 방식으로 파일을 업로드할 경우, 개별 파일 단위로 상태 값을 구분하여 표시하지 못합니다.</p>
+						<p class="notice">그러므로 completeCount 값은 업로드 완료시점에 totalCount와 동일한 값을 가지며, 업로드 중에는 0으로 유지가 됩니다.</p>
+						<p class="notice">
+							또한 current와 total은 항상 같은 값을 갖게 되므로, currentSendSize, currentTime, currentRate 값은 무의미합니다.
+							그러므로 ORAF에서는 totalRate, totalSendSize, totalSize, totalTime, remainedTotalTime만 사용하도록 하십시오.
+						</p>
+						<p class="notice">IE 모듈에서 ORAF 방식으로 파일을 업로드할 경우, 개별 파일 단위로 상태 값을 표시할 수 있습니다.</p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

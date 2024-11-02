@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>sortColumnIndex</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; sortColumnIndex</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">sortColumnIndex</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+                    <dd>멀티 모듈(1.1.0.0 이상), IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+object.sortColumnIndex(index, ascending);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>index</td>
+									<td>Number</td>
+									<td>정렬을 할 때, 기준이 되는 칼럼 순서</td>
+								</tr>
+								<tr>
+									<td>ascending</td>
+									<td>Boolean</td>
+									<td>true이면 오름차순, false이면 내림차순</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>주어진 칼럼을 기준으로 정렬을 합니다.</p>
+						<p>가상 파일을 최우선으로 한다면, 오름차순, 내림차순 상관없이 항상 가상 파일이 제일 먼저 위치합니다.</p>
+						<pre class="prettyprint">
+// 0번째 칼럼을 기준으로 오름 차순 정렬을 바로 수행합니다.
+dx.sortColumnIndex(0, false);</pre>
+                        <p class="notice">
+                            IE 모듈은 0번째 칼럼이 파일 이름 또는 경로를 표현합니다.
+                            그러나 멀티 모듈은 1번째 칼럼에 파일 이름이 명시됩니다.
+                            그러므로 파일명으로 정렬할 때는 1, 파일 크기로 정렬할 때는 2를 index 값으로 설정해야 합니다.
+                            만일 다른 값의 경우에는 정렬 작업을 수행하지 않습니다.</p>
+                        <p class="notice">멀티 모듈의 tile 스타일의 경우에는 칼럼 순서에 상관없이 무조건 파일명을 기준으로 정렬을 수행합니다.</p>
+                        <pre class="prettyprint">
+// 멀티 모듈이라면 파일의 크기를 기준으로 오름 차순 정렬을 수행합니다.
+// 만일 타일 형식이라면 파일명을 기준으로 오름 차순 정렬을 수행합니다.
+dx.sortColumnIndex(2, false);</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

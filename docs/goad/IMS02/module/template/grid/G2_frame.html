@@ -1,0 +1,65 @@
+<div class="G2_Frame" id='{0}' name="IMS_G2">	
+	<div name="FunctionDiv" >
+		<div name="FunctionArea" title="아무곳이나 클릭하시면 검색이 수행됩니다">
+
+<!-- test 용  		
+			<span class="sort" name="sort_dongCode" field="dongCode" sort="ASC">
+				동코드&nbsp;&nbsp;
+				<a onclick="_sort_change(this)"></a>
+			</span>	
+			<span class="filter" name="filter_dongCode" field="dongCode" filter="">
+				동코드
+				<a name="103">103</a>
+				<a name="104">104</a>
+				<a name="105">105</a>
+				<a onclick="_sort_change(this)">11</a>
+			</span>	
+			<span class="filter" name="filter_sidoName" field="sidoName" filter="">
+				시도명
+				<a name="강원도">강원도</a>
+				<a name="경기도">경기도</a>
+				<a onclick="_sort_change(this)">11</a>
+			</span>	
+			<span class="sort" name="sort_sidoName" field="sidoName" sort="DESC">
+				시도명&nbsp;&nbsp;
+				<a onclick="_sort_change(this)"></a>
+			</span>	
+-->		
+		</div> 
+		<a class="G2_btn" name='excelexec'><i class='far fa-file-excel' title='엑셀파일로 다운로드'></i></a>	
+		<!-- <a class="G2_btn" name='searchexec'><i class='fas fa-bolt' title='검색'></i></a> -->	
+	</div>								
+	<div name="FixedDiv" class="fixed {1}">
+		<table name="FixedTable">
+			<colgroup>{2}</colgroup>
+			<thead>     
+				{3}                
+				<tr>{4}</tr>            
+			</thead>                    
+			<tfoot>                     
+				<tr><td>{5}</td></tr>   
+			</tfoot>                    
+			<tbody>                     
+				{6}                     
+			</tbody>                    
+		</table>                        
+	</div>                              
+	<div name="NonFixedDiv" class="nonfixed">   			
+		<table name="NonFixedTable">   
+			<colgroup>{7}</colgroup>    
+			<thead>     
+				{8}                
+				<tr>{9}</tr>            
+			</thead>                    
+			<tfoot>                     
+				<tr><td>{10}</td></tr>   
+			</tfoot>                    
+			<tbody>                     
+				{11}                     
+			</tbody>                    
+		</table>                        
+	</div>                              
+	<div name='G2_footer'></div>			
+	<div name='G2_scroll'><div name='G2_scroll_detail'></div></div>				
+	<div name='G2_loader'></div>	
+</div>                              	

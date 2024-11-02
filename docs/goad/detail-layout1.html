@@ -1,0 +1,168 @@
+
+
+
+
+
+
+
+
+
+<div id="_input_table" style="">
+	<div class="tbl_head" style="margin-top: 15px;padding-bottom:15px;">
+		<div class="f_left">
+			<h2 class="borderTitlePuex">상세입력<span style="color: #e20000;font-size: 12pt;margin-left:5px">(*는 필수 입력란입니다.)</span></h2>
+		</div>
+	</div>
+	<table id="dInputTable" class="tableTypePuex NoticeWriter tb_fixed" style="margin-bottom: 5px;">
+		<!-- 숨김컬럼 -->
+		<input type="hidden" id="_id" value="AR1">
+		<input type="hidden" id="_adProcStat">
+		<input type="hidden" id="_puexStat">
+		<!--
+		<input type="hidden" id="_panLocalCd" />
+		-->
+		<colgroup>
+			<col width="125">
+			<col width="210">
+			<col width="125">
+			<col width="210">
+			<col width="125">
+			<col width="*">
+		</colgroup>
+		<tbody>
+			<tr>
+				<th scope="row" class="line_none">번호</th>
+				<td style="text-align:left"><span id="_SEQ">1</span></td>
+				<th scope="row" class="line_none">상태명</th>
+				<td style="text-align:left"><span id="_procStatNm"></span></td>
+				<th scope="row" class="line_none">매체사명</th>
+				<td style="text-align:left">
+					<span id="_mdiaCorpNm"></span>
+					<input type="hidden" id="_mdiaCorpCd" value="">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="line_none">광고유형<span class="important">*</span></th>
+				<td style="text-align:left">
+					<select id="_adTypeDev" style="width:200px;" onchange="onChangeTableSelectBox(this); return false;"><option value="" selected="">선택</option><option value="ISS031101">광고</option><option value="ISS031201">제작/기타</option></select>
+				</td>
+				<th scope="row" class="line_none">매체구분<span class="important">*</span></th>
+				<td style="text-align:left">
+					<select id="_mdiaGbNm" style="width:200px;" onchange="onChangeTableSelectBox(this); return false;"><option value=""></option></select>
+					<input type="hidden" id="_mdiaGb">
+					<input type="hidden" id="_mdiaGbTmp">
+				</td>
+				<th scope="row" class="line_none">매체명<span class="important">*</span></th>
+				<td id="" class="ar" style="text-align:left;">
+					<input type="text" id="_mdiaNm" class="input" style="width:220px;" readonly="readonly" placeholder="매체 선택" disabled="disabled">
+					<input type="hidden" id="_mdiaCd" value="">
+					<button id="btn_mdiaNm" type="button" class="stopYn btn_line disabled" onclick="selectMdiaPopup();return false;" disabled="disabled" style="border-color: rgb(204, 204, 204); color: rgb(204, 204, 204); cursor: none;">검색</button>
+				</td>
+			</tr>
+			<tr id="_fnRow1">
+				<th scope="row" class="line_none">내용구분<span class="important _pnt" style="display:none;">*</span></th>
+				<td style="text-align:left">
+					<select id="_contClsNm" style="width:200px;" onchange="onChangeTableSelectBox(this); return false;"><option value=""></option></select>
+					<input type="hidden" id="_contCls">
+				</td>
+				<th scope="row" class="line_none">게재면<span class="important _pnt" style="display:none;">*</span></th>
+				<td style="text-align:left">
+					<select id="_agrmFaceClsNm" style="width:200px;" onchange="onChangeTableSelectBox(this); return false;"><option value=""></option></select>
+					<input type="hidden" id="_agrmFaceCls">
+				</td>
+				<th scope="row" class="line_none">사업자 번호</th>
+				<td style="text-align:left">
+					<span id="_bizNoText"></span>
+					<input type="hidden" id="_bizNo" value="">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="line_none">광고 시작일<span class="important">*</span></th>
+				<td style="text-align:left">
+					<input type="text" id="_adFromDt" name="_adFromDt" class="input2 textInput hasDatepicker" style="width: 155px !important;">
+					<label for="_adFromDt" class="btn_date"><span class="blind">달력</span></label>
+				</td>
+				<th scope="row" class="line_none">광고 종료일<span class="important">*</span></th>
+				<td style="text-align:left">
+					<input type="text" id="_adToDt" class="input2 textInput hasDatepicker" style="width: 155px !important;">
+					<label for="_adToDt" class="btn_date"><span class="blind">달력</span></label>
+				</td>
+				<th scope="row" class="line_none">매체사 담당자</th>
+				<td style="text-align:left">
+					<input type="text" id="_mdiaCopTrstChrgNm" class="input" style="width:220px;" readonly="readonly" placeholder="매체사담당자 선택" disabled="disabled">
+					<input type="hidden" id="_mdiaCopTrstChrgMobile" value="">
+					<input type="hidden" id="_mdiaCopTrstChrgId" value="">
+					<input type="hidden" id="_mdiaCopTrstChrgDept" value="">
+					<input type="hidden" id="_mdiaCopTrstChrgEmail" value="">
+					<input type="hidden" id="_mdiaCopTrstChrgPhone" value="">
+					<input type="hidden" id="_mdiaCopTrstChrgLxtn" value="">
+					<button id="btn_mdiaCopChrg" type="button" class="stopYn btn_line disabled" onclick="selectMdiaCopChrg();return false;" disabled="disabled" style="border-color: rgb(204, 204, 204); color: rgb(204, 204, 204); cursor: none;">검색</button>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="line_none">소요예산1<br>(부가세포함)<span class="important">*</span></th>
+				<td>
+					<input type="text" id="_totAdAmt1" class="input" style="width:160px;text-align:right;" onkeyup="inputNumberFormat(this)"><span style="margin-left: 5px;line-height: 35px;">원</span>
+				</td>
+				<th scope="row" class="line_none">부가세 적용여부</th>
+				<td style="text-align:left" id="_adAmtVatYnDisp">
+					<span id="_adAmtVatYnText"></span>
+					<input type="hidden" class="_adAmtVatYn" id="_adAmtVatYn" value="">
+				</td>
+				<td style="text-align:left;display:none;" id="_adAmtVatYnDisp2">
+					<select class="_adAmtVatYn" id="_adAmtVatYn2" style="width:200px;" onchange="onChangeTableSelectBox(this); return false;">
+						<option value=""></option>
+						<option value="Y">적용</option>
+						<option value="N">미적용</option>
+					</select>
+				</td>
+				<th scope="row" class="line_none">광고규격등<br>추가요청</th>
+				<td style="text-align:left">
+					<input type="text" id="_adDtlText" class="input" style="width:100%;">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="line_none">광고료</th>
+				<td style="text-align:right">
+					<span id="_adAmt">0</span>
+					<span style="margin-left: 3px;line-height: 35px;">원</span>
+				</td>
+				<th scope="row" class="line_none">광고료부가세</th>
+				<td style="text-align:right">
+					<span id="_adVat">0</span>
+					<span style="margin-left: 3px;line-height: 35px;">원</span>
+				</td>
+				<th scope="row" class="line_none">광고료합계</th>
+				<td style="text-align:right">
+					<span id="_rowTotAdAmt">0</span>
+					<span style="margin-left: 3px;line-height: 35px;">원</span>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="line_none">수수료</th>
+				<td style="text-align:right">
+					<span id="_fee">0</span>
+					<span style="margin-left: 3px;line-height: 35px;">원</span>
+				</td>
+				<th scope="row" class="line_none">수수료부가세</th>
+				<td style="text-align:right">
+					<span id="_feeVat">0</span>
+					<span style="margin-left: 3px;line-height: 35px;">원</span>
+				</td>
+				<th scope="row" class="line_none">수수료합계</th>
+				<td style="text-align:right">
+					<span id="_rowTotFee">0</span>
+					<span style="margin-left: 3px;line-height: 35px;">원</span>
+				</td>
+			</tr>
+			<tr id="_fnRow2" style="display:none;">
+				<th scope="row" class="line_none">권역지역</th>
+				<td class="ar" style="text-align:left;" colspan="5">
+					<input type="text" id="_panLocalNm" class="input" style="width:89%;" readonly="readonly" placeholder="권역지역 선택" title="" disabled="disabled">
+					<input type="hidden" id="_panLocalCd" value="">
+					<button id="btn_panLocalNm" type="button" class="stopYn btn_line disabled" onclick="selectPanLocalNm();return false;" disabled="disabled" style="border-color: rgb(204, 204, 204); color: rgb(204, 204, 204); cursor: none;">검색</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>

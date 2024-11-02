@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+
+/* main */
+.main{width: 100%;height:525px ;background:url('../img/main/mainImg.png') no-repeat center top;position: relative;}
+.main_under{width: 100%;height:525px ;position: relative;}
+.main .mainText{position: relative;width: 996px;height: 150px;margin: 0 auto;padding: 40px 0 0;text-align: center;}
+.main .mainText h3{color:#212121;font-size: 24px;line-height: 1em;}
+.main .mainText h2{color: #212121;font-size: 30px;line-height: 1em;margin-top:15px;}
+.main .boxWrap{width: 996px;margin: 0 auto;}
+.main .boxWrap .topWrap{font-size: 0;}
+.main .boxWrap .topWrap .mainbox{display: inline-block;vertical-align: top;width: 186px;height: 75px;margin-left: 10px;text-align: center;}
+.main .boxWrap .topWrap .mainbox > a{padding-top: 17px;color: #fff;font-size: 13px;width: 100%;height: 100%;display: block;text-align: left;padding-left: 90px;}
+.main .boxWrap .topWrap .mainbox1{margin-left: 0; background:url('../img/main/mainBox1.png') no-repeat left top;}
+.main .boxWrap .topWrap .mainbox2{background:url('../img/main/mainBox2.png') no-repeat left top;}
+.main .boxWrap .topWrap .mainbox3{background:url('../img/main/mainBox3.png') no-repeat left top;}
+.main .boxWrap .topWrap .mainbox4{background:url('../img/main/mainBox4.png') no-repeat left top;}
+.main .boxWrap .topWrap .mainbox5{background:url('../img/main/mainBox5.png') no-repeat left top; width: 211px;}
+.main .boxWrap .bottomWrap{width: 996px;margin: 16px auto 0;height: 70px;background: #fff;}
+.main .boxWrap .bottomWrap > ul{font-size: 0; display: table; width: 100%;	}
+.main .boxWrap .bottomWrap > ul li{display: table-cell; vertical-align: middle; width: 20%; text-align: center;height: 70px;}
+.main .boxWrap .bottomWrap > ul li img{display: inline-block; vertical-align: middle; margin-right: 13px;}
+.main .boxWrap .bottomWrap > ul li p{display: inline-block; vertical-align: middle;	color: #666; font-size: 13px;}
+.mainBoard {font-size: 0; width: 996px; margin: 0 auto; padding: 16px 0 0px;}
+.mainBoard > div{width: 325px;height: 150px;display: inline-block;vertical-align: top;margin-left: 10px;}
+.mainBoard .notice{margin-left: 0;background: #fafafa;padding:20px 30px;}
+.mainBoard .notice h3{position: relative;color: #212121;font-size: 15px;font-weight: 700;line-height: 1em;}
+.mainBoard .notice h3 a{position: absolute;	right:0;top:0;color: #999;font-size: 13px;line-height: 1em;}
+.mainBoard .notice h3 a span.moreicon{position: relative;width: 11px;height: 11px;display: inline-block;vertical-align: top;margin-left: 7px;margin-top: 1px;}
+.mainBoard .notice h3 a span.moreicon:before,
+.mainBoard .notice h3 a span.moreicon:after{content:"";display: block;position: absolute;left:50%;top:50%;background: #999;}
+.mainBoard .notice h3 a span.moreicon:before{width: 11px;height: 1px;margin: -0.5px 0 0 -5.5px;}
+.mainBoard .notice h3 a span.moreicon:after{width: 1px;height: 11px;margin: -5.5px 0 0 -0.5px;}
+.mainBoard .notice ul{padding-top: 5px;}
+.mainBoard .notice ul li{border-top:1px dotted #dddddd;}
+.mainBoard .notice ul li:first-child{border-top:none;}
+.mainBoard .notice ul li a{background:url('../img/main/mainDot.png') no-repeat left center;padding: 6px 10px;color: #666;font-size: 13px;width: 270px;display: block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.midea{position: relative;}
+.midea .slick-dots{position: absolute;width: 100%;right:30px;top:25px;text-align: right;;}
+.midea .slick-dots li{display: inline-block;vertical-align: top;margin: 0 3px;}
+.midea .slick-dots li button{border:none;background: none;width: 10px;height: 10px;border-radius:5px;background: #3c465a;opacity:0.5;font-size: 0;text-indent: -9999px;overflow:hidden;outline:none;}
+.midea .slick-dots li.slick-active button{opacity:1;}
+.midea  div.mideaBox{background:url('../img/main/mainban1.png') no-repeat left top;width: 100%;height: 217px;padding: 20px 30px;}
+.midea > div a{display: block;width: 100%;height: 100%;}
+.midea > div a h3{font-size: 15px;line-height: 1em;font-weight: 800;color: #fff;}
+.midea > div a ul{margin-top: 15px;}
+.midea > div a ul li{background:url('../img/main/mainDot_W.png') no-repeat left 7px;padding: 0 0 0 11px;margin-top: 3px;color: #fffefe;font-size: 13px;line-height: 1.4em;}
+.midea > div a ul li:first-child{margin-top: 0;}
+.mainMap{background:url('../img/main/mainMap.png') no-repeat left top; padding: 20px 30px; text-align: left;}
+.mainMap h3{font-weight: 800; font-size: 15px; line-height: 1em; color: #212121;}
+.mainMap p{color: #212121; opacity:0.5; font-size: 13px; line-height: 1em; margin-top: 10px;}
+.mainMap a{margin-top: 16px;display: block;width: 90px;height: 30px;line-height: 30px;text-align: center;background: #d7ae2e;color: #212121;opacity:0.5;font-size: 15px;}

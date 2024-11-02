@@ -1,0 +1,66 @@
+.container {
+	@include clearfix;
+	max-width: 1440px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#container {
+	@include clearfix;
+	min-height: calc(100vh - #{$header-height + $breadcrumb-height + $footer-height});
+	padding-bottom: 90px;
+	position: relative;
+	max-width: 1440px;
+	margin: 0 auto;
+
+	#sidebar {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: $sidebar-width;
+	}
+
+	>#contents {
+		float: right;
+		width: calc(100% - #{$sidebar-width + $sidebar-margin});
+		-moz-transition: width .3s ease-in-out;
+		-webkit-transition: width .3s ease-in-out;
+		-o-transition: width .3s ease-in-out;
+		-ms-transition: width .3s ease-in-out;
+		transition: width .3s ease-in-out;
+
+		&.on {
+			width: calc(100% - 60px) !important;
+
+			.IBHeadMid {
+				>div {
+					width: 100% !important;
+
+					.IBSectionScroll {
+						width: 100% !important;
+					}
+				}
+			}
+
+		}
+
+	}
+}
+
+@media (max-width:1440px) {
+	#container {
+		>#contents {
+			width: calc(100% - 280px) !important;
+
+			&.on {
+				width: calc(100% - 40px) !important;
+			}
+
+			>.AdminBorder {
+				.borderTitle {
+					padding-left: 35px;
+				}
+			}
+		}
+	}
+}

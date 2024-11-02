@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>setLimitMultiDownloadSize</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; setLimitMultiDownloadSize</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">setLimitMultiDownloadSize</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.1.0.0</dd>
+					<dt>지원환경</dt>
+					<dd class="notice">멀티 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+object.setLimitMultiDownloadSize(limit);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>limit</td>
+									<td>Number</td>
+									<td>제한된 다운로드 크기(바이트 단위)</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>다운로드 되는 파일의 개별 제한 크기를 설정합니다.</p>
+						<p>1.1.0.0 버전부터 멀티 모듈도 다중 파일 다운로드를 지원합니다. 그러나 IE 모듈과 달리 멀티 모듈의 멀티 다운로드 기능은 브라우저 성능 문제로 인하여 다운로드하는 파일의 크기에 제한을 두도록 하였습니다.</p>
+						<p>기본값은 100MB이며, 파일 크기를 그 이상 허용하려면 setLimitMultiDownloadSize 함수를 사용하여 제한된 크기를 변경하면 됩니다.</p>
+                        <p class="notice">
+                            그러나 이 함수는 다운로드가 허용되는 대상을 크기를 변경하는 것이지, 브라우저의 성능에 상관없이 다운로드가 가능하도록 기능을 제공하는 것이 아닙니다.
+                            HTML5의 기능을 사용하여 파일을 연속적으로 다운로드하려면, 일시적으로 다운로드 대상을 메모리에 로드하기 때문에, 
+                            동영상 파일과 같이 용량이 큰 파일들은 멀티 모듈에서 적절한 다중 파일 다운로드 대상이 아닙니다. 그러므로 대용량 다운로드, 이어 받기와 같은 기능이 필요하다면,
+                            멀티 모듈 대신에 IE 모듈을 사용하는 것을 권장합니다.
+                        </p>
+						<pre class="prettyprint">
+// 다운로드 제한 크기를 300MB로 설정합니다. 
+dx.setLimitMultiDownloadSize(1024 * 1024 * 300);
+</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

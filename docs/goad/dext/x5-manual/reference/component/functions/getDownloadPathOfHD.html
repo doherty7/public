@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>getDownloadPathOfHD</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; getDownloadPathOfHD</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">getDownloadPathOfHD</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>2.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">object.getDownloadPathOfHD(success);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+            <table>
+              <thead>
+                <tr>
+                  <th>이름</th>
+                  <th>형식</th>
+                  <th>설명</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>success</td>
+                  <td>Function</td>
+                  <td>HD 다운로드 경로 값을 얻을 수 있는 콜백 함수입니다.</td>
+                </tr>
+              </tbody>
+            </table>
+          </dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>HD 응용프로그램에 설정된 다운로드 경로를 반환합니다.</p>
+						<pre class="prettyprint">
+dx.getDownloadPathOfHD(function (path) {
+  // HD 응용프로그램의 다운로드 경로입니다.
+  console.log(path);
+});
+</pre>
+            <p class="notice">
+              HD 응용프로그램을 사용하는 경우에 사용될 메소드들은 대부분 내부적으로 비동기 작업을 수행합니다.
+              비동기를 작업을 수행하기 때문에 반환 값을 받기 전까지 스레드가 대기하지 않으며, 
+              요청에 대한 결과 값을 받기 위해서 콜백 함수를 이용해야 합니다.
+            </p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="72px" height="57.6px" viewBox="0 0 72 57.6" enable-background="new 0 0 72 57.6" xml:space="preserve">
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="52.8525" y1="32.8613" x2="52.8525" y2="57.1465">
+		<stop  offset="0" style="stop-color:#558DB5"/>
+		<stop  offset="1" style="stop-color:#3F4871;stop-opacity:0.95"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_1_)" points="40.87,57.146 64.593,57.146 64.835,57.146 64.835,32.861 59.188,32.861 59.188,51.496 
+		40.87,51.496 	"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="52.6943" y1="0.4531" x2="52.6943" y2="24.4199">
+		<stop  offset="0" style="stop-color:#558DB5"/>
+		<stop  offset="1" style="stop-color:#3F4871;stop-opacity:0.95"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="64.835,24.42 64.835,0.707 64.835,0.453 40.554,0.453 40.554,6.111 59.188,6.111 
+		59.188,24.42 	"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="19.1445" y1="0.7402" x2="19.1445" y2="25.0332">
+		<stop  offset="0" style="stop-color:#558DB5"/>
+		<stop  offset="1" style="stop-color:#3F4871;stop-opacity:0.95"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_3_)" points="31.124,0.74 7.407,0.74 7.165,0.74 7.165,25.033 12.819,25.033 12.819,6.396 31.124,6.396 	
+		"/>
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="19.3096" y1="33.1074" x2="19.3096" y2="57.0664">
+		<stop  offset="0" style="stop-color:#558DB5"/>
+		<stop  offset="1" style="stop-color:#3F4871;stop-opacity:0.95"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_4_)" points="7.165,33.107 7.165,56.828 7.165,57.066 31.454,57.066 31.454,51.424 12.819,51.424 
+		12.819,33.107 	"/>
+</g>
+</svg>

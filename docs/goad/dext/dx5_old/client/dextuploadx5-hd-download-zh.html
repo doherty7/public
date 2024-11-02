@@ -1,0 +1,123 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DEXTUploadX5 HD 设置程序</title>
+    <style type="text/css">
+        <!--
+        body, div, dl, dt, dd, p, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px "Malgun Gothic", Dotum, Gulim, Verdana, AppleGothic, sans-serif;
+            color: #fff;
+            line-height: 18px;
+            background: #c2185b;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f8cb00;
+        }
+
+        #download {
+            padding: 10px;
+        }
+
+        #download .tit {
+            font-size: 22px;
+            text-align: center;
+            line-height: 30px;
+            margin: 20px 0;
+        }
+
+        #download .btn {
+            width: 440px;
+            font-size: 16px;
+            text-align: center;
+            background: #e91e63;
+            border-radius: 5px;
+            margin: 0 auto;
+            padding: 7px 0;
+        }
+
+        #download .btn + .btn {
+            margin-top: 0.5rem;
+        }
+
+        #download .content {
+            border-radius: 5px;
+            color: #636363;
+            background: #fff;
+            margin-top: 25px;
+            padding: 20px 25px;
+        }
+
+        #download dt {
+            font-weight: bold;
+            color: #025b95;
+        }
+        -->
+    </style>
+    <script src="../dextuploadx5-configuration.js"></script>
+    <script>
+		window.onload = function () {
+		    document.getElementById("btn-download-client-x86").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-installer.exe";
+		    document.getElementById("btn-download-client-x64").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-installer-x64.exe";
+		    document.getElementById("btn-download-client-mac").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-mac.pkg";
+		}
+    </script>
+</head>
+
+<body>
+    <div id="download">
+        <p class="tit"><strong>DEXTUploadX5 HD 设置程序</strong></p>
+        <p class="btn"><a id="btn-download-client-x86" href="#">Download (For Windows)</a></p>
+        <p class="btn"><a id="btn-download-client-x64" href="#">Download (64bit For Windows)</a></p>
+        <p class="btn"><a id="btn-download-client-mac" href="#">Download (For macOS 10.13.6 over, Safari 12 over)</a></p>
+        <div class="content">
+            <dl>
+                <dt>※ 如果在Windows上安装产品后继续访问下载页面，则扫描项目将如下所示：</dt>
+                <dd>
+                    <ol>
+                        <li>打开运行窗体(Window key + R)，并在窗体内输入 services.msc之后，打开服务。</li>
+                        <li>确认DEXTUploadX5 Hybrid Download Service是否存在。</li>
+                        <li>如服务存在的话，确认服务的状态是不是‘运行中’。</li>
+                    </ol>
+                </dd>
+                <dt>※ 在Windows上运行安装文件时发生访问被拒绝错误。</dt>
+                <dd>
+                    <ol>
+                        <li>把安装文件移动到下载位置</li>
+                        <li>选择安装文件后，点击鼠标右键选择[属性]</li>
+                        <li>如果在【一般】标记上设定了‘阻止’的话，请点击【阻止解除】。</li>
+                        <li>运行安装文件</li>
+                    </ol>
+                </dd>
+                <dt>※ 如何在macOS上安装DEXTUploadX5混合下载服务</dt>
+                <dd>
+                    <ol>
+                        <li>下载安装包文件（dextuploadx5-hd-mac.pkg）。 （注意浏览器弹出窗口阻止程序。</li>
+                        <li>运行Finder并转到下载程序包的位置。</li>
+                        <li>选择“dextuploadx5-hd-mac.pkg”文件，单击鼠标右键，然后单击“打开”按钮进行安装。</li>
+                    </ol>
+                </dd>
+                <dt>※ 如何在macOS上卸载DEXTUploadX5混合下载服务</dt>
+                <dd>
+                    <ol>
+                        <li>打开Spotlight搜索并键入“终端”以运行终端。</li>
+                        <li>通过执行'cd ~/Applications/DEXTUploadX5-HD（回车）'转到'/Users/CurrentUser/Applications/DEXTUploadX5-HD'文件夹。</li>
+                        <li>执行'sh dextuploadx5-hd-uninstall.sh（Enter）'删除HD程序。</li>
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

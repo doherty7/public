@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>isExtractingEXIF</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; isExtractingEXIF</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">isExtractingEXIF</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd class="notice">IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>
+						<pre class="prettyprint">
+extracting = object.isExtractingEXIF();</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd></dd>
+					<dt>반환 값</dt>
+					<dd>EXIF 추출 여부</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>이미지 파일의 EXIF 데이터 추출 여부를 반환합니다.</p>
+						<p>EXIF를 지원하는 이미지의 경우 EXIF 데이터를 얻을 수 있습니다.</p>
+						<p class="notice">EXIF 추출을 허가한 이후 항목들만 데이터가 자동으로 추출되며, 로컬 파일만 가능합니다.</p>
+						<p>EXIF를 얻기 위해서 컴포넌트 생성시점에 setExtractingEXIF 함수를 사용하여 추출이 가능하도록 설정합니다.</p>
+						<p>EXIF 데이터는 구분자로 구성된 하나의 문자열입니다. 그러므로 문자열을 파싱할 필요가 있습니다.</p>
+						<pre class="prettyprint">
+function onDX5Created(id) {
+  var dx = dx5.get(id);
+  dx.setExtensionFilter("JPG 파일|*.jpg;*.jpeg;||");
+  dx.setExtractingEXIF(true);
+}
+function parseExif(data) {
+  if (!data) return "";
+  var splitter = dx5.get("컴포넌트아이디").getSplitString();
+  var tokens = data.split(splitter);
+  var str = "";		
+  for (var i = 0, len = tokens.length; (i + 1) &lt; len; i += 2) {
+    // 홀수 번째는 EXIF 속성이름, 짝수 번째는 해당 속성의 값입니다.
+    str += "  " + tokens[i] + ": " + tokens[i + 1] + ((i + 1) < len ? "\n" : "");
+  }
+  
+  return str;
+}
+</pre>
+						<p>EXIF 데이터는 항목의 exif 속성으로부터 얻을 수 있습니다.</p>
+						<pre class="prettyprint">
+// 열 번째 항목이 갖는 EXIF 데이터를 보여줍니다.
+var item = dx5.get("dext5").getItemByIndex(9);
+var parsed = parseExif(item.exif);
+alert(parsed);</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

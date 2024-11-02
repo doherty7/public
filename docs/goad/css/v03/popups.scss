@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+//
+// UI 리뉴얼
+//
+
+// variables
+@import "scss/variables";
+
+// funtions
+@import "scss/breakpoints";
+@import "scss/mixins";
+
+@import "scss/utilities/spacing"; // 팝업에서만 로드
+@import "scss/components/popups"; // 팝업, 레이어팝업

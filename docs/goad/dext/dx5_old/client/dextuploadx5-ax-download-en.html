@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>This is the DEXTUploadX5 Client Installation Program download page.</title>
+	<style type="text/css">
+	<!--
+		body, div, dl, dt, dd, p, img { margin:0; padding:0; }
+		body { font:12px "Malgun Gothic", Dotum, Gulim, Verdana, AppleGothic, sans-serif; color:#fff; line-height:18px; background:#00bff3; }
+		img { border:0; vertical-align:middle; }
+		a { color:#fff; text-decoration:none; }
+		a:hover { color:#f8cb00; }
+		#download { border:1px solid #00abe0; padding:10px; }
+		#download .tit { font-size:22px; text-align:center; line-height:30px; margin:30px 0; }
+		#download .btn { width:440px; font-size:16px; text-align:center; background:#025b95; border-radius:3px; margin:0 auto; padding:7px 0; }
+		#download .content { color:#636363; background:#fff; margin-top:35px; padding:40px 45px; }
+		#download dt { font-weight:bold; color:#025b95; }
+	-->
+	</style>
+	<script src="../dextuploadx5-configuration.js"></script>
+	<script>
+		window.onload = function () {
+			// 32 bits or 64 bits
+			var isX64 = false;
+			if (navigator.userAgent.indexOf("Win64; x64;") >= 0) isX64 = true;
+			else if (navigator.platform == "Win64" && navigator.cpuClass == "x64") isX64 = true;
+			else isX64 = false;
+
+			document.getElementById("btn-download-client").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-activex-installer" + (isX64 ? "-x64" : "") + ".exe";
+		}
+	</script>
+</head>
+
+<body>
+	<div id="download">
+		<p class="tit">
+            <strong>DEXTUploadX5 Client Installation Program</strong>
+		</p>
+		<p class="btn">
+			<a id="btn-download-client" href="#">Download Now!&nbsp;&nbsp;&nbsp;&nbsp;
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+					version="1.1" x="0px" y="0px" width="30px"
+					height="21px" viewBox="0 0 30 21">
+				<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M14.224,13.717c0.209,0.21,0.486,0.3,0.76,0.285
+				c0.274,0.015,0.551-0.075,0.76-0.285l4.943-5.991c0.392-0.394,0.392-1.032,0-1.426c-0.393-0.395-1.028-0.395-1.42,0L16,10.26
+				V1.002C16,0.448,15.552,0,15,0s-1,0.448-1,1.002v9.296L10.702,6.3c-0.392-0.395-1.028-0.395-1.42,0
+				c-0.392,0.394-0.392,1.032,0,1.426L14.224,13.717z M29,11c-0.553,0-1,0.447-1,1v7H2v-7c0-0.553-0.448-1-1-1s-1,0.447-1,1v8
+				c0,0.552,0.448,1,1,1h28c0.553,0,1-0.448,1-1v-8C30,11.447,29.553,11,29,11z" />
+			</svg></a>
+		</p>
+		<div class="content">
+			<dl>
+				<dt>※ Checking list when accessing the installation page continuously after the installation of the program.</dt>
+				<dd>1. For IE 10/11 users, remove sites from the Compatibility View list (if set).<br>
+                    2. Add the website to the Trusted sites and reconnect the page.<br>
+                    3. In other browsers(except IE 10/11), Download the installation program and move to the folder where you downloaded file.<br>
+                    4. Execute the installation program as administrator.<br>
+                    5. If this page is still appeared after the above installation, see online support documents relative to DEXTUploadX5.<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;-&gt; Go to the online support documents. (Requries internet connection)<br>
+                    6. If the installation of the client program is not completed due to other issues, please contact the administrator.</dd>
+			</dl>
+			<br>
+			<dl>
+				<dt>※ The file access was denied when executing the client program.</dt>
+				<dd>1. Move to the folder where you downloaded file.<br>
+                    2. Right-click the file and open its property.<br>
+                    3. In general tab, unblock the protection of the file and click the Apply button.<br>
+                    4. Execute installation file.</dd>
+			</dl>
+		</div>
+	</div>
+</body>
+</html>

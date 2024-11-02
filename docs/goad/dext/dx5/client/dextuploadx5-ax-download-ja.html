@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DEXTUploadX5クライアント設置プログラムのダウンロードページです。</title>
+	<style type="text/css">
+	<!--
+		body, div, dl, dt, dd, p, img { margin:0; padding:0; }
+		body { font:12px "Malgun Gothic", Dotum, Gulim, Verdana, AppleGothic, sans-serif; color:#fff; line-height:18px; background:#00bff3; }
+		img { border:0; vertical-align:middle; }
+		a { color:#fff; text-decoration:none; }
+		a:hover { color:#f8cb00; }
+		#download { border:1px solid #00abe0; padding:10px; }
+		#download .tit { font-size:22px; text-align:center; line-height:30px; margin:30px 0; }
+		#download .btn { width:440px; font-size:16px; text-align:center; background:#025b95; border-radius:5px; margin:0 auto; padding:9px 0 11px 0; }
+		#download .content { color:#636363; background:#fff; margin-top:35px; padding:40px 45px; }
+		#download dt { font-weight:bold; color:#025b95; }
+	-->
+	</style>
+	<script src="../dextuploadx5-configuration.js"></script>
+	<script>
+		window.onload = function () {
+			// 32 bits or 64 bits
+			var isX64 = false;
+			if (navigator.userAgent.indexOf("Win64; x64;") >= 0) isX64 = true;
+			else if (navigator.platform == "Win64" && navigator.cpuClass == "x64") isX64 = true;
+			else isX64 = false;
+
+			document.getElementById("btn-download-client").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-activex-installer" + (isX64 ? "-x64" : "") + ".exe";
+		}
+	</script>
+</head>
+
+<body>
+	<div id="download">
+		<p class="tit">
+            <strong>DEXTUploadX5クライアント設置プログラム</strong>
+		</p>
+		<p class="btn">
+			<a id="btn-download-client" href="#">Download Now!</a>
+		</p>
+		<div class="content">
+			<dl>
+				<dt>※製品インストールの後、継続的に設置ページにアクセスする時の点検事項</dt>
+				<dd>1.IE10/11ユーザーの場合は、サイトを互換表示リストに削除（設定されている場合）。<br>
+                    2.信頼できるサイトでウェブサイト追加の後ページに再接続<br>
+                    3.以外のブラウザで設置する時、インストールファイルをダウンロードする後、ダウンロードの位置に移動<br>
+                    4.ダウンロードされたインストールファイルをマウスの右ボタンでクリック>管理者の権限で実行<br>
+                    5.上の設置作業の後で同じ症状が発生する時、技術文書のページを参照<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;-&gt; 技術文書のページへの移動(インターネットに接続されていなければなりません。)<br>
+                    6.以外の事項で設置が完了しない場合、管理者にお問い合わせしてください。</dd>
+			</dl>
+			<br>
+			<dl>
+				<dt>※インストールファイルを実行する時、アクセスを拒否するエラーが発生した場合</dt>
+				<dd>1.インストールファイルのダウンロード位置に移動<br>
+                    2.インストールファイルを選択した後、マウスの右ボタンをクリックして[属性]を選択<br>
+                    3.[一般]タブでブロックの設定になっていれば、[ブロック解除]ボタンをクリックした後、適用する<br>
+                    4.インストールファイルを実行</dd>
+			</dl>
+		</div>
+	</div>
+</body>
+</html>

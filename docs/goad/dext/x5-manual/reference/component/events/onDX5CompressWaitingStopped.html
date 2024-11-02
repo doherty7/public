@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>onDX5CompressWaitingStopped</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; events &gt; onDX5CompressWaitingStopped</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">onDX5CompressWaitingStopped</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+                    <dd>1.3.0.0</dd>
+                    <dt>지원환경</dt>
+                    <dd class="notice">멀티 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+function onDX5CompressWaitingStopped(id) { ... }</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>String</td>
+									<td>이벤트가 발생한 컴포넌트 아이디</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>onDX5CompressWaitingStopped 함수는 압축 요청이 강제로 중지된 후 호출되는 콜백 함수입니다.</p>
+						<pre class="prettyprint">
+function onDX5CompressWaitingStopped(id) {
+  ...
+}</pre>
+                        <p class="notice">
+                            onDX5CompressWaitingStopped 콜백 함수는 멀티 모듈에서 압축 과정이 중지되면 호출되는 콜백 함수입니다.
+                            만일 압축 과정이 끝나고, 대상 파일이 다운로드되는 과정이라면 onDX5CompressWaitingStopped 함수가 호출되더라도,
+                            다운로드 과정까지 취소되지 않습니다. 
+                        </p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

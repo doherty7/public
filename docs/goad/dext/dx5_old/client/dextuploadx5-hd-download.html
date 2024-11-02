@@ -1,0 +1,123 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DEXTUploadX5 HD 설치 프로그램 다운로드</title>
+    <style type="text/css">
+        <!--
+        body, div, dl, dt, dd, p, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px "Malgun Gothic", Dotum, Gulim, Verdana, AppleGothic, sans-serif;
+            color: #fff;
+            line-height: 18px;
+            background: #c2185b;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #9c28b0;
+        }
+
+        #download {
+            padding: 10px;
+        }
+
+        #download .tit {
+            font-size: 22px;
+            text-align: center;
+            line-height: 30px;
+            margin: 20px 0;
+        }
+
+        #download .btn {
+            width: 440px;
+            font-size: 16px;
+            text-align: center;
+            background: #e91e63;
+            border-radius: 5px;
+            margin: 0 auto;
+            padding: 7px 0;
+        }
+
+        #download .btn + .btn {
+            margin-top: 0.5rem;
+        }
+
+        #download .content {
+            border-radius: 5px;
+            color: #636363;
+            background: #fff;
+            margin-top: 25px;
+            padding: 20px 25px;
+        }
+
+        #download dt {
+            font-weight: bold;
+            color: #025b95;
+        }
+        -->
+    </style>
+    <script src="../dextuploadx5-configuration.js"></script>
+    <script>
+		window.onload = function () {
+		    document.getElementById("btn-download-client-x86").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-installer.exe";
+		    document.getElementById("btn-download-client-x64").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-installer-x64.exe";
+		    document.getElementById("btn-download-client-mac").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-mac.pkg";
+		}
+    </script>
+</head>
+
+<body>
+    <div id="download">
+        <p class="tit">DEXTUploadX5 HD <strong>설치 프로그램 다운로드</strong></p>
+        <p class="btn"><a id="btn-download-client-x86" href="#">다운로드 (Windows용)</a></p>
+        <p class="btn"><a id="btn-download-client-x64" href="#">다운로드 (Windows용 64bit 프로그램)</a></p>
+        <p class="btn"><a id="btn-download-client-mac" href="#">다운로드 (macOS 10.13.6 이상, Safari 12 이상)</a></p>
+        <div class="content">
+            <dl>
+                <dt>※ Windows에서 프로그램 설치 후 계속적으로 다운로드 페이지 접근 시 점검 사항</dt>
+                <dd>
+                    <ol>
+                        <li>실행(Window 키 + R) 창을 열어 services.msc 입력 후 실행</li>
+                        <li>DEXTUploadX5 Hybrid Download Service가 존재하는지 확인</li>
+                        <li>서비스가 존재하는 경우, 서비스 상태가 '실행 중'인지 확인</li>
+                    </ol>
+                </dd>
+                <dt>※ Windows에서 설치 파일 실행 시 액세스 거부 오류가 발생하는 경우</dt>
+                <dd>
+                    <ol>
+                        <li>설치파일 다운로드 위치로 이동</li>
+                        <li>설치파일을 선택 후 마우스 오른쪽 버튼을 클릭하여 [속성] 선택</li>
+                        <li>[일반] 탭에서 차단 설정이 되어있다면, [차단 해제] 버튼 클릭 후 적용</li>
+                        <li>설치 파일 실행</li>
+                    </ol>
+                </dd>
+                <dt>※ macOS에서 프로그램 설치 방법</dt>
+                <dd>
+                    <ol>
+                        <li>설치 패키지 파일('dextuploadx5-hd-mac.pkg')을 다운로드 (브라우저 팝업 차단 주의)</li>
+                        <li>파인더(Finder)를 열고 다운로드 위치로 이동</li>
+                        <li>dextuploadx5-hd-mac.pkg 파일을 선택한 다음, 오른쪽 클릭을 수행한 후, '열기' 버튼 클릭하여 설치 진행</li>
+                    </ol>
+                </dd>
+                <dt>※ macOS에서 프로그램 삭제 방법</dt>
+                <dd>
+                    <ol>
+                        <li>Spotlight 검색을 열어서 '터미널' 또는 'Terminal'을 입력하여 터미널을 실행</li>
+                        <li>'cd ~/Applications/DEXTUploadX5-HD (엔터)'를 실행하여 '/Users/사용자/Applications/DEXTUploadX5-HD' 폴더로 이동</li>
+                        <li>'sh dextuploadx5-hd-uninstall.sh (엔터)'를 실행하여 프로그램 삭제</li>
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

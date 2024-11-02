@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	version="1.1"
+	id="UIC-DEXTUPLOADX5-PROGRESSIVE"
+	onload="onLoadHandler(evt)" width="100%" height="100%">
+    <script type="application/ecmascript" xlink:href="../dextuploadx5-common.js"/>
+    <script type="application/ecmascript" xlink:href="../dextuploadx5-svg.js"/>
+    <script type="application/ecmascript">
+        <![CDATA[
+	var hp = new SVGHelper();
+	var globals = {};
+	var active = false;
+    var hostId = "";
+		
+	function updateUILayout() {
+		var root = hp.get("UIC-DEXTUPLOADX5-PROGRESSIVE");
+		var s = getElementComputedSize(root);
+		if (s.w > 0 || s.h > 0) {
+			relayoutDX5(hp.get("UIC-MAIN-AREA"), s.w, s.h);
+		}
+	}
+    
+    function updateProgress(wrapper) {		
+        var status = wrapper.getDownloadStatus();
+        var tt = hp.get("UIC-TXT-FILENAME");
+        var tc = hp.get("UIC-TXT-COUNT");
+        var td = hp.get("UIC-PROGRESS-DEF");
+        var ta = hp.get("UIC-PROGRESS-AROUND");
+        var tg = hp.get("UIC-PROGRESS-GLOW");
+        var blinkSpeed = parseInt(1000 / 12);
+        var to = 0;
+        var tw = parseInt(100 / status.totalCount, 10);
+            
+        active = true;
+        hostId = wrapper.domObject.id;
+        
+        hp.attr(td, "width", "0%");
+        hp.attr(ta, "width", tw + "%");
+        hp.attr(tg, "width", tw + "%");
+                
+	    function progress(t, up) {	
+            status = t.getDownloadStatus();
+            var rate = status.totalCount === 0 ? 100 : parseInt(status.completeCount * 100 / status.totalCount, 10);
+        
+		    hp.attr(td, "width", rate + "%");
+				
+		    if (rate < 100) {            
+                hp.replaceText(tt, "" + status.currentName);
+                hp.replaceText(tc, "[ " + (status.completeCount + 1) + " / " + status.totalCount + " ]");            
+                hp.attr(ta, "x", rate + "%");
+                hp.attr(tg, "x", rate + "%");
+                ta.style.opacity = "" + to;
+                tg.style.opacity = "" + to;
+                to = to + (up ? 0.1 : -0.1);
+                if (to > 1) to = 1, up = false;
+                else if (to < 0) to = 0, up = true;
+                setTimeout(function () { progress(t, up); }, blinkSpeed, false);
+		    } else {
+                ta.style.opacity = 0;
+                tg.style.opacity = 0;
+                setTimeout(function () {   
+                    hp.replaceText(tt, "");
+                    hp.replaceText(tc, "[ 0 / 0 ]");
+                    // change active to false.
+                    active = false;
+                }, 100);
+            }
+        }
+        
+        progress(wrapper, true);
+    }
+		
+	document["stopUI"] = function (lazy) {
+		if (lazy) {
+			return !active;
+		} else {
+			active = false;
+			return true;
+		}
+	};
+		
+	document["updateUI"] = function (t) {
+		updateUILayout();		
+		updateProgress(t);
+	};
+		
+	function onLoadHandler(evt) {
+		var parameters = {}, lang = "auto";
+		
+		var tokens = document.defaultView.location.href.split("?");
+		if (tokens.length == 2) {
+			var p = tokens[1].split(/&|;/);
+			if (p.length > 0) {
+				for (var i = 0; i < p.length; i++) {
+					var vals = p[i].split("=");
+					parameters[unescape(vals[0])] = unescape(vals[1]);
+				}
+			}
+		}
+			
+		if (!parameters.lang || parameters.lang == "auto") {
+			lang = navigator.language || navigator.browserLanguage || navigator.systemLanguage;
+			lang = lang ? lang.split("-")[0] : "";
+		} else {
+			lang = parameters.lang;
+		}
+			
+		var worker = new Worker("../dextuploadx5-worker-resource.js");
+		worker.onmessage = function (evt) {
+			var gRB = new ResourceBundle();
+			gRB.init(evt.data);
+				
+			hp.replaceText(hp.get("UIC-TITLE-TXT"), gRB.get("RB-POPDN-3-0001", "_파일을 다운로드하는 중 입니다."));
+			hp.replaceText(hp.get("UIC-TXT-WAIT"), gRB.get("RB-POPDN-3-0002", "_마무리 작업을 대기하고 있습니다."));				
+				
+			hp.get("UIC-TITLE-BTN-CANCEL").addEventListener("click", function (evt) {
+				evt.stopPropagation();
+				evt.preventDefault();
+				active = false;
+				if (window.parent.dx5) {
+					window.parent.dx5.popupManager.dn.hide(hostId, true);
+                    hostId = "";
+				}
+			}, false);
+				
+			updateUILayout();
+	
+			console.log("DX5: dextuploadx5-dn-0 loaded");
+		};
+        
+        worker.onerror = function (evt) {
+            console.log("DX5: Text resource(dextuploadx5-dn-3.svg) loading failed!\n" + evt.message);
+        };
+			
+		worker.postMessage(lang);
+	}
+	]]>
+    </script>
+    <style type="text/css">
+        * { font-family: '맑은 고딕', Tahoma }
+        .css-txt-title { font-size: 10pt; fill: #333; font-weight: bold; }
+        .css-txt-progressive { font-size: 9pt; fill: #fff; }
+        .css-txt-filename { font-size: 8.5pt; fill: #eee; text-anchor: middle; }
+        .css-txt-count { font-size: 8.5pt; fill: #eee; text-anchor: middle; }
+        .css-progress-back { fill: #465b70; stroke: rgba(255, 255, 255, .75); stroke-width: 1; }
+        .css-progress-around { fill: #80FF00; stroke: none; opacity: 0; }
+        .css-progress-default { fill: #80FF00; stroke: none; }
+        .css-progress-glow { fill: #80FF00; stroke: none; opacity: 0; }
+    </style>
+    <filter id="UIF-SHADOW" x="0%" y="0%" width="100%" height="100%">
+        <feGaussianBlur stdDeviation="1.2" />
+    </filter>
+    <filter id="UIF-GLOW" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="3" />
+    </filter>
+    <defs>
+        <symbol id="UIS-CANCEL" viewBox="0 0 16 16">
+            <rect x="0" y="0" width="100%" height="100%"/>
+            <path d="M0,3 l3,-3 l5,5 l5,-5 l3,3 l-5,5 l5,5 l-3,3 l-5,-5 l-5,5 l-3,-3 l5,-5 z" stroke="none" fill="#465b70"/>
+        </symbol>
+    </defs>
+    <svg id="UIC-MAIN-AREA" x="0" y="0" width="100%" height="100%">
+        <svg x="0" y="0" width="100%" height="40">
+            <rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#ebebeb"/>
+            <text id="UIC-TITLE-TXT" x="10" y="26" class="css-txt-title">DOWNLOADING</text>
+            <use id="UIC-TITLE-BTN-CANCEL" xlink:href="#UIS-CANCEL" y="15" width="12" height="12" layout-dx5="x:100%-12px-10px;" style="cursor:pointer;" fill="#ebebeb"/>
+        </svg>
+        <svg x="0" y="40" width="100%" height="100">
+            <rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#465b70"/>
+            <svg x="20" y="30" height="20" layout-dx5="width:100%-40px;">
+                <text id="UIC-TXT-FILENAME" x="50%" y="10" class="css-txt-filename">이용자용 통계정보보고서_공동주택매매실거래가격지수(2016).pdf</text>
+            </svg>
+            <svg x="20" y="50" height="10" layout-dx5="width:100%-40px;">
+                <rect id="UIC-PROGRESS-BACK" class="css-progress-back" x="0" y="2" width="100%" height="3" filter="url(#UIF-SHADOW)" />
+                <rect id="UIC-PROGRESS-DEF" class="css-progress-default" x="0" y="2" width="0" height="3" />
+                <rect id="UIC-PROGRESS-AROUND" class="css-progress-around" y="2" width="0" height="3" filter="url(#UIF-GLOW)" />
+                <rect id="UIC-PROGRESS-GLOW" class="css-progress-glow" y="2" width="0" height="3" />
+            </svg>
+            <text id="UIC-TXT-COUNT" x="50%" y="70" class="css-txt-count">[ 0 / 0 ]</text>
+        </svg>
+    </svg>
+</svg>

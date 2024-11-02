@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/common-upload.do"));
+		}
+		
+		function onDX5UploadCompleted(id) {			
+			alert("업로드가 완료되었습니다.\n응답 데이터는 다음과 같습니다.\n" + dx5.get(id).getResponses()[0]);
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 업로드</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">파일을 업로드하는 가장 간단한 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>dx5.create 함수를 사용하여 컴포넌트를 생성할 때, 생성 옵션 중 btnUploadAuto 속성에 button, input[type=button] 요소의
+						아이디를 지정하면 자동으로 업로드 함수가 호출되는 이벤트를 연결합니다.</p>
+						<pre class="prettyprint">
+&lt;button id="btn-upload"&gt;파일 업로드&lt;/button&gt;
+&lt;script&gt;
+  dx5.create({
+    ...
+    // 업로드를 수행할 버튼을 연결합니다.
+    btnUploadAuto: "btn-upload"
+  });
+&lt;/script&gt;</pre>
+						<p class="notice">파일을 업로드하려면 업로드를 처리할 서버 측 웹 경로를 설정해주어야 합니다.</p>
+						<p>파일 업로드 경로는 업로드하기 전에 설정하면 되지만, 일반적으로 onDX5Created 콜백 함수에서 지정합니다.</p>
+						<pre class="prettyprint">
+function onDX5Created(id) {
+  var dx = dx5.get(id);
+  // dx5.canonicalize 함수는 주어진 상대 경로에 대한 절대 경로(http, https 포함) 값을 반환하는 유틸 함수입니다.
+  dx.setUploadURL(dx5.canonicalize("./simple-upload.do"));
+}</pre>
+						<p>DEXTUploadX5는 파일을 보내는 sender 역할을 수행합니다. 이와 달리 DEXTUploadNJ는 서버 측에 파일을 받는 receiver 역할을 담당합니다.</p>
+						<p>이 샘플은 파일 업로드 처리를 컨트롤러(FileServiceController)가 담당하며 common-upload.do로 매핑되어 있습니다.</p>
+						<p>RFC 1867 규약에 따라 multipart/form-data로 전송되는 데이터는 POST 형식으로 받아야 합니다.
+						FileServiceController 클래스의 commonupload 메소드에서 DEXTUploadNJMultipartResovler에서 처리된 파일 정보를 갖는 VO 클래스를 사용하여 서버 측 업로드 처리를 수행합니다.</p>
+						<p>DEXTUploadNJ의 자세한 기능이나 설명은 DEXTUploadNJ 제품 매뉴얼 및 샘플을 참고하시길 바랍니다.</p>
+						<pre class="prettyprint">
+# 서버 측 설정입니다.						
+						
+@RequestMapping(value = {"/service/common-upload.do", "/service/upload-oraf.do"}, method = RequestMethod.POST)
+public void commonupload(DEXTUploadX5Request x5, HttpServletResponse response) throws IOException {
+	
+  // DEXTUploadX5Request 클래스는 제품 라이브러리에 포함된 클래스가 아니라, 
+  // Spring 모델 바인딩 기능에 의해 DEXTUploadX5로부터 전달되는 폼 정보를 속성으로 갖는 예시 클래스입니다.
+	
+  FileItem item = null;
+  StringBuffer sb = new StringBuffer();
+
+  for (MultipartFile file : x5.getDEXTUploadX5_FileData()) {
+
+    item = (FileItem)file;
+
+    if (item.isEmpty() == false) {
+      item.save();
+
+      // 저장된 파일의 위치를 응답 데이터 버퍼에 기록합니다.
+      sb.append(String.format("F:%1$s\n", item.getFilename()));
+    }
+  }
+
+  response.setCharacterEncoding("UTF-8");
+  response.setContentType("text/plain");
+  response.getWriter().write(sb.toString());
+}</pre>
+							<p class="notice">DEXTUploadX5는 브라우저가 아닙니다. 그러므로 서버와 DEXTUploadX5 간의 통신은 응답 데이터를 통해서만 주고받을 수 있습니다.</p>
+							<p class="notice">DEXTuploadX5는 응답 데이터가 HTTP 상태코드가 오류인 경우만, onDX5Error 콜백 함수를 호출하며, 나머지 경우는 모두 성공이라고 판단합니다.</p>
+							<p>업로드가 성공적으로 완료가 되면 onDX5UploadCompleted 콜백 함수가 호출됩니다.</p>
+							<pre class="prettyprint">
+function onDX5UploadCompleted(id) {
+  // 업로드가 완료되면 호출됩니다.
+}</pre>
+						</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>파일을 추가한 후 업로드 버튼을 클릭하면 파일이 업로드됩니다.</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+							<button id="btn-upload">업로드</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files", btnUploadAuto: "btn-upload"
+		});
+	</script>
+</body>
+</html>

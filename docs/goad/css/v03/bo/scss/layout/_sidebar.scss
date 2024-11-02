@@ -1,0 +1,209 @@
+#sidebar {
+	-moz-transition: left .3s ease-in-out;
+	-webkit-transition: left .3s ease-in-out;
+	-o-transition: left .3s ease-in-out;
+	-ms-transition: left .3s ease-in-out;
+	transition: left .3s ease-in-out;
+
+	>div {
+		-moz-transition: all .3s ease-in-out;
+		-webkit-transition: all .3s ease-in-out;
+		-o-transition: all .3s ease-in-out;
+		-ms-transition: all .3s ease-in-out;
+		transition: all .3s ease-in-out;
+		opacity: 1;
+	}
+
+	&.on {
+		left: -270px !important;
+
+		>div {
+			opacity: 0;
+		}
+
+		.open_close {}
+	}
+
+	h2 {
+		font-size: 26px;
+		color: $white;
+		text-align: center;
+		padding: 55px 0;
+		background: $primary;
+		border-radius: 15px 0 0 0;
+	}
+
+	#snb {
+		background: $white;
+		padding: 20px;
+		border: 1px solid $border-color-base;
+		border-top: 0;
+
+		&.heightAuto {
+			overflow-y: auto;
+			height: calc(100vh - 540px);
+		}
+
+
+		>li {
+			>a {
+				position: relative;
+				color: #333;
+				font-size: 17px;
+				display: block;
+				height: 50px;
+				line-height: 50px;
+				padding-left: 22px;
+				background:url(#{$url-img}/ico-sidebar.png) left center no-repeat;
+
+				&:before {
+					content: "";
+					display: block;
+					width: 14px;
+					height: 2px;
+					background: $lightprimary;
+					position: absolute;
+					right: 0;
+					top: 50%;
+					margin-top: -1px;
+				}
+
+				&:after {
+					content: "";
+					display: block;
+					height: 14px;
+					width: 2px;
+					background: $lightprimary;
+					position: absolute;
+					right: 6px;
+					top: 50%;
+					margin-top: -7px;
+				}
+			}
+
+			&.on {
+				>a {
+					color: $lightprimary;
+					font-weight: bold;
+
+					&:after {
+						display: none;
+					}
+
+				}
+			}
+
+			.depth2 {
+				background: #fafafa;
+				border-radius: 10px;
+				padding: 10px 13px;
+				padding-right: 0 !important;
+				margin: 10px 0;
+				display: none;
+
+				li {
+					margin-top: 5px;
+
+
+					&:first-child {
+						margin-top: 0;
+					}
+
+					a {
+						display: block;
+						height: 36px;
+						line-height: 35px;
+						padding-left: 35px;
+						position: relative;
+						background:url(#{$url-img}/ico-sidebar.png) left 13px center no-repeat;
+
+
+						&:before {
+							content: "";
+							display: block;
+							width: 4px;
+							height: 4px;
+							background: $lightprimary;
+							position: absolute;
+							left: 0;
+							top: 50%;
+							margin-top: -2px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+	.open_close {
+		outline: none;
+		background: none;
+		border: 0;
+		cursor: pointer;
+		position: absolute;
+		right: -35px;
+		top: 0px;
+		width: 35px;
+		overflow: hidden;
+
+		img {
+			width: auto;
+			max-width: inherit;
+		}
+
+		&.on {
+			img {
+				margin-left: -35px;
+			}
+		}
+	}
+}
+
+@media (max-width:1440px) {
+	#sidebar {
+		.open_close {
+			display: block;
+		}
+
+		&.on {
+			left: -250px !important;
+		}
+	}
+
+
+	#container {
+		#sidebar {
+			width: 250px;
+
+			#snb {
+				>li {
+					>a {
+						height: 40px;
+						line-height: 40px;
+						font-size: 15px;
+					}
+
+					.depth2 {
+						padding: 0 10px;
+
+						li {
+							a {
+								padding-left: 35px;
+								font-size: 14px;
+								background-position: left 13px center;
+								background-size: 14px 14px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		>#contents {
+			width: calc(100% - 255px) !important
+		}
+	}
+
+}

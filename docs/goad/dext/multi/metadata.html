@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/metadata-upload.do"));
+		}
+		
+		function onDX5UploadCompleted(id) {			
+			alert("업로드가 완료되었습니다.\n응답 데이터는 다음과 같습니다.\n" + dx5.get(id).getResponses()[0]);
+		}
+		
+		function getMetaData() {
+			var ci = document.getElementById("txt-meta-get-index"),
+				ti = parseInt(ci.value, 10),
+				cn = document.getElementById("txt-meta-get-name"),
+				tn = cn.value;
+
+			if (isNaN(ti)) {
+				alert("파일의 인덱스(순서)가 필요합니다.");
+				ci.focus();
+			} else if (!cn) {
+				alert("메타 데이터의 이름이 올바르게 설정하세요.");
+				ci.focus();
+			} else {
+				var cv = dx5.get("dext5").getMetaDataByIndex(ti, tn);
+				if (typeof(cv) != "undefined") {
+					alert(cv);
+				}
+			}
+		}
+
+		function updateMetaData() {
+			var ci = document.getElementById("txt-meta-reg-index"),
+				ti = parseInt(ci.value, 10),
+				cn = document.getElementById("txt-meta-reg-name"),
+				tn = cn.value,
+				cv = document.getElementById("txt-meta-reg-value"),
+				tv = cv.value;
+
+			if (isNaN(ti)) {
+				alert("파일의 인덱스(순서)가 필요합니다.");
+				ci.focus();
+			} else if (!cn) {
+				alert("메타 데이터의 이름이 올바르게 설정하세요.");
+				ci.focus();
+			} else {
+				if (dx5.get("dext5").setMetaDataByIndex(ti, tn, tv)) {
+					alert("등록/수정되었습니다.");
+				}
+			}
+		}
+
+		function deleteMetaData() {
+			var ci = document.getElementById("txt-meta-del-index"),
+				ti = parseInt(ci.value, 10),
+				cn = document.getElementById("txt-meta-del-name"),
+				tn = cn.value;
+
+			if (isNaN(ti)) {
+				alert("파일의 인덱스(순서)가 필요합니다.");
+				ci.focus();
+			} else if (!cn) {
+				alert("메타 데이터의 이름이 올바르게 설정하세요.");
+				ci.focus();
+			} else {
+				if (dx5.get("dext5").deleteMetaDataByIndex(ti, tn)) {
+					alert("삭제되었습니다.");
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 메타데이터</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">메타 데이터를 다루는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>메타 데이터는 로컬 파일에서만 사용할 수 있는 부가 데이터로써 '키=값' 형식으로 등록이 됩니다.</p>
+						<p>메타 데이터를 등록하려면, 로컬 파일의 인덱스(순서)를 이용하여 이름과 값을 등록합니다.</p>
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// 6번째 항목의 메타 데이터 중 "user" 키에 대한 값을 반환합니다.
+var userValue = dx.getMetaDataByIndex(5, "user");
+
+// 6번째 항목의 메타 데이터 중 "user" 키에 대한 값을 "홍길동"으로 설정합니다.
+dx.setMetaDataByIndex(5, "user", "홍길동");
+
+// 6번째 항목의 메타 데이터 중 "user" 키를 삭제합니다.
+dx.deleteMetaDataByIndex(5, "user");</pre>
+							<p>메타 데이터는 로컬 파일이 업로드가 될 때, 함께 서버로 전달됩니다.</p>
+							<p>서버 측 코드에서는 "DEXTUploadX5_MetaData" 폼 이름으로 전달이 되므로 폼 데이터로부터 메타 데이터를 얻을 수 있습니다.</p>
+							<p> "DEXTUploadX5_MetaData" 폼 이름으로 전달되는 메타 데이터는 업로드되는 파일의 순서를 따릅니다.</p>
+							<pre class="prettyprint">
+# 서버 측 설정입니다.						
+						
+List&lt;MultipartFile&gt; items = x5.getDEXTUploadX5_FileData();
+List&lt;String&gt; metadata = x5.getDEXTUploadX5_MetaData();
+
+for (int i = 0, len = items.size(); i &lt; len; i++) {
+	
+  file = (FileItem)items.get(i);
+  form = metadata.get(i);
+	
+  if (file.isEmpty() == false) {
+    file.save();
+		
+    // 메타데이터와 저장된 파일의 위치를 응답 데이터 버퍼에 기록합니다.
+    sb.append(String.format("F:%1$s, M:%2$s\n", file.getFilename(), form));
+  }
+}
+...
+</pre>
+							<p class="notice">하나의 파일에 여러 메타 데이터가 있을 경우,
+							서버로 전달되는 메타 데이터는 key1=value1[SPLT]key2=value2[SPLT]key3=value3 포맷이 아니라,<br/>
+							key1[SPLT]value1[SPLT]key2[SPLT]value2[SPLT]key3[SPLT]value3
+							포맷으로 전달됩니다.</p>
+							<p>데이터를 얻으려면 "[SPLT]" 문자열로 토큰을 분리한 후, 홀수번 째는 키, 짝수번 째는 값으로 사용합니다.</p>
+						</dd>							
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>파일을 추가한 후 업로드 버튼을 클릭하면 파일이 업로드됩니다.</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+							<button id="btn-upload">업로드</button>
+						</p>
+						<p>메타 데이터는 로컬 파일에만 적용됩니다. 테스트하려면 로컬 파일을 추가하세요.</p>
+						<p>
+							<input id="txt-meta-get-index" name="txt-meta-get-index" placeholder="항목 순서(0부터)" />
+							<input id="txt-meta-get-name" name="txt-meta-get-name" placeholder="사용자 정의 데이터 이름" />
+							<button id="btn-get-meta" onclick="getMetaData();">메타데이터 가져오기</button>
+						</p>
+						<p>
+							<input id="txt-meta-reg-index" name="txt-meta-reg-index" placeholder="항목 순서(0부터)" />
+							<input id="txt-meta-reg-name" name="txt-meta-reg-name" placeholder="사용자 정의 데이터 이름" />
+							<input id="txt-meta-reg-value" name="txt-meta-reg-value" placeholder="사용자 정의 데이터 값" />
+							<button id="btn-update-meta" onclick="updateMetaData();">등록(수정)</button>
+						</p>
+						<p>
+							<input id="txt-meta-del-index" name="txt-meta-del-index" placeholder="항목 순서(0부터)" />
+							<input id="txt-meta-del-name" name="txt-meta-del-name" placeholder="사용자 정의 데이터 이름" />
+							<button id="btn-delete-meta" onclick="deleteMetaData();">삭제</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files", btnUploadAuto: "btn-upload"
+		});
+	</script>
+</body>
+</html>

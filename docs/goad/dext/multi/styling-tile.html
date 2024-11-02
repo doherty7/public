@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+		
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "서강대교_509147.jpg", size: 509147, downUrl: dx5.canonicalize("../service/common-download.do?key=FID0001"), openUrl: dx5.canonicalize("../service/common-open.do?key=FID0001") });
+			dx.addVirtualFile({ vindex: "IDX0004", name: "우도해변_239826.jpg", size: 239826, downUrl: dx5.canonicalize("../service/common-download.do?key=FID0002"), openUrl: dx5.canonicalize("../service/common-open.do?key=FID0002") });
+		}
+
+		function toggleStatusBar(chk) {
+			dx5.get("dext5").setUIStyle({ statusBarVisible: chk.checked });
+		}
+
+		function toggleChecker(chk) {
+			dx5.get("dext5").setUIStyle({ checkerVisible: chk.checked });
+		}
+
+		function toggleBorder(chk) {
+			dx5.get("dext5").setUIStyle({ borderVisible: chk.checked });
+		}
+
+		function statusBarSolidColorHandler(cbo) {
+			var color = cbo.options[cbo.selectedIndex].value, dx = dx5.get("dext5");
+			dx.setUIStyle({ statusBarSolidColor: color });
+		}
+
+		function backColorHandler(cbo) {
+			var color = cbo.options[cbo.selectedIndex].value, dx = dx5.get("dext5");	
+			dx.setUIStyle({ backgroundColor: color });
+		}
+
+		function setBackgroundImage() {
+			var url = document.getElementById("txt-backimage-url").value;
+			dx5.get("dext5").setUIStyle({ backgroundImage: url + " 280 70" });
+		}
+
+		function itemFontNameHandler(cbo) {
+			var name = cbo.options[cbo.selectedIndex].value;
+			dx5.get("dext5").setUIStyle({ itemFontName: name });
+		}
+
+		function itemFontColorHandler(cbo) {
+			var color = cbo.options[cbo.selectedIndex].value;
+			dx5.get("dext5").setUIStyle({ itemFontColor: color });
+		}
+
+		function statusBarFontNameHandler(cbo) {
+			var name = cbo.options[cbo.selectedIndex].value;
+			dx5.get("dext5").setUIStyle({ statusBarFontName: name });
+		}
+
+		function statusBarFontColorHandler(cbo) {
+			var color = cbo.options[cbo.selectedIndex].value;
+			dx5.get("dext5").setUIStyle({ statusBarFontColor: color });
+		}
+
+		function toggleOpenButtonVisible(visible) {
+			dx5.get("dext5").setUIStyle({ openButtonVisible: visible });
+		}
+
+		function toggleDownloadButtonVisible(visible) {
+			dx5.get("dext5").setUIStyle({ downloadButtonVisible: visible });
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 스타일2</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">타일(tile) 형식 스타일 설정 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>dx5.create 함수를 사용하여 컴포넌트 생성 시점의 파라미터(style)를 'tile'로 설정한 예제입니다.</p>
+						<p>타일 형식은 헤더를 갖지 않으며, 항목의 높이는 고정입니다.</p>
+						<p>가상 파일을 등록할 때, 이미지의 경우 thumb 속성에 웹 경로를 설정하면, 섬네일을 볼 수 있으며, 로컬 이미지 파일은 
+						기본적으로 섬네일 처리가 됩니다.(JPEG, PNG같은 일부 파일만)</p>
+						<p class="notice">이미지 파일이 많은 경우 섬네일 처리를 위해 파일 정보를 모두 로딩하기 때문에 성능이 저하될 수 있습니다.</p>
+						<p>&nbsp;</p>
+						<p>컴포넌트 스타일은 setUIStyle 함수를 사용합니다.</p>
+						<pre class="prettyprint">
+// 파라미터로 스타일 속성이 정의된 json 객체를 넘겨야 합니다.	
+dx.setUIStyle({ ... });
+
+// 예시
+dx.setUIStyle({
+  statusBarVisible: true, // or false
+  borderVisible: true, // or false
+  ...
+});</pre>
+						<p>DEXTUploadX5 멀티 버전은 HTML5 기반으로 동작합니다.</p>
+						<p>그러나 컴포넌트 화면을 그리는 기술은 HTML이 아닌 SVG 기술을 사용하고 있습니다.</p>
+						<p>SVG는 브라우저마다 렌더링 되는 결과물이 조금씩 다를 수 있으며, 벡터 그래픽을 기반으로 하기 때문에,
+						pixel 단위로 GUI 레이아웃을 처리하기가 쉽지 않습니다.</p>
+						<p class="notice">그러므로 선 굵기와 같은 부분의 미려한 차이는 제품 수준에서 보완되기 어려움이 있습니다.</p>						
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p><button id="btn-add-files">파일 추가</button></p>
+						<p>&nbsp;</p>						
+						<p>기본 레이아웃 스타일 지정</p>
+						<p>							
+							<input id="chk-statusbar-visible" type="checkbox" checked="checked" onclick="toggleStatusBar(this);" /><label for="chk-statusbar-visible">상태바 보기</label>
+							<input id="chk-checker-visible" type="checkbox" checked="checked" onclick="toggleChecker(this);" /><label for="chk-checker-visible">체크박스 보기</label>
+							<input id="chk-border-visible" type="checkbox" checked="checked" onclick="toggleBorder(this);" /><label for="chk-border-visible">외곽선 보기</label>
+						</p>
+						<p>&nbsp;</p>
+						<p>상태바 설정</p>	
+						<p>
+							<label for="cbo-statusbar-color">상태바 색상(SOLID)</label>
+							<select id="cbo-statusbar-color" onchange="statusBarSolidColorHandler(this);">
+								<option value="#f7f7f7">기본값(#f7f7f7)</option>
+								<option value="#ffffff">흰색(#ffffff)</option>
+								<option value="#000000">검은색(#000000)</option>
+								<option value="#ff0000">빨간색(#ff0000)</option>
+								<option value="#00ff00">녹색(#00ff00)</option>
+								<option value="#0000ff">파란색(#0000ff)</option>
+							</select>
+						</p>
+						<p>&nbsp;</p>
+						<p>배경 설정</p>
+						<p>
+							<label for="cbo-backcolor">배경 색상</label>
+							<select id="cbo-backcolor" onchange="backColorHandler(this);">				
+								<option value="#ffffff">기본값(#ffffff)</option>
+								<option value="#000000">검은색(#000000)</option>
+								<option value="#ff0000">빨간색(#ff0000)</option>
+								<option value="#00ff00">녹색(#00ff00)</option>
+								<option value="#0000ff">파란색(#0000ff)</option>
+							</select>
+						</p>
+						<p>
+							배경은 이미지를 설정할 수 있습니다.<br />
+							<script>document.write(dx5.canonicalize("../files/attach/logo_dextsolution.png"));</script><br />
+							경로를 복사하여 설정해보세요.<br />
+							주의) 배경 이미지는 항목에 가려 보이지 않을 수 있습니다. 테스트를 하려면 일부 항목을 삭제하세요.
+						</p>
+						<p>
+							<input type="text" id="txt-backimage-url" placeholder="http/https를 포함한 전체 경로" style="width: 300px;" />
+							<button onclick="setBackgroundImage();">설정</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>글자 설정</p>				
+						<p>
+							<label for="cbo-item-fontname">항목 폰트</label>
+							<select id="cbo-item-fontname" onchange="itemFontNameHandler(this);">
+								<option value="굴림체">굴림체</option>
+								<option value="맑은 고딕" selected="selected">맑은 고딕</option>
+								<option value="Arial">Arial</option>
+								<option value="Tahoma">Tahoma</option>
+								<option value="Consolas">Consolas</option>
+							</select>
+							<label for="cbo-item-fontcolor">항목 색상</label>
+							<select id="cbo-item-fontcolor" onchange="itemFontColorHandler(this);">
+								<option value="#666666" selected="selected">기본값(#595959)</option>
+								<option value="#000000">검은색(#000000)</option>
+								<option value="#ff0000">빨간색(#ff0000)</option>
+								<option value="#00ff00">녹색(#00ff00)</option>
+								<option value="#0000ff">파란색(#0000ff)</option>
+							</select>
+						</p>
+						<p>
+							<label for="cbo-statusbar-fontname">상태바 폰트</label>
+							<select id="cbo-statusbar-fontname" onchange="statusBarFontNameHandler(this);">
+								<option value="굴림체">굴림체</option>
+								<option value="맑은 고딕" selected="selected">맑은 고딕</option>
+								<option value="Arial">Arial</option>
+								<option value="Tahoma">Tahoma</option>
+								<option value="Consolas">Consolas</option>
+							</select>
+							<label for="cbo-statusbar-fontcolor">상태바 색상</label>
+							<select id="cbo-statusbar-fontcolor" onchange="statusBarFontColorHandler(this);">
+								<option value="#666666" selected="selected">기본값(#666666)</option>
+								<option value="#000000">검은색(#000000)</option>
+								<option value="#ff0000">빨간색(#ff0000)</option>
+								<option value="#00ff00">녹색(#00ff00)</option>
+								<option value="#0000ff">파란색(#0000ff)</option>
+							</select>
+						</p>
+						<p>&nbsp;</p>
+						<p>열기, 다운로드 버튼 설정</p>
+						<p>
+							<input type="radio" id="rdo-visible-btn-open-true" name="rdo-visible-btn-open" onclick="toggleOpenButtonVisible(true);" checked="checked"/>
+							<label for="rdo-visible-btn-open-true">열기 버튼 보이기</label>
+							<input type="radio" id="rdo-visible-btn-open-false" name="rdo-visible-btn-open" onclick="toggleOpenButtonVisible(false);" />
+							<label for="rdo-visible-btn-open-false">열기 버튼 숨기기</label>
+						</p>
+						<p>
+							<input type="radio" id="rdo-visible-btn-download-true" name="rdo-visible-btn-download" onclick="toggleDownloadButtonVisible(true);" checked="checked"/>
+							<label for="rdo-visible-btn-download-true">다운로드 버튼 보이기</label>
+							<input type="radio" id="rdo-visible-btn-download-false" name="rdo-visible-btn-download" onclick="toggleDownloadButtonVisible(false);" />
+							<label for="rdo-visible-btn-download-false">다운로드 버튼 숨기기</label>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", style: "tile", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

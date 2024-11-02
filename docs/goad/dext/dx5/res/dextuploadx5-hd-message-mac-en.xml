@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+    <ui>
+        <e_hdm_ui_id_list_header_column_item id="100" osx_text="Items" />
+
+        <e_hdm_ui_id_env_download_path id="120" osx_text="Download path" />
+        <e_hdm_ui_id_env_activate_item_added id="121" osx_text="Activate program when adding item" />
+        <e_hdm_ui_id_env_download_autostart_added_item id="122" osx_text="Auto download starting when new item added" />
+        <e_hdm_ui_id_env_delete_tempfile_item_delete id="123" osx_text="Delete temporary files when deleting items(Resume function is not supported for the same item)" />
+        <e_hdm_ui_id_env_auto_start_reamin_file id="124" osx_text="Auto-start items that were being downloaded when adding previous items" />
+        <e_hdm_ui_id_env_save_reamin_groupbox id="125" osx_text="File information saving options" />
+        <e_hdm_ui_id_env_save_reamin_flag_wait_stop id="126" osx_text="Wait/Stop" />
+        <e_hdm_ui_id_env_save_reamin_flag_run id="127" osx_text="Downloading" />
+        <e_hdm_ui_id_env_save_reamin_flag_complete id="128" osx_text="Complete" />
+        <e_hdm_ui_id_env_save_reamin_flag_error id="129" osx_text="Error" />
+        <e_hdm_ui_id_env_btn_text_ok id="130" osx_text="Ok" />
+        <e_hdm_ui_id_env_btn_text_cancel id="131" osx_text="Cancel" />
+
+        <e_hdm_ui_item_info_copy_to_clipboard id="140" osx_text="Copy to clipboard" />
+
+        <e_hdm_window_text_item_info id="150" osx_text="Item Info" />
+        <e_hdm_window_text_environment id="151" osx_text="Environment setting" />
+
+        <e_hdm_balloon_text_donwload_complete id="160" osx_text="Donwload complete" />
+    </ui>
+
+    <msgbox_caption>
+        <e_hdm_msgbox_caption_id_notification id="100" osx_text="Notify" />
+        <e_hdm_msgbox_caption_id_confirm id="101" osx_text="Confirm" />
+        <e_hdm_msgbox_caption_id_error id="102" osx_text="Error" />
+        <e_hdm_msgbox_caption_select_save_path id="110" osx_text="HDM Select save path" />
+
+    </msgbox_caption>
+
+    <msgbox_text>
+        <e_hdm_msgbox_text_id_not_exist_selected_item id="100" osx_text="No selected items." />
+        <e_hdm_msgbox_text_id_not_exist_complete_item id="101" osx_text="No complete items." />
+        <e_hdm_msgbox_text_id_delete_continue id="102" osx_text="%d file(s) will delete. Continue?" />
+        <e_hdm_msgbox_text_id_copy_to_clipboard id="103" osx_text="Item information was copied to clipboard." />
+        <e_hdm_msgbox_text_id_remainfile_start id="104" osx_text="The file that was in the process of downloading exists. Do you want to proceed?" />
+    </msgbox_text>
+
+    <popupmenu>
+        <e_hdm_popupmenu_text_id_down id="100" osx_text="Download" />
+        <e_hdm_popupmenu_text_id_down_start id="101" osx_text="Start" />
+        <e_hdm_popupmenu_text_id_down_stop id="102" osx_text="Stop" />
+        <e_hdm_popupmenu_text_id_down_start_auto id="103" osx_text="Auto" />
+        <e_hdm_popupmenu_text_id_down_stop_auto id="104" osx_text="Auto" />
+        <e_hdm_popupmenu_text_id_down_start_selected id="105" osx_text="Selected" />
+        <e_hdm_popupmenu_text_id_down_stop_selected id="106" osx_text="Selected" />
+
+        <e_hdm_popupmenu_text_id_delete id="110" osx_text="Remove" />
+        <e_hdm_popupmenu_text_id_delete_all id="111" osx_text="All" />
+        <e_hdm_popupmenu_text_id_delete_select id="112" osx_text="Select" />
+        <e_hdm_popupmenu_text_id_delete_complete id="113" osx_text="Complete" />
+
+        <e_hdm_popupmenu_text_id_item_move id="120" osx_text="Move" />
+        <e_hdm_popupmenu_text_id_item_move_top id="121" osx_text="Top" />
+        <e_hdm_popupmenu_text_id_item_move_up id="122" osx_text="Up" />
+        <e_hdm_popupmenu_text_id_item_move_down id="123" osx_text="Down" />
+        <e_hdm_popupmenu_text_id_item_move_bottom id="124" osx_text="Bottom" />
+
+        <e_hdm_popupmenu_text_id_item_info id="130" osx_text="Item Info" />
+
+        <e_hdm_popupmenu_text_id_set_env id="140" osx_text="Environment" />
+
+    </popupmenu>
+
+    <error>
+        <e_rid_err_success id="0" osx_text="OK" />
+
+        <e_rid_err_invalid_command id="100" osx_text="Unsupported request." />
+
+        <e_rid_err_execute_fail id="110" osx_text="DEXTUplaodxX5-HDM.exe Execution failure." />
+
+        <e_rid_err_select_save_path_cancel id="120" osx_text="Cancel storage path change." />
+
+        <e_rid_err_arguments_not_specified_url id="130" osx_text="Download destination URL not specified." />
+        <e_rid_err_arguments_not_authkey id="131" osx_text="Authentication authkey value not specified." />
+        <e_rid_err_arguments_not_specified_filetitle id="132" osx_text="Download file name not specified." />
+        <e_rid_err_arguments_not_specified_size id="133" osx_text="No download file size specified." />
+
+        <e_rid_err_download_not_exist_downloadable_item id="140" osx_text="No items available to start downloading." />
+        <e_rid_err_download_concurrnt_down_count_exceeded id="141" osx_text="Concurrent download item limit exceeded." />
+        <e_rid_err_download_exist_down_start_fail_item id="142" osx_text="There is an item that failed to start downloading." />
+        <e_rid_err_license_authkey_format_invalid id="143" osx_text="The authentication key format is invalid." />
+        <e_rid_err_license_eval_expire id="144" osx_text="Your trial period has expired." />
+        <e_rid_err_license_invalid_auth_info id="145" osx_text="It is not a normal authentication information." />
+        <e_rid_err_license_invalid_host id="146" osx_text="It is not a registered domain(or IP)." />
+        <e_rid_err_notsupport_content_range_unit id="147" osx_text="Content-Range unit can only support bytes." />
+        <e_rid_err_mismatch_file_size id="148" osx_text="There is a mismatch between the download destination file and the file that exists on the server." />
+        <e_rid_err_invalid_status_code id="149" osx_text="Unsupported response code." />
+
+        <e_rid_err_arguments_not_specified_textxml_uri id="150" osx_text="TextXML resource uri not specified." />
+        <e_rid_err_default_res_xml_load_fail id="151" osx_text="Default string resource XML read failure(%@)." />
+        <e_rid_err_res_xml_uri_load_fail id="152" osx_text="Failed to read from string resource URI(%@)" />
+        <e_rid_err_authkey_can_not_use_hd id="153" osx_text="AuthKey can not use hd." />
+
+        <e_rid_erro_download_not_exist_downloading_item id="180" osx_text="No downloads are in progress." />
+        <e_rid_err_download_exist_down_stop_fail_item id="181" osx_text="Some items failed to stop downloading." />
+
+        <e_rid_err_selected_item_delete_fail id="190" osx_text="Failed to delete selected item." />
+        <e_rid_err_item_delete_fail id="191" osx_text="Failed to delete item." />
+
+        <e_rid_err_check_title_already_exist id="200" osx_text="A file with the same name has been added." />
+        <e_rid_err_check_title_form_not_exist id="201" osx_text="check_title form does not exist." />
+        <e_rid_err_check_title_form_value_not_exist id="202" osx_text="check_title form value does not exist." />
+        <e_rid_err_new_save_path_form_not_exist id="203" osx_text="new_save_path form does not exist." />
+        <e_rid_err_new_save_path_form_value_not_exist id="204" osx_text="new_save_path form value does not exist." />
+
+        <e_rid_err_content_range_format_not_support id="220" osx_text="Unsupported Content-Range format." />
+        <e_rid_err_transfer_encoding_support_only_chunked id="221" osx_text="Transfer-Encoding header is support only chunked." />
+        <e_rid_err_missmatch_download_result_size id="222" osx_text="The specified file size does not match the download complete file size." />
+
+        <e_rid_err_update_version_not_specified id="1000" osx_text="No update version was specified." />
+        <e_rid_err_update_file_url_not_specified id="1001" osx_text="No update file url was specified." />
+        <e_rid_err_update_hdm_already_running id="1002" osx_text="You must exit DEXTUpload X5 HDM to proceed with the automatic update." />
+        <e_rid_err_update_version_not_match id="1003" osx_text="The installation file version does not match the update version." />
+
+        <e_rid_err_maketempfile_already_exist_path id="2000" osx_text="A folder / file such as a temporary file exists in the same path." />
+        <e_rid_err_maketempfile_create_failed id="2001" osx_text="Temporary file creation failed" />
+        <e_rid_err_maketempfile_open_failed id="2002" osx_text="Failed to open temporary file" />
+    </error>
+
+</root>

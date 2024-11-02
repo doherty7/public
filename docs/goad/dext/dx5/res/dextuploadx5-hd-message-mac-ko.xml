@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+    <ui>
+        <e_hdm_ui_id_list_header_column_item id="100" osx_text="항목" />
+
+        <e_hdm_ui_id_env_download_path id="120" osx_text="저장 경로" />
+        <e_hdm_ui_id_env_activate_item_added id="121" osx_text="항목을 추가할 때마다 프로그램 활성화" />
+        <e_hdm_ui_id_env_download_autostart_added_item id="122" osx_text="새 항목이 추가될 때 바로 다운로드 시작" />
+        <e_hdm_ui_id_env_delete_tempfile_item_delete id="123" osx_text="항목 삭제 시 임시파일 삭제(이어받기 지원 안됨)" />
+        <e_hdm_ui_id_env_auto_start_reamin_file id="124" osx_text="미완료 상태로 종료된 항목을 프로그램 시작할 때 자동으로 다운로드 시작" />
+        <e_hdm_ui_id_env_save_reamin_groupbox id="125" osx_text="파일정보 저장 옵션" />
+        <e_hdm_ui_id_env_save_reamin_flag_wait_stop id="126" osx_text="대기/중지" />
+        <e_hdm_ui_id_env_save_reamin_flag_run id="127" osx_text="다운로드 중" />
+        <e_hdm_ui_id_env_save_reamin_flag_complete id="128" osx_text="완료" />
+        <e_hdm_ui_id_env_save_reamin_flag_error id="129" osx_text="오류" />
+        <e_hdm_ui_id_env_btn_text_ok id="130" osx_text="확인" />
+        <e_hdm_ui_id_env_btn_text_cancel id="131" osx_text="취소" />
+
+        <e_hdm_ui_item_info_copy_to_clipboard id="140" osx_text="클립보드로 복사" />
+
+        <e_hdm_window_text_item_info id="150" osx_text="항목 정보 확인" />
+        <e_hdm_window_text_environment id="151" osx_text="환경 설정" />
+
+        <e_hdm_balloon_text_donwload_complete id="160" osx_text="다운로드 완료" />
+    </ui>
+
+    <msgbox_caption>
+        <e_hdm_msgbox_caption_id_notification id="100" osx_text="알림" />
+        <e_hdm_msgbox_caption_id_confirm id="101" osx_text="확인" />
+        <e_hdm_msgbox_caption_id_error id="102" osx_text="오류" />
+        <e_hdm_msgbox_caption_select_save_path id="110" osx_text="HDM 저장 경로 선택" />
+
+    </msgbox_caption>
+
+    <msgbox_text>
+        <e_hdm_msgbox_text_id_not_exist_selected_item id="100" osx_text="선택된 항목이 없습니다." />
+        <e_hdm_msgbox_text_id_not_exist_complete_item id="101" osx_text="완료된 항목이 없습니다." />
+        <e_hdm_msgbox_text_id_delete_continue id="102" osx_text="%d 개의 항목이 삭제됩니다. 계속하시겠습니까?" />
+        <e_hdm_msgbox_text_id_copy_to_clipboard id="103" osx_text="정보가 클립보드로 복사되었습니다." />
+        <e_hdm_msgbox_text_id_remainfile_start id="104" osx_text="다운로드 진행 중이던 항목이 존재합니다. 이어받기를 진행하시겠습니까?" />
+    </msgbox_text>
+
+    <popupmenu>
+        <e_hdm_popupmenu_text_id_down id="100" osx_text="다운로드" />
+        <e_hdm_popupmenu_text_id_down_start id="101" osx_text="시작" />
+        <e_hdm_popupmenu_text_id_down_stop id="102" osx_text="중지" />
+        <e_hdm_popupmenu_text_id_down_start_auto id="103" osx_text="자동" />
+        <e_hdm_popupmenu_text_id_down_stop_auto id="104" osx_text="자동" />
+        <e_hdm_popupmenu_text_id_down_start_selected id="105" osx_text="선택된 항목" />
+        <e_hdm_popupmenu_text_id_down_stop_selected id="106" osx_text="선택된 항목" />
+
+        <e_hdm_popupmenu_text_id_delete id="110" osx_text="제거" />
+        <e_hdm_popupmenu_text_id_delete_all id="111" osx_text="전체" />
+        <e_hdm_popupmenu_text_id_delete_select id="112" osx_text="선택된 항목" />
+        <e_hdm_popupmenu_text_id_delete_complete id="113" osx_text="완료된 항목" />
+
+        <e_hdm_popupmenu_text_id_item_move id="120" osx_text="이동" />
+        <e_hdm_popupmenu_text_id_item_move_top id="121" osx_text="최상위" />
+        <e_hdm_popupmenu_text_id_item_move_up id="122" osx_text="위로" />/e_hdm_popupmenu_text_id_item_move_up>
+        <e_hdm_popupmenu_text_id_item_move_down id="123" osx_text="아래로" />/e_hdm_popupmenu_text_id_item_move_down>
+        <e_hdm_popupmenu_text_id_item_move_bottom id="124" osx_text="최하위" />/e_hdm_popupmenu_text_id_item_move_bottom>
+
+        <e_hdm_popupmenu_text_id_item_info id="130" osx_text="항목 정보" />/e_hdm_popupmenu_text_id_item_info>
+
+        <e_hdm_popupmenu_text_id_set_env id="140" osx_text="환경 설정" />>
+
+    </popupmenu>
+
+    <error>
+        <e_rid_err_success id="0" osx_text="OK" />
+
+        <e_rid_err_invalid_command id="100" osx_text="지원되지 않는 요청입니다." />
+
+        <e_rid_err_execute_fail id="110" osx_text="DEXTUplaodxX5-HDM.exe 실행 실패." />
+
+        <e_rid_err_select_save_path_cancel id="120" osx_text="저장 경로 변경 취소." />
+
+        <e_rid_err_arguments_not_specified_url id="130" osx_text="다운로드 대상 URL이 지정되지 않았습니다." />
+        <e_rid_err_arguments_not_authkey id="131" osx_text="인증 authkey 값이 지정되지 않았습니다." />
+        <e_rid_err_arguments_not_specified_filetitle id="132" osx_text="다운로드 파일 이름이 지정되지 않았습니다." />
+        <e_rid_err_arguments_not_specified_size id="133" osx_text="다운로드 파일 사이즈가 지정되지 않았습니다." />
+
+        <e_rid_err_download_not_exist_downloadable_item id="140" osx_text="다운로드 시작 가능한 항목이 없습니다." />
+        <e_rid_err_download_concurrnt_down_count_exceeded id="141" osx_text="동시 다운로드 항목 제한 초과." />
+        <e_rid_err_download_exist_down_start_fail_item id="142" osx_text="다운로드 시작 실패된 항목이 있습니다." />
+        <e_rid_err_license_authkey_format_invalid id="143" osx_text="인증키 형식이 올바르지 않습니다." />
+        <e_rid_err_license_eval_expire id="144" osx_text="평가판 사용 기간이 만료되었습니다." />
+        <e_rid_err_license_invalid_auth_info id="145" osx_text="정상적인 인증 정보가 아닙니다." />
+        <e_rid_err_license_invalid_host id="146" osx_text="등록된 도메인이(IP) 아닙니다." />
+        <e_rid_err_notsupport_content_range_unit id="147" osx_text="Content-Range unit 은 bytes 만 지원 가능합니다." />
+        <e_rid_err_mismatch_file_size id="148" osx_text="다운로드 대상파일과 서버에 존재하는 파일의 크기가 일치하지 않습니다." />
+        <e_rid_err_invalid_status_code id="149" osx_text="지원되지 않는 응답코드 입니다." />
+
+        <e_rid_err_arguments_not_specified_textxml_uri id="150" osx_text="TextXML 리소스 URI가 지정되지 않았습니다." />
+        <e_rid_err_default_res_xml_load_fail id="151" osx_text="기본 문자열 리소스 XML 읽기 실패(%@)." />
+        <e_rid_err_res_xml_uri_load_fail id="152" osx_text="문자열 리소스 URI 로부터 읽기 실패(%@)" />
+        <e_rid_err_authkey_can_not_use_hd id="153" osx_text="HD를 사용 할 수 없는 AuthKey 입니다." />
+
+        <e_rid_erro_download_not_exist_downloading_item id="180" osx_text="다운로드 진행 중인 항목이 없습니다." />
+        <e_rid_err_download_exist_down_stop_fail_item id="181" osx_text="다운로드 중지 실패된 항목이 있습니다." />
+
+        <e_rid_err_selected_item_delete_fail id="190" osx_text="선택된 아이템 삭제 실패." />
+        <e_rid_err_item_delete_fail id="191" osx_text="아이템 삭제 실패." />
+
+        <e_rid_err_check_title_already_exist id="200" osx_text="동일한 이름의 파일이 추가되어 있습니다." />
+        <e_rid_err_check_title_form_not_exist id="201" osx_text="check_title form 이 존재하지 않습니다." />
+        <e_rid_err_check_title_form_value_not_exist id="202" osx_text="check_title form 값이 존재하지 않습니다." />
+        <e_rid_err_new_save_path_form_not_exist id="203" osx_text="new_save_path form 이 존재하지 않습니다." />
+        <e_rid_err_new_save_path_form_value_not_exist id="204" osx_text="new_save_path form 값이 존재하지 않습니다." />
+
+        <e_rid_err_content_range_format_not_support id="220" osx_text="지원되지 않는 Content-Range 형식입니다." />
+        <e_rid_err_transfer_encoding_support_only_chunked id="221" osx_text="Transfer-Encoding 헹더는 chunked 만 지원됩니다." />
+        <e_rid_err_missmatch_download_result_size id="222" osx_text="지정된 파일 크기와 다운로드 완료 파일 크기가 일치하지 않습니다." />
+
+        <e_rid_err_update_version_not_specified id="1000" osx_text="업데이트 버전이 지정되지 않았습니다." />
+        <e_rid_err_update_file_url_not_specified id="1001" osx_text="업데이트 파일 url 지정되지 않았습니다." />
+        <e_rid_err_update_hdm_already_running id="1002" osx_text="자동업데이트를 진행하시려면 DEXTUpload X5 HDM 을 종료하셔야 합니다." />
+        <e_rid_err_update_version_not_match id="1003" osx_text="설치파일 버전이 업데이트 버전과 일치하지 않습니다." />
+
+        <e_rid_err_maketempfile_already_exist_path id="2000" osx_text="동일한 경로에 임시파일과 같은 폴더/파일이 존재합니다." />
+        <e_rid_err_maketempfile_create_failed id="2001" osx_text="임시파일 생성 실패" />
+        <e_rid_err_maketempfile_open_failed id="2002" osx_text="임시파일 열기 실패" />
+    </error>
+
+</root>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Extension Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			
+			// 대용량 파일 업로드 방식으로 설정합니다.
+			//dx.setUploadURL(dx5.canonicalize("./service/extension-upload.do"));
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/nj_extension-upload.bf"));
+			dx.setUploadMode("EXNJ");
+			dx.setUploadBlockSize(10 * 1024 * 1024);
+			
+			dx.addVirtualFile({ vindex: "F00001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "F00002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "F00003", name: "코스모스.jpg", size: 195779 });
+		}
+		
+		function onDX5UploadStopped(id) { alert("업로드가 중단되었습니다."); }
+		
+		function onDX5UploadCompleted(id) {
+			// 대용량 업로드는 개별 파일마다 응답 데이터를 따로 받으므로, 
+			// ';' 문자를 구분자로 하는 하나의 문자열로 생성하여 전달합니다.
+			submit(dx5.get(id).getResponses().join(";"));
+		}
+		
+		function submit(response) {
+			var formObj = document.getElementsByTagName("form")[0];
+			
+			// 신규 파일 정보
+			formObj.newFileKeys.value = response || "";
+			
+			// 삭제된 파일 정보
+			var arr = dx5.get("dext5").getRemovedFiles();
+			var deleted = arr.map(function(v) { return v.vindex; }).join(";");
+			formObj.deleteFileKeys.value = deleted || "";
+			
+			formObj.submit();
+		}
+
+		function transfer() {
+			var dx = dx5.get("dext5");
+			if (dx.hasUploadableItems()) {
+				dx.upload("AUTO");
+			} else {
+				submit(null);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="./index.jsp">Home</a> &gt; <a href="./index.jsp#tlb-multi">멀티 버전</a> &gt; 업로드</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">대용량 파일 업로드 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>대용량 파일 업로드는 개별 파일이 2GB가 넘더라도 전송할 수 있는 기능입니다.</p>
+						<p>이와 달리, 업로드할 총 파일의 크기(기타 데이터 포함)가 2GB가 넘지 않는다면 굳이 대용량 파일 업로드를 사용할 필요 없습니다.</p>
+						<p>&nbsp;</p>
+						<p>일반 업로드의 경우 10개의 파일 있을 때, ORAF는 한 번의 전송으로 10개의 파일을 모두 전송하며, OROF 모드로 업로드를 하면, 개별 전송이기 때문에 10회 전송합니다.</p>
+						<p>이와 달리 대용량 파일 업로드는 OROF처럼 개별 파일마다 전송을 할 뿐만 아니라 개별 파일을 정해진 크기로 나눈 청크(블록) 단위로 서버에 전송하기 때문에, 최소 20회 이상의 전송 작업이 필요합니다.</p>						
+						<pre class="prettyprint">
+// 파일 업로드를 처리할 경로를 설정합니다.
+dx.setUploadURL("http://../service/extension-upload.do");
+
+// 대용량 파일 업로드 방식을 사용하려면 EXNJ로 설정합니다.
+dx.setUploadMode("EXNJ");
+
+// 파일을 쪼갤 블록 크기를 byte 단위로 설정합니다.
+dx.setUploadBlockSize(10 * 1024 * 1024);</pre>
+						<p>DEXTUploadX5는 파일을 보내는 sender 역할을 수행합니다. 이와 달리 DEXTUploadNJ는 서버 측에 파일을 받는 receiver 역할을 담당합니다.</p>
+						<p>이 샘플은 파일 업로드 처리를 컨트롤러(FileServiceController 클래스)가 담당하며 extension-upload.do로 매핑되어 있습니다.</p>
+						<p>&nbsp;</p>						
+						<p class="notice">쪼개진 파일을 하나로 합쳐 서버에 임시 파일을 생성하는 것은 ExtensionFileUploadFilter 필터 클래스가 미리 처리합니다.
+						임시파일이 생성되면, 업로드된 결과를 DEXTUploadNJMultipartResolver를 거쳐 FileServiceController 컨트롤러로 전달합니다.</p>
+						<p class="notice">그러므로 FileServiceController의 매핑된 메소드에서는 OROF 업로드 방식처럼 1개의 완전한 파일이 전달된 것처럼 처리하면 됩니다.</p>
+						<p>&nbsp;</p>
+						<p>web.xml에 ExtensionFileUploadFilter 필터는 다음처럼 설정합니다.</p>
+						<pre class="prettyprint">
+&lt;!--  web.xml 설정입니다. --&gt;
+&lt;filter&gt;
+  &lt;filter-name&gt;njExtensionFilter&lt;/filter-name&gt;
+  &lt;filter-class&gt;devpia.dextuploadnj.support.common.ExtensionFileUploadFilter&lt;/filter-class&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;tempRepository&lt;/param-name&gt;
+    &lt;param-value&gt;files/temp&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;defaultRepository&lt;/param-name&gt;
+    &lt;param-value&gt;files/attach&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;autoMakingDirectory&lt;/param-name&gt;
+    &lt;param-value&gt;true&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;enableCleaner&lt;/param-name&gt;
+    &lt;param-value&gt;true&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;timeAgo&lt;/param-name&gt;
+    &lt;param-value&gt;24&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;licenseFilePath&lt;/param-name&gt;
+    &lt;param-value&gt;WEB-INF/dextuploadnj.config&lt;/param-value&gt;
+  &lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;njExtensionFilter&lt;/filter-name&gt;
+    &lt;servlet-name&gt;ExtensionUpload&lt;/servlet-name&gt;
+&lt;/filter-mapping&gt;
+</pre>
+							<p>FileServiceController의 매핑된 메소드에서 업로드 정보를 받을 수 있습니다.</p>
+							<pre class="prettyprint">
+/**
+ * 만일 총 10개의 파일을 전송한다면, 매핑 메소드는 총 10번 호출됩니다.
+ */
+@RequestMapping(value = "/service/extension-upload.do", method = RequestMethod.POST)
+public void extensionupload(DEXTUploadX5Request x5, HttpServletResponse response) throws IOException {
+  ...  
+  FileItem item = (FileItem)x5.getDEXTUploadX5_FileData().get(0);
+
+  if (item.isEmpty() == false) {
+    item.save();
+    ...
+  }
+  ...
+}
+</pre>
+						<p class="notice">ExtensionFileUploadFilter 필터를 통하여 서버에 대용량 임시 파일을 생성하는 것과 달리 
+						FileItem#save 메소드를 사용하여 원하는 위치로 저장하는 과정은 매우 느릴 수 있습니다.</p>
+						<p class="notice">이런 이유는 서버에서 용량이 큰 파일이 대상 위치로 저장하는 과정이 '복사' 작업을 통해서 이루어지기 때문입니다.</p>
+						<p class="notice">만일 임시 파일이 생성되는 위치와 최종적으로 저장할 위치가 같은 파티션이라면 '복사'가 아닌 '이동'이 되므로 매우 빠른 처리가 가능합니다.</p>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<form action="/sample/dext/service/nj_form-process.bf" method="post">
+							<p><input type="text" id="text1" name="text1" value="text data"/></p>
+							<p>
+								<input type="radio" id="rdo1-a" name="radio1" value="A" checked="checked"/><label for="rdo1-a">A</label>
+								<input type="radio" id="rdo1-b" name="radio1" value="B"/><label for="rdo1-b">B</label>
+							</p>
+							<p>
+								<input type="checkbox" id="chk1" name="checkbox1" value="Bird" checked="checked"/><label for="chk1">Bird</label>
+								<input type="checkbox" id="chk2" name="checkbox2" value="Lion"/><label for="chk2">Lion</label>
+								<input type="checkbox" id="chk3" name="checkbox3" value="Shark"/><label for="chk3">Shark</label>
+							</p>
+							<p>
+								<select name="select1">
+									<option value="Small">Small</option>
+									<option value="Big">Big</option>
+								</select>
+							</p>
+							<div id="dext5-container" style="width:500px; height:300px;"></div>
+							<p>&nbsp;</p>
+							<p>
+								<button id="btn-add-files" type="button">파일 추가</button>
+								<button id="btn-upload-auto" type="button" onclick="transfer();">전송</button>
+								<input type="hidden" id="newFileKeys" name="newFileKeys"/>
+								<input type="hidden" id="deleteFileKeys" name="deleteFileKeys"/>
+							</p>
+						</form>	
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({ mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files" });
+		alert('web.xml 설정...');
+	</script>
+</body>
+</html>

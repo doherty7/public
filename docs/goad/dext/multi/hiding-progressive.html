@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			
+			dx.useProgressDialog(false);
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/common-upload.do"));
+		}
+		
+		function onDX5UploadBegin(id) {				
+			toggleUploadStatus(true);			
+		}
+		
+		function onDX5UploadStopped(id) {		
+			toggleUploadStatus(false);			
+			alert("업로드가 중단되었습니다.");
+		}
+				
+		function onDX5UploadCompleted(id) {	
+			updateStatus();		
+			toggleUploadStatus(false);			
+			alert("업로드가 완료되었습니다.\n응답 데이터는 다음과 같습니다.\n" + dx5.get(id).getResponses().join("\n"));
+		}
+		
+		function uploadModeHandler(cbo) {
+			var mode = cbo.options[cbo.selectedIndex].value;
+			dx5.get("dext5").setUploadMode(mode);
+			alert(dx5.get("dext5").getUploadMode() + "(으)로 변경되었습니다.");
+		}
+		
+		function updateStatus() {
+			var dx = dx5.get("dext5"), 
+				out = document.getElementById("upstatus-value"), 
+				status = dx.getUploadStatus();
+
+				out.innerHTML = "" + 
+					"name: " + status.currentName + "<br/>" + 
+					"speed: " + status.totalSpeed + "(sec)<br/>" + 
+					"count(completed/total): " + status.completeCount + "/" + status.totalCount + "<br/>" + 
+					"current rate: " + status.currentRate + " % <br/>" + 
+					"current size(sended/total): " + status.currentSendSize + "/" + status.currentSize + " (bytes)<br/>" + 
+					"current time(past/remained): " + msecToTimeFormat(status.currentTime, true) + "/" + msecToTimeFormat(status.remainedCurrentTime, true) + "<br/>" + 
+					"total rate: " + status.totalRate + " % <br/>" + 
+					"total size(sended/total): " + status.totalSendSize + "/" + status.totalSize + " (bytes)<br/>" + 
+					"total time(past/remained): " + msecToTimeFormat(status.totalTime, true) + "/" + msecToTimeFormat(status.remainedTotalTime, true) + "<br/>" + 
+					"";
+		}
+		
+		function msecToTimeFormat(duration, useMillisec) {
+			if (duration == Infinity) {
+				return "Infinity";
+			} else if (duration == 0) {
+				return "00:00:00" + (useMillisec ? ".000" : "");
+			} else {
+				var ms = duration % 1000;
+				duration = (duration - ms) / 1000;
+				var sec = duration % 60;
+				duration = (duration - sec) / 60;
+				var min = duration % 60;
+				duration = (duration - min) / 60;
+				var hr = (duration - min) / 60;
+		
+				return "" +
+					("00" + hr).substring(hr.toString().length) + ":" +
+					("00" + min).substring(min.toString().length) + ":" +
+					("00" + sec).substring(sec.toString().length) +
+					(useMillisec ? "." + ("000" + ms).substring(ms.toString().length) : "");
+			}
+		}
+
+		function toggleUploadStatus(isBegin) {
+
+			function uploadProgress() {
+				if (window.isUploading === true) {
+					updateStatus();
+					setTimeout(uploadProgress, 1000);
+				}
+			}
+
+			window.isUploading = isBegin;
+			if (isBegin) uploadProgress();
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 진행창 숨기기</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">기본 진행창을 사용하지 않는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>DEXTUploadX5에서 기본으로 지원하는 진행창의 사용 여부는 useProgressDialog 함수로 설정하실 수 있습니다.</p>
+						<p>대신 스크립트 상에서 getUploadStatus 함수를 사용하여 업로드 진행 정보를 얻을 수 있습니다.</p>						
+						<pre class="prettyprint">
+// 기본 진행창을 사용하지 않습니다.
+dx.useProgressDialog(false);
+
+// 진행창이 안보이므로 getUploadStatus 함수를 사용하여 업로드 진행 정보를 얻습니다.
+var status = dx.getUploadStatus();
+
+// 이름: status.currentName 
+// 전체 속도: status.totalSpeed 
+// 업로드가 완료된 개수: status.completeCount
+// 전체 개수: status.totalCount
+// 현재 파일 전송률: status.currentRate
+// 현재 파일의 전송된 크기: status.currentSendSize
+// 현재 파일의 크기: status.currentSize
+// 현재 파일의 전송 시간: status.currentTime
+// 현재 파일의 남은 시간: status.remainedCurrentTime
+// 전체 파일 전송률: status.totalRate
+// 전체 파일의 전송된 크기: status.totalSendSize
+// 전체 파일의 크기: status.totalSize
+// 전체 파일의 전송 시간: status.totalTime
+// 전체 파일의 남은 시간: status.remainedTotalTime
+</pre>			
+						<p class="notice">getUploadStatus 함수를 사용하여 얻을 수 있는 상태 객체가 갖는 값은 참고용이므로 정확한 값을 제공하지 않습니다.</p>
+						<p class="notice">getUploadStatus 함수를 통해 얻어진 status 객체는 불변이므로, 변경된 값을 얻으려면 getUploadStatus 함수를 다시 호출해야 합니다.</p>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+						<p>&nbsp;</p>						
+						<p>
+							<select id="cbo-upload-mode" onchange="uploadModeHandler(this);">
+								<option value="ORAF">ORAF: 하나의 요청으로 파일 모두 전송</option>
+								<option value="OROF">OROF: 업로드할 파일 개수 만큼 요청</option>
+							</select>
+							<button id="btn-upload">업로드(자동)</button>
+						</p>
+						<p>&nbsp;</p>
+						<p class="notice">
+							멀티 버전은 업로드 방식이 ORAF인 경우에는, 업로드 과정에서 파일을 분리하여 처리할 수 없기 때문에
+							completeCount 값은 모든 파일 업로드가 완료된 후에 표시가 되며, current 및 total 연관 값은 항상 똑같습니다.
+							IE 버전은 멀티 버전과 달리 ORAF 상태에서도 개별 표시가 가능합니다. 
+						</p>
+						<p id="upstatus-value">업로드가 시작되면 이 곳에 업로드 상태 값이 출력됩니다.</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files", btnUploadAuto: "btn-upload"
+		});
+	</script>
+</body>
+</html>

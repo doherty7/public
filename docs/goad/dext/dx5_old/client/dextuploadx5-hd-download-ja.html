@@ -1,0 +1,122 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DEXTUploadX5 HD インスタレーション プログラム</title>
+    <style type="text/css">
+        <!--
+        body, div, dl, dt, dd, p, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px "Malgun Gothic", Dotum, Gulim, Verdana, AppleGothic, sans-serif;
+            color: #fff;
+            line-height: 18px;
+            background: #c2185b;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f8cb00;
+        }
+
+        #download {
+            padding: 10px;
+        }
+
+        #download .tit {
+            font-size: 22px;
+            text-align: center;
+            line-height: 30px;
+            margin: 20px 0;
+        }
+
+        #download .btn {
+            width: 440px;
+            font-size: 16px;
+            text-align: center;
+            background: #e91e63;
+            border-radius: 5px;
+            margin: 0 auto;
+            padding: 7px 0;
+        }
+
+        #download .btn + .btn {
+            margin-top: 0.5rem;
+        }
+
+        #download .content {
+            border-radius: 5px;
+            color: #636363;
+            background: #fff;
+            margin-top: 25px;
+            padding: 20px 25px;
+        }
+
+        #download dt {
+            font-weight: bold;
+            color: #025b95;
+        }
+        -->
+    </style>
+    <script src="../dextuploadx5-configuration.js"></script>
+    <script>
+		window.onload = function () {
+		    document.getElementById("btn-download-client-x86").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-installer.exe";
+		    document.getElementById("btn-download-client-x64").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-installer-x64.exe";
+		    document.getElementById("btn-download-client-mac").href = window.dextuploadx5Configuration.productPath + "/client/dextuploadx5-hd-mac.pkg";
+		}
+    </script>
+</head>
+<body>
+    <div id="download">
+        <p class="tit"><strong>DEXTUploadX5 HD インスタレーション プログラム</strong></p>
+        <p class="btn"><a id="btn-download-client-x86" href="#">Download (For Windows)</a></p>
+        <p class="btn"><a id="btn-download-client-x64" href="#">Download (64bit For Windows)</a></p>
+        <p class="btn"><a id="btn-download-client-mac" href="#">Download (For macOS 10.13.6 over, Safari 12 over)</a></p>
+        <div class="content">
+            <dl>
+                <dt>※Windowsで製品のインストール後、常にインストールページにアクセスしたときにチェック</dt>
+                <dd>
+                    <ol>
+                        <li>実行（ Windowキー＋ R)ウィンドウを開けて services.mscをインプットした後、実行する</li>
+                        <li>DEXTUploadX5 Hybrid Download Serviceが存在するのか確認する</li>
+                        <li>サービスが存在する場合、サービスの 状態が‘実行中’なのか確認する</li>
+                    </ol>
+                </dd>
+                <dt>※Windowsでのインストールファイルを実行すると、アクセス拒否エラーが発生した場合</dt>
+                <dd>
+                    <ol>
+                        <li>インストールファイルのダウンロード位置に移動</li>
+                        <li>インストールファイルを選択した後、マウスの右ボタンをクリックして[属性]を選択</li>
+                        <li>[一般]タブでブロックの設定になっていれば、[ブロック解除]ボタンをクリックした後、適用する</li>
+                        <li>インストールファイルを実行</li>
+                    </ol>
+                </dd>
+                <dt>※macOSにDEXTUploadX 5 Hybrid Download Serviceをインストールする方法</dt>
+                <dd>
+                    <ol>
+                        <li>インストールパッケージファイル（dextuploadx5-hd-mac.pkg）をダウンロードします。 （ブラウザのポップアップブロッカーに注意してください。）</li>
+                        <li>Finderを実行して、パッケージがダウンロードされている場所に移動します。</li>
+                        <li>「dextuploadx5-hd-mac.pkg」ファイルを選択して右クリックし、「開く」ボタンをクリックしてインストールします。</li>
+                    </ol>
+                </dd>
+                <dt>※macOS上でDEXTUploadX 5 Hybrid Download Serviceをアンインストールする方法</dt>
+                <dd>
+                    <ol>
+                        <li>Spotlight検索を開いて「Terminal」を入力して、端末を実行。</li>
+                        <li>「cd ~/Applications/DEXTUploadX5-HD（エンター）」を実行して、「/Users/ユーザー/Applications/DEXTUploadX5-HD」フォルダに移動します。</li>
+                        <li>「sh dextuploadx5-hd-uninstall.sh（エンター）」を実行して、HD番組を削除。</li>
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

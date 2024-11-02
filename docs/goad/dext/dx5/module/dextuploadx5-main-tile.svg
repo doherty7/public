@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	version="1.1"
+	id="UIC-DEXTUPLOADX5-MAIN"
+	onload="onLoadHandler(evt)"
+	onresize="onResizeHandler()" width="100%" height="100%">
+    <script type="application/ecmascript" xlink:href="aes.js"/>
+    <script type="application/ecmascript" xlink:href="dextuploadx5-polyfill.js"/>
+    <script type="application/ecmascript" xlink:href="dextuploadx5-common.js"/>
+    <script type="application/ecmascript" xlink:href="dextuploadx5-engine.js"/>
+    <script type="application/ecmascript" xlink:href="dextuploadx5-svg.js"/>
+    <script type="application/ecmascript" xlink:href="dextuploadx5-application-common.js"/>
+    <script type="application/ecmascript" xlink:href="dextuploadx5-application-tile.js"/>
+    <style type="text/css">
+        @namespace xlink "http://www.w3.org/1999/xlink";
+        * { box-sizing: border-box; }
+        .css-item .css-item-info-back { fill: #fff; }
+        .css-item .css-item-op .css-item-btn-text { font-size:11px; fill:#000; font-weight: bold; }
+        .css-item.selected .css-item-back { fill: #03A9F4; }
+        .css-item.selected .css-item-font-color { fill: #fff; }
+        .css-item.selected .css-item-checker { fill: #03A9F4; }
+        .css-item-checker { fill: #fff; }
+        .css-item-checker { display: block; }
+        .css-item-checker.hide { display: none; }
+        .css-job-working-txt { font-family: Tahoma, "맑은 고딕"; font-weight: bold; font-size: 11px; }
+
+        .css-item-op-run { stroke: #00bff3; }
+        .css-item.selected .css-item-op-run { stroke: #fff; }
+
+        .css-item-op-down { fill: #00bff3; }
+        .css-item.selected .css-item-op-down { fill: #fff; }
+
+        .css-item use[xlink|href="#UIS-LOCK"] { fill: #E64A19; }
+        .css-item.selected use[xlink|href="#UIS-LOCK"] { fill: #fff; }
+
+        .css-item use[xlink|href="#UIS-UPWAIT"] { fill: #e1e1e1; }
+        .css-item.selected use[xlink|href="#UIS-UPWAIT"] { fill: #fff; }
+
+        .css-item use[xlink|href="#UIS-UPDONE"] { fill: #8dc63f; }
+        .css-item.selected use[xlink|href="#UIS-UPDONE"] { fill: #fff; }
+        
+        #UIC-FOOTER { -webkit-user-select: none;  user-select: none; }
+    </style>
+    <style id="UIS-ITEM-CHECKER-COLOR" type="text/css">.css-item .css-item-checker { fill: #fff; }</style>
+    <style id="UIS-ITEM-BACK-NORMAL-COLOR" type="text/css">.css-item .css-item-back { fill: #fff }</style>
+    <style id="UIS-ITEM-GRID" type="text/css">.css-item .css-item-grid { visibility: visible; }</style>
+    <style id="UIS-ITEM-GRID-COLOR" type="text/css">.css-item .css-item-grid-color { stroke: #d8d8d8 }</style>
+    <style id="UIS-ITEM-FONT-STYLE-NAME" type="text/css">.css-item-font-name { font-family: Tahoma, "맑은 고딕"; }	</style>
+    <style id="UIS-ITEM-FONT-STYLE-COLOR" type="text/css">.css-item-font-color { fill:#595959; }</style>
+    <style id="UIS-FOOTER-FONT-STYLE-NAME" type="text/css">.css-footer-font-name { font-family: Tahoma, "맑은 고딕"; }</style>
+    <style id="UIS-FOOTER-FONT-STYLE-COLOR" type="text/css">.css-footer-font-color { fill:#666666; }</style>
+    <defs>
+        <!-- default variables -->
+        <ref id="paramElementId" param="elementId" default="dext5"/>
+        <ref id="paramLang" param="lang" default="auto"/>
+        <!-- item background gradient color -->
+        <symbol id="UIS-ARROW-UP" viewBox="0 0 11 16">
+            <path d="M2,12 L5.5,4 L9,12 z" fill="#7d8c8f"/>
+        </symbol>
+        <symbol id="UIS-ARROW-DOWN" viewBox="0 0 11 16">
+            <path d="M2,4 L5.5,12 L9,4 z" fill="#7d8c8f"/>
+        </symbol>
+        <symbol id="UIS-FILTER" viewBox="0 0 16 16">
+            <path d="
+				M0,0 h12 v2 h-10 v8 h-2 z 
+				M3,3 h12 v10 h-3 v2 l-2,-2 h-7 z
+				M5,5 v6 h8 v-6 z"
+				fill="#506470" fill-rule="nonzero"/>
+        </symbol>
+        <symbol id="UIS-CHECKER" viewBox="0 0 16 16">
+            <rect x="0" y="0" width="16" height="16" stroke="none"/>
+            <path d="M4,7 L6,9 L12,3 L14,5 L6,13 L2,9 z" stroke="none" fill="#e1e1e1"/>
+        </symbol>
+        <symbol id="UIS-CHECKER-CHKED" viewBox="0 0 16 16">
+            <rect x="0" y="0" width="16" height="16" stroke="none"/>
+            <path d="M4,7 L6,9 L12,3 L14,5 L6,13 L2,9 z" stroke="none" fill="#ff6b6b"/>
+        </symbol>
+        <symbol id="UIS-RUN" viewBox="0 0 16 16">
+            <path d="M8,1 a7,7 0 0,1 0,14 a7,7 0 0,1 -0,-14 z" stroke-width="1.5" fill="#00bff3"/>
+            <path d="M6,5 L12,8 L6,11 z" stroke="none" fill="#fff"/>
+        </symbol>
+        <symbol id="UIS-DOWNLOAD" viewBox="0 0 16 16">
+            <path d="M3,7 L5.5,7 L5.5,3 L10.5,3 L10.5,7 L13,7 L8,13 z" stroke="none"/>
+        </symbol>
+        <symbol id="UIS-REMOVE" viewBox="0 0 16 16">
+            <path d="M3,5 L5,3 L8,6 L11,3 L13,5 L10,8 L13,11 L11,13 L8,10 L5,13 L3,11 L6,8 z" stroke="none" fill="#ff6b6b"/>
+        </symbol>
+        <symbol id="UIS-UPWAIT" viewBox="0 0 16 16">
+            <path d="M3,8 L8,2 L13,8 L10.5,8 L10.5,12 L5.5,12 L5.5,8 z" stroke="none"/>
+        </symbol>
+        <symbol id="UIS-VFWAIT" viewBox="0 0 16 16">
+            <rect x="0" y="0" width="16" height="16" stroke="none" fill="none"/>
+        </symbol>
+        <symbol id="UIS-UPDONE" viewBox="0 0 16 16">
+            <path d="
+				M8,1 a7,7 0 0,1 0,14 a7,7 0 0,1 -0,-14 z
+				M3.5,8.5 L5,7 L7,9 L11,5 L12.5,6.5 L7,12 z"
+				stroke="none" fill-rule="evenodd"/>
+        </symbol>
+        <symbol id="UIS-LOCK" viewBox="0 0 16 16">
+            <g stroke="none" fill-rule="nonzero">
+                <path d="
+					M3,6 L5,6 L5,2 L11,2 L11,6 L13,6 L13,13 L3,13 z
+					M6,4 L6,6 L10,6 L10,4 z
+					M7,8 L7,11 L9,11 L9,8 z"/>
+            </g>
+        </symbol>
+        <filter id="UIS-BLURING-JOB">
+            <feGaussianBlur stdDeviation="3"/>
+        </filter>
+    </defs>
+    <foreignObject x="-1000" y="-1000" width="1" height="1">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+            <form id="XHTML-FILE-FORM" action="#">
+                <fieldset>
+                    <input id="XHTML-INPUT-FILES" type="file" style="display:none" multiple="multiple" />
+                    <input id="XHTML-INPUT-FOLDER" type="file" style="display:none" webkitdirectory="" directory=""/>
+                </fieldset>
+            </form>
+            <!--<p>
+                <a id="XHTML-DOWNLOAD-LINK" href="#">download</a>
+            </p>
+			<iframe id="XHTML-DOWNLOAD-FRAME" src="#"></iframe>
+			<canvas id="XHTML-TEMP-CANVAS"></canvas>-->
+        </body>
+    </foreignObject>
+    <svg id="UIC-MAIN-AREA" x="0" y="0" width="100%" height="100%">
+        <rect id="UIC-BACKGROUND" x="0" y="0" width="100%" height="100%" fill="#ffffff"/>
+        <!-- file container -->
+        <svg id="UIC-FILE-AREA" x="0" y="0" layout-dx5="width:100%-{vscrollbarWidth}; height:100%-{footerHeight};">
+            <image id="UIC-BACKGROUND-IMG" disableCacheExpression="disabled"/>
+        </svg>
+        <!-- scrollbar -->
+        <svg id="UIC-FILE-SCROLL-SECTION" layout-dx5="x:100%-{vscrollbarWidth}; width:{vscrollbarWidth}; height:100%-{footerHeight}" y="0">
+            <g id="UIC-FILE-SCROLL-UP">
+                <rect x="0" y="0" width="100%" height="50.25%" fill="#f6f6f6"/>
+                <use layout-dx5="y:25%-8px;x:50%-5.5px" width="11" height="16" xlink:href="#UIS-ARROW-UP"/>
+            </g>
+            <g id="UIC-FILE-SCROLL-DOWN">
+                <rect x="0" y="50.25%" width="100%" height="49.75%" fill="#f6f6f6"/>
+                <use layout-dx5="y:75%-8px;x:50%-5.5px" width="11" height="16" xlink:href="#UIS-ARROW-DOWN"/>
+            </g>
+            <line x1="0.5" y1="0" x2="0.5" y2="100%" stroke="#ddd" stroke-width="1"/>
+            <line x1="0" y1="50.25%" x2="100%" y2="50.25%" stroke="#ddd" stroke-width="1"/>
+        </svg>
+        <!-- footer -->
+        <svg id="UIC-FOOTER" x="0" width="100%" layout-dx5="y:100%-{footerHeight}; height:{footerHeight}" fill="#f7f7f7">
+            <rect x="0" y="0" width="100%" height="100%"/>
+            <line id="UIC-FOOTER-LN-TOP" x1="0" y1="0" x2="100%" y2="0" stroke="#8c969c" stroke-width="1.5"/>
+            <!-- notification button area -->
+            <g id="UIC-FILTER-GROUP">
+                <use id="UIC-FOOTER-FILTER-ICON" xlink:href="#UIS-FILTER" x="16" width="16" height="16" layout-dx5="y:50%-8px"/>
+                <text id="UIC-FILTER-TXT" class="css-footer-font-name css-footer-font-color" x="38" layout-dx5="y:{footerTextBaseline}" font-size="11px">0 File / 0 Byte / 0 Byte</text>
+            </g>
+            <text id="UIC-FOOTER-CURINFO" class="css-footer-font-name css-footer-font-color" layout-dx5="x:100%-8px; y:{footerTextBaseline}" font-size="11px" text-anchor="end">0 Byte / 0 File</text>
+        </svg>
+    </svg>
+    <!-- file loading -->
+    <rect id="UIC-JOB-WORKING-BK" style="display:none;" x="0" y="0" width="100%" height="100%" fill="rgba(94, 110, 141, 0.75)" />
+    <text id="UIC-JOB-WORKING-TXT" style="display:none;" class="css-job-working-txt" x="50%" y="50%" text-anchor="middle"></text>
+    <!-- outmost border -->
+    <rect id="UIC-OUTMOST-BORDER" x="0" y="0" width="100%" height="100%" stroke="#8c969c" stroke-width="1.5" fill="none"/>
+    <!-- blind -->
+    <rect id="UIC-BLIND" x="0" y="0" width="100%" height="100%" stroke="none" fill="white"/>
+</svg>
+

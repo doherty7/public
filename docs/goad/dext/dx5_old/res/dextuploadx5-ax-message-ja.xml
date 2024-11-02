@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <Error>
+        <E_NOT_VALID_COLOR_PATTERN_NUMBER id="100">﻿有効なUI Color Pattern番号ではありません。</E_NOT_VALID_COLOR_PATTERN_NUMBER>
+        <E_NOT_VALID_IMAGE_PATTERN_NUMBER id="101">有効なStatus Image Patternではありません。</E_NOT_VALID_IMAGE_PATTERN_NUMBER>
+        <E_UPLOADITEM_ADD_STOP id="110">アップロードアイテムの追加を中止</E_UPLOADITEM_ADD_STOP>
+        <E_INVALID_ITEM_UNIQID id="111">有効なアイテムのIDではありません。</E_INVALID_ITEM_UNIQID>
+        <E_INVALID_ITEM_INDEX id="112">有効なアイテムのインデックスではありません。</E_INVALID_ITEM_INDEX>
+        <E_INVALID_ITEM_TYPE id="113">有効なアイテムのタイプではありません。</E_INVALID_ITEM_TYPE>
+        <E_INVALID_METADATA_NAME id="114">有効なMETA DATA NAMEではありません。</E_INVALID_METADATA_NAME>
+        <E_INVALID_COLUMN_INDEX id="115">有効なcolumn indexではありません。</E_INVALID_COLUMN_INDEX>
+        <E_ERR_META_NAME_EMPTY id="116">メタデータ名前が空いています。</E_ERR_META_NAME_EMPTY>
+        <E_ERR_META_NAME_FIRST_CAHRACTER id="117">メタデータ名前の初文字は英字でなければならないです。</E_ERR_META_NAME_FIRST_CAHRACTER>
+        <E_ERR_META_NAME_VALIABLE_CAHRACTERS id="118">メタデータ名前で使いできる文字は ('A~Z', 'a~z', '0~9', '-', '_')です</E_ERR_META_NAME_VALIABLE_CAHRACTERS>
+        <E_ENABLE_ADD_ONLY_ONE_FILE id="120">一個のファイルだけ追加できます。</E_ENABLE_ADD_ONLY_ONE_FILE>
+        <E_ITEM_DELETE_FAIL	id="121">アイテムの削除に失敗</E_ITEM_DELETE_FAIL>
+        <E_NOITEM_FOR_DELETE id="122">削除する項目がありません。</E_NOITEM_FOR_DELETE>
+        <E_NOVALID_TYPE_FOR_DELETE id="123">有効な削除タイプではありません。</E_NOVALID_TYPE_FOR_DELETE>
+        <E_DELETE_FAIL_ALL_ITEMS id ="124">全体アイテムの削除に失敗</E_DELETE_FAIL_ALL_ITEMS>
+        <E_DELETE_FAIL_SELECTED_ITEMS id="125">選ばれたアイテムの削除に失敗</E_DELETE_FAIL_SELECTED_ITEMS>
+        <E_DELETE_FAIL_CHECKED_ITEMS id="126">選ばれたアイテムの削除に失敗</E_DELETE_FAIL_CHECKED_ITEMS>
+        <E_DELETED_VIRTUALFILE_LIST_EMPTY id="127">削除された仮想ファイルが存在しません。</E_DELETED_VIRTUALFILE_LIST_EMPTY>
+        <E_ITEM_NOT_SELECTED id="128">選ばれた項目がありません。</E_ITEM_NOT_SELECTED>
+        <E_ITEM_NOT_SELECTED id="129">チェックされた項目がありません。</E_ITEM_NOT_SELECTED>
+        <E_DUPLICATE_FILTERS id="130">フィルター設定の重複</E_DUPLICATE_FILTERS>
+        <E_ENABLE_ADD_ONLY_FILE_SIMPLESTYLE id="131">REPORT_SIMPLEのスタイルではファイルだけ追加できます。</E_ENABLE_ADD_ONLY_FILE_SIMPLESTYLE>
+        <E_NOT_EXECUTABLE_ITEM_TYPE id="132">進行できるタイプではありません。</E_NOT_EXECUTABLE_ITEM_TYPE>
+        <E_NOT_EXIST_LINKED_PROGRAM id="133">進行できる連結プログラムがありません。</E_NOT_EXIST_LINKED_PROGRAM>
+        <E_NOT_EXIST_EXECUTABLE_PATH id="134">進行対象の経路が入力されていません。</E_NOT_EXIST_EXECUTABLE_PATH>
+        <E_SERVERFILE_EXECUTE_FAIL id="135">ファイル進行に失敗 (HttpStatusCode: %d, FileURL: %s)</E_SERVERFILE_EXECUTE_FAIL>
+        <E_LOCK_ITEM id="136">ロックファイルは削除できません。</E_LOCK_ITEM>
+        <E_BLACKLIST_EXTENSION_FOR_EXECUTE id="137">実行禁止されたファイルの拡張子です。</E_BLACKLIST_EXTENSION_FOR_EXECUTE>
+        <E_NOT_SUPPORT_COMPRESS_START_TYPE id="170">支援できない圧縮タイプです。</E_NOT_SUPPORT_COMPRESS_START_TYPE>
+        <E_NOT_SUPPORT_ENCRYPT_START_TYPE id="171">支援できない暗号化スタートタイプです。</E_NOT_SUPPORT_ENCRYPT_START_TYPE>
+        <E_NOT_SUPPORT_DNCRYPT_START_TYPE id="172">支援できない復号化スタートタイプです。</E_NOT_SUPPORT_DNCRYPT_START_TYPE>
+        <E_INVALID_PROXY_INFO id="180">プロキシ認証情報が正しくありません。</E_INVALID_PROXY_INFO>
+        <E_EMPTY_AUTH_KEY id="181">認証キーが空いています。</E_EMPTY_AUTH_KEY>
+        <E_ABNORMAL_AUTH_KEY_FORMAT id="182">認証キーの形式が正しくありません。</E_ABNORMAL_AUTH_KEY_FORMAT>
+        <E_EVALUATION_EXPIRED id="183">デモバージョンの使用期間が満了しました。</E_EVALUATION_EXPIRED>
+        <E_INVALID_AUTH_INFO id="184">正常な認証情報ではありません。</E_INVALID_AUTH_INFO>
+        <E_NOT_REGISTERED_HOST_NAME id="185">登録されたドメインではありません。</E_NOT_REGISTERED_HOST_NAME>
+        <E_UPLOAD_URL_EMPTY id="190">アップロードのURLが存在しません。</E_UPLOAD_URL_EMPTY>
+        <E_UPLOADITEM_EMPTY id="191">アップロード対象の目録がありません。</E_UPLOADITEM_EMPTY>
+        <E_ALL_ITEM_WORDK_END id="192">全ての項目が完了されました。</E_ALL_ITEM_WORDK_END>
+        <E_DOWNLOADLOADITEM_EMPTY id="193">ダウンロード対象の目録がありません。</E_DOWNLOADLOADITEM_EMPTY>
+        <E_UPLOADING id="194">アップロード中です。</E_UPLOADING>
+        <E_DOWNLOADING id="195">ダウンロード中です。</E_DOWNLOADING>
+        <E_CREATRE_FILE_FAIL_DOWNLOAD id="196">ダウンロードファイルの生成に失敗</E_CREATRE_FILE_FAIL_DOWNLOAD>
+        <E_INVALID_SAVE_PATH id="197">正常なセーブ経路ではありません。</E_INVALID_SAVE_PATH>
+        <E_CREATE_SAVE_PATH_FAIL id="198">ダウンロード経路の生成に失敗</E_CREATE_SAVE_PATH_FAIL>
+        <E_NO_COMPRESS_TARGET id="210">圧縮する対象がありません。</E_NO_COMPRESS_TARGET>
+        <E_ERROR_COMPRESS_WORKING id="211">圧縮エラー</E_ERROR_COMPRESS_WORKING>
+        <E_NO_ENCRYPTION_TARGET id="212">暗号化の対象がありません。</E_NO_ENCRYPTION_TARGET>
+        <E_INVALID_PREVIEW_TYPE id="220">プレビューが有効ではないタイプです。</E_INVALID_PREVIEW_TYPE>
+        <E_INVALID_PREVIEW_FILE id="221">プレビューが有効ではない形式です。</E_INVALID_PREVIEW_FILE>
+        <E_THUMBNAIL_DEFAULTPATH_CREATE_FAIL id="230">thumbnail 基本フォルダの生成に失敗</E_THUMBNAIL_DEFAULTPATH_CREATE_FAIL>
+        <E_THUMBNAIL_NOTSUPPORT_TYPE id="231">%s'は支援できない形式です。</E_THUMBNAIL_NOTSUPPORT_TYPE>
+        <E_TUHMBNAIL_EXCEPTION id="232">thumbnailを自動追加する時、エラー発生 (Message: %s, Code: %s)</E_TUHMBNAIL_EXCEPTION>
+        <E_NOT_SUPPORT_CLIPBOARD_FORMAT id="240">支援しないクリップボードフォーマットです。</E_NOT_SUPPORT_CLIPBOARD_FORMAT>
+        <E_CLIPBOARD_FILE_SAVE_FAIL id="241">クリップボードファイルの生成に失敗 (%d(0x%X))</E_CLIPBOARD_FILE_SAVE_FAIL>
+        <E_INVALID_ARGUMENT_TYPE id="250">支援されていないタイプの パラメーターです。</E_INVALID_ARGUMENT_TYPE>
+    </Error>
+    <ErrorDetail>
+
+        <E_ID_ERROR_DETATIL_DUPLICATE_FILEFOLDER id="100">ファイル/フォルダの重複</E_ID_ERROR_DETATIL_DUPLICATE_FILEFOLDER>
+        <E_ID_ERROR_DETATIL_DUPLICATE_VIRTUALFILE id="101">仮想ファイルの重複</E_ID_ERROR_DETATIL_DUPLICATE_VIRTUALFILE>
+        <E_ID_ERROR_DETATIL_LIMITED_EXTENSION id="102">制限された拡張子</E_ID_ERROR_DETATIL_LIMITED_EXTENSION>
+        <E_ID_ERROR_DETATIL_LIMITED_COUNT id="103">制限の個数を超過</E_ID_ERROR_DETATIL_LIMITED_COUNT>
+        <E_ID_ERROR_DETATIL_LIMITED_FILE_SIZE_MIN id="104">ファイルの最小制限サイズに未達</E_ID_ERROR_DETATIL_LIMITED_FILE_SIZE_MIN>
+        <E_ID_ERROR_DETATIL_LIMITED_FILE_SIZE_MAX id="105">ファイルの最大制限サイズを超過</E_ID_ERROR_DETATIL_LIMITED_FILE_SIZE_MAX>
+        <E_ID_ERROR_DETATIL_LIMITED_TOTAL_SIZE id="106">全体制限サイズを超過</E_ID_ERROR_DETATIL_LIMITED_TOTAL_SIZE>
+
+    </ErrorDetail>
+    <MessageBox>
+
+        <E_ID_MSGBOX_DEL_DUP_FILEFOLDER id="200">重複されたファイル/フォルダの項目を削除しました。 追加する項目がありません。</E_ID_MSGBOX_DEL_DUP_FILEFOLDER>
+        <E_ID_MSGBOX_DEL_DUP_FILEFOLDER_CONTINUE id="201">重複されたファイル/フォルダの項目を削除しました。残り項目を追加しますか？</E_ID_MSGBOX_DEL_DUP_FILEFOLDER_CONTINUE>
+        <E_ID_MSGBOX_DEL_DUP_VIRTUALFILE id="202">重複された仮想ファイルの項目を削除しました。追加する項目がありません。</E_ID_MSGBOX_DEL_DUP_VIRTUALFILE>
+        <E_ID_MSGBOX_DEL_DUP_VIRTUALFILE_CONTINUE id="203">重複された仮想ファイルの項目を削除しました。残り項目を追加しますか？</E_ID_MSGBOX_DEL_DUP_VIRTUALFILE_CONTINUE>
+        <E_ID_MSGBOX_DEL_FILTER_EXTENSION id="204">許可されない拡張者のファイルが削除されました。 追加する項目がありません。</E_ID_MSGBOX_DEL_FILTER_EXTENSION>
+        <E_ID_MSGBOX_DEL_FILTER_EXTENSION_CONTINUE id="205">許可されない拡張者のファイルが削除されました。残り項目を追加しますか？</E_ID_MSGBOX_DEL_FILTER_EXTENSION_CONTINUE>
+        <E_ID_MSGBOX_DEL_LIMIT_FILE_COUNT id="206">%d個の超過したファイルを削除しました。 追加する項目がありません。</E_ID_MSGBOX_DEL_LIMIT_FILE_COUNT>
+        <E_ID_MSGBOX_DEL_LIMIT_FILE_COUNT_CONTINUE id="207">%d個の超過したファイルを削除しました。残り項目を追加しますか？</E_ID_MSGBOX_DEL_LIMIT_FILE_COUNT_CONTINUE>
+
+        <E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MIN id="208">%d個のファイルがアップロードできるサイズの最小制限用量に未達したので削除されました。追加する項目がありません。</E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MIN>
+        <E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MIN_CONTINUE id="209">%d個のファイルがアップロードできるサイズの最小制限用量に未達したので削除されました。残り項目を追加しますか？</E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MIN_CONTINUE>
+
+        <E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MAX id="210">%d個のファイルがアップロードできるサイズの最小制限用量を超過したので削除されました。追加する項目がありません。</E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MAX>
+        <E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MAX_CONTINUE id="211">%d個のファイルがアップロードできるサイズの最小制限用量を超過したので削除されました。残り項目を追加しますか？</E_ID_MSGBOX_DEL_LIMIT_FILE_SIZE_MAX_CONTINUE>
+
+        <E_ID_MSGBOX_DEL_LIMIT_TOTAL_SIZE id="212">アップロード全体制限のサイズ%lldを%lldのサイズほど超過して削除されました。追加する項目がありません。</E_ID_MSGBOX_DEL_LIMIT_TOTAL_SIZE>
+        <E_ID_MSGBOX_DEL_LIMIT_TOTAL_SIZE_CONTINUE id="213">アップロード全体制限のサイズ%lldを%lldのサイズほど超過して削除されました。残り項目を追加しますか？</E_ID_MSGBOX_DEL_LIMIT_TOTAL_SIZE_CONTINUE>
+
+
+        <E_ID_MSGBOX_ENDECRYPT_PASSWORD_MAX_LENGTH id="220">暗号最大の長さは%dです。</E_ID_MSGBOX_ENDECRYPT_PASSWORD_MAX_LENGTH>
+        <E_ID_MSGBOX_ENCRYPT_INPUT_PASSWORD id="221">暗号化のパスワードを入力してください。</E_ID_MSGBOX_ENCRYPT_INPUT_PASSWORD>
+        <E_ID_MSGBOX_ENCRYPT_CANCEL id="222">暗号化の作業がキャンセルされました。</E_ID_MSGBOX_ENCRYPT_CANCEL>
+        <E_ID_MSGBOX_ENCRYPT_ERROR id="223">暗号化の作業に失敗 (ErrorCode:%d、file:%s)</E_ID_MSGBOX_ENCRYPT_ERROR>
+        <E_ID_MSGBOX_ENCRYPT_COMPLETE id="224">暗号化の作業が完了しました。</E_ID_MSGBOX_ENCRYPT_COMPLETE>
+
+
+        <E_ID_MSGBOX_DECRYPT_AFTER_DOWNLOAD id="230">ダウンロードの後、復号を進行してください。</E_ID_MSGBOX_DECRYPT_AFTER_DOWNLOAD>
+        <E_ID_MSGBOX_DECRYPT_INPUT_PASSWORD id="231">パスワードを入力してください。</E_ID_MSGBOX_DECRYPT_INPUT_PASSWORD>
+        <E_ID_MSGBOX_DECRYPT_NOT_EXIST_ITEM id="232">復号化の対象がありません。</E_ID_MSGBOX_DECRYPT_NOT_EXIST_ITEM>
+        <E_ID_MSGBOX_DECRYPT_CANCEL id="233">復号化の作業がキャンセルされました。</E_ID_MSGBOX_DECRYPT_CANCEL>
+        <E_ID_MSGBOX_DECRYPT_PASSWORD_MISMATCH id="234">パスワード不一致 (ErrorCode: %d, file: %s)</E_ID_MSGBOX_DECRYPT_PASSWORD_MISMATCH>
+        <E_ID_MSGBOX_DECRYPT_ERROR id="235">復号化の作業に失敗 (ErrorCode : %d, file: %s)</E_ID_MSGBOX_DECRYPT_ERROR>
+        <E_ID_MSGBOX_DECRYPT_COMPLETE id="236">復号化の作業が完了しました。</E_ID_MSGBOX_DECRYPT_COMPLETE>
+
+
+        <E_ID_MSGBOX_COMPRESS_CANCEL id="240">圧縮をキャンセルしますか？</E_ID_MSGBOX_COMPRESS_CANCEL>
+
+
+        <E_ID_MSGBOX_TITLE_NOTIFY id="250">お知らせ</E_ID_MSGBOX_TITLE_NOTIFY>
+        <E_ID_MSGBOX_TITLE_CHECK id="251">確認</E_ID_MSGBOX_TITLE_CHECK>
+
+    </MessageBox>
+    <ListHeader>
+
+        <E_ID_LIST_HEADER_TITLE id="100">名前</E_ID_LIST_HEADER_TITLE>
+        <E_ID_LIST_HEADER_TITLE2 id="101">経路</E_ID_LIST_HEADER_TITLE2>
+        <E_ID_LIST_HEADER_SIZE id="102">サイズ</E_ID_LIST_HEADER_SIZE>
+        <E_ID_LIST_HEADER_STATUS id="103">状態</E_ID_LIST_HEADER_STATUS>
+
+    </ListHeader>
+    <UploadWindow>
+        <E_ID_UPWND_TEXT_CURFILE id="100">最近のファイル</E_ID_UPWND_TEXT_CURFILE>
+        <E_ID_UPWND_TEXT_TOTALFILE id="101">トータルファイル</E_ID_UPWND_TEXT_TOTALFILE>
+        <E_ID_UPWND_TEXT_SPEED id="102">速度</E_ID_UPWND_TEXT_SPEED>
+        <E_ID_UPWND_TEXT_CURFILE_TIME id="103">最近のファイル</E_ID_UPWND_TEXT_CURFILE_TIME>
+        <E_ID_UPWND_TEXT_TOTALFILE_TIME id="104">トータルファイル</E_ID_UPWND_TEXT_TOTALFILE_TIME>
+        <E_ID_UPWND_TEXT_BTN_CANCEL id="105">キャンセル</E_ID_UPWND_TEXT_BTN_CANCEL>
+        <E_ID_UPWND_TEXT_FONT_NAME id="106">Arial</E_ID_UPWND_TEXT_FONT_NAME>
+        <E_ID_UPWND_TEXT_TITLE id="107">アップロード</E_ID_UPWND_TEXT_TITLE>
+        <E_ID_UPWND_TEXT_DELAY_TEXT id="108">サーバ処理中</E_ID_UPWND_TEXT_DELAY_TEXT>
+    </UploadWindow>
+    <DownloadWindow>
+        <E_ID_DOWNWND_TEXT_CURFILE id="100">最近のファイル</E_ID_DOWNWND_TEXT_CURFILE>
+        <E_ID_DOWNWND_TEXT_TOTALFILE id="101">トータルファイル</E_ID_DOWNWND_TEXT_TOTALFILE>
+        <E_ID_DOWNWND_TEXT_SPEED id="102">速度</E_ID_DOWNWND_TEXT_SPEED>
+        <E_ID_DOWNWND_TEXT_CURFILE_TIME id="103">最近のファイル</E_ID_DOWNWND_TEXT_CURFILE_TIME>
+        <E_ID_DOWNWND_TEXT_TOTALFILE_TIME id="104">トータルファイル</E_ID_DOWNWND_TEXT_TOTALFILE_TIME>
+        <E_ID_DOWNWND_TEXT_BTN_CANCEL id="105">キャンセル</E_ID_DOWNWND_TEXT_BTN_CANCEL>
+        <E_ID_DOWNWND_TEXT_FONT_NAME id="106">Arial</E_ID_DOWNWND_TEXT_FONT_NAME>
+        <E_ID_DOWNWND_TEXT_TITLE id="107">ダウンロード</E_ID_DOWNWND_TEXT_TITLE>
+    </DownloadWindow>
+    <PasswordWindow>
+        <E_ID_PWD_TEXT_FONT_NAME id="100">Arial</E_ID_PWD_TEXT_FONT_NAME>
+        <E_ID_PWD_TEXT_TITLE id="101">パスワード</E_ID_PWD_TEXT_TITLE>
+        <E_ID_PWD_TEXT_INPUT id="102">パスワード：</E_ID_PWD_TEXT_INPUT>
+    </PasswordWindow>
+    <OverwriteWindow>
+        <E_ID_OVWRT_TEXT_FONT_NAME id="100">Arial</E_ID_OVWRT_TEXT_FONT_NAME>
+        <E_ID_OVWRT_TEXT_TITLE id="101">重複ファイルの処理オプション</E_ID_OVWRT_TEXT_TITLE>
+        <E_ID_OVWRT_TEXT_RADIO_OVERWRITE id="102">上書き</E_ID_OVWRT_TEXT_RADIO_OVERWRITE>
+        <E_ID_OVWRT_TEXT_RADIO_RENAME id="103">新名で保存</E_ID_OVWRT_TEXT_RADIO_RENAME>
+        <E_ID_OVWRT_TEXT_RADIO_SKIP id="104">スキップ</E_ID_OVWRT_TEXT_RADIO_SKIP>
+        <E_ID_OVWRT_TEXT_CHECKBOX_CONTINUE id="105">これ以上問わない</E_ID_OVWRT_TEXT_CHECKBOX_CONTINUE>
+    </OverwriteWindow>
+    <CompressWindow>
+        <E_ID_COMP_TEXT_FONT_NAME id="100">Arial</E_ID_COMP_TEXT_FONT_NAME>
+        <E_ID_COMP_TEXT_TITLE id="101">圧縮</E_ID_COMP_TEXT_TITLE>
+        <E_ID_COMP_TEXT_COMPLETE_TOTAL id="102">(完了/トタル)</E_ID_COMP_TEXT_COMPLETE_TOTAL>
+    </CompressWindow>
+    <EnDecryptWindow>
+        <E_ID_ENDECRYPT_TEXT_FONT_NAME id="100">Arial</E_ID_ENDECRYPT_TEXT_FONT_NAME>
+        <E_ID_ENDECRYPT_TEXT_TITLE_ENCRYPT id="101">暗号化</E_ID_ENDECRYPT_TEXT_TITLE_ENCRYPT>
+        <E_ID_ENDECRYPT_TEXT_TITLE_DECRYPT id="102">復号化</E_ID_ENDECRYPT_TEXT_TITLE_DECRYPT>
+    </EnDecryptWindow>
+</root>

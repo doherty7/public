@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "코스모스.jpg", size: 195779 });
+		}
+
+		function setMaxCount() {
+			var widthVF = false, rdos = document.getElementsByName("rdo-maxcount-withvf");
+			for (var i = 0, len = rdos.length; i < len; i++) {
+				if (rdos[i].checked) {
+					widthVF = (rdos[i].value === "true");
+					break;
+				}
+			}
+
+			var cbo = document.getElementById("cbo-maxcount-value"), 
+				t = cbo.options[cbo.selectedIndex],
+				count = parseInt(t.value, 10);
+
+			dx5.get("dext5").setMaxFileCount(count, widthVF);
+		}
+
+		function getMaxCount() {
+			alert(dx5.get("dext5").getMaxFileCount());
+		}
+
+		function setMaxTotalSize() {
+			var widthVF = false, rdos = document.getElementsByName("rdo-totalsize-withvf");
+			for (var i = 0, len = rdos.length; i < len; i++) {
+				if (rdos[i].checked) {
+					widthVF = (rdos[i].value === "true");
+					break;
+				}
+			}
+
+			var cbo = document.getElementById("cbo-totalsize-value"), 
+				t = cbo.options[cbo.selectedIndex],
+				max = parseInt(t.value, 10);
+
+			dx5.get("dext5").setMaxTotalSize(max, widthVF);
+		}
+
+		function getMaxTotalSize() {
+			alert(dx5.get("dext5").getMaxTotalSize());
+		}
+
+		function setMaxFileSize() {
+			var cbo = document.getElementById("cbo-maxsize-value"), 
+				t = cbo.options[cbo.selectedIndex],
+				max = parseInt(t.value, 10);
+
+			dx5.get("dext5").setMaxFileSize(max);
+		}
+
+		function getMaxFileSize() {
+			alert(dx5.get("dext5").getMaxFileSize());
+		}
+
+		function setMinFileSize() {
+			var cbo = document.getElementById("cbo-minsize-value"), 
+				t = cbo.options[cbo.selectedIndex],
+				min = parseInt(t.value, 10);
+
+			dx5.get("dext5").setMinFileSize(min);
+		}
+
+		function getMinFileSize() {
+			alert(dx5.get("dext5").getMinFileSize());
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 필터링1</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">항목의 개수 및  크기를 제한하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>업로드할 파일의 개수 및 개별 크기, 전체 크기에 대한 제한을 설정할 수 있습니다.</p>
+						<p class="notice">아무런 설정을 하지 않으면 기본적으로 제한을 두지 않습니다. 이는 무제한을 지원한다는 의미가 아님을 유념하시기 바랍니다.</p>						
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// 허용되는 파일의 개수를 반환합니다. 제한이 없다면 -1을 반환합니다.
+var maxCount = dx.getMaxFileCount();
+
+// 가상파일을 제외하고 총 5개의 파일을 허용하도록 설정합니다.
+dx.setMaxFileCount(5, false);
+
+// 허용되는 전체 파일의 크기를 반환합니다. 제한이 없다면 -1을 반환합니다.
+var maxTotalSize = dx.getMaxTotalSize();
+
+// 가상파일을 제외하고 허용되는 전체 파일의 크기를 100MB로 설정합니다.
+dx.setMaxTotalSize(104857600, false);
+
+// 개별 파일의 최대 허용 크기를 반환합니다. 제한이 없다면 -1을 반환합니다.
+var maxSize = dx.getMaxFileSize();
+
+// 개별 파일의 최대 크기를 10MB로 설정합니다.
+dx.setMaxFileSize(10485760);
+
+// 개별 파일의 최소 크기를 반환합니다. 제한이 없다면 -1을 반환합니다.
+var minSize = dx.getMinFileSize();
+
+// 개별 파일의 최소 크기를 1MB로 설정합니다.
+dx.setMinFileSize(1048576);</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+						<p>
+							전체 파일의 개수를 제한할 수 있습니다. 값이 -1이라면 제한을 하지 않습니다.<br/>
+							전체 파일의 개수를 제한하지 않더라도, 파일의 개수가 많다면, 메모리를 많이 사용하기 때문에, 컴포넌트가 PC 사양에 따라 느려질 수 있습니다.<br/>
+							안정적인 서비스 운영하려면 전체 파일 개수를 제한(비교적 적게)하는 것을 권장합니다.
+						</p>
+						<p>
+							<input id="rdo-maxcount-withvf-yes" name="rdo-maxcount-withvf" value="true" type="radio" /><label for="rdo-maxcount-withvf-yes">가상 파일 포함</label>
+							<input id="rdo-maxcount-withvf-no" name="rdo-maxcount-withvf" checked="checked" value="false" type="radio" /><label for="rdo-maxcount-withvf-no">가상 파일 제외</label>
+							<select id="cbo-maxcount-value">
+								<option value="-1">제한 없음</option>
+								<option value="5">5개 까지</option>
+								<option value="10">10개 까지</option>
+								<option value="50">50개 까지</option>
+							</select>
+							<button id="btn-set-maxcount" onclick="setMaxCount();">설정</button>
+							<button id="btn-get-maxcount" onclick="getMaxCount();">설정값 보기</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>
+							전체 파일의 크기를 제한할 수 있습니다. 값이 -1이라면 제한을 하지 않습니다.<br />
+							전체 파일의 크기를 제한하지 않더라도, 전송 데이터(파일 + 기타 정보)의 크기가 2GB가 넘는 경우, 서버에서 제한될 수 있습니다.<br />
+							특수 목적을 제외하고서 안정적인 서비스 운영하려면 전체 파일 크기를 제한(비교적 낮도록)하는 것을 권장합니다.
+						</p>
+						<p>
+							<input id="rdo-totalsize-withvf-yes" name="rdo-totalsize-withvf" value="true" type="radio" /><label for="rdo-totalsize-withvf-yes">가상 파일 포함</label>
+							<input id="rdo-totalsize-withvf-no" name="rdo-totalsize-withvf" checked="checked" value="false" type="radio" /><label for="rdo-totalsize-withvf-no">가상 파일 제외</label>
+							<select id="cbo-totalsize-value">
+								<option value="-1">제한 없음</option>
+								<option value="5242880">5MB 까지</option>
+								<option value="104857600">100MB 까지</option>
+								<option value="524288000">500MB 까지</option>
+								<option value="1073741824">1GB 까지</option>
+							</select>
+							<button id="btn-set-totalsize" onclick="setMaxTotalSize();">설정</button>
+							<button id="btn-get-totalsize" onclick="getMaxTotalSize();">설정값 보기</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>
+							개별 파일 크기의 최대값을 제한할 수 있습니다. 값이 -1이라면 제한을 하지 않습니다.<br />
+							개별 파일의 크기를 제한하지 않더라도, 전송 데이터(파일 + 기타 정보)의 크기가 2GB가 넘는 경우, 서버에서 제한될 수 있습니다.<br />
+							특수 목적을 제외하고서 안정적인 서비스 운영하려면 개별 파일 크기를 제한(비교적 낮도록)하는 것을 권장합니다.
+						</p>
+						<p>
+							<select id="cbo-maxsize-value">
+								<option value="-1">제한 없음</option>
+								<option value="5242880">5MB 까지</option>
+								<option value="104857600">100MB 까지</option>
+								<option value="524288000">500MB 까지</option>
+								<option value="1073741824">1GB 까지</option>
+							</select>
+							<button id="btn-set-maxsize" onclick="setMaxFileSize();">설정</button>
+							<button id="btn-get-maxsize" onclick="getMaxFileSize();">설정값 보기</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>
+							개별 파일 크기의 최소값을 제한할 수 있습니다. 값이 -1이라면 제한을 하지 않습니다.<br />
+						</p>
+						<p>
+							<select id="cbo-minsize-value">
+								<option value="-1">제한 없음</option>
+								<option value="5242880">5MB 이상</option>
+								<option value="104857600">100MB 이상</option>
+								<option value="524288000">500MB 이상</option>
+								<option value="1073741824">1GB 이상</option>
+							</select>
+							<button id="btn-set-minsize" onclick="setMinFileSize();">설정</button>
+							<button id="btn-get-minsize" onclick="getMinFileSize();">설정값 보기</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

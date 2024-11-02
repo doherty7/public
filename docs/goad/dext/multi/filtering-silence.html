@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.setMaxFileCount(10, false);
+			dx.setMaxTotalSize(10485760, false);
+			dx.setMaxFileSize(1048576, false);
+			dx.setMinFileSize(1024, false);
+			dx.setExtensionFilter("*.jpg;*.jpeg;*.png;*.txt", false);
+		}
+		
+		function toggleFilterSilence(enable) {
+			dx5.get("dext5").setFilterSilence(enable);
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 필터링4</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">전체 차단, 부분 허용에 대한 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>등록하려는 파일이 사전에 정의된 필터에 위배되는 경우, 대상은 차단이 됩니다.</p>
+						<p>만일 전체 파일 크기 제한이 10MB일 때, 추가하려는 파일이 8MB, 1MB, 3MB, 4MB이면, 8MB, 1MB인 두 파일을 등록할지 여부를
+						질의합니다.</p>
+						<p>setFilterSilence 함수를 true로 설정하면, 질의 과정 없이 모든 파일이 다 차단됩니다.</p>
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// 필터링 대상이 있다면, 남은 모두 항목도 다 차단됩니다.
+var filtered = dx.setFilterSilence(true);</pre>
+					</dd>						
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>						
+						<p>
+							<input id="rdo-filter-silence" name="rdo-filter-silence" type="radio" onclick="toggleFilterSilence(true);" /><label for="rdo-filter-silence">모두 차단</label>
+							<input id="rdo-filter-prompt" name="rdo-filter-silence" type="radio" checked="checked" onclick="toggleFilterSilence(false);" /><label for="rdo-filter-prompt">부분 차단</label>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

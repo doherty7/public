@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+* { margin:0; padding:0; } 
+input { padding:2px 2px 2px 2px; }
+body { 
+	height: 100%; 
+	color: #444;
+	background-color: #ffffff;
+	font-size: 12px; 
+	line-height: 19px; 
+	font-family:"맑은 고딕", "돋움체", Gulim, Tahoma, Arial, Verdana, AppleGothic, sans-serif;
+}
+img { border:0; vertical-align:middle; }
+ol, ul, li { list-style:none; }
+.bold	{ font-weight:bold; }
+.f_red { color:red; }
+a { color:#0066cc; text-decoration:none; }
+a:hover, a:active, a:focus { color:#f37021; }
+
+#Container { width:100%; margin:0 auto; }
+
+#Container header {
+	width:100%;
+	height:58px;
+	border-bottom:1px solid #dddddd;
+	background-color: #ffffff; /* 그레디언트가 지원되지 않는 경우의 색상(fallback color) */
+  background-image: -webkit-linear-gradient(top, #eeeeee, #ffffff);
+  background-image:    -moz-linear-gradient(top, #eeeeee, #ffffff); /* Fx 3.6 부터 Fx 15 까지 처리 */
+  background-image:     -ms-linear-gradient(top, #eeeeee, #ffffff); /* IE 10 Platform Previews, Consumer Preview */
+  background-image:      -o-linear-gradient(top, #eeeeee, #ffffff); /* Opera 11.1 부터 12.0 까지 처리 */ 
+  background-image:         linear-gradient(to bottom, #eeeeee, #ffffff); /* 표준문법, 표준문법은 반드시 마지막에 삽입해야한다*/
+}
+#Container header .logobg{ 
+	height:58px; 
+	background:url(../images/logo.png) no-repeat 24px ;
+	padding-left:170px;
+}
+#Container header h1 {
+	margin-left:24px;
+	font-size:16pt; 
+	line-height:58px; 
+	color:#333; 
+}
+
+#root { border-bottom:1px solid #dddddd; width: 100%; line-height: 30px; }
+#root a:first-child { margin-left: 24px; }
+#root a { text-decoration:none; }
+
+#MainCenter {
+	padding:30px;
+	border-bottom:1px solid #dddddd;
+}
+.expText { background:url(../images/icon_hs.gif) no-repeat 0 5px; padding:0 0 0 20px; margin:0 0 8px 0; }
+.expTextSub li{ background:url(../images/icon_ss.gif) no-repeat 7px 8px; padding:0 0 0 20px; margin:0 0 4px 0; }
+
+.samList { width:100%; border-collapse:collapse; border:1px solid #cdcdcd; }
+.tableTit { background-color:#dddddd; color:#444; font-weight:bold; border:1px solid #cdcdcd;}
+.samList th { border-right:1px solid #cdcdcd; border-bottom:1px solid #cdcdcd; padding:6px; background-color:#f0f0f0; }
+.samList td { border-bottom:1px solid #cdcdcd; padding:6px; }
+
+
+
+.exTit { font-size:19px; font-weight:bold; letter-spacing:0px; padding:15px 0 35px 0; color:#0a75ad; line-height:24px; }
+.btns { text-align:right; margin-top:20px; }
+a.btn_sgray { color:#333; padding:4px 15px 6px 15px; background:#ccc; border:1px solid #b7b7b7; text-decoration:none; border-radius:2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; }
+a.btn_sgray:hover { background-color:#666; color:#fff; }
+.codebg { background:#f2f2f2; padding:20px;}
+footer { padding:20px 0; text-align:center; font-size:11px; }
+.f_point { color:#f37021; }
+
+dl { 
+	margin-left:24px;
+	margin-right:24px;
+}
+	
+dt { font-size:14pt; color:#333; margin-bottom:12px; }
+dd { margin-bottom:24px; }
+p { line-height:16pt; }
+
+p.notice { color:red; }
+ul.notice li { margin-left:2em; list-style-type:square; }
+
+pre.prettyprint { padding:12px 12px 12px 12px; border-radius:8px 8px; word-wrap:break-word; margin-bottom:12px;  }
+
+section h3 { margin:0 0 10px 0;}
+.diagrambg { background-color:#f2f2f2; border-radius:6px 6px; text-align:center; padding:20px; }
+.diagram-upload-flow a.shape { 
+	display:inline-block;
+	text-align:center;
+	background-color:#e0eaf5;
+	padding:10px 15px 10px 15px;
+	line-height:12pt;
+	border-radius:4px 4px; border:1px solid #aebdcd;
+	/* -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; */
+}
+.diagram-upload-flow a.shape span.head { color: #0000ff; display:block; }
+.diagram-upload-flow a.shape span.target { color: #000000; display:block; }
+.diagram-upload-flow a.shape span.comment { color: #666; display:block; }
+.diagram-upload-flow a { text-decoration:none; }
+.diagram-upload-flow a.direction { 
+	display:inline-block;
+	text-align:center;
+	width: 80px;
+}
+.diagram-upload-flow a.direction span.comment { color: #333; display:block; }
+.diagram-upload-flow a.direction span.shape { display:block; }
+

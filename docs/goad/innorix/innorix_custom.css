@@ -1,0 +1,92 @@
+@charset "UTF-8";
+.innorix_header{
+  	border: 0; 
+  	padding: 4px 0 6px 0; 
+  	background-color: #f6f6f6;
+}
+.innorix_footer {
+   	border: 0; 
+   	padding: 2px 0 5px 0; 
+   	background-color: #f6f6f6;
+}
+.innorix_basic {
+	border: 0;
+}
+.innorix_title {
+	margin-left : 10px;
+}
+
+.innorix .button_div {
+	margin-top:7px;	
+	height:37px;
+}
+
+.innorix .control_div {
+   	border: 1px solid #e5e5e5; 
+   	margin-top : 5px;
+}
+
+.file_info {
+	height: 21px; 
+	padding: 0 7px;
+	font-size : 13px;
+}
+
+.tree-icon.file-icon.ext_hwp{
+	background:url(/dext/dx5/assets/icons/hwp_small.svg) left top no-repeat
+}
+
+.innorix_footer .footer_text {
+ 	font-size : 12px; 
+ 	color : #f30b0b; 
+ 	display : inline-block; 
+ 	padding-left : 2px;
+}
+.irx-file-header {
+	border: 0 !important; 
+}
+
+#innorix_download { 
+	position:fixed; 
+	left:50%; 
+	top:50%; 
+	margin-left:-325px; 
+	margin-top:-150px; 
+	width:650px; 
+	height:328px;
+	z-index:10; 
+	display:none;
+	border: 1px solid #a7aeb3;
+}
+#innorix_download .header{ 
+	width:100%; 
+	height:43px; 
+	background-color:#fff; 
+	padding:4px 4px 0 4px; 
+	border-bottom: 2px solid #1e5c8e;
+}
+
+#innorix_download .f_left .btn_down, #innorix_download .f_left .btn_all_download{ 
+	line-height:30px; 
+	margin:0 5px 0 0;
+	padding:0 10px; 
+	border-color:#4f97d1; 
+	color:#4f97d1; 
+	font-size:14px;
+}
+
+.innorix_basic div.irx_filetree ul.irx_filetree_list li.irx-file-wrapper.selected>div.irx-file-inner-wrapper span.irx_btn_down {
+	background: url(img/btn_download_32_white.png) no-repeat; 
+	background-size : 17px;
+}
+
+.innorix_basic div.irx_filetree ul.irx_filetree_list li.irx-file-wrapper div.irx-file-inner-wrapper span.irx_btn_down {
+	background: url(img/btn_download_32_blue.png) no-repeat; 
+	position: absolute; 
+	margin-left: -40px; 
+	width: 19px; 
+	height: 19px; 
+	cursor: pointer; 
+	margin-top:2px; 
+	background-size : 17px;
+}

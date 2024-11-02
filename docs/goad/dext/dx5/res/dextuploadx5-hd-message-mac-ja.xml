@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+    <ui>
+        <e_hdm_ui_id_list_header_column_item id="100" osx_text="項目" />
+
+        <e_hdm_ui_id_env_download_path id="120" osx_text="セーブ経路" />
+        <e_hdm_ui_id_env_activate_item_added id="121" osx_text="項目を追加するたびにプログラムを活性化" />
+        <e_hdm_ui_id_env_download_autostart_added_item id="122" osx_text="新しい項目が追加された場合、直ぐダウンロードを開始" />
+        <e_hdm_ui_id_env_delete_tempfile_item_delete id="123" osx_text="項目を削除する時に臨時ファイルを削除(引き継ぐはサポートしません)" />
+        <e_hdm_ui_id_env_auto_start_reamin_file id="124" osx_text="未完状態のままで終了された項目をプログラムの開始するとき、自動的にダウンロード" />
+        <e_hdm_ui_id_env_save_reamin_groupbox id="125" osx_text="ファイル情報の保存オプション" />
+        <e_hdm_ui_id_env_save_reamin_flag_wait_stop id="126" osx_text="待機/中止" />
+        <e_hdm_ui_id_env_save_reamin_flag_run id="127" osx_text="ダウンロード中" />
+        <e_hdm_ui_id_env_save_reamin_flag_complete id="128" osx_text="完了" />
+        <e_hdm_ui_id_env_save_reamin_flag_error id="129" osx_text="誤謬" />
+        <e_hdm_ui_id_env_btn_text_ok id="130" osx_text="確認" />
+        <e_hdm_ui_id_env_btn_text_cancel id="131" osx_text="キャンセル" />
+
+        <e_hdm_ui_item_info_copy_to_clipboard id="140" osx_text="クリップボードにコピー" />
+
+        <e_hdm_window_text_item_info id="150" osx_text="項目情報を確認" />
+        <e_hdm_window_text_environment id="151" osx_text="環境設定" />
+
+        <e_hdm_balloon_text_donwload_complete id="160" osx_text="ダウンロード完了" />
+    </ui>
+
+    <msgbox_caption>
+        <e_hdm_msgbox_caption_id_notification id="100" osx_text="お知らせ" />
+        <e_hdm_msgbox_caption_id_confirm id="101" osx_text="確認" />
+        <e_hdm_msgbox_caption_id_error id="102" osx_text="誤謬" />
+        <e_hdm_msgbox_caption_select_save_path id="110" osx_text="HDM 保存経路を選択" />
+
+        " />
+    </msgbox_caption>
+
+    <msgbox_text>
+        <e_hdm_msgbox_text_id_not_exist_selected_item id="100" osx_text="選択された項目がありません。" />
+        <e_hdm_msgbox_text_id_not_exist_complete_item id="101" osx_text="完了された項目がありません。" />
+        <e_hdm_msgbox_text_id_delete_continue id="102" osx_text="%dつの項目が削除されます。 継続しますか。" />
+        <e_hdm_msgbox_text_id_copy_to_clipboard id="103" osx_text="情報がクリップボードにコピーされました。" />
+        <e_hdm_msgbox_text_id_remainfile_start id="104" osx_text="ダウンロード中だった項目が存在します。引き継ぐを実行しますか？" />
+    </msgbox_text>
+
+    <popupmenu>
+        <e_hdm_popupmenu_text_id_down id="100" osx_text="ダウンロード" />
+        <e_hdm_popupmenu_text_id_down_start id="101" osx_text="開始" />
+        <e_hdm_popupmenu_text_id_down_stop id="102" osx_text="中止" />
+        <e_hdm_popupmenu_text_id_down_start_auto id="103" osx_text="自動" />
+        <e_hdm_popupmenu_text_id_down_stop_auto id="104" osx_text="自動" />
+        <e_hdm_popupmenu_text_id_down_start_selected id="105" osx_text="選択された項目" />
+        <e_hdm_popupmenu_text_id_down_stop_selected id="106" osx_text="選択された項目" />
+
+        <e_hdm_popupmenu_text_id_delete id="110" osx_text="除去" />
+        <e_hdm_popupmenu_text_id_delete_all id="111" osx_text="全体" />
+        <e_hdm_popupmenu_text_id_delete_select id="112" osx_text="選択された項目" />
+        <e_hdm_popupmenu_text_id_delete_complete id="113" osx_text="完了された項目" />
+
+        <e_hdm_popupmenu_text_id_item_move id="120" osx_text="移動" />
+        <e_hdm_popupmenu_text_id_item_move_top id="121" osx_text="最上位" />
+        <e_hdm_popupmenu_text_id_item_move_up id="122" osx_text="上へ" />
+        <e_hdm_popupmenu_text_id_item_move_down id="123" osx_text="下へ" />
+        <e_hdm_popupmenu_text_id_item_move_bottom id="124" osx_text="最下位" />
+
+        <e_hdm_popupmenu_text_id_item_info id="130" osx_text="項目の情報" />
+
+        <e_hdm_popupmenu_text_id_set_env id="140" osx_text="環境設定" />
+
+    </popupmenu>
+
+    <error>
+        <e_rid_err_success id="0" osx_text="OK" />
+
+        <e_rid_err_invalid_command id="100" osx_text="支援されないリクエストです。" />
+
+        <e_rid_err_execute_fail id="110" osx_text="DEXTUplaodxX5-HDM.exe 実行に失敗." />
+
+        <e_rid_err_select_save_path_cancel id="120" osx_text="保存経路変更の取り消し." />
+
+        <e_rid_err_arguments_not_specified_url id="130" osx_text="ダウンロード対象のURLが指定されてません。" />
+        <e_rid_err_arguments_not_authkey id="131" osx_text="認証authkey値が指定されてません。" />
+        <e_rid_err_arguments_not_specified_filetitle id="132" osx_text="ダウンロードファイルの名が指定されてません。" />
+        <e_rid_err_arguments_not_specified_size id="133" osx_text="ダウンロードファイルのサイズが指定されてません。" />
+
+        <e_rid_err_download_not_exist_downloadable_item id="140" osx_text="ダウンロードできる項目がありません。" />
+        <e_rid_err_download_concurrnt_down_count_exceeded id="141" osx_text="同時ダウンロード項目制限超過" />
+        <e_rid_err_download_exist_down_start_fail_item id="142" osx_text="ダウンロードの開始に失敗した項目があります。" />
+        <e_rid_err_license_authkey_format_invalid id="143" osx_text="認証キーの形式が正しくありません。" />
+        <e_rid_err_license_eval_expire id="144" osx_text="デモバージョンの使用期間が満了しました。" />
+        <e_rid_err_license_invalid_auth_info id="145" osx_text="正常的な認証情報ではありません。" />
+        <e_rid_err_license_invalid_host id="146" osx_text="登録されたドメイン(IP)ではありません。" />
+        <e_rid_err_notsupport_content_range_unit id="147" osx_text="Content-Range unitはbytesだけ支援できます。" />
+        <e_rid_err_mismatch_file_size id="148" osx_text="ダウンロード対象ファイルと、サーバに存在するファイルの大きさが一致しません。" />
+        <e_rid_err_invalid_status_code id="149" osx_text="支援されない応答コードです。" />
+
+        <e_rid_err_arguments_not_specified_textxml_uri id="150" osx_text="文字列リソースのURIが指定されてません。" />
+        <e_rid_err_default_res_xml_load_fail id="151" osx_text="基本文字列リソース(XML)のロードに失敗(%@)." />
+        <e_rid_err_res_xml_uri_load_fail id="152" osx_text="文字列リソースのURIからロード失敗(%@)" />
+        <e_rid_err_authkey_can_not_use_hd id="153" osx_text="HDを利用できないAuthKeyです。" />
+
+        <e_rid_erro_download_not_exist_downloading_item id="180" osx_text="ダウンロード中の項目がありません。" />
+        <e_rid_err_download_exist_down_stop_fail_item id="181" osx_text="ダウンロードに失敗した項目があります。" />
+
+        <e_rid_err_selected_item_delete_fail id="190" osx_text="選択されたアイテムの削除に失敗。" />
+        <e_rid_err_item_delete_fail id="191" osx_text="アイテムの削除に失敗。" />
+
+        <e_rid_err_check_title_already_exist id="200" osx_text="同じ名前のファイルが追加されています。" />
+        <e_rid_err_check_title_form_not_exist id="201" osx_text="check_title form が存在しません。" />
+        <e_rid_err_check_title_form_value_not_exist id="202" osx_text="check_title formの値が存在しません。" />
+        <e_rid_err_new_save_path_form_not_exist id="203" osx_text="new_save_path form が存在しません。" />
+        <e_rid_err_new_save_path_form_value_not_exist id="204" osx_text="new_save_path formの値が存在しません。" />
+
+        <e_rid_err_content_range_format_not_support id="220" osx_text="サポートされていないContent-Range形式です。" />
+        <e_rid_err_transfer_encoding_support_only_chunked id="221" osx_text="Transfer-Encodingヘッダーは、チャンクされたものだけをサポートします。" />
+        <e_rid_err_missmatch_download_result_size id="222" osx_text="指定されたファイルサイズがダウンロード完了ファイルサイズと一致しません。" />
+
+        <e_rid_err_update_version_not_specified id="1000" osx_text="更新バージョンが指定されていません。" />
+        <e_rid_err_update_file_url_not_specified id="1001" osx_text="更新ファイルのURLが指定されていません。" />
+        <e_rid_err_update_hdm_already_running id="1002" osx_text="DEXTUpload X5 HDMを終了して、自動アップデートを続行する必要があります。" />
+        <e_rid_err_update_version_not_match id="1003" osx_text="インストールファイルのバージョンが更新バージョンと一致しません。" />
+
+        <e_rid_err_maketempfile_already_exist_path id="2000" osx_text="同じパスに一時ファイルと同じフォルダ/ファイルが存在します。" />
+        <e_rid_err_maketempfile_create_failed id="2001" osx_text="一時ファイルの作成に失敗し" />
+        <e_rid_err_maketempfile_open_failed id="2002" osx_text="一時ファイルを開くに失敗し" />
+    </error>
+
+</root>

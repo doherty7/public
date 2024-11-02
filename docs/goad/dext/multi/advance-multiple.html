@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		var presets = {
+			"dext5-a": [
+				{ vindex: "F00001", name: "A-가상파일.txt", size: 12345 },
+				{ vindex: "F00002", name: "A-코스모스.jpg", size: 195779 }
+			],
+			"dext5-b": [
+				{ vindex: "F00003", name: "B-가상파일.txt", size: 12345 },
+				{ vindex: "F00004", name: "B-코스모스.jpg", size: 195779 }
+			]
+		};
+		
+		function onDX5Error(id, code, msg) { alert(id + " => " +  code + "\n" + msg); }
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			
+			if (id != "dext5-uploader") {
+				dx.addVirtualFileList(presets[id]);
+				dx.setUIStyle({ headerHeight:28, itemHeight:28 })
+			}
+		}
+		
+		function onDX5UploadStopped(id) { alert("업로드가 중단되었습니다."); }
+				
+		function onDX5UploadCompleted(id) {
+			alert(dx5.get(id).getResponses(0));
+		}
+		
+		function upload() {
+			var uploader = dx5.get("dext5-uploader"), items = null;
+			
+			uploader.clearItems();
+			uploader.setUploableFilesFrom(dx5.get("dext5-a"));
+			uploader.setUploableFilesFrom(dx5.get("dext5-b"));
+			uploader.setUploadURL(dx5.canonicalize("../service/multiple-upload.do"));
+			uploader.upload("AUTO");
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 활용1</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">컴포넌트를 여러 개 사용하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>하나의 페이지에 여러 개 컴포넌트(멀티 컴포넌트)를 동시에 사용할 수 있습니다.</p>
+						<p>
+						한 번의 전송 명령으로 모든 컴포넌트의 파일을 업로드하려면, 
+						한 컴포넌트에서 upload 함수를 사용하여 업로드를 시작한 후, onDX5UploadCompleted 이벤트가 발생하면,
+						다음 컴포넌트의 upload 함수를 호출하는 방법을 사용하여 순차적으로 업로드를 할 수 있습니다.</p>
+						<p>그러나 이런 방법 외에, 업로드할 파일만 하나로 모아서 한 번에 업로드할 수 있는 방법이 있습니다.</p>
+						<pre class="prettyprint">
+&lt;!-- 컴포넌트 2개를 담을 컨테이너를 정의합니다. --&gt;
+&lt;div id="dext5-container-a" style="width:500px; height:200px;"&gt;&lt;/div&gt;
+&lt;div id="dext5-container-b" style="width:500px; height:200px;"&gt;&lt;/div&gt;
+&lt;!-- 실제 업로드를 담당할 컴포넌트를 담을 컨테이너를 정의합니다. --&gt;
+&lt;!-- 업로더는 눈에 잘 보이지 않도록 1px의 컨테이너로 정의합니다. --&gt;
+&lt;div id="dext5-container-uploader" style="width:1px; height:1px;"&gt;&lt;/div&gt;
+</pre>
+						<p>컴포넌트를 정의합니다.</p>
+						<pre class="prettyprint">
+dx5.create({ mode: "multi", id: "dext5-a", parentId: "dext5-container-a", btnFile: "btn-add-files-to-a" });
+dx5.create({ mode: "multi", id: "dext5-b", parentId: "dext5-container-b", btnFile: "btn-add-files-to-b" });
+dx5.create({ mode: "multi", id: "dext5-uploader", parentId: "dext5-container-uploader" });
+</pre>
+						<p>파일을 업로드할 때, 두 컴포넌트로부터 업로드할 파일 항목을 얻어 dext5-uploader 컴포넌트에 등록을 하고,
+						dext5-uploader 컴포넌트가 업로드를 시도합니다.</p>
+						<pre class="prettyprint">
+var uploader = dx5.get("dext5-uploader");
+			
+uploader.clearItems();
+
+// 첫 번째 컴포넌트로부터 업로드를 하기 위한 파일 정보를 얻습니다.
+uploader.setUploableFilesFrom(dx5.get("dext5-a"));
+// 두 번째 컴포넌트로부터 업로드를 하기 위한 파일 정보를 얻습니다.
+uploader.setUploableFilesFrom(dx5.get("dext5-b"));
+
+uploader.setUploadURL("업로드 경로");
+uploader.upload("AUTO");
+</pre>
+						<p>서버에서는 DEXTUploadX5_ControlId 폼 이름을 사용하여 업로드한 파일이 어느 컴포넌트의 항목인지 구분할 수 있습니다.</p>
+						<pre class="prettyprint">
+List&lt;MultipartFile&gt; items = x5.getDEXTUploadX5_FileData();
+// DEXTUploadX5_ControlId 폼 값들을 얻습니다.
+List&lt;String&gt; controls = x5.getDEXTUploadX5_ControlId();
+...
+for (int i = 0, len = items.size(); i &lt; len; i++) {
+  ctr = controls.get(i);
+  ...	
+  if (file.isEmpty() == false) {
+    ...
+    sb.append(String.format("%1$s|%2$s|%3$s\n", ctr, ...));
+  }
+}
+</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<p>파일 업로드 A 영역 (ID: dext5-a)</p>
+						<div id="dext5-container-a" style="width:500px; height:200px;"></div>
+						<p>
+							<button id="btn-add-files-to-a" type="button">파일 추가</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>파일 업로드 B 영역 (ID: dext5-b)</p>
+						<div id="dext5-container-b" style="width:500px; height:200px;"></div>							
+						<p>
+							<button id="btn-add-files-to-b" type="button">파일 추가</button>
+						</p>
+						<p>&nbsp;</p>
+						<div id="dext5-container-uploader" style="width:1px; height:1px;"></div>
+						<p>
+							<button id="btn-upload" type="button" onclick="upload();">전송</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({ mode: "multi", id: "dext5-a", parentId: "dext5-container-a", btnFile: "btn-add-files-to-a" });
+		dx5.create({ mode: "multi", id: "dext5-b", parentId: "dext5-container-b", btnFile: "btn-add-files-to-b" });
+		dx5.create({ mode: "multi", id: "dext5-uploader", parentId: "dext5-container-uploader" });
+	</script>
+</body>
+</html>

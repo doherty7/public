@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/* 
+ *  2019.04.30 이상준 추가  
+ *  공통 CSS 로 활용
+ */
+
+@import url("kpf_font.css");
+@import url("jquery-ui.css");
+@import url("kpf_element.css");
+@import url("common.css");
+@import url("admin.css");
+@import url("mypage.css");
+@import url("slick.css");
+@import url("index.css");
+@import url("sub.css");
+@import url("content.css");
+@import url("./v02/table_new.css");     /*  통합 table.css    */
+@import url("./v02/button_new.css");    /*  통합 button.css   */
+@import url("./v02/kpf_new.css");       /*  통합 공통 css  */
+@import url("./kpf_media.css");         /*  media 별 css  */

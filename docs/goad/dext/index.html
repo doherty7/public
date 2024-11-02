@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <link rel="stylesheet" type="text/css" href="./common/styles/default.css"/>
+        <title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+</head>
+<body>
+        <div id="Container">
+                <header><div class="logobg"></div></header>
+                <div id="root"><a>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</a></div>
+                <div id="MainCenter">
+                        <article>
+                                <p class="expText">DEXTUploadX5 전반적인 기능을 이해하기 위해 작성된 샘플입니다.</p>                         
+                                <p class="expText">샘플을 실행하기 전에 아래 내용을 반드시 확인하길 바랍니다.</p>
+                                <ul class="expTextSub">
+                                        <li class="bold">DEXTUploadX5는 웹브라우저에서 동작하는 클라이언트 컴포넌트입니다.</li>
+                                        <li class="bold">DEXTUploadX5는 HTML5 기반으로 동작하는 멀티 버전과 ActiveX 기반으로 동작하는 IE 버전이 있습니다.</li>
+                                        <li class="bold">해당 샘플은 DEXTUploadX5가 업로드한 파일을 처리하기 위한 서버 측 컴포넌트로 DEXTUploadNJ가 사용되고 있습니다.</li>
+                                        <li class="bold">DEXTUploadX5를 사용하려면 평가판 키가 필요합니다.</li>
+                                        <li class="bold">DEXTUploadX5 평가판을 다운로드할 때 이메일로 제공된 평가판 키를  웹루트/dx5/dextuploadx5-configuration.js 파일에 설정하시길 바랍니다.</li>
+                                        <li class="bold">DEXTUploadNJ는 평가판 라이선스로 설정되어있으므로 별도로 설정할 필요가 없습니다.(DEXTUploadX5와 동일하게 30일 사용 가능)</li>
+                                        <li class="bold"> WEB-INF/dextuploadnj.config 파일은 DEXTUploadNJ의  평가판 라이선스 파일입니다.</li>
+                                        <li>샘플은 Java SE 1.6, Servlet API 2.5, Spring Framework 3.0.5, Maven 환경을 기반으로 제작되었습니다. 
+                                                <font color='red'>=> java 1.8 / spring 4.2.4.RELEASE - 전자정부프레임웍  / servlet-api 2.5</font></li>
+                                        <li>샘플은 UTF-8 환경을 기준으로 합니다. 개발환경이 Ansi인 경우 한글 주석이 모두 깨져 보일 수 있습니다.</li>
+                                </ul>
+                                <p>&nbsp;</p>
+                                <table class="samList" id="tlb-prepared">
+                                        <colgroup>
+                                                <col width="15%">
+                                                <col width="85%">
+                                        </colgroup>
+                                        <thead>
+                                                <tr><td colspan="2" class="tableTit">필수 사항</td></tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr><th><a target="_blank" href="./document/configuration.html">x5-설정</a></th><td>인증키 및 경로 설정에 대한 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./x5-manual/index.html">x5-메뉴얼</a></th><td>X5 상세 메뉴얼(Client UI)</td></tr>
+                                                <tr><th><a target="_blank" href="./document/nj-configuration.html">nj-설정</a></th><td>인증키 및 경로 설정에 대한 예제입니다.</td></tr>
+                                                <!--tr><th><a target="_blank" href="./nj-manual/index.html">nj-메뉴얼</a></th><td>NJ 상세 메뉴얼(Server)</td></tr-->
+                                                <tr><th>통합 Samples</th><td>
+                                                        <a target="_blank" href="./multi/summary01.html">[통합 Sample 01]</a> : FORM 없이 사용 - 함수, 이벤트, 디자인(버튼)배치<br/>
+                                                        <a target="_blank" href="./multi/summary01_form.html">[통합 폼 Sample 01]</a> : FORM 사용, 공통 디자인 적용된 파일
+                                                                => <a target="_blank" href="./multi/summary01_form_d01.html">[summary01_form_d01.html]
+                                                                <!-- => <a target="_blank" href="./multi/summary01_form_d02.html">[summary01_form_d02.html]
+                                                                <br/>
+                                                        <a target="_blank" href="./njx5nultispring/extension-multi-upload.html">[대용량 통합 Sample 01]</a> : FORM 없이 사용 - 함수, 이벤트, 디자인(버튼)배치      -->       
+                                                </td></tr>
+                                        </tbody>
+                                </table>
+                                <p>&nbsp;</p>
+                                <table class="samList" id="tlb-multi">
+                                        <colgroup>
+                                                <col width="15%">
+                                                <col width="85%">
+                                        </colgroup>
+                                        <thead>
+                                                <tr><td colspan="2" class="tableTit">멀티 버전</td></tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr><th><a target="_blank" href="./multi/basic.html">생성</a></th><td>컴포넌트를 생성하는 예제입니다.
+                                                                => <font color="red">multi</font> 모드로 사용, IE모드는 사용 불가 !!!</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/simple-upload.html">업로드</a></th><td>파일을 업로드하는 가장 간단한 예제입니다.
+                                                                => <a target="_blank" href="./multi/simple-upload2.html"><font color='red'>[요약Sample]</font></a>
+                                                </td></tr>
+                                                <tr><th><a target="_blank" href="/dext/x5-manual/product/upload-mode.html">업로드 모드</a></th><td>
+                                                        <b>ORAF(기본)</b>는 업로드할 파일 모두를 하나의 요청에 담아 전송합니다.<br/>
+                                                        <b>OROF</b>는 업로드할 파일의 개수 만큼 요청이 이루어집니다.<br/>
+                                                        <b>EXNJ</b>는 대용량 업로드를 위한 방식으로써, 개별 혹은 전체 파일의 크기가 2GB를 넘는 경우에 사용됩니다.
+                                                                => <a target="_blank" href="/dext/x5-manual/product/upload-extension.html">
+                                                                <font color='red'>[DEXTUploadNJ 서버 컴포넌트]와 함께 우리가 사용할 모드 !!!</font></a>
+                                                        </td></tr>
+                                                <tr><th><a target="_blank" href="./multi/error.html">오류</a></th><td>오류를 처리하는 방법을 설명하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/virtual-file.html">가상 파일</a></th><td>가상 파일을 등록하는 예제입니다.
+                                                                => <font color="red">수정모드</font> 에서 응용 사용 필요 ! ()
+                                                </td></tr>
+                                                <tr><th><a target="_blank" href="./multi/selection.html">선택</a></th><td>항목을 선택하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/deletion.html">삭제/복구</a></th><td>항목을 삭제 또는 복구하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/information.html">항목</a></th><td>항목이 가지고 있는 정보를 확인하는 예제입니다.
+                                                        => 선택 disable/전체선택 기능 불가 ??? ==>> Check 기능만 이용 !
+                                                </td></tr>
+                                                <tr><th><a target="_blank" href="./multi/metadata.html">메타데이터</a></th><td>메타 데이터를 다루는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/sorting.html">정렬</a></th><td>항목을 정렬하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/filtering.html">필터링1</a></th><td>항목의 개수 및  크기를 제한하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/filtering-extension.html">필터링2</a></th><td>파일 확장자를 제한하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/filtering-duplication.html">필터링3</a></th><td>중복된 파일을 제한하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/filtering-silence.html">필터링4</a></th><td>전체 차단, 부분 허용에 대한 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/styling-list.html">스타일1</a></th><td>리스트(list) 형식 스타일 설정 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/styling-tile.html">스타일2</a></th><td>타일(tile) 형식 스타일 설정 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/styling-single.html">스타일3</a></th><td>싱글(single) 형식 스타일 설정 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/uploading-mode.html">업로드 모드</a></th><td>ORAF/OROF 파일 업로드 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/downloading.html">다운로드</a></th><td>파일 다운로드 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/opening.html">열기</a></th><td>파일 열기 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/submitting-form.html">폼 전송</a></th><td>파일과 폼 데이터를 전송하는 예제입니다.
+                                                                => <font color="red">파일과 폼 데이터를 분리해서 처리</font>
+                                                </td></tr>
+                                                <tr><th><a target="_blank" href="./multi/updating-form.html">수정 모드</a></th><td>게시물 수정처럼 신규 파일을 등록하고, 기존 파일을 삭제하는 예제입니다.
+                                                                => <font color="red">파일과 폼 데이터를 분리해서 처리  ==>> 현재방식 (개선필요)</font>
+                                                </td></tr>
+                                                <tr><th><a target="_blank" href="./multi/preview.html">미리보기</a></th><td>이미지 파일 뷰어를 지원합니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/folder-upload.html">폴더 업로드</a></th><td>파일을 업로드할 때, 폴더 구조로 업로드하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/hiding-progressive.html">진행창 숨기기</a></th><td>기본 진행창을 사용하지 않는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/changing-progress.html">진행창 변경</a></th><td>진행창을 변경하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/i18n.html">국제화</a></th><td>언어 설정에 맞도록 리소스를 변경하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/advance-multiple.html">활용1</a></th><td>컴포넌트를 여러 개 사용하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/advance-multiple-single.html">활용2</a></th><td>SINGLE 스타일로 컴포넌트를 여러 개 사용하는 예제입니다.</td></tr>
+                                                <tr><th><a target="_blank" href="./multi/compression-downloading.html">압축 다운로드</a></th><td>파일 압축 다운로드 예제입니다.</td></tr>
+                                        </tbody>
+                                </table>
+                                <p>&nbsp;</p>
+                        <table class="samList" id="tlb-hd">
+                                        <colgroup>
+                                                <col style="width: 15%" />
+                                                <col style="width: 85%" />
+                                        </colgroup>
+                                        <thead>
+                                                <tr><td colspan="2" class="tableTit">HD 응용프로그램</td></tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr><th><a href="./hd/hd-downloading.html">다중 파일 다운로드</a></th><td>HD 응용프로그램을 사용하여 다중 파일 다운로드를 수행하는 예제입니다.</td></tr>
+                                                <tr><th><a href="./hd/hd-event.html">다운로드 이벤트</a></th><td>HD 응용프로그램을 사용할 때 이벤트 주소를 호출하는 예제입니다.</td></tr>
+                                        </tbody>
+                                </table>
+                                <p>&nbsp;</p>
+                        <table class="samList" id="tlb-etc">
+                                        <colgroup>
+                                                <col width="15%">
+                                        <col width="85%">
+                                        </colgroup>
+                                        <thead>
+                                                <tr><td colspan="2" class="tableTit">기타</td></tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr><th><a href="./etc/create-browser.html">브라우저 구분</a></th><td>컴포넌트를 브라우저마다 다르게 사용하는 예제입니다.</td></tr>
+                                        </tbody>
+                                </table>
+                                <p>&nbsp;</p>
+                        </article>
+                </div>
+                <footer>
+        <div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+        </footer>
+        </div>
+</body>
+</html>

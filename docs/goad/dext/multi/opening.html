@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "서강대교_509147.jpg", size: 509147, openUrl: dx5.canonicalize("../service/common-open.do?key=FID0001") });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "우도해변_239826.jpg", size: 239826, openUrl: dx5.canonicalize("../service/common-open.do?key=FID0002") });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "코스모스 (빈공간) 195779.jpg", size: 195779, openUrl: dx5.canonicalize("../service/common-open.do?key=FID0003") });
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 열기</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">파일 열기 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>DEXTUploadX5 멀티 버전은 데스크탑 프로그램 실행 기능을 제공하지 않습니다.</p>
+						<p>대신 브라우저로 열 수 있는 파일이라면 새 창으로 대상을 열 수 있습니다. 일반적으로 브라우저가 열 수 있는 파일은 이미지처럼 한정적입니다.</p>
+						<p>열기가 가능한 대상은 반드시 openUrl 속성 값을 가지고 있는 가상 파일이어야 합니다.</p>
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// openUrl 속성에 다운로드 웹 경로가 존재해야 합니다.
+dx.addVirtualFile({ ... name: "서강대교_509147.jpg", openUrl: "http://.../service/common-open.do?key=FID0001" });</pre>						
+						<p>웹으로 접근이 가능한 경로라면 굳이 애플리케이션을 통하여 다운로드할 필요는 없습니다.</p>
+						<p class="notice">그러나 대상 경로가 웹에서 직접적으로 접근이 불가능한 경우, 서버 측에서 DEXTUploadNJ를 사용하여 inline 형식으로 파일을 전송토록 작성해야 합니다.</p>
+						<p>&nbsp;</p>
+						<p>이 샘플은 파일 다운로드 처리를 컨트롤러(FileServiceController 클래스)가 담당하며 common-open.do로 매핑되어 있습니다.</p>
+						<pre class="prettyprint">
+# 서버 측 설정입니다.						
+
+DEXTUploadNJFileDownloadView dextnj = new DEXTUploadNJFileDownloadView(target);
+dextnj.setMime("image/jpg");
+dextnj.setInline(true);
+return new ModelAndView(dextnj);
+</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

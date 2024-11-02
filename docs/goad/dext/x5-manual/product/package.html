@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+    <title>제품 구성</title>
+    <link rel="stylesheet" href="../common/css/global.css" type="text/css" />
+    <link rel="stylesheet" href="../common/js/prettify/tomorrow.css" type="text/css" />
+    <script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../common/js/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../common/js/init_reference.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="man_product">DEXTUploadX5</div>
+        <div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../common/images/menu.svg" alt="menu toggle" /></a>제품설명 &gt; 제품 구성</div>
+    </div>
+    <div class="snb"><iframe src="../menu.html" frameborder="0"></iframe></div>
+    <div class="cnb">
+        <div class="main">
+            <div class="inner_content">
+                <h1 class="man_title">제품 구성</h1>
+                <p>DEXTUploadX5 제품은 <a href="http://www.dextsolution.com">덱스트솔루션 사이트(http://www.dextsolution.com)</a>에서 zip 파일로 배포되고 있습니다.</p>
+                <p>제품은 dextuploadx5-{version}.zip 형식의 이름으로 배포되며, 파일 및 디렉터리(폴더)가 압축되어 있습니다.</p>
+                <ul>
+                    <li>dx5 디렉터리(폴더)에는 DEXTUploadX5 제품을 사용하여 서비스하는데에 필요로 하는 모든 리소스가 포함되어 있습니다.</li>
+                    <li>manual 디렉터리(폴더)에는 HTML 기반 제품 매뉴얼이 있습니다. <span class="notice">(DOC(X), CHM, PDF와 같은 형식은 제공되지 않습니다.)</span></li>
+                    <li>samples 디렉터리(폴더)에는 DEXTUploadX5 제품의 기능을 살펴볼 수 있는 예제가 포함되어 있습니다.</li>
+                    <li>eula.txt 파일은 제품 사용 약관 내용을 담고 있습니다.</li>
+                </ul>
+                <p>&nbsp;</p>
+                <p>DEXTUploadX5 제품은 클라이언트 파일 업로드 제품입니다.</p>
+                <p>제품은 서버(Server)에 설치하는 과정이 존재하지 않으며, 사용자가 브라우저를 통하여 HTTP 프로토콜(http/https)로 접근할 수 있는 위치에 리소스만 존재하면 됩니다.</p>
+                <p>
+                    압축을 풀었을 때 생성되는 dx5 디렉터리는 제품에 필요한 필수 리소스들이 포함되어 있습니다.
+                    그러므로 이 디렉터리를 바로 웹서버에 복사하거나, 소스 상에서 web root 하위로 복사하여 실행(테스트/운영) 시점에 브라우저로 접근이 가능하도록 설정만 해주면 됩니다.
+                </p>
+                <p class="notice">웹서버와 WAS를 구분지어 사용하는 환경이라면, 도메인이 같을 때, WAS가 아닌 웹서버에 위치하더라도 상관없습니다.</p>
+                <p>(1.4.1.0 버전 이전 구조)</p>
+                <p><img src="../common/images/dx5-copied.png" alt="리소스 복사" /></p>
+                <p>(1.4.1.0 버전 이후 구조)</p>
+                <p><img src="../common/images/dx5-copied-1400.png" alt="리소스 복사" /></p>
+                <p>&nbsp;</p>
+                <p>DEXTUploadX5는 멀티 모듈과 IE 모듈을 가지고 있으며, 두 가지로 나누어 운영이 가능합니다.</p>
+                <p class="notice">
+                    IE 모듈은 Internet Explorer에서만 동작하도록 만들어진 컴포넌트이며 ActiveX 기술을 사용합니다. <br />
+                    그러므로 IE 모듈은 사용자 PC에서 최초 한 번은 클라이언트 설치 프로그램을 다운로드 받아 사용자가 직접 수동 설치를 해야 할 필요가 있습니다.<br />
+                    클라이언트 설치 프로그램(dextuploadx5-activex-installer.exe)이란, DEXTUploadX5 제품에서 IE 모듈로 서비스를 하는 경우, 사용자 PC에 컴포넌트를 설치하는 것을 지원하는 프로그램입니다.<br />
+                    <br />
+                    앞서 설명했듯이 DEXTUploadX5 제품을 사용하기 위해서 서버에 제품을 설치하는 과정은 없습니다. 클라이언트 설치와 혼동하지 마시길 바랍니다.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Copyright ⓒ DEVPIA Inc. All rights reserved</div>
+</body>
+</html>

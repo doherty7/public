@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {}		
+		
+		function onDX5UploadStopped(id) {
+			alert("업로드가 중단되었습니다.");
+		}
+				
+		function onDX5UploadCompleted(id) {
+			var dx = dx5.get(id), str = "", arr = dx.getResponses();
+			for (var i = 0, len = arr.length; i < len; i++) {
+				str += arr[i] + "\n";
+			}
+			alert("업로드가 완료되었습니다.\n응답 데이터는 다음과 같습니다.\n" + str);
+		}
+		
+		function uploadModeHandler(cbo) {
+			var mode = cbo.options[cbo.selectedIndex].value;
+			dx5.get("dext5").setUploadMode(mode);
+			alert(dx5.get("dext5").getUploadMode() + "(으)로 변경되었습니다.");
+		}
+
+		function upload(flag) {
+			var dx = dx5.get("dext5"), mode = dx.getUploadMode(), uploadUrl = "";
+
+			if (mode == "ORAF") {
+				uploadUrl = dx5.canonicalize("/sample/dext/service/upload-oraf.do");
+			} else if (mode == "OROF") {
+				uploadUrl = dx5.canonicalize("/sample/dext/service/upload-orof.do");
+			} else if (mode == "EXNJ") {
+				alert("현 샘플에서 지원하지 않습니다. 대용량 파일 업로드 샘플을 참고하시길 바랍니다.");
+				return;
+			}
+
+			dx.setUploadURL(uploadUrl);
+			dx.upload(flag);
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 업로드 모드</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">ORAF/OROF 파일 업로드 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>DEXTUploadX5는 파일 업로드는 동작 방식으로 세 가지 모드를 지원합니다.</p>
+						<ul class="notice">
+							<li>ORAF(기본): 업로드할 파일 모두를 하나의 요청에 담아 전송합니다. 업로드가 완료되면 응답 데이터는 1개가 됩니다.</li>
+							<li>OROF: 업로드할 파일의 개수만큼 요청이 이루어집니다. 업로드가 완료되면 파일의 개수만큼 응답 데이터가 생성됩니다.</li>
+							<li>EXNJ: OROF와 동일하나, 대용량 업로드로써, 개별 혹은 전체 파일의 크기가 2GB를 넘는 경우에 사용됩니다. (대용량 파일 업로드 샘플을 참고하세요.)</li>							
+						</ul>
+						
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// ORAF, OROF, EXNJ로 업로드 모드를 설정합니다.
+dx.setUploadMode("ORAF");
+
+// 파일 업로드는 자동 바인딩 기능을 사용하지 않고 upload 함수를 사용하여 시작할 수 있습니다.
+
+// 로컬 파일 모두 업로드합니다.
+dx.upload("AUTO");
+// 선택된 로컬 파일을 모두 업로드합니다.
+dx.upload("SELECTED");
+// 체크된 로컬 파일을 모두 업로드합니다.
+dx.upload("CHECKED");
+</pre>
+						<p>ORAF로 파일 업로드를 하는 경우, 서버 측에서는 업로드한 파일을 한 번에 얻을 수 있습니다.</p>
+						<pre class="prettyprint">
+# 서버 측 설정입니다.						
+...
+FileItem item = null;
+// for 같은 루프문을 사용하여 업로드된 모든 파일을 한 번에 얻습니다.
+for (MultipartFile file : x5.getDEXTUploadX5_FileData()) {
+  item = (FileItem)file;
+  if (item.isEmpty() == false) {
+    item.save();
+    ...
+  }
+}
+...
+</pre>
+							<p>OROF로 파일 업로드를 하는 경우, 서버 측에서는 파일 1개당 한 번의 요청(request)가 발생합니다.</p>
+							<pre class="prettyprint">
+# 서버 측 설정입니다.						
+...
+// OROF이므로 서버로 전달되는 파일 폼 요소는 오직 1개입니다.
+FileItem file = (FileItem)x5.getDEXTUploadX5_FileData().get(0);
+if (file.isEmpty() == false) {
+  file.save();
+  ...
+}
+...
+</pre>
+						<p class="notice">클라이언트는 몇 가지 설정만으로 업로드 방식을 변경할 수 있지만, 서버 측 코드는 업로드 방식에 따라 구성이 완전히 달라질 수 있습니다.</p>
+						<p class="notice">업로드 방식은 서버 측에서 런타임에 쉽게 바꿀 수 있는 부분이 아니므로, 업로드 모드는 구현하고자 하는 서비스에 맞는 방식을 신중히 고민하시고 선택하시길 바랍니다.</p>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+						<p>&nbsp;</p>						
+						<p>
+							<select id="cbo-upload-mode" onchange="uploadModeHandler(this);">
+								<option value="ORAF">ORAF: 하나의 요청으로 파일 모두 전송</option>
+								<option value="OROF">OROF: 업로드할 파일 개수 만큼 요청</option>
+								<option value="EXNJ">EXNJ: 대용량 업로드</option>
+							</select>
+						</p>
+						<p>
+							DEXTUploadX5는 자사의 기존 클라이언트 제품과 달리 Form 데이터와 가상 파일 정보(삭제)를 서버로 전송하지 않으며,<br />
+							순수하게 로컬 자원만 업로드 대상이 됩니다.<br />
+							그러므로 파일 삭제 작업처럼, 서버로 액션을 전달하려는 경우에는 업로드에서 처리하지 않고, 따로 Ajax나 Form submit을
+							사용하여 처리하셔야 합니다.
+						</p>
+						<p>
+							<button id="btn-upload-auto" onclick="upload('AUTO');">업로드(자동)</button>
+							<button id="btn-upload-selected" onclick="upload('SELECTED');">업로드(선택된 것만)</button>
+							<button id="btn-upload-checked" onclick="upload('CHECKED');">업로드(체크된 것만)</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

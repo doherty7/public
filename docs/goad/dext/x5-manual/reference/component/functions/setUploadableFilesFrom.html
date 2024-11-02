@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>setUploadableFilesFrom</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; setUploadableFilesFrom</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">setUploadableFilesFrom</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+object.setUploadableFilesFrom(otherComponent);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>otherComponent</td>
+									<td>Object</td>
+									<td>업로드할 파일을 가져올 DEXTUploadX5 컴포넌트 객체</td>									
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>특정 컴포넌트가 가진 로컬 자원을 현재 컴포넌트에 추가합니다.</p>
+						<p>DEXTUploadX5는 파일 선택 다이얼로그, 폴더 선택 다이얼로그만을 가지고 로컬 자원을 추가할 수 있도록 설계되었습니다.</p>
+						<p>그러나 컴포넌트 끼리 항목을 주고 받아야 하는 상황에서 로컬 자원 데이터를 서로 공유해야 하는 상황이 발생합니다.</p>
+						<p>setUploadableFilesFrom 함수는 스크립트에서 로컬 자원 항목을 등록할 수 있도록 생성된 함수이며, 오로지 컴포넌트끼리 항목을 주고받을 목적으로 만들어졌습니다.</p>
+						<pre class="prettyprint">
+// 멀티 모듈에서 "dext5-uploader" 컴포넌트가 
+// "dext5-a", "dext5-b" 컴포넌트의 로컬 자원 항목을 대신 업로드하는 방법입니다.
+
+var uploader = dx5.get("dext5-uploader");
+			
+uploader.clearItems();
+
+// 첫 번째 컴포넌트로부터 업로드를 하기 위한 파일 정보를 얻습니다.
+uploader.setUploadableFilesFrom(dx5.get("dext5-a"));
+// 두 번째 컴포넌트로부터 업로드를 하기 위한 파일 정보를 얻습니다.
+uploader.setUploadableFilesFrom(dx5.get("dext5-b"));
+
+uploader.setUploadURL("업로드 경로");
+uploader.upload("AUTO");
+</pre>
+						<p class="notice">setUploadableFilesFrom 함수를 사용하여 파일을 얻은 컴포넌트는 IE 모듈에서는 화면에 항목이 그려지지만, 멀티 모듈에서는 UI 변화가 없습니다.</p>
+                        <p class="notice">2.3.1.0 버전 이전에는 함수명이 setUploableFilesFrom이었습니다.</p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+// 두께
+.text-light {
+	font-weight: 300 !important;
+}
+
+.text-normal {
+	font-weight: normal !important;
+}
+
+.text-bold {
+	font-weight: bold !important;
+}
+
+// 글꼴
+.text-title {
+	@include media-breakpoint-up(lg) {
+		font-family: $font-family-title;
+	}
+}
+
+.title1,
+.title2 {
+	position: relative;
+	font-weight: bold;
+
+	@if ($lang==ko) {
+		color: #222;
+	}
+
+	&:before {
+		flex: 0 0 auto;
+		content: '';
+	}
+
+	@if ($lang !=ko) {
+		@include media-breakpoint-down(md) {
+			font-family: $font-family-title;
+		}
+	}
+}
+
+// 타이틀
+.title1 {
+	&:before {
+		position: absolute;
+		left: 0;
+
+		width: 6px;
+		height: 20px;
+		background-color: $primary;
+		border-radius: 3px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		padding-left: 18px;
+		font-family: $font-family-title;
+		font-size: 24px;
+		line-height: 38px;
+
+		&:before {
+			top: 9px;
+			margin-right: 12px;
+		}
+
+		@if ($lang !=ko) {
+			line-height: 32px;
+
+			&:before {
+				top: 4px;
+
+				.ie & {
+					top: 2px;
+				}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		padding-left: 16px;
+		font-size: 20px;
+		line-height: 30px;
+
+		&:before {
+			top: .29em;
+			margin-right: 10px;
+			height: 18px;
+		}
+
+		@if ($lang !=ko) {
+			line-height: 26px;
+
+			&:before {
+				top: .22em;
+			}
+		}
+	}
+}
+
+.title2 {
+	&:before {
+		position: absolute;
+		left: 0;
+		width: 11px;
+		height: 11px;
+		border: 3px solid $primary;
+		border-radius: 50%;
+		box-sizing: border-box;
+		content: '';
+	}
+
+	@include media-breakpoint-up(lg) {
+		padding-left: 19px;
+		font-family: $font-family-title;
+		font-size: 20px;
+		line-height: 34px;
+
+		&:before {
+			top: .55em;
+			margin-right: 8px;
+		}
+
+		@if ($lang !=ko) {
+			font-size: 22px;
+			line-height: 30px;
+
+			&:before {
+				top: .43em;
+
+				.ie & {
+					top: .25em;
+				}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		padding-left: 16px;
+		font-size: 19px;
+		line-height: 29px;
+
+		@if ($lang !=ko) {
+			line-height: 25px;
+		}
+
+		&:before {
+			top: .46em;
+			margin-right: 5px;
+
+			@if ($lang !=ko) {
+				top: .35em;
+			}
+		}
+	}
+}
+
+.title3 {
+	font-weight: bold;
+	line-height: 1;
+
+	.ico {
+		margin-top: -2px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		font-family: $font-family-title;
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+
+	@include media-breakpoint-down(md) {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+}
+
+// 링크 텍스트
+.link {
+	color: $primary;
+	border-bottom: 1px solid $primary;
+}
+
+.text-sm {
+	font-size: smaller;
+}
+
+.text-md {
+	font-size: $font-size-base;
+
+	@include media-breakpoint-up(lg) {
+		font-family: $font-family-base;
+	}
+}
+
+@if ($lang==ko) {
+	.text-title-md {
+		font-weight: bold;
+
+		@include media-breakpoint-up(lg) {
+			font-family: $font-family-title;
+			font-size: 20px;
+			line-height: 32px;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 19px;
+			line-height: 29px;
+		}
+	}
+
+	.text-lg {
+		font-weight: bold;
+
+		@include media-breakpoint-up(lg) {
+			font-size: $font-size-lg;
+			font-family: $font-family-title;
+			line-height: 38px;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 20px;
+			line-height: 30px;
+		}
+	}
+
+	.text-xl {
+		font-weight: bold;
+
+		@include media-breakpoint-up(lg) {
+			font-size: $font-size-xl;
+			font-family: $font-family-title;
+			line-height: 44px;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 24px;
+			line-height: 34px;
+		}
+	}
+
+	.text-title-xl {
+		font-weight: 300;
+
+		@include media-breakpoint-up(lg) {
+			margin-bottom: 46px;
+			font-size: 40px;
+			line-height: 1.3;
+			font-family: $font-family-title;
+		}
+
+		@include media-breakpoint-down(md) {
+			margin-bottom: 22px;
+			font-size: 24px;
+			line-height: 29px;
+			font-family: $font-family-mobile;
+		}
+	}
+}
+
+@if ($lang !=ko) {
+	.title1+.title-square {
+		@include media-breakpoint-up(lg) {
+			margin-left: 16px;
+		}
+	}
+
+	.title-square {
+		position: relative;
+		font-weight: bold;
+		font-family: $font-family-title;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #ffd553;
+			z-index: -1;
+		}
+
+		@include media-breakpoint-up(lg) {
+			padding: 12px 0 3px 28px;
+			font-size: 22px;
+			line-height: 30px;
+
+			&:before {
+				width: 50px;
+				height: 45px;
+			}
+		}
+
+		@include media-breakpoint-down(md) {
+			padding: 4.5px 0 0 15px;
+			font-size: 19px;
+			line-height: 25px;
+
+			&:before {
+				width: 30px;
+				height: 27px;
+			}
+		}
+	}
+
+	.text-title-md {
+		font-family: $font-family-title;
+
+		@include media-breakpoint-up(lg) {
+			font-size: 22px;
+			line-height: 30px;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 19px;
+			line-height: 25px;
+		}
+	}
+
+	.text-lg {
+		font-family: $font-family-title;
+
+		@include media-breakpoint-up(lg) {
+			font-size: 24px;
+			line-height: 32px;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 20px;
+			line-height: 26px;
+		}
+	}
+
+	.text-xl {
+		font-family: $font-family-title;
+
+		@include media-breakpoint-up(lg) {
+			font-size: 30px;
+			line-height: 38px;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 23px;
+			line-height: 30px;
+		}
+	}
+
+	.text-xxl {
+		font-family: $font-family-title;
+
+		@include media-breakpoint-up(lg) {
+			font-size: 36px;
+			line-height: 48px;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 26px;
+			line-height: 34px;
+		}
+	}
+}

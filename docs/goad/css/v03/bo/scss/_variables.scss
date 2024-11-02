@@ -1,0 +1,47 @@
+//
+// Global variables
+//
+
+// 사이트 기본 설정
+$default: #333;
+$primary: #0f4573 !default;
+$lightprimary: #036fca !default;
+$lightgray: #f9f9f9 !default;
+$white : #fff;
+$border-color-base: #e5e5e5;
+$border-color-dark: #e3e3e3;
+$purple : #9c6ce6 !important;
+
+$font-family-base: "Noto Sans CJK KR",
+"Noto Sans KR",
+"NotoSansKR",
+-apple-system,
+BlinkMacSystemFont,
+'Nanum Gothic',
+"malgungothic",
+"Helvetica Neue",
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol",
+"Noto Color Emoji" !default;
+
+// breakpoints
+$grid-breakpoints: (xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 1025px,
+	xl: 1200px) !default;
+
+$url-img: '../../img/v03';
+
+// 그리드
+$min-width: 360px !default;
+$max-width: 1440px !default;
+
+$header-height: 116px !default;
+$breadcrumb-height: 54px !default;
+$sidebar-width: 270px !default;
+$sidebar-margin: 60px !default;
+$footer-height: 220px !default;

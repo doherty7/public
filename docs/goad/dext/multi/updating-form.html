@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) { alert(id + " => " +  code + "\n" + msg); }
+
+		function onDX5Created(id) {
+			alert('Leady....');
+			var dx = dx5.get(id);			
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/upload-file.do"));
+			dx.setMaxFileCount(10);
+			dx.setMaxTotalSize(10485760);
+			dx.setMaxFileSize(1048576);
+			dx.setMinFileSize(1024);
+			
+			dx.addVirtualFile({ vindex: "F00001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "F00002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "F00003", name: "코스모스.jpg", size: 195779 });
+			alert('Setting OK....');
+		}
+		
+		function onDX5UploadStopped(id) { alert("업로드가 중단되었습니다."); }
+				
+		function onDX5UploadCompleted(id) {
+			submit(dx5.get(id).getResponses()[0]);
+		}
+		
+		function submit(response) {
+			var formObj = document.getElementsByTagName("form")[0];
+			
+			formObj.newFileKeys.value = response || "";
+			
+			var arr = dx5.get("dext5").getRemovedFiles();
+			var deleted = arr.map(function(v) { return v.vindex; }).join(";");
+			formObj.deleteFileKeys.value = deleted || "";
+			
+			formObj.submit();
+		}
+
+		function transfer() {
+			var dx = dx5.get("dext5");
+			if (dx.hasUploadableItems()) {
+				dx.upload("AUTO");
+			} else {
+				submit(null);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 수정 모드</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">게시물 수정처럼 신규 파일을 등록하고, 기존 파일을 삭제하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>이미 업로드된 파일은 가상 파일을 사용하여 표현할 수 있으며, 해당 파일의 고유한 키를 vindex 속성을 사용하여 등록합니다.</p>
+						<p class="notice">즉 기존 파일을 삭제한다는 것은 가상 파일 삭제를 의미합니다.</p>
+						<p>앞의 "폼 전송" 예제와 똑같지만, submit 시점에 삭제된 가상 파일 정보를 함께 전달해 주어야 하는 차이가 있습니다.</p>												
+						<pre class="prettyprint">
+function submit(response) {
+  var formObj = document.getElementsByTagName("form")[0];
+  	
+  formObj.newFileKeys.value = response || "";
+  
+  // 삭제된 가상 파일 배열을 얻습니다.	
+  var arr = dx5.get("dext5").getRemovedFiles();  
+  // vindex;vindex;... 형식의 문자열을 생성하여 등록합니다.
+  var deleted = arr.map(function(v) { return v.vindex; }).join(";");  
+  formObj.deleteFileKeys.value = deleted || "";
+	
+  formObj.submit();
+}
+</pre>
+						<p>서버 측에서 최종적으로 폼 데이터를 처리할 때, 삭제된 파일에 대한 처리도 함께 해주는 것이 좋습니다.</p>
+						<pre class="prettyprint">
+@RequestMapping(value = "/service/form-process.do", method = RequestMethod.POST)
+public String formprocess(..., @RequestParam(value = "deleteFileKeys", required = false) String deleteFileKeys, ...) {
+
+  if (deleteFileKeys != null) {
+    // 예제에서는 단순히 파일 삭제 유무만 설정했지만, 
+    // 일반적으로는 연관된 DB 파일 테이블에서 대상 파일 정보를 삭제해야 합니다.
+  }
+  ...	
+  if (deleteFileKeys != null) {
+    // 실제 서버에 업로드된 물리적 파일을 삭제하는 과정은 모든 트랜잭션이 끝난 시점에 이루어지는 것이 안전합니다.
+  }
+  ...
+}
+</pre>					
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<form action="/sample/dext/service/form-process.do" method="post">
+							<p><input type="text" id="text1" name="text1" value="text data"/></p>
+							<p>
+								<input type="radio" id="rdo1-a" name="radio1" value="A" checked="checked"/><label for="rdo1-a">A</label>
+								<input type="radio" id="rdo1-b" name="radio1" value="B"/><label for="rdo1-b">B</label>
+							</p>
+							<p>
+								<input type="checkbox" id="chk1" name="checkbox1" value="Bird" checked="checked"/><label for="chk1">Bird</label>
+								<input type="checkbox" id="chk2" name="checkbox2" value="Lion"/><label for="chk2">Lion</label>
+								<input type="checkbox" id="chk3" name="checkbox3" value="Shark"/><label for="chk3">Shark</label>
+							</p>
+							<p>
+								<select name="select1">
+									<option value="Small">Small</option>
+									<option value="Big">Big</option>
+								</select>
+							</p>
+							<div id="dext5-container" style="width:500px; height:300px;"></div>
+							<p>&nbsp;</p>
+							<p>
+								<button id="btn-add-files" type="button">파일 추가</button>
+								<button id="btn-upload-auto" type="button" onclick="transfer();">등록/전송/업로드</button>
+								<input type="hidden" id="newFileKeys" name="newFileKeys"/>
+								<input type="hidden" id="deleteFileKeys" name="deleteFileKeys"/>
+							</p>
+						</form>						
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({ mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files" });
+	</script>
+</body>
+</html>

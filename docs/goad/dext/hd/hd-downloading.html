@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.setUIStyle({ filterVisible: false });
+			dx.addVirtualFileList([
+				{ vindex: "IDX0001", name: "가상파일_경로가_없어_다운로드_불가.txt", size: 12345 },
+				{ vindex: "IDX0002", name: "잠긴-가상파일_경로가_없어_다운로드_불가.txt", size: 45678, lock: true },
+				{ vindex: "IDX0003", name: "서강대교_509147.jpg", size: 509147, url: dx5.canonicalize("../files/attach/" + encodeURIComponent("서강대교_509147.jpg")) },
+				{ vindex: "IDX0004", name: "우도해변_239826.jpg", size: 239826, url: dx5.canonicalize("../files/attach/" + encodeURIComponent("우도해변_239826.jpg")) },
+				{ vindex: "IDX0005", name: "코스모스 (빈공간) 195779.jpg", size: 195779, url: dx5.canonicalize("../service/common-download.do?key=FID0003"), chunkSize: 10 }
+			]);
+		}
+		
+		function showDownloadPath() {
+			dx5.get("dext5").getDownloadPathOfHD(function (path) {
+				alert("현재: " + path);
+			});
+		}
+		
+		function openFolderDialog() {
+			dx5.get("dext5").openDownloadPathDialogOfHD(function (path) {
+				alert("설정: " + path);
+			});
+		}
+
+		function setDownloadFullPath() {
+			var npath = document.getElementById("txt-download-fullpath").value;
+			dx5.get("dext5").setDownloadPathOfHD(npath, function (path) {
+				alert("설정: " + path);
+			});
+		}
+
+		function setDownloadSpecialPath() {
+			var cbo = document.getElementById("cbo-special-path"),
+				subpath = document.getElementById("txt-download-subpath").value,
+				special = cbo.options[cbo.selectedIndex].value,
+				fullpath = "";
+
+			fullpath = special + (subpath.indexOf("\\") == 0 ? "" : "\\") + subpath;
+
+			dx5.get("dext5").setDownloadPathOfHD(fullpath, function (path) {
+				alert("설정: " + path);
+			});
+		}
+		
+		function download(flag) {
+			dx5.get("dext5").downloadToHD(flag);
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-ie">HD 응용프로그램</a> &gt; 다중 파일 다운로드</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">HD 응용프로그램을 사용하여 다중 파일 다운로드를 수행하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>DEXTUploadX5 HD 응용프로그램은 설치형 기반 프로그램으로써 멀티 버전, IE 버전 관계 없이 다중 파일 다운로드를 수행할 수 있도록 도와주는 프로그램입니다.</p>
+						<p>&nbsp;</p>
+						<p class="notice">HD 응용프로그램은 브라우저 플러그인이 아니며 EXE 파일로 제공됩니다. 그러므로 클라이언트 사용자가 컴포넌트를 내려 받아 직접 설치를 해주어야 합니다.</p>
+						<p class="notice">로컬 PC에 설치가 되지 않은 경우 dextuploadx5-configuration.js 파일에 설정된 hdDownloadURL 위치로 페이지가 이동되므로 대상 페이지에서 반드시 컴포넌트를 다운로드할 수 있도록 구성하셔야 합니다.</p>
+						<p class="notice">설치 파일(dextuploadx5-hd-installer.exe 또는 dextuploadx5-hd-installer-x64.exe)을 사용하여 설치를 할 때에는 브라우저를 닫을 필요는 없습니다.</p>
+						<p class="notice">만일 설치 이후에도 다운로드 페이지로 계속 이동을 한다면, 현재 설치된 버전이 dextuploadx5-configuration.js 에 명시된 버전보다 낮거나, 사용자의 PC에서 HD 응용프로그램을 사용할 수 없도록 차단이 된 상태일 수 있습니다.</p>
+						<p class="notice">전자의 경우, 상위 버전으로 교체를 하는 방법이 있으며, 후자라면 PC에 설치된 백신같은 보안 솔루션에 의한 문제인지 확인해야 합니다.</p>
+						<p>&nbsp;</p>
+						<p>파일을 다운로드하려면 downloadToHD 함수를 사용합니다.</p>
+						<p>다운로드 가능한 대상은 반드시 url 속성 값을 가지고 있는 가상 파일이어야 합니다.<span class="notice">(멀티 버전은 downUrl, url 모두 사용할 수 있습니다.)</span></p>
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// url 속성에 다운로드 웹 경로가 존재해야 합니다.
+dx.addVirtualFile({ ... name: "서강대교_509147.jpg", url: "http://.../서강대교_509147.jpg" });
+
+// 가상 파일의 고유 아이디를 사용하여 다운로드를 수행합니다.
+dx.downloadByIdToHD("다운로드할 가상 파일의 고유 아이디");
+
+// 플래그 값에 따라 다운로드를 수행합니다.
+// AUTO: 첫 번째 가상 파일을 다운로드합니다.
+// SELECTED: 선택된 대상 중에 첫 번째 가상 파일을 다운로드합니다.
+// CHECKED: 체크된 대상 중에 첫 번째 가상 파일을 다운로드합니다.
+dx.downloadToHD("SELECTED");
+</pre>
+						<p class="notice">다운로드하고자 하는 주소에 다국어 문자가 포함되어 있는 경우, 서버가 톰캣이라면, 다운로드할 대상을 찾지 못하고 404 응답코드를 반환할 수있습니다. 톰캣의 경우 URL은 ISO-8859-1으로 디코딩하기 때문에 발생하는 문제이므로, 톰캣의 URL 인코딩 방법을 변경해줘야 합니다.</p>
+						<pre class="prettyprint">
+# server.xml
+&lt;Connector connectionTimeout="20000" 
+	port="8080" protocol="HTTP/1.1" 
+	redirectPort="8443" 
+	<span style="font-weight:bold;text-decoration:underline">URIEncoding="UTF-8"</span>/&gt;
+</pre>
+						<p class="notice">아파치와 연결하기 위해 mod_jk를 사용한다면 mod_jk 설정에도 동일하게 적용해야 합니다.</p>
+						<pre class="prettyprint">
+# server.xml
+&lt;Connector port="8009" protocol="AJP/1.3" 
+	redirectPort="8443"
+	<span style="font-weight:bold;text-decoration:underline">URIEncoding="UTF-8"</span>/&gt;
+</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>파일 다운로드 및 설정</p>
+						<p>
+							<button type="button" onclick="showDownloadPath();">현재 다운로드 경로 보기</button>
+							<button type="button" onclick="openFolderDialog();">폴더 다이얼로그를 사용하여 다운로드 경로를 변경</button>			
+						</p>
+						<p>
+							수동으로 다운로드 경로를 설정할 수 있습니다. 사용자마다 동일한 경로에 다운로드하고자 하는 경우 사용합니다.<br />
+							경로를 문자열로 직접 설정할 시에는 백슬래시(\\) 두 개를 사용하여 구분지어야 합니다.<br />
+							input으로 입력하는 경우 백슬래시(\) 한 개만 사용합니다.
+						</p>
+						<p>
+							<input id="txt-download-fullpath" placeholder="ex) d:\aaa\bbb" style="width: 400px;" />
+							<button type="button" onclick="setDownloadFullPath();">설정</button>
+						</p>
+						<p>
+							특정 위치를 키워드로 지정할 수 있습니다.<br />
+							&lt;home&gt;: 사용자 홈 폴더,
+							&lt;doc&gt;: 사용자 문서 폴더,
+							&lt;desktop&gt;: 사용자 바탕화면 폴더<br />
+							특정 키워드를 입력하고, 뒤에 추가 경로를 넣어, 하위 폴더를 지정할 수 있습니다.
+						</p>
+						<p>
+							<select id="cbo-special-path">
+								<option value="<home>">&lt;home&gt;</option>
+								<option value="<doc>">&lt;doc&gt;</option>
+								<option value="<desktop>">&lt;desktop&gt;</option>
+							</select>
+							<input id="txt-download-subpath" placeholder="ex) \aaa\bbb" style="width: 300px;" />
+							<button type="button" onclick="setDownloadSpecialPath();">설정</button>
+						</p>
+						<p>일반적으로 가상 파일 모두 다운로드 대상이 되며, 가상 파일의 url 속성을 다운로드 대상으로 합니다.</p>
+						<p>
+							<button type="button" onclick="download('AUTO');">다운로드(자동)</button>
+							<button type="button" onclick="download('CHECKED');">다운로드(체크된 것만)</button>
+							<button type="button" onclick="download('SELECTED');">다운로드(선택된 것만)</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({ mode: "multi", id: "dext5", parentId: "dext5-container" });
+	</script>
+</body>
+</html>

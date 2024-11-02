@@ -1,0 +1,36 @@
+    /**
+     * Choo Hyunwook
+     * 2018.10.29
+     * 회원가입 STEP03 광고주, 매체사, 협력사 검색 div 생성한 id 의 css 파일 추가
+     * popAreaAD, popAreaMD, popAreaCO
+    */
+#popAreaAD{
+    display: none;
+    position: absolute;
+    left:50%;
+    top:114px;
+    width: 900px;
+    background: #fff;
+    margin-left: -450px;
+    z-index: 101;
+    }
+#popAreaMD{
+    display: none;
+    position: absolute;
+    left:50%;
+    top:114px;
+    width: 900px;
+    background: #fff;
+    margin-left: -450px;
+    z-index: 101;
+    }
+#popAreaCO{
+    display: none;
+    position: absolute;
+    left:50%;
+    top:114px;
+    width: 900px;
+    background: #fff;
+    margin-left: -450px;
+    z-index: 101;
+    }

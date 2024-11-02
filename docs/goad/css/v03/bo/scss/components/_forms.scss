@@ -1,0 +1,182 @@
+// 
+// Forms
+// 
+.blind {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+	width: 1px;
+}
+
+$input-height: 40px;
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+	border: 1px solid $border-color-base;
+	border-radius: 4px;
+	font-size: 16px;
+	line-height: 24px;
+	padding: 7px 10px;
+	vertical-align: middle;
+}
+
+input[type=text],
+input[type=password],
+select {
+	height: $input-height !important;
+}
+
+input {
+	$size: 20px;
+
+	&[type=checkbox],
+	&[type=radio] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+
+		+label {
+			position: relative;
+			height: $size;
+
+			.sr-only {
+				position: static;
+				margin-right: -6px !important;
+			}
+
+			&:before {
+				box-sizing: border-box;
+				display: inline-block;
+				width: $size;
+				height: $size;
+				border: 1px solid #aaa;
+				vertical-align: middle;
+				border-radius: 0;
+				margin: -2px 5px 0 0;
+				background-color: #fff;
+				content: '';
+			}
+		}
+
+		// &:focus {
+		// 	+label {
+		// 		&:before {
+		// 			border-color: $default;
+		// 		}
+		// 	}
+		// }
+
+		// &:checked {
+		// 	+label {
+		// 		&:before {
+		// 			border-color: $primary;
+		// 		}
+		// 	}
+		// }
+
+		&:disabled {
+			+label {
+				color: #959595;
+
+				&:before {
+					opacity: .3;
+					border-color: #666;
+				}
+			}
+		}
+	}
+
+	&[type=checkbox] {
+		+label {
+			&:before {
+				border-color: transparent;
+				border-radius: 4px;
+				background: #a9a9a9 url(#{$url-img}/ico-checkbox-checked.png) no-repeat 45% center;
+			}
+		}
+
+		&:checked {
+			+label {
+				&:before {
+					background: $primary url(#{$url-img}/ico-checkbox-checked.png) no-repeat 45% center;
+					background-size: 11px 8px;
+				}
+			}
+		}
+	}
+
+	&[type=radio] {
+		+label {
+			&:before {
+				border-radius: 50%;
+			}
+		}
+
+		&:checked {
+			+label {
+				&:before {
+					background: #fff url(#{$url-img}/ico-radio-checked.png) no-repeat center center;
+					background-size: 20px 20px;
+				}
+			}
+		}
+	}
+
+	&.custom-control {
+		+label {
+			&:before {
+				border: 0;
+				border-radius: 50%;
+				background: #959595 url(#{$url-img}/ico-checkbox-checked-white.png) no-repeat 45% center !important;
+				background-size: 11px 8px !important;
+			}
+		}
+
+		&:checked {
+			+label {
+				&:before {
+					background-color: $primary !important;
+				}
+			}
+		}
+
+		&:disabled {
+			+label {
+				color: #959595;
+
+				&:before {
+					opacity: 1;
+					background-color: #dadada !important;
+				}
+			}
+		}
+	}
+}
+
+// 검색폼
+.hasDatepicker {
+	width: 116px !important;
+}
+
+.btn_date {
+	display: inline-block;
+	height: $input-height;
+
+	vertical-align: middle;
+	background: url(#{$url-img}/ico-month.png) center center no-repeat;
+}
+
+.checkbox-container {
+	label {
+		margin-right: 15px;
+	}
+}
+
+.radio-container {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 15px;
+}

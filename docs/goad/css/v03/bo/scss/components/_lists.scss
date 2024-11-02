@@ -1,0 +1,137 @@
+/* 불릿 및 목록 */
+
+.list {
+	>li {
+		position: relative;
+		@include clearfix;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+		}
+
+		&.none {
+			&:before {
+				display: none;
+			}
+		}
+	}
+}
+
+.list1,
+.list1-gray {
+	>li {
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			width: 4px;
+			height: 4px;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		>li {
+			padding-left: 12px;
+
+			&:before {
+				top: .7em;
+
+				@if ($lang !=ko) {
+					top: .6em;
+				}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		>li {
+			padding-left: 9px;
+
+			&:before {
+				top: 10px;
+
+				@if ($lang !=ko) {
+					top: 8px;
+				}
+			}
+		}
+	}
+}
+
+.list1 {
+	>li {
+		&:before {
+			background-color: $primary;
+		}
+	}
+}
+
+.list1-gray {
+	>li {
+		&:before {
+			background-color: #999;
+		}
+	}
+}
+
+.list2 {
+	>li {
+		&:before {
+			top: .7em;
+			width: 4px;
+			height: 2px;
+			background-color: #999;
+		}
+
+		@if ($lang !=ko) {
+			+li {
+				margin-top: 2px;
+			}
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		>li {
+			padding-left: 12px;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		>li {
+			padding-left: 9px;
+		}
+	}
+}
+
+.list3 {
+	>li {
+		&:before {
+			width: 3px;
+			height: 3px;
+			border-radius: 50%;
+			background-color: #959595;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		>li {
+			padding-left: 12px;
+
+			&:before {
+				top: 11px;
+			}
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		>li {
+			padding-left: 8px;
+
+			&:before {
+				top: .6em;
+			}
+		}
+	}
+}

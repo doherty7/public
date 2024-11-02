@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+    <title>국제화</title>
+    <link rel="stylesheet" href="../common/css/global.css" type="text/css" />
+    <link rel="stylesheet" href="../common/js/prettify/tomorrow.css" type="text/css" />
+    <script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../common/js/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../common/js/init_reference.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="man_product">DEXTUploadX5</div>
+        <div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../common/images/menu.svg" alt="menu toggle" /></a>제품설명 &gt; 국제화</div>
+    </div>
+    <div class="snb"><iframe src="../menu.html" frameborder="0"></iframe></div>
+    <div class="cnb">
+        <div class="main">
+            <div class="inner_content">
+                <h1 class="man_title">국제화</h1>
+                <p>DEXTUploadX5 제품은 대한민국 인터넷 환경에서 사용되도록 모든 문자열 리소스를 한국어로 작성하였습니다.</p>
+                <p>DEXTUploadX5 제품이 기본적으로 제공하는 리소스 파일은 다음과 같으며 res 디렉터리 안에 있습니다.</p>
+                <ul>
+                    <li>
+                        <p>멀티 모듈용 리소스 파일:</p>
+                        <ul>
+                            <li>dextuploadx5-svg-message-ko.txt</li>
+                            <li>dextuploadx5-svg-message-en.txt</li>
+                            <li>dextuploadx5-svg-message-ja.txt</li>
+                            <li>dextuploadx5-svg-message-zh.txt</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>IE 모듈용 리소스 파일:</p>
+                        <ul>
+                            <li>dextuploadx5-ax-message-ko.xml</li>
+                            <li>dextuploadx5-ax-message-en.xml</li>
+                            <li>dextuploadx5-ax-message-ja.xml</li>
+                            <li>dextuploadx5-ax-message-zh.xml</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>HD 응용프로그램 리소스 파일: (2.0.0.0 버전부터)</p>
+                        <ul>
+                            <li>dextuploadx5-hd-message-ko.xml</li>
+                            <li>dextuploadx5-hd-message-en.xml</li>
+                            <li>dextuploadx5-hd-message-ja.xml</li>
+                            <li>dextuploadx5-hd-message-zh.xml</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="notice">영어, 일본어, 중국어는 1.3.0.0 버전에서 추가되었습니다.</p>
+                <p>&nbsp;</p>
+                <p>
+                    글로벌 서비스를 지향하는 경우라면, 한국어를 지원하지 않는 브라우저를 사용할 수 있습니다.
+                    그러므로 다국어 환경을 유념하여 서비스를 한다면, 지원하려는 언어 리소스를 직접 만들어서 등록해주어야 합니다.
+                </p>
+                <p class="notice">(기본으로 제공하는 한국어, 영어, 일본어, 중국어를 제외한 타 언어 리소스는 직접 제작하셔야 합니다.)</p>
+                <pre class="prettyprint">
+# 멀티 모듈
+# DEXTUploadX5 리소스 위치에는 기본적으로 한국어, 영어, 일본어, 중국어 메시지 리소스가 포함되어 있습니다.
+dextuploadx5-svg-message-ko.txt
+dextuploadx5-svg-message-en.txt
+dextuploadx5-svg-message-ja.txt
+dextuploadx5-svg-message-zh.txt
+# 만일 다른 언어 리소스를 사용하려면 알맞은 언어 리소스를 생성하여 같은 위치에 넣습니다.
+dextuploadx5-svg-message-fr.txt
+</pre>
+                <pre class="prettyprint">
+# IE 모듈
+# DEXTUploadX5 리소스 위치에는 기본적으로 한국어, 영어, 일본어, 중국어 메시지 리소스가 포함되어 있습니다.
+dextuploadx5-ax-message-ko.xml
+dextuploadx5-ax-message-en.xml
+dextuploadx5-ax-message-ja.xml
+dextuploadx5-ax-message-zh.xml
+# 만일 다른 언어 리소스를 사용하려면 알맞은 언어 리소스를 생성하여 같은 위치에 넣습니다.
+dextuploadx5-ax-message-fr.xml
+</pre>
+                <pre class="prettyprint">
+# HD 응용프로그램
+# DEXTUploadX5 리소스 위치에는 기본적으로 한국어, 영어, 일본어, 중국어 메시지 리소스가 포함되어 있습니다.
+dextuploadx5-hd-message-ko.xml
+dextuploadx5-hd-message-en.xml
+dextuploadx5-hd-message-ja.xml
+dextuploadx5-hd-message-zh.xml
+# 만일 다른 언어 리소스를 사용하려면 알맞은 언어 리소스를 생성하여 같은 위치에 넣습니다.
+dextuploadx5-hd-message-fr.xml
+</pre>
+                <p>&nbsp;</p>
+                <p>
+                    제품은 내부적으로 navigator.language, navigator.browserLanguage, navigator.systemLanguage 순으로 지원되는 언어를 찾습니다.
+                    만약 리소스 suffix(ko, en, ja, zh, ...)와 일치하지 않는 경우, 특정 리소스(일반적으로 영문으로)로 고정해야 할 필요가 있습니다.
+                    dx5.create 함수를 사용하여 컴포넌트를 생성할 때, 사용할 언어 리소스를 강제로 지정할 수 있습니다.
+                    강제로 언어가 지정되면, 브라우저 언어와 상관없이 해당 언어 리소스를 찾습니다.
+                </p>
+                <pre class="prettyprint">
+// 멀티 모듈인 경우
+// 자동으로 언어를 선택합니다.
+dx5.create({ mode: "multi", id: "dext5-1", parentId: "dext5-container1" });
+// 한국어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-2", parentId: "dext5-container2", lang: "ko" });
+// 영어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-3", parentId: "dext5-container3", lang: "en" });
+// 일본어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-4", parentId: "dext5-container4", lang: "ja" });
+// 중국어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-5", parentId: "dext5-container5", lang: "zh" });
+</pre>
+                <pre class="prettyprint">
+// IE 모듈인 경우
+// 자동으로 언어를 선택합니다.
+dx5.create({ mode: "ie", id: "dext5-1", parentId: "dext5-container1" });
+// 한국어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-2", parentId: "dext5-container2", lang: "ko" });
+// 영어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-3", parentId: "dext5-container3", lang: "en" });
+// 일본어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-4", parentId: "dext5-container4", lang: "ja" });
+// 중국어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-5", parentId: "dext5-container5", lang: "zh" });
+</pre>
+<pre class="prettyprint">
+// HD 응용프로그램인 경우는 멀티 또는 IE 모듈의 리소스 설정을 따릅니다.
+// 자동으로 언어를 선택합니다.
+dx5.create({ mode: "ie", id: "dext5-1", parentId: "dext5-container1" });
+// 한국어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-2", parentId: "dext5-container2", lang: "ko" });
+// 영어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-3", parentId: "dext5-container3", lang: "en" });
+// 일본어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-4", parentId: "dext5-container4", lang: "ja" });
+// 중국어로 설정합니다.
+dx5.create({ mode: "ie", id: "dext5-5", parentId: "dext5-container5", lang: "zh" });
+</pre>
+
+                <p class="notice">
+                    브라우저의 언어를 지원하는 리소스 파일이 없다면 오류가 발생할 수 있습니다.
+                    지원되는 리소스가 없는 경우에, 다른 언어가 사용되도록 자동으로 리소스를 교체하는 변경하는 기능은 제공되지 않습니다.
+                    예를 들어, 프랑스어를 사용하는 브라우저로 서비스를 이용할 때, 프랑스어 리소스(txt, xml)가 없을 경우, 자동으로 영어를 사용하도록 강제하는 전환 기능은 제공되지 않습니다.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Copyright ⓒ DEVPIA Inc. All rights reserved</div>
+</body>
+</html>

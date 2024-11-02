@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="client.css">
+    <head>
+
+    <body>
+        <div class="bgImg"></div>
+        <div class="bgPtrn"></div>
+        <div class="bglogo"></div>
+        <div class="bglogo2"></div>
+        <div class="bgrightBottonLog"></div>
+        <div class="browserImg"> </div>
+        <div class="container"><div class="inner clearfix"><div class="main"></div></div></div>
+
+        <div class="download-layer type-common">
+            <label>
+                <h2>
+                <a class="innorixAgent" id="innorixAgent" href="#"><span class="downLoadcontent1">INNORIX 에이전트 다운로드</span></a></br></br>
+                <span class="downLoadcontent2">
+                    'INNORIX 에이전트 다운로드'를 클릭하여 에이전트를 설치해 주세요.
+                </h2>
+            </label>
+        </div>
+    </body>
+   	<script>
+        var winInstallFileURL = "./INNORIX-Agent.exe";
+        var macInstallFileURL = "./INNORIX-Agent.pkg";
+		var linuxX64InstallFileURL = "./INNORIX-Agent.bin";
+		var linuxX86InstallFileURL = "./INNORIX-Agent.bin";
+		
+        var browserOf = navigator.userAgent.toLowerCase();
+		var url = '';
+        if (navigator.platform == "Win32") {
+        	url = winInstallFileURL;
+        } else if (navigator.platform == "Win64") {
+        	url = winInstallFileURL;
+		} else if (navigator.platform == "Linux x86_64") {
+			url = linuxX64InstallFileURL;
+        } else if (navigator.platform == "Linux i686") {
+        	url = linuxX86InstallFileURL;
+        } else {
+        	url = macInstallFileURL;
+        }
+        document.querySelector('.innorixAgent').href= url;
+   	</script>
+</html>

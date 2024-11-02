@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>getDownloadStatus</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; getDownloadStatus</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">getDownloadStatus</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+                    <dd>멀티 모듈(1.1.0.0 이상), IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+status = object.getDownloadStatus();</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd></dd>
+					<dt>반환 값</dt>
+					<dd>
+						<p>다운로드 전송 상태 값을 갖는 객체</p>
+						<p>다음은 객체가 갖는 속성에 대한 설명입니다.</p>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>totalSize</td>
+									<td>Number</td>
+									<td>다운로드할 전체 크기</td>
+								</tr>
+								<tr>
+									<td>totalCount</td>
+									<td>Number</td>
+									<td>다운로드할 파일의 개수</td>
+								</tr>
+								<tr>
+									<td>totalReceiveSize</td>
+									<td>Number</td>
+									<td>다운로드가 진행된 전체 크기</td>
+								</tr>
+								<tr>
+									<td>completeCount</td>
+									<td>Number</td>
+									<td>다운로드가 완료된 파일의 개수</td>
+								</tr>
+								<tr>
+									<td>currentName</td>
+									<td>String</td>
+									<td>다운로드 중인 파일의 이름</td>
+								</tr>
+								<tr>
+									<td>currentSize</td>
+									<td>Number</td>
+									<td>다운로드 중인 파일의 크기</td>
+								</tr>
+								<tr>
+									<td>currentReceiveSize</td>
+									<td>Number</td>
+									<td>다운로드 중인 파일이 진행된 크기</td>
+								</tr>
+								<tr>
+									<td>totalRate</td>
+									<td>Number</td>
+									<td>다운로드 진행률</td>
+								</tr>
+								<tr>
+									<td>totalSpeed</td>
+									<td>Number</td>
+									<td>다운로드 속도(bytes/sec)</td>
+								</tr>
+								<tr>
+									<td>totalTime</td>
+									<td>Number, String</td>
+									<td>전체 다운로드 진행 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+								<tr>
+									<td>currentTime</td>
+									<td>Number, String</td>
+									<td>다운로드 중인 파일이 업로드가 진행된 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+								<tr>
+									<td>remainedTotalTime</td>
+									<td>Number, String</td>
+									<td>전체 다운로드가 남은 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+								<tr>
+									<td>remainedCurrentTime</td>
+									<td>Number, String</td>
+									<td>다운로드 중인 파일이 완료되기까지 남은 시간(msec), IE 모듈은 "시:분:초" 형식의 문자열로 반환됩니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>현재 다운로드 상태 정보를 갖는 객체를 반환합니다.</p>
+						<p>파일이 다운로드 중인 과정에 사용하면, 업로드 상태 정보를 알아낼 수 있습니다.</p>
+						<p>이 함수를 사용하여 반환된 객체는 시간에 따라 다른 값을 갖는 것이 아니라, 함수 호출 시점의 상태를 복사한 값만 갖습니다.</p>
+						<p class="notice">다운로드하는 과정의 변화를 계속 얻으려면 setTimeout과 같은 함수를 사용해야 합니다.</p>
+						<pre class="prettyprint">
+function toggleDownloadStatus(isBegin) {
+  function downloadProgress() {			
+    var dx = dx5.get("dext5"), 
+        out = document.getElementById("downstatus-value"), 
+        status = dx.getDownloadStatus();
+    out.innerHTML = "" + 
+      "name: " + status.currentName + "&lt;br/&gt;" + 
+      "speed: " + status.totalSpeed + "(sec)&lt;br/&gt;" + 
+      "count(completed/total): " + status.completeCount + "/" + status.totalCount + "&lt;br/&gt;" + 
+      "current rate: " + status.currentRate + " % &lt;br/&gt;" + 
+      "current size(received/total): " + status.currentReceiveSize + "/" + status.currentSize + " (bytes)&lt;br/&gt;" + 
+      "current time(past/remained): " + status.currentTime + "/" + status.remainedCurrentTime + "&lt;br/&gt;" + 
+      "total rate: " + status.totalRate + " % &lt;br/&gt;" + 
+      "total size(received/total): " + status.totalReceiveSize + "/" + status.totalSize + " (bytes)&lt;br/&gt;" + 
+      "total time(past/remained): " + status.totalTime + "/" + status.remainedTotalTime + "&lt;br/&gt;" + 
+      "";
+    if (window.isDownloading === true) {
+      setTimeout(downloadProgress, 1000);
+    }
+  }
+  window.isDownloading = isBegin;
+  if (isBegin) downloadProgress();
+}</pre>				
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

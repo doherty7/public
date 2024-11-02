@@ -1,0 +1,116 @@
+@mixin clearfix {
+	&:after {
+		display: block;
+		clear: both;
+		content: '';
+	}
+}
+
+@mixin ir {
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	vertical-align: middle;
+	overflow: hidden;
+
+	// 고대비모드 대응
+	text-indent: -9999px;
+	text-align: left;
+	color: transparent;
+	white-space: nowrap;
+	text-align: center;
+}
+
+// 1:1 사이즈 아이콘 : PC 전용
+@mixin ico($name, $w:25px, $h:25px, $url: #{$url-img}/common) {
+	.ico-#{$name} {
+		width: $w;
+		height: $h;
+		line-height: $h;
+		background-image: url('#{$url}/ico-#{$name}.png');
+	}
+}
+
+// PC 모바일 겸용 아이콘 : 이미지 2배수 저장 @2x
+@mixin ico2x($name, $w:25px, $h:25px, $url: #{$url-img}/common) {
+	.ico-#{$name} {
+		width: $w;
+		height: $h;
+		line-height: $h;
+		background-image: url('#{$url}/ico-#{$name}@2x.png');
+	}
+}
+
+// PC 모바일 이미지 별도 저장시 : 모바일 이미지만 @2x
+@mixin ico2($name, $w:25px, $h:25px, $w-m:$w, $h-m:$h, $url: #{$url-img}/common) {
+	@include media-breakpoint-up(lg) {
+		.ico-#{$name} {
+			width: $w;
+			height: $h;
+			line-height: $h;
+			background-image: url('#{$url}/ico-#{$name}.png');
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		.ico-#{$name} {
+			width: $w-m;
+			height: $h-m;
+			line-height: $h-m;
+			background-image: url('#{$url}/ico-#{$name}@2x.png');
+		}
+	}
+}
+
+@mixin ico-lg($name) {
+	@include media-breakpoint-up(lg) {
+		.ico-#{$name} {
+			width: 60px;
+			height: 60px;
+			line-height: 60px;
+			background-image: url('#{$url}/ico-lg-#{$name}.png');
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		.ico-#{$name} {
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			background-image: url('#{$url}/ico-lg-#{$name}@2x.png');
+		}
+	}
+}
+
+@mixin text-ellipsis($row:2, $line-height: 20px, $height-fixed: false) {
+	@if $row>1 {
+		display: -webkit-box;
+		-webkit-line-clamp: $row;
+		-webkit-box-orient: vertical;
+		white-space: normal;
+	}
+
+	@else {
+		max-width: 100%;
+		white-space: nowrap;
+	}
+
+	@if $height-fixed {
+		height: $row * $line-height;
+		max-height: none;
+	}
+
+	@else {
+		max-height: $row * $line-height;
+	}
+
+	line-height: $line-height;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+@mixin container {
+	width: $max-width;
+	margin: auto;
+}

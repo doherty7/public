@@ -1,0 +1,65 @@
+.wrapper-error {
+	display: flex;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+
+	.error-page {
+		max-width: 580px;
+		text-align: center;
+	}
+
+	.error-msg {
+		font-weight: bold;
+		color: $primary;
+	}
+
+	.error-box {
+		margin: auto;
+		background-color: $bg-lightgray;
+		text-align: left;
+	}
+
+	@include media-breakpoint-up(lg) {
+		padding-bottom: 50px;
+
+		.ico-error {
+			margin-bottom: 30px;
+		}
+
+		.error-msg {
+			font-family: $font-family-title;
+			font-size: 30px;
+		}
+
+		.btn-area {
+			.btn {
+				width: 146px;
+			}
+		}
+
+		.error-box {
+			padding: 20px 75px;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		padding: 0 $mobile-spacing $mobile-spacing;
+
+		.ico-error {
+			width: 67.5px;
+			height: 60px;
+			margin-bottom: 25px;
+		}
+
+		.error-box {
+			margin-top: 23px;
+			width: 330px;
+			padding: 3px 10px;
+		}
+
+		.error-msg {
+			font-size: 20px;
+		}
+	}
+}

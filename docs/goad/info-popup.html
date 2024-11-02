@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      font-size: 0.813rem;
+      line-height: 1.5;
+    }
+    .popup-container {
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      max-width: 26rem;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .popup-header {
+      background: #0B365B;
+      color: white;
+      padding: 0.375rem 0.75rem;
+      font-weight: 500;
+      text-align: center;
+    }
+    .popup-content {
+      padding: 0.75rem;
+      background-color: #f7f9fb;
+    }
+    .info-item {
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e2e7ec;
+    }
+    .info-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .info-title {
+      color: #0B365B;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.375rem;
+    }
+    .info-title::before {
+      content: '○';
+      margin-right: 0.375rem;
+      flex-shrink: 0;
+    }
+    .info-text {
+      margin: 0;
+      color: #333;
+      padding-left: 1rem;
+    }
+    .info-list {
+      margin: 0.375rem 0 0 1rem;
+      padding: 0;
+      list-style: none;
+    }
+    .info-list li {
+      position: relative;
+      padding-left: 0.75rem;
+      margin-bottom: 0.375rem;
+    }
+    .info-list li:last-child {
+      margin-bottom: 0;
+    }
+    .info-list li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      color: #666;
+    }
+    .emphasis {
+      font-weight: 500;
+      color: #2C66C8;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-container" role="dialog" aria-label="협찬광고 및 의뢰유형 안내">
+    <div class="popup-header">협찬광고 및 의뢰유형 안내</div>
+    <div class="popup-content">
+      <div class="info-item">
+        <div class="info-title">협찬광고 정부광고 해당</div>
+        <p class="info-text">
+          홍보를 목적으로 하는 협찬은 정부광고에 해당하므로 <span class="emphasis">반드시 정부광고법 제5조에 따라 언론재단에 의뢰하여 시행</span>하며, 협찬임을 고지할 필요가 있습니다.
+        </p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-title">협찬광고 비용 집행</div>
+        <p class="info-text">
+          협찬은 매체 송출 및 게재 등을 담보로 콘텐츠 제작 및 송출 전반을 유료로 구매하는 것이므로 매체 구매 행위에 해당, <span class="emphasis">협찬비는 전액 매체비로 정부광고 의뢰</span>해야 합니다.
+        </p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-title">의뢰유형 선택</div>
+        <ul class="info-list">
+          <li><span class="emphasis">일반광고</span> : 광고 시안을 활용한 광고, 공고(법정공고, 채용공고 등)</li>
+          <li><span class="emphasis">협찬광고(고지필요)</span> : 지면, 프로그램 등의 제작에 직접적·간접적으로 필요한 경비·물품·용역·인력 또는 장소 등을 지원하거나 제공하는 행위</li>
+          <li><span class="emphasis">제작/기타</span> : 광고집행 시 발생하는 제작비용(출력비, 광고시안 제작 등)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

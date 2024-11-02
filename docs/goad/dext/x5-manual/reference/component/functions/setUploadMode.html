@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>setUploadMode</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; setUploadMode</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">setUploadMode</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+object.setUploadMode(mode);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>mode</td>
+									<td>String</td>
+									<td>"ORAF", "OROF", "EXNJ" 중 하나를 설정합니다. 기본값은 "ORAF"입니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>업로드 방식을 설정합니다.</p>
+						<p>DEXTUploadX5는 파일 업로드는 동작 방식으로 세 가지 모드를 지원합니다.</p>
+						<ul>
+							<li>ORAF(기본): 업로드할 파일 모두를 하나의 요청에 담아 전송합니다. 업로드가 완료되면 응답 데이터는 1개가 됩니다.</li>
+							<li>OROF: 업로드할 파일의 개수만큼 요청이 이루어집니다. 업로드가 완료되면 파일의 개수만큼 응답 데이터가 생성됩니다.</li>
+							<li>EXNJ: OROF와 동일하나, 대용량 업로드로써, 개별 혹은 전체 파일의 크기가 2GB를 넘는 경우에 사용됩니다.</li>
+						</ul>
+						<pre class="prettyprint">
+function onDX5Created(id) {
+  var dx = dx5.get(id);
+  // OROF 업로드 방식을 사용하도록 합니다.
+  dx.getUploadMode("OROF");
+}</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

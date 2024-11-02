@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>removeById</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; removeById</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">removeById</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+object.removeById(id [, perma[, fireEvent]]);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>String</td>
+									<td>삭제하려는 항목의 고유 아이디</td>
+								</tr>
+								<tr>
+									<td>perma</td>
+									<td>Boolean</td>
+									<td>[옵션] true이면, 대상이 가상 파일일 때 삭제 상태로 변경하지 않고 바로 제거합니다.</td>
+								</tr>
+                                <tr>
+                                    <td>fireEvent (supported by version 1.4.1.0)</td>
+                                    <td>Boolean</td>
+                                    <td>[옵션] true이면, 삭제 과정에서 이벤트가 발생합니다. 기본값은 false입니다.</td>
+                                </tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>주어진 고유 아이디에 해당하는 항목을 삭제합니다.</p>
+						<p>항목을 삭제할 때, 대상이 가상 파일이면, 바로 삭제하지 않고 삭제 상태로 보관합니다.</p>
+						<p>이와 달리 로컬 자원들은 상태 변경없이 완전히 제거됩니다.</p>
+						<pre class="prettyprint">
+// 주어진 고유 아이디에 해당하는 항목을 삭제합니다.
+dx.removeById(id);
+// 주어진 고유 아이디에 해당하는 항목을 삭제(가상 파일의 경우에도 완전 제거)합니다.
+dx.removeById(id, true);</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

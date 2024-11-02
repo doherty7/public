@@ -1,0 +1,105 @@
+//
+// Icons
+// 
+
+.ico {
+	@include ir;
+}
+
+// 게시판 공통
+@include ico2x('write-white', 20px, 20px, #{$url-img-share}/common);
+@include ico2x('lock-gray', 14px, 17px, #{$url-img-share}/common);
+@include ico2x('download', 24px, 24px, #{$url-img-share}/common);
+@include ico2x('comment', 17px, 15px, #{$url-img-share}/common);
+@include ico2x('movie-play', 50px, 50px, #{$url-img-share}/common);
+@include ico2x('times-white-xs', 10px, 10px, #{$url-img-share}/common);
+@include ico2x('times-sm', 11px, 11px, #{$url-img-share}/common);
+@include ico2x('times', 23px, 23px, #{$url-img-share}/common);
+@include ico2x('new', 18px, 18px, #{$url-img-share}/common);
+@include ico2x('share-gray', 15px, 16px, #{$url-img-share}/common);
+@include ico2x('nodata', 80px, 69px, #{$url-img-share}/common);
+@include ico2x('sns-facebook', 50px, 50px, #{$url-img-share}/common);
+@include ico2x('sns-naverblog', 50px, 50px, #{$url-img-share}/common);
+@include ico2x('sns-kakaotalk', 50px, 50px, #{$url-img-share}/common);
+@include ico2x('sns-kakaostory', 50px, 50px, #{$url-img-share}/common);
+
+// 레이아웃 공통
+@include ico2('search', 21px, 24px, 17px, 20px, #{$url-img-share}/common);
+@include ico2('search-white', 22px, 26px, 20px, 24px, #{$url-img-share}/common);
+@include ico2x('times-md', 14px, 14px, #{$url-img-share}/common);
+@include ico('logout-white', 21px, 21px, #{$url-img-share}/common);
+@include ico('mypage-white', 21px, 22px, #{$url-img-share}/common);
+@include ico('login-white', 21px, 21px, #{$url-img-share}/common);
+@include ico('join-white', 22px, 21px, #{$url-img-share}/common);
+@include ico2x('user', 24px, 24px, #{$url-img-share}/common);
+@include ico2x('sns-gray-hub', 30px, 30px, #{$url-img-share}/common);
+@include ico2x('sns-gray-fb', 30px, 30px, #{$url-img-share}/common);
+@include ico2x('sns-gray-np', 30px, 30px, #{$url-img-share}/common);
+@include ico2x('sns-gray-tw', 30px, 30px, #{$url-img-share}/common);
+@include ico2x('sns-gray-yt', 30px, 30px, #{$url-img-share}/common);
+@include ico2x('sns-white-fb', 30px, 30px, #{$url-img-share}/common);
+@include ico2x('sns-white-yt', 30px, 30px, #{$url-img-share}/common);
+@include ico2x('quick-link1', 16px, 16px, #{$url-img-share}/common);
+@include ico2x('quick-link2', 16px, 16px, #{$url-img-share}/common);
+@include ico2x('quick-link3', 16px, 16px, #{$url-img-share}/common);
+@include ico2('close', 22px, 22px, 19.5px, 19.5px, #{$url-img-share}/common);
+@include ico2x('close-sm', 10px, 10px, #{$url-img-share}/common);
+
+// 콘텐츠 및 레이아웃 범용 공통
+@include ico2x('error', 81px, 72px, #{$url-img-share}/common);
+
+@include ico2x('warning-mark', 18px, 18px, #{$url-img-share}/common);
+@include ico2x('check-blue', 36px, 24px, #{$url-img-share}/common);
+@include ico2x('mobile-white', 18px, 26px, #{$url-img-share}/common);
+@include ico2x('ipin-white', 26px, 26px, #{$url-img-share}/common);
+@include ico2x('yessign-white', 17px, 26px, #{$url-img-share}/common);
+@include ico2x('doc-blue', 16px, 18px, #{$url-img-share}/common);
+
+@include ico('chevron-down-xs', 10px, 6px, #{$url-img-share}/common);
+@include ico('chevron-down-xs-white', 12px, 6px, #{$url-img-share}/common);
+@include ico2x('chevron-down-xs-bold', 10px, 6px, #{$url-img-share}/common);
+@include ico2x('chevron-up-xs-bold', 9px, 6.5px, #{$url-img-share}/common);
+@include ico2x('chevron-down', 17px, 9px, #{$url-img-share}/common);
+@include ico2x('chevron-down-sm', 15px, 9px, #{$url-img-share}/common);
+@include ico2x('chevron-left-sm-gray', 10px, 16px, #{$url-img-share}/common);
+@include ico2x('chevron-right-sm-lightgray', 8px, 15px, #{$url-img-share}/common);
+@include ico2x('datepicker-gray', 23px, 24px, #{$url-img-share}/common);
+@include ico2x('reset-primary', 24px, 26px, #{$url-img-share}/common);
+@include ico2x('external-link', 14px, 14px, #{$url-img-share}/common);
+@include ico2x('external-link-white', 20px, 20px, #{$url-img-share}/common);
+@include ico2x('external-link-blue', 14px, 14px, #{$url-img-share}/common);
+@include ico2x('close-white', 21px, 21px, #{$url-img-share}/common);
+@include ico2x('close-white-sm', 13px, 13px, #{$url-img-share}/common);
+@include ico2x('location', 20px, 26px, #{$url-img-share}/common);
+@include ico2x('calendar', 26px, 26px, #{$url-img-share}/common);
+@include ico2x('pdf-down', 22px, 26px, #{$url-img-share}/common);
+@include ico2x('call-blue', 18px, 18px, #{$url-img-share}/common);
+@include ico2x('stethoscope-primary', 26px, 19px, #{$url-img-share}/common);
+@include ico2x('building-primary', 21px, 24px, #{$url-img-share}/common);
+
+@include ico2x('profile-link', 48px, 48px, #{$url-img-share}/common);
+@include ico2x('profile-home', 48px, 48px, #{$url-img-share}/common);
+@include ico2x('profile-blog', 48px, 48px, #{$url-img-share}/common);
+@include ico2x('profile-email', 48px, 48px, #{$url-img-share}/common);
+@include ico2x('profile-sns', 48px, 48px, #{$url-img-share}/common);
+
+@include ico2x('overview1', 25px, 40px, #{$url-img-share}/common);
+@include ico2x('overview2', 31px, 40px, #{$url-img-share}/common);
+@include ico2x('overview3', 39.5px, 40px, #{$url-img-share}/common);
+@include ico2x('overview4', 39.5px, 40px, #{$url-img-share}/common);
+@include ico2x('overview5', 40px, 40px, #{$url-img-share}/common);
+@include ico2x('overview6', 35.5px, 40px, #{$url-img-share}/common);
+@include ico2('gate-plus', 18px, 18px, 14px, 14px, #{$url-img-share}/common);
+
+//통합검색 아이콘
+@include ico2('totalsearch-index', 41px, 40px, 27px, 26px, #{$url-img-share}/common);
+@include ico2('totalsearch-white', 28px, 32px, 20px, 24px, #{$url-img-share}/common);
+@include ico2('totalsearch-plus-white', 28px, 32px, 20px, 24px, #{$url-img-share}/common);
+@include ico('util-plus-white', 25px, 25px, #{$url-img-share}/common);
+@include ico2x('close-keyword', 19px, 19px, #{$url-img-share}/common);
+@include ico2x('external-link--normal-white', 14px, 14px, #{$url-img-share}/common);
+
+// 메인 공통
+@include ico2x('tel-yellow', 52px, 52px, #{$url-img-share}/common);
+@include ico2x('tel-primary', 52px, 52px, #{$url-img-share}/common);
+@include ico2x('close-circle', 26px, 26px, #{$url-img-share}/common);

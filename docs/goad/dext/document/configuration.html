@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+		  <div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-prepared">필수 사항</a> &gt; 설정</div>
+		  <div id="MainCenter">
+		  	<article>	
+				<div class="exTit">인증키 및 경로 설정에 대한 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>DEXTUploadX5를 사용하려면 반드시 dextuploadx5-configuration.js 파일을 선언된 객체의 속성 값을 모두 설정해줘야 합니다.</p>
+						<p>authkey 속성은 발급받은 평가판 인증키 혹은 정식 라이선스의 인증키를 설정하도록 합니다.</p>
+						<p>productPath 속성은 제품이 위치한 웹 경로를 설정합니다. 만일 경로가 올바르지 않다면 컴포넌트가 올바르게 시작되지 않습니다.</p>
+						<p>ieDownloadURL 속성은 DEXTUploadX5 IE 버전을 사용하는 경우, 로컬 PC에 제품을 설치해야 합니다.</p>
+						<p>해당 제품이 설치가 되지 않았을 경우, ieDownloadURL에 설정된 경로로 이동하게 됩니다.</p>
+						<p class="notice">dextuploadx5-configuration.js 스크립트 파일은 DEXTUploadX5가 사용되는 모든 페이지에 포함되어야 합니다.</p>
+						<pre class="prettyprint">
+win.dextuploadx5Configuration = {	
+	// 파일을 업로드하기 위해서는 반드시 인증키 문자열이 있어야 합니다.	
+	authkey: "jn+xziPdVh6f5KN17uFHdY95XEvB7o...생략...2YjGiLl92zWiXAyO2FdI9r5XGfwxQ=",
+	
+	// 사용하고자 하는 제품의 명시 버전입니다.
+	// 1) multi 제품의 경우
+	//   설치형 제품이 아니므로, 리소스를 그대로 사용합니다.
+	// 2) ie 제품의 경우
+	//   설치 버전 &gt;= 명시 버전: 설치된 제품을 그대로 사용합니다.
+	//   설치 버전 &lt; 명시 버전: 명시된 버전을 다운로드할 수 있는 다운로드 페이지(아래 ieDownloadURL을 참고)로 이동합니다.
+	version: "1.0.0.0",
+
+	// 패스란 제품 리소스의 위치를 말합니다.
+	// 반드시 스키마(http, https)를 포함한 전체 path를 설정해주셔야 합니다.(절대로 상대경로를 입력하지 마세요.)
+	// 전제 경로 예제 productPath: "http://www.sample.com/dx5/",
+	// 동일 도메인이라면 productPath: location.origin + "/dx5/",
+	// 이 샘플은 sample_x5_nj_spring_ext_ko 이름으로 콘텍스트(context) 루트(root)를 정의하고, 하위 dx5 패스에 제품이 위치하고 있습니다.
+	productPath: location.origin + "/sample_x5_nj_spring_ext_ko/dx5/",
+
+	// ie 버전을 사용하는 경우, 제품이 설치되지 않았을 때, 제품을 다운로드할 수 있는 페이지로 이동시킵니다.
+	// 다운로드 페이지 경로는 반드시 productPath 하위에 존재할 필요가 없으며, 주어진 환경에 따라 커스터마이징하여 사용하십시오.
+	// 절대로 상대경로를 입력하지 마세요.
+	// 전제 경로 예제 productPath: "http://www.sample.com/dx5/client/dextuploadx5-ax-download.html",
+	// 동일 도메인이라면 productPath: location.origin + "/dx5/client/dextuploadx5-ax-download.html",
+	ieDownloadURL: location.origin + "/sample_x5_nj_spring_ext_ko/client/dextuploadx5-ax-download.html"
+};</pre>
+					</dd>
+				</dl>
+			</article>
+		</div>
+	  <footer>
+	    <div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+	  </footer>
+	</div>
+</body>
+</html>

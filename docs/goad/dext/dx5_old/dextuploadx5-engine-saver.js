@@ -1,0 +1,10 @@
+﻿/*
+ * DEXTUploadX5 - Data Saver library
+ * http://www.dextsolution.com
+ *
+ * Copyright DEVPIA Inc.
+ */
+;; (function (root, make) { "use strict"; if (!(root.Blob || root.MozBlob || root.WebKitBlob)) { console.log("DX5: Blob not supported."); return; } if (typeof saveData !== "undefined") return; root.saveData = make(); })(this, function () { function isBlobURL(s) { return new RegExp("^blob\:.*").test(s); } function isDataURL(s) { return new RegExp("^data\:.+\/.+\;.+\,.*").test(s); } function isHttpURL(s) { return new RegExp("^https?\:\/\/", "i").test(s); } function d2b(w, s, m) { var B = (w.Blob || w.MozBlob || w.WebKitBlob || function (s) { return String(s); }), B = B.call ? B.bind(w) : B;
+if (isDataURL(s)) {   var p = s.split(/[:;,]/), t = p[1],     fdec = p[2] == "base64" ? atob : decodeURIComponent, bin = fdec(p.pop()), blen = bin.length, uia = new Uint8Array(blen); for (var i = 0; i < blen; i++) uia[i] = bin.charCodeAt(i); return new B([uia], { type: t }); } else { return s instanceof B ? s : new B([s], { type: m }); } }   return function saveData(data, f, m, isSafari, scb, ecb) { if (isHttpURL(data)) {   ecb("ESVG-00068", "_{0}은(는) 지원하지 않는 파일 다운로드 프로토콜입니다.", [data]); return; } var w = window,
+d = w.document, a = d.createElementNS("http://www.w3.org/1999/xhtml", "a"), u = "download" in a, URL = (w.URL || w.webkitURL || w), c = function (node) { node.dispatchEvent(new MouseEvent("click")); }, m = m || "application/octet-stream", f = f || "download", scb = typeof scb === "function" ? scb : function () { }, ecb = typeof ecb === "function" ? ecb : function (ecode, emsg, eparams) { }, blob = null; if (w.navigator.msSaveBlob) { blob = d2b(w, data, m);   if (w.navigator.msSaveBlob(blob, f)) scb(); else ecb();
+} else if (u === true) { blob = d2b(w, data, m);     var oURL = URL.createObjectURL(blob); a.href = oURL;   a.download = f;   c(a);   setTimeout(function () { URL.revokeObjectURL(oURL); }, 1000 * 3);       a = null;   scb(); } else { ecb("ESVG-00067", "_대상 브라우저는 다중 파일 다운로드를 지원하지 않습니다.", undefined);   } }; }); 

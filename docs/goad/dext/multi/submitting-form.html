@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) { alert(id + " => " +  code + "\n" + msg); }
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);			
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/upload-file.do"));
+			dx.setMaxFileCount(10);
+			dx.setMaxTotalSize(10485760);
+			dx.setMaxFileSize(1048576);
+			dx.setMinFileSize(1024);
+		}
+		
+		function onDX5UploadStopped(id) { alert("업로드가 중단되었습니다."); }
+				
+		function onDX5UploadCompleted(id) {
+			submit(dx5.get(id).getResponses()[0]);
+		}
+		
+		function submit(response) {
+			var formObj = document.getElementsByTagName("form")[0];
+			formObj.newFileKeys.value = response || "";
+			formObj.submit();
+		}
+
+		function transfer() {
+			var dx = dx5.get("dext5");
+			if (dx.hasUploadableItems()) {
+				dx.upload("AUTO");
+			} else {
+				submit(null);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 폼 전송</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">파일과 폼 데이터를 전송하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p class="notice">DEXTUploadX5는 폼 데이터를 자동으로 전송하는 기능을 정책상 제공하지 않습니다.</p>
+						<p>과거에는 form 요소를 하나만 사용하는 페이지 구성이 일반적이었지만, 최근에는 하나의 페이지에 다양한 섹션이 구성되며,
+						구성마다 다른 action 값을 갖는 form 요소를 필요로 하는 경우가 많아졌기 때문에, 파일이 업로드되는 시점에
+						form 하위 요소를 모두 추가하여 전송하는 것은 의도치 않은 상황일 수 있습니다.</p>
+						<p>더불어 ORAF 업로드 방식이 아닌 OROF 같은 경우에는 폼 데이터를 전송해야 할 시점을 알 수 없기 때문에, 데이터를 전송하는 것이 논리적으로 문제가 될 수 있습니다.</p>
+						<p>&nbsp;</p>
+						<p class="notice">DEXTUploadX5는 파일 업로드가 완료된 후  콜백 함수(onDX5UploadCompleted)가 호출됩니다.</p>
+						<p class="notice">이 함수에서 서버로부터 받은 파일 정보를 가지고 form 요소가 갖는 폼 데이터를 따로 처리(submit)하는 방법을 사용하는 것을 권장합니다.</p>
+						<p class="notice">이 방법은 파일과 다른 문자열 데이터를 완벽히 분리하여 처리하기 때문에, 서비스 처리 구조가 더 명확해지는 장점이 있습니다.</p>						
+						<pre class="prettyprint">
+function transfer() {
+  var dx = dx5.get("dext5");
+  if (dx.hasUploadableItems()) {
+    // 업로드할 파일이 있다면 업로드를 먼저 수행합니다. 
+    // 업로드가 완료되면 onDX5UploadCompleted 콜백 함수가 호출됩니다.
+    // 콜백 함수가 호출되면 폼 데이터를 전송하도록 구성합니다.
+    dx.upload("AUTO");
+  } else {
+    // 업로드할 대상이 없으므로 바로 폼 데이터를 전송합니다.
+    submit(null);
+  }
+}
+
+// 업로드가 완료(서버 측 파일 업로드 처리가 완료)되면 호출되는 콜백 함수입니다.
+function onDX5UploadCompleted(id) {
+  // ORAF이므로 응답 데이터는 무조건 1개입니다.
+  // 이 응답 데이터를 가지고 폼 데이터를 전송합니다.
+  submit(dx5.get(id).getResponses()[0]);  
+}
+
+function submit(response) {
+  var formObj = document.getElementsByTagName("form")[0];
+  // 응답 데이터를 hidden 요소에 설정합니다.
+  formObj.newFileKeys.value = response || "";
+  // 폼 데이터를 submit합니다.
+  formObj.submit();
+}
+</pre>
+						<p>이 구조는 <b>파일 업로드</b>는 upload-file.do로 매핑된 FileServiceController에서 처리를 하고, 
+						          <b>폼 데이터</b>는 form-process.do로 매핑된 SampleController에서 최종적으로 처리합니다.</p>
+						<div></div>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<form action="/sample/dext/service/form-process.do" method="post">
+							<p><input type="text" id="text1" name="text1" value="text data"/></p>
+							<p>
+								<input type="radio" id="rdo1-a" name="radio1" value="A" checked="checked"/><label for="rdo1-a">A</label>
+								<input type="radio" id="rdo1-b" name="radio1" value="B"/><label for="rdo1-b">B</label>
+							</p>
+							<p>
+								<input type="checkbox" id="chk1" name="checkbox1" value="Bird" checked="checked"/><label for="chk1">Bird</label>
+								<input type="checkbox" id="chk2" name="checkbox2" value="Lion"/><label for="chk2">Lion</label>
+								<input type="checkbox" id="chk3" name="checkbox3" value="Shark"/><label for="chk3">Shark</label>
+							</p>
+							<p>
+								<select name="select1">
+									<option value="Small">Small</option>
+									<option value="Big">Big</option>
+								</select>
+							</p>
+							<div id="dext5-container" style="width:500px; height:200px;"></div>
+							<p>&nbsp;</p>
+							<p>
+								<button id="btn-add-files" type="button">파일 추가</button>
+								<button id="btn-upload-auto" type="button" onclick="transfer();">등록/전송/업로드</button>
+								<input type="hidden" id="newFileKeys" name="newFileKeys"/>
+							</p>
+						</form>						
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({ mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files" });
+	</script>
+</body>
+</html>

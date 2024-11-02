@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		
+		function onDX5Error(id, code, msg) { alert(id + " => " +  code + "\n" + msg); }
+
+		function onDX5Created(id) {}
+		
+		function onDX5UploadStopped(id) { alert("업로드가 중단되었습니다."); }
+				
+		function onDX5UploadCompleted(id) {
+			alert(dx5.get(id).getResponses()[0]);
+		}
+		
+		function upload() {
+			var uploader = dx5.get("dext5-uploader"), items = null;
+			
+			uploader.clearItems();
+			uploader.setUploableFilesFrom(dx5.get("dext5-a"));
+			uploader.setUploableFilesFrom(dx5.get("dext5-b"));			
+			uploader.setUploadURL(dx5.canonicalize("../service/multiple-upload.do"));
+			uploader.upload("AUTO");
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 활용2</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">SINGLE 스타일로 컴포넌트를 여러 개 사용하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>하나의 페이지에 여러 개 컴포넌트를 SINGLE 스타일로 동시에 사용할 수 있습니다.</p>
+						<p>LIST, TILE 형식으로 여러 컴포넌트를 사용하는 방법과 매우 유사하지만, 
+						SINGLE 형식은 가상파일을 지원하지 않고, 단 하나의 파일만 업로드할 수 있는 차이점이 있습니다. </p>
+						<pre class="prettyprint">
+&lt;!-- 컴포넌트 2개를 담을 컨테이너를 정의합니다. --&gt;
+&lt;!-- SINGLE 형식이므로 높이값을 작게 설정합니다. --&gt;
+&lt;div id="dext5-container-a" style="width:500px; height:28px;"&gt;&lt;/div&gt;
+&lt;div id="dext5-container-b" style="width:500px; height:28px;"&gt;&lt;/div&gt;
+&lt;!-- 실제 업로드를 담당할 컴포넌트를 담을 컨테이너를 정의합니다. --&gt;
+&lt;!-- 업로더는 눈에 잘 보이지 않도록 1px의 컨테이너로 정의합니다. --&gt;
+&lt;div id="dext5-container-uploader" style="width:1px; height:1px;"&gt;&lt;/div&gt;
+</pre>
+						<p>컴포넌트를 정의합니다.</p>
+						<pre class="prettyprint">
+// SINGLE 형식은 버튼이 내장되어 있으므로 버튼을 정의하지 않습니다.
+dx5.create({ mode: "multi", style: "single", id: "dext5-a", parentId: "dext5-container-a" });
+dx5.create({ mode: "multi", style: "single", id: "dext5-b", parentId: "dext5-container-b" });
+// 업로드 역할을 담당하는 컴포넌트는 여러 개 파일을 동시에 업로드해야 하기 때문에 SINGLE로 정의하지 않도록 합니다.
+dx5.create({ mode: "multi", id: "dext5-uploader", parentId: "dext5-container-uploader" });
+</pre>
+						<p>그 외에 파일을 업로드하는 과정은 앞선 예제와 동일합니다.</p>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<p>파일 업로드 A 영역 (ID: dext5-a)</p>
+						<div id="dext5-container-a" style="width:500px; height:28px;"></div>
+						<p>&nbsp;</p>
+						<p>파일 업로드 B 영역 (ID: dext5-b)</p>
+						<div id="dext5-container-b" style="width:500px; height:28px;"></div>
+						<p>&nbsp;</p>
+						<div id="dext5-container-uploader" style="width:1px; height:1px;"></div>
+						<p>
+							<button id="btn-upload" type="button" onclick="upload();">전송</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({ mode: "multi", style: "single", id: "dext5-a", parentId: "dext5-container-a" });
+		dx5.create({ mode: "multi", style: "single", id: "dext5-b", parentId: "dext5-container-b" });
+		dx5.create({ mode: "multi", id: "dext5-uploader", parentId: "dext5-container-uploader" });
+	</script>
+</body>
+</html>

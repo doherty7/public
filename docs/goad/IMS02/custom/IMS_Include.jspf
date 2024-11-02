@@ -1,0 +1,35 @@
+
+<%@page pageEncoding="UTF-8"%>
+
+<!-- 
+=================================================================================
+ *  파 일 명   : IMS_Include.html
+ *  작성목적    : 공통 INclude 함수
+ *  작 성 자   : 이상준
+ *  최초작성일   : 2018.12.01
+ *  최종작성일   :
+ *  수정내역    :
+=================================================================================*/
+ -->
+<script type="text/javascript" src="/IMS02/custom/IMS_Config.js"></script>
+<script type="text/javascript" src="/IMS02/module/js/json3.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_Selector.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_Common.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_$U.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_$G.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_Loading.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_Alert.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_Common.js"></script> 
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_Cookie.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_DragDrop.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_$A.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_$P.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_$H.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_$V.js"></script>  
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_EventBinding.js"></script> 
+<script type="text/javascript" src="/IMS02/module/js/IMS_Z_Prototype.js"></script> 
+<script type="text/javascript" src="/IMS02/module/html/font-awesome/5.5.0/js/all.js"></script>
+<script type="text/javascript" src="/IMS02/module/component/file/F2/IMS_F2.js"></script> 
+<script type="text/javascript" src="/IMS02/module/component/calendar/calendar.js"></script> 
+<script type="text/javascript" src="/IMS02/module/component/grid/G2/IMS_G2.js"></script>  
+<script type="text/javascript" src="/html/js/common.js"></script>  

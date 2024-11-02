@@ -1,0 +1,53 @@
+/* 화면 사이즈 1200 이하인 겅우 */
+@media screen and ( max-width : 1280px) {
+
+    #frameTable { max-width:1180px!important;}
+    #frameTable tbody td:last-child {padding-right:10px}
+    
+    #footer .foot {width: 1190px;}    
+    #footer.mainFooter .foot ul {margin: 20px 0 10px;}
+    #footer .foot ul li {width: 138px;}        
+    #contents {min-width: 1190px;}
+    #lnb {width: 200px;margin-right:20px;margin-top: 25px;}   
+    #header.adminheader, #header.mypageHeader {min-width: 1190px;}   
+	
+	nav .head {width: 1190px!important;}
+    .main nav.head .gnb {margin-left: 200px;}
+    .main nav.head .gnb li a { padding: 0 10px;}
+    .adminLayout .mainFooter {min-width: 1190px;}
+    
+    .subnavi ul {width: 1190px;}
+    .portalContainer #contents {width: 100%;margin-top: 35px;margin-bottom: 90px;min-height: 500px;}	
+    .subTab li {width: 32%;}     
+    .subTab5 li {width: 19%;}    
+    .gnb_v02 section {margin-left: -595px;max-width: 1190px;width: 1190px;}    
+    
+    .adminLayout .subnavi {min-width: 1190px;}    
+    .adminLayout .subnavi section {margin-left: -595px;max-width: 1190px;width: 1190px;}    
+    .adminContainer.on #Adminlnb {width: 200px;left: 0;}    
+    .adminContainer #Adminlnb #lnbTitle {width: 200px;}    
+	.adminContainer #Adminlnb .lnb_2 {width:200px;}    
+	.adminContainer #Adminlnb .lnbbox {width: 200px;}	
+    .adminContainer #Adminlnb .lnb_3 {width: 200px; font-size:13px}
+    .adminContainer #Adminlnb .lnb_4 {width: 200px; font-size:13px}    
+    .adminContainer.on {width:1190px!important;max-width: 1190px!important;min-width: 1190px!important;}       
+    
+    #contents.adminContents {padding: 15px 0 0 5px;width: 100%;min-width: 100%;min-height: 950px;}    	
+    #contents.FoContents {width: 100%;min-width: 950px;min-height: 950px;}   
+    #grid {width:100%!important}
+    #grid1 {width:100%!important}
+    #contents.FoContents {width: 100%!important;min-width: 100%!important;min-height: 950px!important;}   
+    
+    .checkbox-container input[type=checkbox] + label {margin-right: 10px;}   
+    .tbl_view th {padding: 9px 5px 9px 5px; font-size:14px}
+    .gnb_v02 {min-width: 1190px;}  
+    .tbl_view_puex th {width: 75px;padding: 5px 5px 5px 5px;font-size:14px} 
+    .tableTypePuex th {width: 75px;padding: 9px 5px 9px 5px;}   
+    .btn_line {padding: 0 5px;min-width: 70px;}   
+    .btn_search {width: 25px;}    
+    .btn_basic {padding: 0 15px;min-width: 70px;} 
+    .adminLayout {min-width: 1190px;}   
+    .btn_puex_line {padding: 0 2px;}     
+    .popupLayer {width: 100%!important;}  
+    .inputsize940 {width: 100%!important;}  
+}

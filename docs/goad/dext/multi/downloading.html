@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.setLimitMultiDownloadSize(300 * 1024 * 1024);
+			dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "서강대교_509147.jpg", size: 509147, downUrl: dx5.canonicalize("../service/common-download.do?key=FID0001") });
+			dx.addVirtualFile({ vindex: "IDX0004", name: "우도해변_239826.jpg", size: 239826, downUrl: dx5.canonicalize("../service/common-download.do?key=FID0002") });
+			dx.addVirtualFile({ vindex: "IDX0005", name: "코스모스 (빈공간) 195779.jpg", size: 195779, downUrl: dx5.canonicalize("../service/common-download.do?key=FID0003") });
+		}
+		
+		function download(flag, isMulti) {
+			var dx = dx5.get("dext5");
+			dx.download(flag, isMulti == true);
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 다운로드</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">파일 다운로드 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>다운로드란, 대상을 HTTP GET으로 요청했을 때, 서버에서 보내는 응답 데이터가 브라우저 또는 외부 플러그인에서 열리지 않고, 바로 디스크에 파일로 저장되는 것을 말합니다.</p>
+						<p>일반적으로 다운로드할 대상이 브라우저가 해석할 수 없는 형식인 경우, 특이 사항이 없는 이상 브라우저는 대상을 첨부 파일처럼 다운로드합니다.</p>
+						<p>그러나 jpg 확장자를 갖는 이미지 파일처럼 해석할 수 있는 파일이라면 대상은 다운로드가 되지 않고, 브라우저 창을 통하여 출력됩니다. (DEXTUploadX5에서는 구조상 출력되는 대상이 감춰짐.)</p>
+						<p>대상을 열지 않고 바로 다운로드하려면 브라우저 자체 기능(컨텍스트 메뉴 - 다른 이름으로 저장)에 의존하거나 서버에서 응답 데이터를 보낼 때, 브라우저가 강제로 다운로드 하도록 지시하는 응답 헤더(Content-Disposition: attachment)를 실어 보내야 합니다.</p>
+						<p>DEXTUploadX5는 웹브라우저의 기술을 그대로 사용하기 때문에, 다운로드 되지않고 파일이 그대로 열릴 수 있습니다. 
+						그러므로 파일을 일관되게 다운로드하기 위해서는 서버나  DEXTUploadNJ와 같은 서버 파일 업/다운로드 컴포넌트를 사용해서, 파일을 열리지 않고 다운로드 될 수 있도록 응답 헤더를 설정해야 합니다.</p>
+						<p>&nbsp;</p>
+						<p>이 샘플은 파일 다운로드 처리를 컨트롤러(FileServiceController 클래스)가 담당하며 common-download.do로 매핑되어 있습니다.</p>						
+						<pre class="prettyprint">
+# 서버 측 설정입니다.						
+File target = null;
+		
+String fileRoot = request.getSession().getServletContext().getRealPath("/files/attach");
+
+if (key.equals("FID0001")) target = new File(fileRoot, "서강대교_509147.jpg");
+else if (key.equals("FID0002")) target = new File(fileRoot, "우도해변_239826.jpg");
+else if (key.equals("FID0003")) target = new File(fileRoot, "코스모스 (빈공간) 195779.jpg");
+
+// 인코딩을 UTF-8로 설정합니다.
+response.setCharacterEncoding("UTF-8");
+
+if (target == null  || target.exists() == false || target.isFile() == false) {
+  response.sendError(HttpServletResponse.SC_NOT_FOUND, "주어진 키에 해당하는 파일 정보가 없습니다.");
+  return null;
+} else {
+  // DEXTUploadNJFileDownloadView 뷰 클래스를 사용하여 파일을 다운로드할 수 있습니다.
+  DEXTUploadNJFileDownloadView dextnj = new DEXTUploadNJFileDownloadView(target);			
+  return new ModelAndView(dextnj);
+}</pre>
+						<p>DEXTUploadX5 멀티 버전은 단일 파일 다운로드와 제한적 다중 파일 다운로드(1.1.0.0 버전 이후부터)를 지원합니다.</p>
+						<p>스크립트에서 개별 파일을 다운로드하려면 downloadById, download 함수를 사용합니다.</p>
+						<p>다중 파일 다운로드를 하려면 download 함수의 두 번째 파라미터 값을 true로 설정합니다.</p>
+						<p>다운로드 가능한 대상은 반드시 downUrl 속성 값을 가지고 있는 가상 파일이어야 합니다.</p>
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// downUrl 속성에 다운로드 웹 경로가 존재해야 합니다.
+dx.addVirtualFile({ ... name: "서강대교_509147.jpg", downUrl: "http://.../service/common-download.do?key=FID0001" });
+
+// 가상 파일의 고유 아이디를 사용하여 다운로드를 수행합니다.
+dx.downloadById("다운로드할 가상 파일의 고유 아이디");
+
+// 플래그 값에 따라 다운로드를 수행합니다.
+// AUTO: 첫 번째 가상 파일을 다운로드합니다.
+// SELECTED: 선택된 대상 중에 첫 번째 가상 파일을 다운로드합니다.
+// CHECKED: 체크된 대상 중에 첫 번째 가상 파일을 다운로드합니다.
+dx.download("SELECTED");
+
+// 플래그 값에 따라 다중 파일 다운로드를 수행합니다.
+// AUTO: 가상 파일을 모두 다운로드합니다.
+// SELECTED: 선택된 대상 중에 가상 파일을 모두 다운로드합니다.
+// CHECKED: 체크된 대상 중에 가상 파일을 모두 다운로드합니다.
+dx.download("SELECTED", true);
+</pre>
+						<p>단일 파일 다운로드와 달리 다중 파일 다운로드는 브라우저 성능 문제로 인하여 다운로드하는 파일의 크기에 제한을 두도록 하였습니다.</p>
+						<p>기본값은 100MB이며, 파일 크기를 그 이상 허용하려면 setLimitMultiDownloadSize 함수를 사용하여 제한된 크기를 변경하면 됩니다.</p>
+						<p class="notice">
+							그러나 이 함수는 다운로드가 허용되는 대상을 크기를 변경하는 것이지, 브라우저의 성능에 상관없이 다운로드가 가능하도록 기능을 제공하는 것이 아닙니다.
+							HTML5의 기능을 사용하여 파일을 연속적으로 다운로드하려면, 일시적으로 다운로드 대상을 메모리에 로드하기 때문에,
+							동영상 파일과 같이 용량이 큰 파일들은 멀티 버전에서 적절한 다중 파일 다운로드 대상이 아닙니다. 그러므로 대용량 다운로드, 이어 받기와 같은 기능이 필요하다면,
+							멀티 버전 대신에 IE 버전을 사용하는 것을 권장합니다.
+						</p>
+						<pre class="prettyprint">
+// 다운로드 제한 크기를 300MB로 설정합니다. 
+dx.setLimitMultiDownloadSize(1024 * 1024 * 300);
+</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>단일 파일 다운로드</p>
+						<p>
+							<button type="button" onclick="download('AUTO');">첫 번째 가상 파일 다운로드</button>
+							<button type="button" onclick="download('SELECTED');">선택된 첫 번째 가상 파일 다운로드</button>
+							<button type="button" onclick="download('CHECKED');">체크된 첫 번째 가상 파일 다운로드</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>다중 파일 다운로드</p>
+						<p>
+							
+							<button type="button" onclick="download('AUTO', true);">가상 파일 다운로드</button>
+							<button type="button" onclick="download('SELECTED', true);">선택된 가상 파일 다운로드</button>
+							<button type="button" onclick="download('CHECKED', true);">체크된 가상 파일 다운로드</button>
+						</p>
+						<p class="notice">(브라우저가 최종적으로 파일을 저장하는 단계(제품이 관여할 수 없는)가 존재하기 때문에, 
+						다운로드가 완료되었다 하더라도  브라우저에서 자체적으로 질의하는 메시지들이 늦게 보여지거나, 추가 질의가 있을 수 있습니다.)</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

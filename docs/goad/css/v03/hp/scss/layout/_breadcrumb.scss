@@ -1,0 +1,137 @@
+#breadcrumb {
+	height: $breadcrumb-height;
+	background: #f6f6f6;
+
+	.breadcrumb-list {
+		line-height: $breadcrumb-height;
+		text-align: right;
+		font-size: 0;
+
+		li {
+			display: inline-block;
+			vertical-align: top;
+
+			&:first-child {
+				a {
+					width: 35px;
+					padding: 0;
+					overflow: hidden;
+					text-indent: 999px;
+					background:url(#{$url-img}/ico-home.png) left center no-repeat;
+				}
+			}
+
+			a {
+				display: block;
+				color: #777;
+				font-size: 16px;
+				padding: 0 12px 0 18px;
+				background:url(#{$url-img}/ico-breadcrumb.png) left center no-repeat;
+			}
+
+			&:last-child {
+				a {
+					color: $default;
+				}
+			}
+		}
+
+	}
+
+	.container {
+		position: relative;
+	}
+
+	.screen-control {
+		position: absolute;
+		right: 0;
+		bottom: -110px;
+		font-size: 0;
+
+		button {
+			text-indent: -9999px;
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			margin-left: 10px;
+		}
+
+		.scale-plus {
+			background:url(#{$url-img}/btn-plus.png) 0 0 no-repeat;
+		}
+
+		.scale-minus {
+			background:url(#{$url-img}/btn-minus.png) 0 0 no-repeat;
+		}
+
+		.print {
+			background:url(#{$url-img}/btn-print.png) 0 0 no-repeat;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		background: $primary;
+		height: 40px;
+		padding-left: 20px;
+
+		.breadcrumb-list {
+			text-align: left;
+			line-height: 40px;
+
+			li {
+				position: relative;
+
+				&:before {
+					content: "";
+					display: block;
+					border-left: 1px solid #89a3b8;
+					height: 10px;
+					position: absolute;
+					left: 0;
+					top: 50%;
+					margin-top: -5px;
+				}
+
+				&:first-child {
+					vertical-align: middle;
+					margin-right: 10px;
+
+					&:before {
+						display: none;
+					}
+
+					a {
+						width: 16px;
+						height: 14px;
+						background:url(#{$url-img}/m-ico-home.png) left center no-repeat;
+						background-size: 16px 14px;
+					}
+				}
+
+				a {
+					display: block;
+					color: #fff;
+					font-size: 15px;
+					padding: 0 10px;
+					background: none;
+					font-weight: 400;
+				}
+
+				&:last-child {
+					a {
+						color: $white;
+					}
+				}
+			}
+
+		}
+
+		.screen-control {
+			display: none;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,444 @@
+@charset "utf-8";
+
+@import url("../common.css");
+
+/* 모달 팝업 */
+.modal-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ie9 .modal-popup {
+  display: block;
+}
+
+.modal-popup.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-popup.hide .popup-inner {
+  -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+}
+
+.modal-popup.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.modal-popup.show .popup-inner {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.modal-popup.modal-sm .popup-inner {
+  width: 500px;
+}
+
+.modal-popup.modal-lg .popup-inner {
+  width: 900px;
+}
+
+.modal-popup.modal-blg .popup-inner {
+  width: 1000px;
+}
+
+@media (max-width: 1024.98px) {
+  .modal-popup.modal-blg .popup-inner {
+    width: auto;
+  }
+}
+
+.modal-popup .dimed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-popup .popup-inner {
+  position: relative;
+  z-index: 1100;
+  width: 800px;
+  max-width: 100%;
+  background-color: #fff;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+}
+
+.ie9 .modal-popup .popup-inner {
+  margin: 10px auto;
+}
+
+.modal-popup.hide .modal-popup .popup-inner {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.modal-popup.show .modal-popup .popup-inner {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.modal-popup .popup-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  padding: 0 30px;
+  line-height: 60px;
+  background-color: #0165bb;
+  z-index: 3;
+}
+
+.modal-popup .popup-header .popup-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+@media (max-width: 767.98px) {
+  .modal-popup .popup-header .popup-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.modal-popup .popup-body {
+  overflow-y: auto;
+  padding: 90px 30px 30px;
+  max-height: calc(100vh - 80px);
+}
+
+.modal-popup .popup-body p {
+  word-break: keep-all;
+}
+
+.modal-popup .popup-body p em {
+  font-size: 16px;
+  color: #f0701b;
+  font-style: normal;
+}
+
+@media (max-width: 767.98px) {
+  .modal-popup .popup-body p.text-left {
+    text-align: left;
+  }
+}
+
+.modal-popup .popup-body .point {
+  font-size: 18px;
+  display: block;
+  color: #0076db;
+  margin-top: 20px;
+}
+
+.modal-popup .popup-body .tb-type2 {
+  margin-top: 45px;
+}
+
+.modal-popup .popup-body .viewer-list {
+  margin: -20px 0;
+}
+
+.modal-popup .popup-body .viewer-list li {
+  position: relative;
+  border-top: 1px solid #e9e9e9;
+  padding: 20px 0 25px;
+  padding-left: 85px;
+}
+
+.modal-popup .popup-body .viewer-list li:first-child {
+  border: 0;
+}
+
+.modal-popup .popup-body .viewer-list li:before {
+  content: "";
+  display: block;
+  border-left: 1px solid #e9e9e9;
+  height: 46px;
+  position: absolute;
+  right: 150px;
+  top: 50%;
+  margin-top: -23px;
+}
+
+.modal-popup .popup-body .viewer-list li .img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.modal-popup .popup-body .viewer-list li strong {
+  display: block;
+  font-size: 18px;
+  color: #0076db;
+  margin-bottom: 5px;
+}
+
+.modal-popup .popup-body .viewer-list li p {
+  color: #333;
+  font-size: 15px;
+  line-height: 20px;
+  width: 470px;
+}
+
+.modal-popup .popup-body .viewer-list li a {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.modal-popup .popup-body .gray-line {
+  border-radius: 15px;
+  border: 1px solid #e9e9e9;
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-popup .popup-body .gray-line.none {
+  border-radius: 0;
+  text-align: left;
+  margin-top: 40px;
+}
+
+.modal-popup .popup-body .gray-line p {
+  margin-bottom: 15px;
+}
+
+.modal-popup .popup-body .gray-line input[type="text"] {
+  width: 420px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.modal-popup .popup-body .gray-line .btn {
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  padding: 4px 0 5px;
+}
+
+.modal-popup .popup-body .gray-line .list-square li {
+  color: #777;
+}
+
+.modal-popup .popup-body .gray-line .list-square li span {
+  color: #333;
+}
+
+@media (max-width: 767.98px) {
+  .modal-popup .popup-body .gray-line {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .modal-popup .popup-body .gray-line .btn {
+    min-width: 60px !important;
+  }
+  .modal-popup .popup-body .gray-line input[type="text"] {
+    width: calc(100% - 75px);
+  }
+}
+
+.modal-popup .popup-body .no-data td {
+  color: #777;
+  text-align: center;
+  padding: 90px 0 40px;
+  background: url(/img/v03/hp/ico-blit.png) center top 40px no-repeat;
+}
+
+@media (max-width: 767.98px) {
+  .modal-popup .popup-body .no-data td {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+
+.modal-popup .popup-body .btn-area {
+  padding-bottom: 0;
+}
+
+.modal-popup .popup-body .btn-area .point {
+  display: inline-block;
+  margin-top: 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+@media (max-width: 767.98px) {
+  .modal-popup .popup-body {
+    padding: 80px 20px 20px;
+    max-height: calc(100vh - 60px);
+  }
+  .modal-popup .popup-body p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .modal-popup .popup-body .viewer-list {
+    margin: 0;
+  }
+  .modal-popup .popup-body .viewer-list li {
+    position: relative;
+    border-top: 1px solid #e9e9e9;
+    padding: 15px 0;
+    padding-left: 55px;
+    text-align: left;
+  }
+  .modal-popup .popup-body .viewer-list li:before {
+    display: none;
+  }
+  .modal-popup .popup-body .viewer-list li .img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  .modal-popup .popup-body .viewer-list li .img img {
+    width: 40px;
+  }
+  .modal-popup .popup-body .viewer-list li strong {
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+  .modal-popup .popup-body .viewer-list li p {
+    font-size: 14px;
+    line-height: 18px;
+    width: 100%;
+  }
+  .modal-popup .popup-body .viewer-list li a {
+    position: relative;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+    margin: 10px 0 0;
+  }
+}
+
+.modal-popup .btn-close-popup {
+  text-indent: -9999px;
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  background: url(/img/v03/hp/ico-close-white.png) no-repeat center center;
+  background-size: 30px 30px;
+  overflow: hidden;
+}
+
+@media (max-width: 575.98px) {
+  .modal-popup .btn-close-popup {
+    position: fixed;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .modal-popup .popup-inner {
+    position: fixed;
+    width: auto;
+    top: 50%;
+    left: 20px;
+    right: 20px;
+    -webkit-transform: translateY(-50%) !important;
+            transform: translateY(-50%) !important;
+    -webkit-transition-duration: 0s !important;
+            transition-duration: 0s !important;
+  }
+  .modal-popup.hide .popup-inner {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.disable-click{
+  pointer-events:none;
+  background-color: lightgray !important;
+}
+
+/******* 20240603 전자정부누리집 S ******/
+.top_line_bnr { background-color:#edf1f5; position:relative;  z-index:100; }
+.top_line_bnr.bnr_hide:after { background:#cdd7e4; content:""; height:1px; left:0; position:absolute; top:32px; width:100%; }
+.top_link_wrap .inner, .chk_nuri_addr_bnr .inner{max-width:1500px;margin:0 auto; width:100%; box-sizing: border-box; }
+
+.top_flag_wrap { align-items:center; color:#1d1d1d; display:flex; font-size:15px; line-height:16px; max-width:1500px;margin:0 auto; }
+.top_flag_in { font-size:15px; display: flex; align-items: center; }
+.top_flag_in img { margin-right:9px; width:24px; }
+
+.top_link_wrap { padding:8px 0; }
+
+.top_flag_info { color:#003675; cursor:pointer; font-size:14px; margin-left:18px; padding-right:20px; position:relative; border: 0; background: none; }
+.top_flag_info:after { background:url("/img/v03/hp/official_nuri_chk_arrow.png") center / 100% auto no-repeat; content:""; height:16px; margin-top:-8px; position:absolute; right:0; top:50%; transition:.4s ease-in-out; width:16px; }
+.top_flag_info.on:after { transform:rotate(-180deg); }
+.top_flag_info span { display:inline-block; height:0; overflow:hidden; text-indent:-20000px; width:0; }
+
+.chk_nuri_addr_bnr { position : relative; top : 0px; left : 0; background:#edf1f5; border-top:1px solid #cdd7e4; display:none; padding:24px 0 15px ; z-index : 202 }
+.chk_nuri_addr_bnr strong,
+.chk_nuri_addr_bnr p { padding-left:28px; }
+.chk_nuri_addr_bnr strong { color:#1d1d1d; display:inline-block; font-size:17px; font-weight:700; line-height:20px; position:relative; }
+.chk_nuri_addr_bnr strong:before { background:url("/img/v03/hp/icon_nurizip.png") center / 12px auto no-repeat #fff; border-radius:50%; content:""; left:0; height:20px; position:absolute; top:50%; transform:translateY(-50%); width:20px; }
+.chk_nuri_addr_bnr p { color:#555; font-size:15px; margin-top:16px; }
+.chk_nuri_addr_bnr p a { position:relative; display: inline-flex; align-items: center; gap:1px;  color:#1d1d1d; padding:15px 0 ; }
+.chk_nuri_addr_bnr p a:after{content: ""; width: 16px; height:16px;  background:url("/img/v03/hp/icon_info_modify.png") no-repeat; background-size: contain;}
+
+@media all and (max-width:1200px) {
+	.top_link_wrap .inner, .chk_nuri_addr_bnr .inner{padding:0 17px;}
+}
+
+@media all and (max-width:640px) {
+	.top_link_wrap { padding:4px 0; }
+    .top_flag_wrap,
+    .top_flag_in { font-size:14px; }
+    .top_flag_in img { width:18px; }
+    .top_flag_info { font-size:13px; margin-left:10px; padding-right:16px; }
+
+    .chk_nuri_addr_bnr { padding:24px 0 10px; }
+    .chk_nuri_addr_bnr strong,
+    .chk_nuri_addr_bnr p { padding-left:24px; }
+    .chk_nuri_addr_bnr strong { font-size:15px; }
+    .chk_nuri_addr_bnr strong:before { background-size:10px auto; height:16px; width:16px; }
+    .chk_nuri_addr_bnr p { font-size:14px; margin-top:12px; }
+    .chk_nuri_addr_bnr p a { background-size:14px auto; padding:16px 18px 16px 0; }
+}
+
+@media all and (max-width:580px) {
+	.top_flag_wrap{display:block;}
+	.top_flag_info{padding:3px 16px 5px 27px; margin-left:0; }
+}
+
+@media all and (max-width:390px) {
+	.top_link_wrap { padding:8px 0 2px 0; }
+	.top_flag_in { font-size:13.5px; }
+}
+/******* 20240603 전자정부누리집 E ******/

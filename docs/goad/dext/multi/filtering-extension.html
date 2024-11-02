@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {}
+		
+		function toggleNoExtension(enable) {
+			dx5.get("dext5").setAllowNoExtension(enable);
+		}
+
+		function setExtensionFilter(reverse) {
+			var dx = dx5.get("dext5");
+			var str = reverse === true ? 
+				document.getElementById("txt-filter-ext-black").value : 
+				document.getElementById("txt-filter-ext-white").value;
+			dx.setExtensionFilter(str, reverse);
+		}
+
+		function getExtensionFilter(reverse) {
+			alert(dx5.get("dext5").getExtensionFilter(reverse));
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 필터링2</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">파일 확장자를 제한하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>특정 확장자를 갖는 파일만 허용(순필터)하거나, 반대로 허용하지 않도록 설정(역필터)이 가능합니다.</p>
+						<p>또한 확장자가 없는 파일은 추가할지 여부를 설정할 수 있습니다.</p>
+						<p>일반적으로 보안성을 높이기 위해서 순필터 기능만 사용합니다.</p>
+						<p class="notice">가상 파일은 확장자 필터링 대상이 아닙니다.</p>						
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// false이면 순필터 설정 정보를 반환하고, true이면 역필터 설정 정보를 반환합니다.
+var filtered = dx.getExtensionFilter(false);
+
+// *.jpg, *.jpeg, *.gif, *.bmp, *.txt 만 허용하도록 합니다.
+dx.setExtensionFilter("*.jpg;*.jpeg;*.gif;*.bmp;*.txt", false);
+
+// *.jpg, *.jpeg, *.gif, *.bmp, *.txt 는 불허합니다.
+dx.setExtensionFilter("*.jpg;*.jpeg;*.gif;*.bmp;*.txt", true);
+
+// 확장자가 없는 파일을 허용하지 않습니다.
+dx.setAllowNoExtension(false);</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+						<p>확장자가 없는 파일 등록을 허용할지 여부를 결정할 수 있습니다.</p>
+						<p>
+							<input id="rdo-noext-yes" name="rdo-noext-enable" type="radio" checked="checked" onclick="toggleNoExtension(true);" /><label for="rdo-noext-yes">확장자가 없는 파일 허용</label>
+							<input id="rdo-noext-no" name="rdo-noext-enable" type="radio" onclick="toggleNoExtension(false);" /><label for="rdo-noext-no">허용 안함</label>
+						</p>
+						<p>&nbsp;</p>
+						<p>
+							순필터는 필터에 명시된 확장자를 가진 파일만 등록할 수 있도록 합니다.<br />
+							ex) *.jpg;*.jpeg;*.gif;*.bmp;*.txt
+						</p>
+						<p>
+							<input id="txt-filter-ext-white" placeholder="ex) *.jpg;*.jpeg;*.gif;*.bmp;*.txt" style="width: 300px;" />
+							<button id="btn-set-filter-white" onclick="setExtensionFilter();">설정</button>
+							<button id="btn-get-filter-white" onclick="getExtensionFilter();">설정값 보기</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>
+							역필터는 필터에 명시된 확장자를 가진 파일은 등록할 수 없도록 합니다.<br />
+							ex) *.ppt;*.xls;*.html
+						</p>
+						<p>
+							<input id="txt-filter-ext-black" placeholder="ex) *.ppt;*.xls;*.html" style="width: 300px;" />
+							<button id="btn-set-filter-black" onclick="setExtensionFilter(true);">설정</button>
+							<button id="btn-get-filter-black" onclick="getExtensionFilter(true);">설정값 보기</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

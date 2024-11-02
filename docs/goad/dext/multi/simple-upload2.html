@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/common-upload.do"));
+		}
+		
+		function onDX5UploadCompleted(id) {			
+			alert("업로드가 완료되었습니다.\n응답 데이터는 다음과 같습니다.\n" + dx5.get(id).getResponses()[0]);
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+	
+		<header>
+			<div class="logobg"></div>
+		</header>
+		
+		<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 업로드</div>
+		<div id="MainCenter">
+	  	<article>	
+			<div class="exTit">파일을 업로드하는 가장 간단한 예제입니다.</div>
+			<dl>
+				<dt>예제</dt>
+				<dd>
+					<div id="dext5-container" style="width:500px; height:300px;"></div>
+					<p>파일을 추가한 후 업로드 버튼을 클릭하면 파일이 업로드됩니다.</p>
+					<p>
+						<button id="btn-add-files">파일 추가</button>
+						<button id="btn-upload">업로드</button>
+					</p>
+				</dd>
+			</dl>
+		</article>
+		</div>
+		
+		<footer>
+		<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files", btnUploadAuto: "btn-upload"
+		});
+	</script>
+</body>
+</html>

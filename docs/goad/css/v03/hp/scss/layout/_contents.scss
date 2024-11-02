@@ -1,0 +1,327 @@
+.vertical-t {
+	vertical-align: top;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.pd-t {
+	padding-top: 0 !important;
+}
+
+
+.w180 {
+	width: 180px !important;
+}
+
+.w200 {
+	width: 200px !important;
+}
+
+.w220 {
+	width: 220px !important;
+}
+
+.w240 {
+	width: 240px !important;
+}
+
+.w93P {
+	width: 93% !important;
+}
+
+.w100P {
+	width: 100% !important;
+}
+
+#contents {
+
+	.hasDatepicker,
+	.month-year-input {
+		border-right: 0;
+		border-radius: 4px 0 0 4px;
+		padding-right: 0;
+		padding-left: 10px;
+		width: 110px !important;
+	}
+
+	.btn_date {
+		display: inline-block;
+		margin-left: -4px;
+		width: 40px;
+		height: 40px;
+		border: 1px solid #e5e5e5;
+		border-left: 0;
+		border-radius: 0 4px 4px 0;
+	}
+
+	.btn_search {
+		width: 40px;
+		height: 40px;
+		background:url(#{$url-img}/btn-search.png) 0 0 no-repeat;
+		position: relative;
+		left: 0;
+		top: 0;
+		text-indent: -9999px;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.f_left {
+		.total_num {
+			font-weight: normal;
+
+			#grid_totalCount {
+				color: $lightprimary;
+			}
+		}
+
+		.borderTitle {
+			padding: 0;
+			line-height: 40px;
+		}
+
+		label {
+			display: none;
+		}
+
+		select {
+			margin-left: 10px;
+			color: #999;
+			line-height: 40px;
+			padding: 5px 10px;
+		}
+	}
+}
+
+
+
+.tab_puex {
+	position: relative;
+	width: 100%;
+
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	&:before {
+		content: "";
+		display: block;
+		clear: both;
+		position: absolute;
+		top: 39px;
+		left: 0;
+		right: 0;
+		border-bottom: 2px solid #e6e6e6;
+		z-index: 1;
+	}
+
+	li {
+		float: left;
+		position: relative;
+
+		a {
+			padding: 0 25px;
+			display: block;
+			height: 39px;
+			line-height: 37px;
+			font-size: 14px;
+			text-align: center;
+		}
+
+		&:first-child {
+			a {
+				margin-left: 0;
+			}
+		}
+
+		&:last-child {
+			a {
+				margin-right: 0;
+			}
+		}
+
+		&.on {
+			z-index: 2;
+
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				bottom: -2px;
+				right: 0;
+				border-bottom: 2px solid #4f97d1;
+			}
+
+			a {
+				position: relative;
+				border-color: #4f96d1;
+				color: #4f96d1;
+				font-weight: bold;
+				z-index: 1;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	.w25p {
+		li {
+			width: 25%;
+		}
+	}
+}
+
+
+.tableTypePuex {
+	.btn_basic {
+		height: 40px;
+		line-height: 36px;
+		padding: 0 10px;
+	}
+}
+
+.borderSearchBox {
+	&.centerSearch {
+		.searchBox {
+			background-color: #fff;
+			border-radius: 15px;
+			border: 1px solid #e3e3e3;
+			padding: 18px 22px;
+		}
+	}
+}
+
+
+
+
+
+#ui-datepicker-div {
+	padding: 0;
+	border: 1px solid #4f97d1;
+	border-radius: 0;
+
+	.ui-widget-header {
+		background: #4f97d1;
+		padding: 0;
+		border-radius: 0;
+		border: 0;
+
+		.ui-corner-all {
+			top: 1px !important;
+
+			span {
+				width: 12px;
+				height: 12px;
+				margin-left: -6px;
+				margin-top: -6px;
+			}
+
+			&:hover {
+				background: $primary;
+			}
+		}
+
+		.ui-datepicker-prev {
+			left: 1px !important;
+
+			span {
+				background:url(#{$url-img}/ico-month-prev.png) 0 0 no-repeat;
+			}
+		}
+
+		.ui-datepicker-next {
+			right: 1px !important;
+
+			span {
+				background:url(#{$url-img}/ico-month-next.png) 0 0 no-repeat;
+			}
+		}
+	}
+
+	.ui-datepicker-title {
+		color: $white;
+		font-weight: 500;
+		line-height: 2em;
+	}
+
+	.ui-datepicker-year {
+		color: $white;
+		font-weight: 500;
+	}
+
+	.ui-datepicker-calendar {
+		tr {
+			th {
+				&:first-child {
+					color: #e20000;
+				}
+			}
+
+			th {
+				&:last-child {
+					color: #0078d8;
+				}
+			}
+
+			td {
+				text-align: center;
+
+				span,
+				a {
+					border: 0;
+					background: none;
+					text-align: center;
+					width: 25px;
+					font-weight: bold;
+					height: 25px;
+					line-height: 20px;
+					border-radius: 50%;
+					display: inline-block;
+					vertical-align: top;
+				}
+
+				&:first-child {
+
+					span,
+					a {
+						color: #e20000;
+					}
+				}
+
+				&:last-child {
+
+					span,
+					a {
+						color: #0078d8;
+					}
+				}
+
+				&.ui-datepicker-today {
+					a {
+						color: $white;
+						background: #4f97d1;
+					}
+				}
+
+				.ui-state-default {
+					background: none;
+					border: 0;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+.radio-container {
+	&.dp_inb {
+		margin-right: 10px;
+	}
+}

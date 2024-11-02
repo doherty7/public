@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			alert("DEXTUploadX5가 생성되었습니다.");
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-etc">기타</a> &gt; 브라우저 구분</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">컴포넌트를 브라우저마다 다르게 사용하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>멀티 버전은 HTML5 기본적으로 지원하는 브라우저에서 구동이 되어야 합니다.</p>
+						<p>이와 달리 IE 버전은 ActiveX를 지원하는 IE 버전에서만 사용할 수 있습니다.</p>
+						<p>1.1.0.0 버전부터는 현재 브라우저의 종류를 판별할 수 있는 속성값을 지원합니다.</p>
+						<pre class="prettyprint">
+var browers = dx5.browser;
+// isIE, isChrome, isFirefox, isOpera, isEdge
+if (browers.isIE) {
+  dx5.create({ mode: "ie", id: "dext5", parentId: "dext5-container" });
+} else {
+  dx5.create({ mode: "multi", id: "dext5", parentId: "dext5-container" });
+}
+</pre>
+						</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>샘플은 Internet Explorer의 경우 IE 버전이, 그 외의 브라우저는 멀티 버전이 로드되도록 작성되었습니다.</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		var dx5mode = dx5.browser.isIE ? "ie" : "multi";
+		dx5.create({ mode: dx5mode, id: "dext5", parentId: "dext5-container" });
+	</script>
+</body>
+</html>

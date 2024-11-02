@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	version="1.1"
+	id="UIC-DEXTUPLOADX5-PROGRESSIVE"
+	onload="onLoadHandler(evt)" width="100%" height="100%">
+    <script type="application/ecmascript" xlink:href="../module/dextuploadx5-common.js"/>
+    <script type="application/ecmascript" xlink:href="../module/dextuploadx5-svg.js"/>
+    <script type="application/ecmascript" xlink:href="./dextuploadx5-dn-3-app.js"/>
+    <style type="text/css">
+        * { font-family: '맑은 고딕', Tahoma }
+        .css-txt-title { font-size: 10pt; fill: #333; font-weight: bold; }
+        .css-txt-progressive { font-size: 9pt; fill: #fff; }
+        .css-txt-filename { font-size: 8.5pt; fill: #eee; text-anchor: middle; }
+        .css-txt-count { font-size: 8.5pt; fill: #eee; text-anchor: middle; }
+        .css-progress-back { fill: #465b70; stroke: rgba(255, 255, 255, .75); stroke-width: 1; }
+        .css-progress-around { fill: #80FF00; stroke: none; opacity: 0; }
+        .css-progress-default { fill: #80FF00; stroke: none; }
+        .css-progress-glow { fill: #80FF00; stroke: none; opacity: 0; }
+    </style>
+    <filter id="UIF-SHADOW" x="0%" y="0%" width="100%" height="100%">
+        <feGaussianBlur stdDeviation="1.2" />
+    </filter>
+    <filter id="UIF-GLOW" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="3" />
+    </filter>
+    <defs>
+        <symbol id="UIS-CANCEL" viewBox="0 0 16 16">
+            <rect x="0" y="0" width="100%" height="100%"/>
+            <path d="M0,3 l3,-3 l5,5 l5,-5 l3,3 l-5,5 l5,5 l-3,3 l-5,-5 l-5,5 l-3,-3 l5,-5 z" stroke="none" fill="#465b70"/>
+        </symbol>
+    </defs>
+    <svg id="UIC-MAIN-AREA" x="0" y="0" width="100%" height="100%">
+        <svg x="0" y="0" width="100%" height="40">
+            <rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#ebebeb"/>
+            <text id="UIC-TITLE-TXT" x="10" y="26" class="css-txt-title">DOWNLOADING</text>
+            <use id="UIC-TITLE-BTN-CANCEL" xlink:href="#UIS-CANCEL" y="15" width="12" height="12" layout-dx5="x:100%-12px-10px;" style="cursor:pointer;" fill="#ebebeb"/>
+        </svg>
+        <svg x="0" y="40" width="100%" height="100">
+            <rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#465b70"/>
+            <svg x="20" y="30" height="20" layout-dx5="width:100%-40px;">
+                <title id="UIC-AT-FILENAME"></title>
+                <text id="UIC-TXT-FILENAME" x="50%" y="10" class="css-txt-filename">File Name</text>
+            </svg>
+            <svg x="20" y="50" height="10" layout-dx5="width:100%-40px;">
+                <rect id="UIC-PROGRESS-BACK" class="css-progress-back" x="0" y="2" width="100%" height="3" filter="url(#UIF-SHADOW)" />
+                <rect id="UIC-PROGRESS-DEF" class="css-progress-default" x="0" y="2" width="0" height="3" />
+                <rect id="UIC-PROGRESS-AROUND" class="css-progress-around" y="2" width="0" height="3" filter="url(#UIF-GLOW)" />
+                <rect id="UIC-PROGRESS-GLOW" class="css-progress-glow" y="2" width="0" height="3" />
+            </svg>
+            <text id="UIC-TXT-COUNT" x="50%" y="70" class="css-txt-count">[ 0 / 0 ]</text>
+        </svg>
+    </svg>
+</svg>

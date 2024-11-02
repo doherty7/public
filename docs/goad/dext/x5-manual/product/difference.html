@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+    <title>멀티/IE 모듈의 차이 및 제한</title>
+    <link rel="stylesheet" href="../common/css/global.css" type="text/css" />
+    <link rel="stylesheet" href="../common/js/prettify/tomorrow.css" type="text/css" />
+    <script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../common/js/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../common/js/init_reference.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="man_product">DEXTUploadX5</div>
+        <div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../common/images/menu.svg" alt="menu toggle" /></a>제품설명 &gt; 멀티/IE 모듈의 차이 및 제한</div>
+    </div>
+    <div class="snb"><iframe src="../menu.html" frameborder="0"></iframe></div>
+    <div class="cnb">
+        <div class="main">
+            <div class="inner_content">
+                <h1 class="man_title">멀티/IE 모듈의 차이 및 제한</h1>
+                <p>DEXTUploadX5 제품은 멀티 모듈과 IE 모듈로 나뉩니다.</p>
+                <p>전반적인 사용법은 비슷하지만, 모양, 설정이나 실 구현 방법에 다소 차이가 있습니다.</p>
+                <p>구현 방법에 대한 차이는 매뉴얼 및 샘플을 참고하시길 바라며, 기능 상의 주요 차이점에 대해서만 소개하려 합니다.</p>
+                <dl>
+                    <dt class="dep">기술</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>HTML5, SVG, JavaScript를 지원하는 모던 브라우저에서 동작하도록 작성되었습니다.</p>
+                                        <p>Edge, Chrome, Firefox, Opera, Safari(macOS 전용) 최신 버전 제품들은 컴포넌트 구동을 위한 필수 기술을 제공하고 있습니다.</p>
+                                        <p>Internet Explorer 브라우저의 경우, 11 버전을 권장합니다.</p>
+                                        <p class="notice">브라우저마다 지원하는 기술의 차이가 있기 때문에, 모든 환경에서 동일한 기능 및 모습을 보장할 수 없습니다.</p>
+                                        <p class="notice">HTML5 기술 기반이므로, 페이지 doctype 선언에 주의해야 합니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>Microsoft ActiveX 기술을 사용하여 작성되었습니다.</p>
+                                        <p>Internet Explorer 브라우저(8버전 이상)만 지원합니다. (Edge 브라우저는 ActiveX를 지원하지 않습니다.)</p>
+                                        <p class="notice">Internet Explorer 브라우저 외에 타 브라우저는 지원대상이 아닙니다.</p>
+                                        <p class="notice">IE7(포함)이하 및 호환성 보기 모드에서는 올바르게 동작하지 않을 수 있습니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">클라이언트 배포</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>순수 웹 기술을 기반으로 작성되었으므로, 브라우저에 추가로 설치해야 하는 플러그인이 없습니다.</p>
+                                        <p>서버에서 내려 받은 리소스를 그대로 사용하기 때문에, 버전 호환성 검사가 없습니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>CAB 파일이 아닌, 설치 프로그램을 따로 제공합니다.</p>
+                                        <p>사용자 PC에 클라이언트가 이미 설치되어 있는 경우, 버전 호환성 검사를 수행합니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">중복 파일 처리</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>파일의 이름, 크기(용량), 마지막 수정 일자를 비교하여 중복 파일인지 여부를 검사합니다.</td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>파일의 경로를 비교하여 중복 파일인지 여부를 검사합니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">크로스 도메인</dt>
+                    <dd>
+                        <p>웹 페이지를 내려 받은 도메인과 요청하려는 도메인이 다른 경우, 크로스 도메인 문제가 발생할 수 있습니다.</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>타 도메인으로 파일 업로드를 수행할 수 없습니다.</p>
+                                        <p><a href="cors.html">CORS</a> 설정으로 해결이 가능합니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>도메인을 구분하지 않고 파일 업로드 처리가 가능합니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">파일 다운로드</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>파일을 다운로드하려면 downUrl 속성에 대상의 웹 주소를 설정해야 합니다. (1.4.1.0 이후부터는 url 속성도 사용할 수 있습니다.)</p>
+                                        <p>다운로드 위치는 브라우저에 설정에 따릅니다.</p>
+                                        <p>중복된 파일을 다운로드하는 경우, 브라우저가 알아서 처리합니다.(자동 suffix 추가와 같은)</p>
+                                        <p>단일 파일 다운로드의 경우</p>
+                                        <ul>
+                                            <li>downUrl 주소로 요청했을 때, 서버는 반드시 Content-disposition 응답 헤더가 attachment이어야 합니다.</li>
+                                            <li class="notice">다운로드를 지원하는 서버는 반드시 HEAD 요청을 처리할 수 있어야 합니다.</li>
+                                        </ul>
+                                        <p class="notice">다중 파일 다운로드의 경우(1.1.0.0 버전부터 지원)</p>
+                                        <ul class="notice">
+                                            <li>다운로드할 대상의 파일 용량에 제한이 있습니다. (기본값 100MB이며, 이 설정은 다운로드를 하는 과정에서 높은 메모리 사용량을 막기 위한 일종의 제한 장치입니다. 만일 설정 값을 변경하여 대용량 파일을 다운로드하게 되면 브라우저 크래시가 발생할 수 있습니다.)</li>
+                                            <li>파일 다운로드가 완료되었다 하더라도, 브라우저 자체 작업(다이얼로그 표시 및 임시 파일 복사 작업 등등)이 있으므로, UI 표현상 매끄럽지 않을 수 있습니다.</li>
+                                            <li>Safari 브라우저는 버전이 10.1 이상이고, OS가 macOS 경우만 지원합니다.</li>
+                                        </ul>
+                                        <p>압축 다운로드 지원(1.3.0.0 버전부터 지원)</p>
+                                        <ul>
+                                            <li>다운로드할 대상을 하나의 압축 파일로 묶어 다운로드합니다.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>다중 파일 다운로드 방식으로만 동작합니다.</p>
+                                        <p>url 속성에 다운로드할 대상의 웹 주소를 설정해야 합니다.</p>
+                                        <p>서버 응답 방식에 상관없이, 강제로 파일을 생성합니다.</p>
+                                        <p>서버 측 컴포넌트와 연계하여 이어 받기가 가능합니다.</p>
+                                        <p>다운로드 위치를 변경할 수 있습니다.</p>
+                                        <p>다운로드 과정에서 발생하는 중복 파일에 대한 처리 옵션을 가지고 있습니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="notice">대용량 다운로드 지원 조건</p>
+                        <ul class="notice">
+                            <li>클라이언트(PC)는 GB 단위의 파일을 저장할 수 있는 파일 시스템이어야 합니다.</li>
+                            <li>원본 파일을 갖는 웹/WAS 서버가 GB 단위의 파일을 내려보낼 수 있어야 합니다.</li>
+                            <li>
+                                주의: HTTP 통신을 통한 대용량 파일 업로드는 일반적으로 2GB 이상의 데이터를 주고 받는 것을 의미하지만, 수십~수백GB 및 TB급 이상의 데이터까지 아우르는 것은 아니며,
+                                제품에서 지원을 보장할 수 없습니다.
+                            </li>
+                        </ul>
+                        <p class="notice">다중 파일 다운로드 및 파일 열기가 중요한 서비스라면 IE 모듈을 사용을 권장합니다.</p>
+                    </dd>
+                    <dt class="dep">파일 열기</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>브라우저가 열 수 있는 파일만 열기가 가능합니다.</p>
+                                        <p>파일을 열려면 openUrl 속성에 대상의 웹 주소를 설정해야 합니다.</p>
+                                        <p>openUrl 주소로 요청했을 때, 서버는 반드시 Content-disposition 응답 헤더가 attachment이면 안됩니다.</p>
+                                        <p>해당 주소를 새 브라우저 창으로 여는 것도 동일하게 처리됩니다.</p>
+                                        <p>만일 브라우저가 열 수 없는 파일을 지정하면, 다운로드로 전환될 수 있습니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>연결된 프로그램이 있다면 파일을 바로 열 수 있습니다.</p>
+                                        <p>url 속성에 대상의 웹 주소를 설정해야 합니다. (다운로드 주소와 열기 주소를 따로 구분하지 않습니다.)</p>
+                                        <p>서버 응답 방식에 상관없이, 파일을 엽니다.</p>
+                                        <p>만일 연결된 프로그램이 없다면 오류가 발생합니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="notice">다중 파일 다운로드 및 파일 열기가 중요한 서비스라면 IE 모듈을 사용을 권장합니다.</p>
+                    </dd>
+                    <dt class="dep">정렬</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>1.1.0.0 버전부터 지원합니다.</p>
+                                        <p>sortColumnIndex 함수를 사용할 때, 1번이 파일명이고 2번이 사이즈입니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>sortColumnIndex 함수를 사용할 때, 0번이 파일명(또는 경로)이고 1번이 사이즈입니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">ORAF일 때, 진행창 데이터 표시 차이</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>ORAF일 때, 모든 파일은 하나의 요청에 실려 전달되이 되기 때문에, 개별 파일 진행 과정이 없습니다.</p>
+                                        <p>그러므로 ORAF 업로드에서는 제품에 내장된 '0'번 진행창 만을 사용하십시오.</p>
+                                        <p>OROF, EXNJ 업로드에서는 모든 진행창을 사용할 수 있습니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>업로드 방식과 상관없이 개별 진행 표시가 가능합니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">0 바이트 파일 업로드</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>Internet Explorer 브라우저를 사용하는 경우에는 11버전 이상부터, 0 바이트 파일 업로드가 가능합니다.</p>
+                                        <p>10버전 이하는 0 바이트 파일 업로드가 안되기 때문에, 필터링 대상이 됩니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>0 바이트 파일도 환경에 따른 제약 없이 전송이 가능합니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">항목(item) 속성 차이</dt>
+                    <dd>
+                        <p>공통 속성: controlId, id, type, name, ext, vindex, size, mdate, lock, status, url</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>checked: 대상 항목이 체크 상태 혹은 체크 해지 상태인지 여부를 나타냅니다.</p>
+                                        <p>openUrl: 열기의 대상이 되는 웹 URL입니다. (가상 파일)</p>
+                                        <p>downUrl: 다운로드의 대상이 되는 웹 URL입니다. 1.4.1.0 버전부터는 url 사용도 가능합니다. (가상 파일)</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>path: 항목의 로컬 경로입니다. (로컬 항목)</p>
+                                        <p>url: 열기/다운로드의 대상이 되는 웹 URL입니다. (가상 파일)</p>
+                                        <p>cdate: 로컬 항목의 생성 일자입니다. (로컬 항목)</p>
+                                        <p>imageWidth: 이미지 파일의 경우 가로 크기를 나타냅니다. (로컬 항목)</p>
+                                        <p>imageHeight: 이미지 파일의 경우 세로 크기를 나타냅니다. (로컬 항목)</p>
+                                        <p>exif: 이미지의 EXIF 정보를 나타냅니다. (로컬 항목)</p>
+                                        <p class="notice">이미지란 jpg, png, bmp, tiff만 해당됩니다.</p>
+                                        <p>middlePath: 로컬 항목에 대한 부모 폴더의 경로입니다. 드라이브 경로가 아닌 항목이 등록될 때 선택한 폴더를 기준으로 합니다. (멀티 모듈은 2.0.1.0 버전부터 지원하지 않습니다.)</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">이미지 미리보기</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>1.2.0.0 버전부터 지원합니다.</p>
+                                        <p>JPG, GIF, PNG, BMP 파일만 지원합니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>1.0.0.0 버전부터 지원합니다.</p>
+                                        <p>내장 뷰어를 사용하는 경우 TIFF, WMF, EMF, ICON 포맷을 추가로 지원합니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt class="dep">기타 기능적 차이</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>멀티</td>
+                                    <td>
+                                        <p>폴더 구조 업로드: 2.0.1.0버전부터 미지원(구 버전의 경우 크롬브라우저에서 일부 지원이 되었음.)</p>
+                                        <p>폴더 구조 다운로드: 미지원</p>
+                                        <p>압축: 미지원</p>
+                                        <p>암호화: 미지원</p>
+                                        <p>복호화: 미지원</p>
+                                        <p>섬네일 생성: 미지원</p>
+                                        <p>클립보드: 미지원</p>
+                                        <p>속도제한: 미지원</p>
+                                        <p>EXIF: 미지원</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td>
+                                        <p>폴더 구조 업로드: 폴더 구조로 파일을 업로드할 수 있습니다.</p>
+                                        <p>폴더 구조 다운로드: 폴더 구조로 파일을 다운로드할 수 있습니다.</p>
+                                        <p>압축: 대상을 zip, 7z으로 압축할 수 있습니다.</p>
+                                        <p>암호화: 암호화된 파일을 생성할 수 있습니다.</p>
+                                        <p>복호화: 암호화된 파일을 복호화할 수 있습니다.</p>
+                                        <p>섬네일 생성: 이미지 파일인 경우, 파일 등록 시점에 자동으로 섬네일 추가가 가능합니다.</p>
+                                        <p>클립보드: Ctrl+V 단축키를 사용했을 때, 클립보드에 있던 데이터를 파일처럼 추가할 수 있습니다.</p>
+                                        <p>속도제한: 필요에 따라 네트워크 트래픽을 조절할 수 있도록 업로드/다운로드 속도를 제한할 수 있습니다.</p>
+                                        <p>EXIF: EXIF를 지원하는 이미지의 경우 정보를 추출할 수 있습니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Copyright ⓒ DEVPIA Inc. All rights reserved</div>
+</body>
+</html>

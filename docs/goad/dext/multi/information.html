@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "코스모스.jpg", size: 195779 });
+		}
+		
+		function getItemCount() { 
+			alert(dx5.get("dext5").getTotalItemCount()); 
+		}
+
+		function getLocalFileCount() {
+			alert(dx5.get("dext5").getTotalLocalFileCount()); 
+		}
+
+		function getVirtualFileCount() {
+			alert(dx5.get("dext5").getTotalVirtualFileCount()); 
+		}
+
+		function getRemovedVirtualFileCount() {
+			alert(dx5.get("dext5").getTotalRemovedFileCount()); 
+		}
+		
+		function showItemProperties() {
+			var ci = document.getElementById("txt-property-index"),
+				ti = parseInt(ci.value, 10);
+
+			if (isNaN(ti)) {
+				alert("파일의 인덱스(순서)가 필요합니다.");
+				ci.focus();
+			} else {
+				var item = dx5.get("dext5").getItemByIndex(ti);
+				if (!item) return;
+				var explained = "" +
+					"controlId => " + item.controlId + "\n" +
+					"id => " + item.id + "\n" +
+					"type => " + item.type + "\n" +
+					"name => " + item.name + "\n" +				
+					"vindex => " + item.vindex + "\n" +
+					"openUrl => " + item.openUrl + "\n" +
+					"downUrl => " + item.downUrl + "\n" +
+					"size => " + item.size + "\n" +
+					"checked => " + item.checked + "\n" +
+					"lock => " + item.lock + "\n" +
+					"status => " + item.status;
+				alert(explained);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 항목</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">항목이 가지고 있는 정보를 확인하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>컴포넌트에 추가할 수 있는 항목은 로컬 파일 및 가상 파일이 있습니다.</p>
+						<p>로컬 파일은 파일 다이얼로그를 사용하여 등록된 항목을 말하며,
+						가상 파일은 addVirtualFile, addVirtualFileList 함수를 사용하여 등록된 가상의 파일을 나타내는 항목을 말합니다.</p>
+						<p>컴포넌트에는 항목에 대한 정보를 얻기 위해서 많은 manipulation 함수가 제공됩니다.</p>
+						<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// 모든 항목의 개수를 반환합니다.
+var countAll = dx.getTotalItemCount();
+
+// 로컬 파일 항목의 개수를 반환합니다.
+var countLocal = dx.getTotalLocalFileCount();
+
+// 가상 파일 항목의 개수를 반환합니다.
+var countVirtual = dx.getTotalVirtualFileCount();
+
+// 삭제된 가상 파일 항목의 개수를 반환합니다.
+var countRemoved = dx.getTotalRemovedFileCount();</pre>
+							<p>특정 항목에 대한 상세 정보를 보기 위해서는 먼저 대상을 얻어야 합니다.</p>
+							<p>getItems, getSelectedItems, getItemById, getItemByIndex 함수를 사용하여 특정 항목 또는 배열을 받아올 수 있습니다.</p>
+							<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+
+// 주어진 아이디 혹은 순서에 해당하는 항목을 반환합니다.
+var item1 = dx.getItemById("항목 아이디");
+var item2 = dx.getItemByIndex(3);
+
+// 전체 항목 배열을 반환합니다.
+var allItems = dx.getItems();
+
+// 선택된 항목 배열을 반환합니다.
+var selectedItems = dx.getSelectedItems();</pre>
+							<p>항목은 다음과 같은 속성을 갖는 json 객체입니다.</p>
+							<ul class="notice">
+								<li>controlId: 항목이 생성된 컴포넌트 아이디</li>
+								<li>id: 항목의 고유한 아이디로써 컴포넌트에 의해 결정됩니다.</li>
+								<li>type: 로컬 파일 또는 가상 파일을 구분 짓습니다.</li>
+								<li>name: 항목 이름(파일 이름)입니다.</li>
+								<li>vindex: 가상 파일의 경우 가상 파일을 구분 짓는 키입니다. (일반적으로 데이터베이스 키가 사용됩니다.)</li>
+								<li>openUrl: 가상 파일의 경우 파일 열기의 대상이 되는 웹 경로입니다.</li>
+								<li>downUrl: 가상 파일의 경우 파일 다운로드의 대상이 되는 웹 경로입니다.</li>
+								<li>size: 파일의 크기(용량)입니다.</li>
+								<li>checked: 파일의 체크 상태입니다.</li>
+								<li>lock: 파일의 잠금 상태입니다.</li>
+								<li>status: 파일의 업로드 상태입니다.</li>
+							</ul>
+							<p class="notice">반환된 항목은 모두 복제된 객체이므로, 대상 객체의 속성 값을 변경하더라도, 컴포넌트 내부에 영향이 없습니다.</p> 
+						</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button type="button" id="btn-add-files">파일 추가</button>
+						</p>
+						<p>
+							<button type="button" id="btn-get-item-count" onclick="getItemCount();">항목 개수</button>
+							<button type="button" id="btn-get-file-count" onclick="getLocalFileCount();">로컬 파일 개수</button>
+							<button type="button" id="btn-get-vfile-count" onclick="getVirtualFileCount();">가상 파일 개수</button>
+							<button type="button" id="btn-get-removed-count" onclick="getRemovedVirtualFileCount();">삭제된 가상 파일 개수</button>
+						</p>
+						<p>
+							<input id="txt-property-index" placeholder="항목 순서(0부터)" style="width: 200px;" />
+							<button type="button" id="btn-show-property" onclick="showItemProperties();">항목의 속성 보기</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

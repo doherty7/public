@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>getCommonFolderPath</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; getCommonFolderPath</div>
+	</div>
+	<div class="snb">
+		<iframe src="../../../menu.html" frameborder="0"></iframe>
+	</div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">getCommonFolderPath</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd class="notice">IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>
+						<pre class="prettyprint">
+folderPath = object.getCommonFolderPath(title);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>title</td>
+									<td>String</td>
+									<td>폴더 선택 다이얼로그 타이틀 명</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd>선택된 폴더 경로</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>로컬 경로를 선택하기 위해 폴더 선택 다이얼로그 창을 띄웁니다.</p>
+						<p>getCommonFolderPath 함수는 DEXTUploadX5에 상태에 영향을 미치지 않는 유틸리티 기능입니다.</p>
+						<p>서비스 구현에 로컬 경로를 얻어야할 필요가 있을 때, 사용합니다.</p>
+						<pre class="prettyprint">
+var path = dx.getCommonFolderPath(title);
+if (path) {
+  ...
+}
+</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

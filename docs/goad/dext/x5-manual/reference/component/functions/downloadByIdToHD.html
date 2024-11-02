@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>downloadByIdToHD</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; downloadByIdToHD</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">downloadByIdToHD</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>2.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">object.downloadByIdToHD(id[, duplicated]);</pre>
+					</dd>
+                    <dt>파라미터</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>이름</th>
+                                    <th>형식</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>String</td>
+                                    <td>다운로드할 가상 파일의 고유 아이디</td>
+                                </tr>
+                                <tr>
+                                    <td>duplicated</td>
+                                    <td>Function</td>
+                                    <td>[옵션] 다운로드할 대상과 동일한 이름을 갖는 항목이 이미 존재할 때, 호출되는 콜백 함수입니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt>반환 값</dt>
+                    <dd></dd>
+                    <dt>설명</dt>
+                    <dd>
+                        <p>주어진 고유 아이디에 해당하는 가상 파일을 HD 응용프로그램을 사용하여 다운로드합니다.</p>
+                        <p>파일을 다운로드하려면 서버에 존재하는 대상의 경로 정보를 얻을 수 있어야 하는데, 가상 파일의 속성을 사용합니다.</p>
+                        <p>&nbsp;</p>
+                        <p>가상 파일은 url 속성에 다운로드할 수 있는 서버 측 주소가 설정되어야 합니다.</p>
+                        <p class="notice">멀티 모듈은 1.4.1.0 버전부터 downUrl, url 두 속성을 사용할 수 있습니다.</p>
+                        <pre class="prettyprint">
+&lt;script&gt;
+    function onDX5Created(id) {
+        var dx = dx5.get(id);
+        // 다운로드 경로 정보가 없어서 다운로드할 수 없는 가상 파일입니다.
+        dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+        // 다운로드 경로가 있으면 다운로드할 수 있습니다.
+        dx.addVirtualFile({ vindex: "IDX0003", name: "서강대교_509147.jpg", size: 509147, url: "http://../common-download.do?key=FID0001", chunkSize: 10 });
+    }
+
+    function download(id) {
+        var dx = dx5.get(id);
+        // 두 번째 가상 파일을 선택합니다.
+        var itemId = dx.getItemId(1);
+        dx.downloadByIdToHD(itemId);
+    }
+&lt;/script&gt;
+&lt;button type="button" onclick="download('컴포넌트아이디');"&gt;다운로드&lt;/button&gt;
+</pre>
+                        <p class="notice">HD 응용프로그램을 사용하여 다운로드를 할 때에는 다운로드 요청에 대한 서버의 Content-disposition 응답 헤더가 attachement 혹은 inline인 경우와 상관 없이 강제로 파일을 다운로드할 수 있습니다.</p>
+                        <p>&nbsp;</p>
+                        <p>다운로드할 대상과 동일한 이름을 갖는 항목이 이미 존재할 때, 개발자는 이 항목을 추가(중복)하거나 무시할 수 있도록 콜백 함수(duplicated)를 사용할 수 있습니다.</p>
+                        <pre class="prettyprint">
+var dx = dx5.get(id);
+// 두 번째 가상 파일을 선택합니다.
+var itemId = dx.getItemId(1);
+dx.downloadByIdToHD(itemId, function (fileName) {
+    if (confirm(fileName + " 파일이 이미 존재합니다. 그래도 추가하시겠습니까?")) {
+        // return 0; 또는 반환값이 없으면 중복과 상관없이 추가합니다.
+    } else {
+        // 무시합니다.
+        return 1;
+    }
+});
+</pre>
+                        <p>반환 값에 따른 내부 처리 방식은 다음과 같습니다.</p>
+                        <ul>
+                            <li>1: 항목을 추가하지 않습니다.</li>
+                            <li>2: 항목을 추가하며, 이후 발생하는 중복 건에 대해서 콜백 호출 없이 자동으로 추가됩니다.</li>
+                            <li>3: 항목을 추가하지 않으며, 이후 발생하는 중복 건에 대해서 콜백 호출 없이 자동으로 무시됩니다.</li>
+                            <li>그 외의 값: 항목을 추가합니다.</li>
+                        </ul>
+                    </dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

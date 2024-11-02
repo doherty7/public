@@ -1,0 +1,201 @@
+// 
+// 푸터
+// 
+
+#footer {
+	.footer-banner {
+		.container {
+			padding: 30px 0;
+
+			.slick-slide {
+				text-align: center;
+
+				img {
+					display: inline-block;
+					vertical-align: top;
+				}
+			}
+
+		}
+	}
+
+	.footer-info {
+		background: #f6f6f6;
+
+		.container {
+			position: relative;
+			padding: 35px 0;
+			padding-left: 310px;
+
+			strong {
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+
+				img {}
+			}
+
+			.footer-util {
+				overflow: hidden;
+				margin-bottom: 15px;
+
+				li {
+					float: left;
+					margin-left: 45px;
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					a {
+						display: block;
+						font-size: 18px;
+						line-height: 20px;
+						color: #333;
+					}
+				}
+			}
+
+			address {
+				line-height: 26px;
+				font-size: 14px;
+				font-style: normal;
+				color: #333;
+
+				.copy {
+					br {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		.footer-banner {
+			.container {
+				padding: 20px 80px;
+
+
+				.slick-arrow {
+					text-indent: -9999px;
+					width: 56px;
+					height: 50px;
+					position: absolute;
+					top: 50%;
+					margin-top: -25px;
+
+					&.slick-prev {
+						background:url(#{$url-img}/btn-footer-banner-prev.png) 0 0 no-repeat;
+						left: 10px;
+					}
+
+					&.slick-next {
+						background:url(#{$url-img}/btn-footer-banner-next.png) 0 0 no-repeat;
+						right: 10px;
+					}
+				}
+
+			}
+		}
+
+		.footer-info {
+			padding: 0 20px;
+
+			.container {
+				padding: 20px;
+				padding-left: 210px;
+
+				strong {
+					img {
+						width: 180px;
+					}
+				}
+
+				.footer-util {
+					li {
+						margin-left: 20px;
+
+						a {
+							font-size: 14px;
+						}
+					}
+				}
+
+				address {
+					font-size: 13px;
+					line-height: 22px;
+				}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		.footer-banner {
+			.container {
+				padding: 20px 50px;
+
+				.slick-arrow {
+					text-indent: -9999px;
+					width: 28px;
+					height: 25px;
+					position: absolute;
+					top: 50%;
+					margin-top: -12px;
+					background-size: 28px 25px !important;
+
+				}
+
+			}
+		}
+
+		.footer-info {
+			text-align: center;
+
+			.container {
+				padding: 20px 0;
+
+				strong {
+					display: none;
+				}
+
+				.footer-util {
+					text-align: center;
+
+					li {
+						float: none;
+						margin-left: 0px;
+						display: none;
+
+						&:first-child+li {
+							display: block;
+						}
+
+						a {
+							font-size: 14px;
+							font-weight: bold;
+						}
+					}
+				}
+
+				address {
+					font-size: 13px;
+					line-height: 22px;
+
+					span {
+						display: none;
+					}
+
+					.copy {
+						br {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+}

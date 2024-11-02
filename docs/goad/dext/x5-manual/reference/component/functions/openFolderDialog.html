@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>openFolderDialog</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; openFolderDialog</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">openFolderDialog</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+                    <dd>IE 모듈 지원 (2.0.1.0 버전부터 멀티 모듈에서는 제외됩니다.)</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+isSelected = object.openFolderDialog();</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd></dd>
+					<dt>반환 값</dt>
+					<dd>
+						<p>폴더가 선택되었다면 true, 아니면 false를 반환합니다.</p>
+					</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>업로드할 파일 및 폴더 구조를 추가하기 위한 폴더 선택 다이얼로그 창을 띄웁니다.</p>
+						<p>DEXTUploadX5는 컴포넌트 자체에 폴더를 추가하는 버튼이나 GUI 요소가 없습니다.</p>
+						<p>대신 스크립트를 사용하여 폴더를 추가할 수 있도록 함수를 제공하고 있습니다.</p>
+						<p>폴더 선택 다이얼로그 창에서 선택한 대상이 있다면 창이 닫힌 후, true 값을 반환합니다.</p>
+						<pre class="prettyprint">
+&lt;button type="button" onclick="addFolder();"&gt;버튼&lt;/button&gt;
+&lt;script&gt;
+function addFolder() {
+  var dx = dx5.get("컴포넌트아이디");
+  dx.openFolderDialog();
+}
+&lt;/script&gt;</pre>
+						<p>
+							openFolderDialog 함수의 반환 값을 처리하는 코드가 없다면, 
+							컴포넌트 생성 시점에 btnFolder 속성 값을 사용하여 자동으로 바인딩하여 사용할 수 있습니다.
+						</p>
+						<pre class="prettyprint">
+&lt;button id="btn-add-folder" type="button"&gt;버튼&lt;/button&gt;
+&lt;script&gt;
+  dx5.create({
+    ...,
+    // 폴더 추가 기능이 자동으로 연결됩니다.
+    btnFolder: "btn-add-folder"
+  });
+&lt;/script&gt;</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

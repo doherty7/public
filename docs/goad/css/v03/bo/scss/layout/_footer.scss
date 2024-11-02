@@ -1,0 +1,126 @@
+// 
+// 푸터
+// 
+
+#footer {
+	background-color: #fff;
+	padding: 50px 0;
+
+	.container {
+		&:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		.left {
+			float: left;
+
+			.footer-util {
+				font-size: 0;
+				padding-bottom: 25px;
+
+				li {
+					display: inline-block;
+					vertical-align: top;
+
+					a {
+						font-size: 18px;
+						line-height: 20px;
+						color: #666;
+						display: block;
+						padding: 0 15px;
+						background:url(#{$url-img}/bar-footer-util.png) 0 0 no-repeat;
+					}
+
+					&:first-child {
+						a {
+							padding-left: 0;
+							background: none;
+						}
+					}
+
+					&.privacy {
+						a {
+							color: $default;
+							font-weight: bold;
+						}
+					}
+				}
+			}
+
+			.copy {
+				font-size: 15px;
+				line-height: 18px;
+				color: #666;
+			}
+
+			address {
+				font-style: normal;
+				margin-top: 5px;
+				font-size: 15px;
+				line-height: 18px;
+				color: #666;
+			}
+		}
+
+		.right {
+			float: right;
+
+			ul {
+				font-size: 0;
+				text-align: right;
+
+				li {
+					display: inline-block;
+					vertical-align: top;
+					margin-left: 20px;
+
+					&:first-child {
+						margin-left: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@media (max-width:1440px) {
+	#footer {
+		.container {
+			.left {
+
+				address,
+				.copy {
+					font-size: 14px;
+				}
+
+				.footer-util {
+					padding-bottom: 15px;
+
+					li {
+						a {
+							padding: 0 10px;
+							font-size: 14px;
+							background-size: 1px 8px;
+							background-position: left center;
+						}
+					}
+				}
+			}
+
+			.right {
+				ul {
+					li {
+						&:first-child {}
+
+						img {
+							height: 60px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

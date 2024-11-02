@@ -1,0 +1,26 @@
+.AdminBorder {
+	.tbl_head {
+		.borderTitle {
+			padding: 0 25px;
+			line-height: 60px;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		&:first-child {
+			.borderTitle {
+				padding-left: 50px;
+			}
+		}
+	}
+}
+
+.AdminBorder {
+	.borderTitle {
+		padding: 10px 25px 20px;
+		font-size: 30px;
+		line-height: 30px;
+		font-weight: bold;
+		color: $default;
+	}
+}

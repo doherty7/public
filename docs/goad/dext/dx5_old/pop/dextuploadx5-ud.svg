@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	version="1.1"
+	id="UIC-DEXTUPLOADX5-PROGRESSIVE"
+	onload="onLoadHandler(evt)" width="100%" height="100%">
+    <script type="application/ecmascript" xlink:href="../dextuploadx5-common.js"/>
+    <script type="application/ecmascript" xlink:href="../dextuploadx5-svg.js"/>
+    <script type="application/ecmascript"><![CDATA[
+		var hp = new SVGHelper();
+		var globals = {};
+		var active = false;
+        var hostId = "";
+        var r1, r2, r3;
+        var speed = parseInt(1000 / 24);
+        var ac1, ac2, ac3;
+        var cx = 0;
+		
+        function updateUILayout() {			
+            var root = hp.get("UIC-DEXTUPLOADX5-PROGRESSIVE");      
+	        var s = getElementComputedSize(root);
+	        if (s.w > 0 || s.h > 0) {
+		        relayoutDX5(hp.get("UIC-MAIN-AREA"), s.w, s.h);
+                cx = parseInt(s.w / 2);
+                r1 = hp.get("R1");
+                r2 = hp.get("R2");
+                r3 = hp.get("R3");
+                if (r1.transform.baseVal.numberOfItems == 0) r1.transform.baseVal.appendItem(root.createSVGTransform());
+                if (r2.transform.baseVal.numberOfItems == 0) r2.transform.baseVal.appendItem(root.createSVGTransform());
+                if (r3.transform.baseVal.numberOfItems == 0) r3.transform.baseVal.appendItem(root.createSVGTransform());
+                ac1 = false, ac2 = false, ac3 = false;
+	        }
+        }
+		
+        function progress(t) {
+            rotateRing1(0);
+        }
+    
+        function rotateRing1(angle) {
+            if (!active) return;
+            ac1 = angle >= 360 ? false : true;
+            if (angle >= 360) return;
+            else angle = angle + 10;
+            r1.transform.baseVal.getItem(0).setRotate(angle, cx, 35);      
+            setTimeout(function () {
+                rotateRing1(angle);
+                if (angle > 90 && ac2 == false) rotateRing2(0);
+            }, speed, false);
+        }
+
+        function rotateRing2(angle) {
+            if (!active) return;
+            ac2 = angle >= 360 ? false : true;
+            if (angle >= 360) return;
+            else angle = angle + 10;
+            r2.transform.baseVal.getItem(0).setRotate(angle, cx, 35);
+            setTimeout(function () {
+                rotateRing2(angle);
+                if (angle > 180 && ac3 == false) rotateRing3(0);
+            }, speed, false);
+        }
+
+        function rotateRing3(angle) {
+            if (!active) return;
+            ac3 = angle >= 360 ? false : true;
+            if (angle >= 360) return;
+            else angle = angle + 10;
+            r3.transform.baseVal.getItem(0).setRotate(angle, cx, 35);
+            setTimeout(function () {
+                rotateRing3(angle);
+                if (angle >= 360 && ac1 == false) rotateRing1(0);
+            }, speed, false);
+        }
+		
+        document["stopUI"] = function () {
+	        active = false;
+	        return true;
+        };
+		
+        document["updateUI"] = function (t) {
+	        updateUILayout();
+	        active = true;
+            hostId = t.domObject.id;
+	        progress(t);
+        };
+		
+        function onLoadHandler(evt) {
+	        var parameters = {}, lang = "auto";
+		
+	        var tokens = document.defaultView.location.href.split("?");
+	        if (tokens.length == 2) {
+		        var p = tokens[1].split(/&|;/);
+		        if (p.length > 0) {
+			        for (var i = 0; i < p.length; i++) {
+				        var vals = p[i].split("=");
+				        parameters[unescape(vals[0])] = unescape(vals[1]);
+			        }
+		        }
+	        }
+			
+	        if (!parameters.lang || parameters.lang == "auto") {
+		        lang = navigator.language || navigator.browserLanguage || navigator.systemLanguage;
+		        lang = lang ? lang.split("-")[0] : "";
+	        } else {
+		        lang = parameters.lang;
+	        }
+			
+	        var worker = new Worker("../dextuploadx5-worker-resource.js");
+	        worker.onmessage = function (evt) {
+		        var gRB = new ResourceBundle();
+		        gRB.init(evt.data);
+				
+		        hp.replaceText(hp.get("UIC-TITLE-TXT"), gRB.get("RB-POPUD-0-0001", "_업데이트가 진행 중입니다."));		
+				
+		        hp.get("UIC-TITLE-BTN-CANCEL").addEventListener("click", function (evt) {
+			        evt.stopPropagation();
+			        evt.preventDefault();
+			        active = false;
+			        if (window.parent.dx5) {
+				        window.parent.dx5.popupManager.cp.hide(hostId, true);
+                        hostId = "";
+			        }
+		        }, false);
+				
+		        updateUILayout();
+	
+		        console.log("DX5: dextuploadx5-ud loaded");
+	        };
+            
+            worker.onerror = function (evt) {
+                console.log("DX5: Text resource(dextuploadx5-ud.svg) loading failed!\n" + evt.message);
+            };
+			
+	        worker.postMessage(lang);
+        }
+	]]></script>
+    <style type="text/css">
+        * { font-family: '맑은 고딕', Tahoma }
+        .css-txt-title { font-size: 10pt; fill: #fff; font-weight: bold; }
+    </style>
+    <defs>
+        <symbol id="UIS-CANCEL" viewBox="0 0 16 16">
+            <rect x="0" y="0" width="100%" height="100%" fill="#465b70"/>
+            <path d="M0,3 l3,-3 l5,5 l5,-5 l3,3 l-5,5 l5,5 l-3,3 l-5,-5 l-5,5 l-3,-3 l5,-5 z" stroke="none" fill="#ebebeb"/>
+        </symbol>
+        <symbol id="RING-01" viewBox="0.129 0.129 70.866 70.866" overflow="visible">
+            <path fill="none" stroke="#EC1C24" stroke-width="5" stroke-miterlimit="10" d="M11.214,59.315 c-5.981-6.131-9.667-14.512-9.667-23.753c0-18.786,15.229-34.016,34.016-34.016" />
+        </symbol>
+        <symbol id="RING-02" viewBox="0.129 0.129 70.866 70.866" overflow="visible">
+            <path fill="none" stroke="#F9EC31" stroke-width="5" stroke-miterlimit="10" d="M14.172,56.259 c-5.183-5.357-8.373-12.655-8.373-20.696c0-16.438,13.325-29.763,29.763-29.763" />
+        </symbol>
+        <symbol id="RING-03" viewBox="0.129 0.129 70.866 70.866" overflow="visible">
+            <path fill="none" stroke="#26A9E0" stroke-width="5" stroke-miterlimit="10" d="M17.122,53.192c-4.38-4.582-7.07-10.792-7.07-17.63	c0-14.09,11.421-25.511,25.511-25.511" />
+        </symbol>
+    </defs>
+    <svg id="UIC-MAIN-AREA" x="0" y="0" width="100%" height="100%">
+        <svg x="0" y="0" width="100%" height="100">
+            <!-- 여기에 진행 표시 -->
+            <g stroke-linecap="round">
+                <use id="R1" xlink:href="#RING-01" y="0" width="71" height="71" layout-dx5="x:50%-35px;"/>
+                <use id="R2" xlink:href="#RING-02" y="0" width="71" height="71" layout-dx5="x:50%-35px;"/>
+                <use id="R3" xlink:href="#RING-03" y="0" width="71" height="71" layout-dx5="x:50%-35px;"/>
+            </g>
+        </svg>
+        <svg x="0" y="100" width="100%" height="40">
+            <g>
+                <rect x="0" y="0" rx="15" ry="15" width="100%" height="32" fill="#465b70" stroke="none" />
+                <text id="UIC-TITLE-TXT" x="50%" y="21" class="css-txt-title" text-anchor="middle">Waiting compression...</text>
+                <use id="UIC-TITLE-BTN-CANCEL" xlink:href="#UIS-CANCEL" y="10" width="12" height="12" layout-dx5="x:100%-30px;" style="cursor:pointer;"/>
+            </g>
+        </svg>
+    </svg>
+</svg>

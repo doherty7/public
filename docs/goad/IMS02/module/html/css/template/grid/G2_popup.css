@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";      
+
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] h2 { color : #1E3269; }
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] .titlearea { display:inline-block; float:left; width: 130px}
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] .contentarea { display:inline-block; float:left; width: 520px;}
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] .caption { color: #DF7401;font-weight:bolder; margin:0 0 15px 10px }
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section { font-size:13pt; margin-left:20px; width:93%; overflow:hidden; margin: 0 0 10px 0}
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section input { padding:5px 10px; width:94%; border:1px solid #888}
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section input:focus { border:1px solid #ccc }
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section label { color: #8B5927; font-weight:bolder; margin: 0 30px 0 0 }
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section span a { margin: 0 5px 0 5px; cursor:pointer }   
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section span .nosel { color: #333 }   
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section span .sel { color: #FF8200 }   
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section div[name=filterarea] { font-size:12px; margin-top:10px; padding:5px; float:left; border:1px solid #cdcdcd; height:180px; width:97%; overflow:hidden; overflow-y:auto;  word-wrap: break-word; overflow-wrap: break-word; }
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section div[name=filterarea] a { cursor:pointer; margin:2px 5px 2px 0}
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section div[name=filterarea] a:hover { background-color:#000069; color:#fff  }
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section div[name=filtercount] { clear:both;width:98%;text-align:right;font-size:12px;font-weight:bolder }
+
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section div[name=filtercaption] { font-size:12px; margin-top:10px; padding:5px; float:left; border:1px solid #cdcdcd; height:30px; width:97%; overflow:hidden; overflow-y:auto;  word-wrap: break-word; overflow-wrap: break-word; }
+.common_pop_template .common_pop_template_body article[name=G2_popup_temp] section div[name=filtercaption] a { cursor:pointer; margin:2px 5px 2px 0}
+

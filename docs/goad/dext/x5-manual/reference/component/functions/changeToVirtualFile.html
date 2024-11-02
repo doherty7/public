@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>changeToVirtualFile</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; changeToVirtualFile</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">changeToVirtualFile</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+// 멀티 모듈
+object.changeToVirtualFile(id, openUrl, downUrl);
+// IE 모듈
+object.changeToVirtualFile(id, url);
+						</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>지원</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>id</td>
+									<td>멀티, IE</td>
+									<td>String</td>
+									<td>로컬 자원 항목의 고유 아이디</td>
+								</tr>
+								<tr>
+									<td>openUrl</td>
+									<td>멀티</td>
+									<td>String</td>
+									<td>
+										<p>파일을 열 때 사용되는 URL, 스키마(http, https)를 포함하는 전체 주소이어야 합니다.</p>
+										<p>파일을 열 URL이 없다면, 빈 문자열을 입력합니다.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>downUrl</td>
+									<td>멀티</td>
+									<td>String</td>
+									<td>
+										<p>파일을 다운로드할 때 사용되는 URL, 스키마(http, https)를 포함하는 전체 주소이어야 합니다.</p>
+										<p>파일을 다운로드할 URL이 없다면, 빈 문자열을 입력합니다.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>url</td>
+									<td>IE</td>
+									<td>String</td>
+									<td>
+										<p>파일을 다운로드하거나 열 때 사용되는 URL, 스키마(http, https)를 포함하는 전체 주소이어야 합니다.</p>
+										<p>파일을 다운로드하거나 열 URL이 없다면, 빈 문자열을 입력합니다.</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd></dd>
+					<dt>설명</dt>
+					<dd>
+						<p>로컬 자원 항목을 가상 파일로 변경합니다.</p>
+						<p>로컬 자원을 가상 파일로 변경하여 사용할 수도 있습니다.</p>
+						<p class="notice">반대로 가상 파일을 로컬 파일로 변경하는 기능은 제공하지 않습니다.</p>
+						<pre class="prettyprint">
+// 로컬 파일 항목을 가상 파일 항목으로 변경합니다.
+dx.changeToVirtualFile(id, "http://.../...", "http://../...");
+// 다운로드 혹은 열기 URL 정보 없이 사용하는 경우 빈 문자열을 입력합니다.
+dx.changeToVirtualFile(id, "", "");
+
+// IE 모듈은 openUrl, downUrl을 구분하지 않고 하나로 처리가 가능합니다.
+dx.changeToVirtualFile(id, "http://.../...");
+dx.changeToVirtualFile(id, "");</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

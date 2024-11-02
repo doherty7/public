@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+		
+		function onDX5Created(id) {}
+		
+		function togglePreviewEnable(enable) {
+			dx5.get("dext5").setPreviewEnable(enable);
+			document.getElementById("btn-preview").disabled = !enable;
+		}
+		
+		function togglePreviewMethod(method) {
+			dx5.get("dext5").setPreviewMethod(parseInt(method, 10));
+			alert(dx5.get("dext5").getPreviewMethod());
+		}
+
+		function setPreviewBackgroundColor() {
+			var cbo = document.getElementById("cbo-preview-bkcolor"),
+				color = cbo.options[cbo.selectedIndex].value;
+
+			dx5.get("dext5").setPreviewBackgroundColor(color);
+		}
+
+		function getPreviewBackgroundColor() {
+			alert(dx5.get("dext5").getPreviewBackgroundColor());
+		}
+
+		function preview() {
+			var ci = document.getElementById("txt-preview-index"),
+				ti = parseInt(ci.value, 10);
+
+			if (isNaN(ti)) {
+				alert("파일의 인덱스(순서)가 필요합니다.");
+				ci.focus();
+			} else {
+				dx5.get("dext5").preview(ti);
+			}
+		}
+		
+		function onDX5Preview(id, itemIndex, itemId, itemSource) {	
+			if (itemSource) {
+				var img = document.querySelector("#dext5-preview-img");
+				img.src = itemSource;
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 미리보기</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">이미지 파일 뷰어를 지원합니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>등록하려는 로컬 파일이 이미지 파일인 경우, 대상 파일을 미리 볼 수 있는 뷰어를 제공합니다.</p>
+						<p>기본 설정은 내장 뷰어를 사용하여 팝업 형태로 제공됩니다.</p>
+						<p>이벤트 방식을 사용하면, 개발자가 원하는 형태의 미리보기 화면을 직접 구성할 수 있습니다.</p> 
+						<pre class="prettyprint">
+// true로 설정하면 뷰어를 사용할 수 있습니다.
+dx.setPreviewEnable(true);
+
+// 배경색을 설정합니다.
+dx.setPreviewBackgroundColor("#ff0000");
+
+// 1번으로 설정하면 내장 뷰어가 동작하며, 2번을 설정하면 이벤트 미리보기 리소스가 제공됩니다.
+dx.setPreviewMethod(1);
+
+// 미리보기할 항목의 순서값을 파라미터로 설정하면 미리보기가 수행됩니다.
+dx.preview(0);
+
+// 이벤트 방식의 경우, preview 함수가 호출되면 onDX5Preview 콜백함수가 호출됩니다.
+function onDX5Preview(id, itemIndex, itemId, itemSource) {
+  if (itemSource) {
+    ...
+    img.src = itemSource;
+  }
+}
+</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+						<p>&nbsp;</p>
+						<p>
+							<input id="rdo-preview-yes" name="rdo-preview-enable" type="radio" onclick="togglePreviewEnable(true);" /><label for="rdo-preview-yes">미리보기 사용</label>
+							<input id="rdo-preview-no" name="rdo-preview-enable" type="radio" checked="checked" onclick="togglePreviewEnable(false);" /><label for="rdo-preview-no">미리보기 사용 안함</label>
+						</p>
+						<p>
+							<input id="rdo-preview-method-1" name="rdo-preview-method" type="radio" checked="checked" onclick="togglePreviewMethod(1);" /><label for="rdo-preview-method-1">내장 뷰어</label>
+							<input id="rdo-preview-method-2" name="rdo-preview-method" type="radio" onclick="togglePreviewMethod(2);" /><label for="rdo-preview-method-2">이벤트</label>
+						</p>
+						<p>
+							<select id="cbo-preview-bkcolor">
+								<option value="#5E6E8D" selected="selected">기본값(#5E6E8D)</option>
+								<option value="#000000">검은색(#000000)</option>
+								<option value="#ff0000">빨간색(#ff0000)</option>
+								<option value="#00ff00">녹색(#00ff00)</option>
+								<option value="#0000ff">파란색(#0000ff)</option>
+							</select>
+							<button onclick="setPreviewBackgroundColor();">설정</button>
+							<button onclick="getPreviewBackgroundColor();">설정값 보기</button>
+						</p>
+						<p>로컬 파일만 미리보기가 가능합니다.</p>
+						<p>
+							<input id="txt-preview-index" placeholder="파일 순서(0부터)" style="width: 300px;" />
+							<button id="btn-preview" disabled="disabled" onclick="preview();">미리보기</button>
+						</p>
+						<p>
+							<img id="dext5-preview-img" alt="미리보기" style="max-height:400px;"/>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

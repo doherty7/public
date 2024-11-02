@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>isUsingProgressDialog</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; isUsingProgressDialog</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">isUsingProgressDialog</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd class="notice">멀티 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>
+						<pre class="prettyprint">
+using = object.isUsingProgressDialog();</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd></dd>
+					<dt>반환 값</dt>
+					<dd>제품 자체 진행창 사용 여부</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>제품에서 제공하는 자체 진행창을 사용할지를 반환합니다.</p>
+						<p>DEXTUploadX5에서 기본으로 지원하는 진행창을 사용하지 않으려면 useProgressDialog 함수를 사용할 수 있습니다.</p>
+						<p>대신 getUploadStatus 함수를 사용하여 업로드 진행 정보를 스크립트로 따로 얻을 수 있습니다.</p>
+						<pre class="prettyprint">
+// 기본 진행창을 사용하지 않습니다.
+dx.useProgressDialog(false);
+
+// 진행창이 안보이므로 getUploadStatus 함수를 사용하여 업로드 진행 정보를 얻습니다.
+var status = dx.getUploadStatus();
+
+// 이름: status.currentName 
+// 전체 속도: status.totalSpeed 
+// 업로드가 완료된 개수: status.completeCount
+// 전체 개수: status.totalCount
+// 현재 파일 전송률: status.currentRate
+// 현재 파일의 전송된 크기: status.currentSendSize
+// 현재 파일의 크기: status.currentSize
+// 현재 파일의 전송 시간: status.currentTime
+// 현재 파일의 남은 시간: status.remainedCurrentTime
+// 전체 파일 전송률: status.totalRate
+// 전체 파일의 전송된 크기: status.totalSendSize
+// 전체 파일의 크기: status.totalSize
+// 전체 파일의 전송 시간: status.totalTime
+// 전체 파일의 남은 시간: status.remainedTotalTime
+</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

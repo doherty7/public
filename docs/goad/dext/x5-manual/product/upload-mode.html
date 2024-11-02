@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>업로드 모드(ORAF, OROF, EXNJ)</title>
+	<link rel="stylesheet" href="../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../common/images/menu.svg" alt="menu toggle"/></a>제품설명 &gt; 업로드 모드(ORAF, OROF, EXNJ)</div>
+	</div>
+  <div class="snb"><iframe src="../menu.html" frameborder="0"></iframe></div>
+  <div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">업로드 모드(ORAF, OROF, EXNJ)</h1>
+				<p>DEXTUploadX5 제품은 파일을 업로드하는 방법을 세 가지(ORAF, OROF, EXNJ)로 나누고 있습니다.</p>
+				<p>기본 값은 ORAF이며, 업로드 모드를 변경하고자 한다면, setUploadMode 함수를 사용하여 설정해야 합니다.</p>
+				<pre class="prettyprint">
+var dx = dx5.get("컴포넌트 아이디");
+// ORAF, OROF, EXNJ로 업로드 모드를 설정합니다.
+dx.setUploadMode("ORAF");
+</pre>
+				<dl>
+					<dt class="dep">ORAF</dt>
+					<dd>
+						<p>ORAF(기본)는 업로드할 파일 모두를 하나의 요청에 담아 전송합니다.</p>
+						<p>만약 업로드할 파일이 10개가 있다면, 한 번의 요청으로 서버에 10개의 파일을 모두 전송하게 됩니다.</p>
+						<p>통상 HTTP multipart 데이터는 최대 2GB 바이트를 넘을 수 없도록 서버에서 제한된 경우가 많기 때문에, 10개의 파일의 합은 2GB보다 작아야 합니다.</p>
+						<p>서버에서 업로드 과정이 끝나면 응답 데이터는 한 번만 돌려 받습니다.</p>
+						<table>
+							<thead>
+								<tr>
+									<th>구분</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>장점</td>
+									<td>
+										<p>한 번에 모든 파일이 전송이 되므로, 서버 측에서 처리할 때, 모든 파일이 있거나, 혹은 아예 없거나 두 가지 경우만 처리하면 됩니다.</p>
+										<p>전송 과정에서 서버 혹은 네트워크 상에 문제가 발생하면, 롤백이 쉽습니다. (임시 파일이 생성되는 부분은 고려하지 않음)</p>
+										<p>서버 측 개발(코드가 간결)이 쉽습니다.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>단점</td>
+									<td>
+										<p>전체 파일의 합이 통상 2GB를 넘을 수 없습니다.</p>
+										<p>많은 파일을 한꺼번에 전송할 때, 데이터의 크기가 커지므로 네트워크 트래픽을 장시간 점유하는 문제가 발생합니다.</p>
+										<p>트래픽이 큰 정보가 장시간 점유를 하면, 서버의 응답성이 떨어지므로 체감 성능에 문제가 발생합니다.</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt class="dep">OROF</dt>
+					<dd>
+						<p>OROF는 업로드할 파일의 개수 만큼 요청이 이루어집니다.</p>
+						<p>만약 업로드할 파일이 10개가 있다면, 개별 파일마다 동일한 주소로 요청하여 서버로 파일을 전송하게 됩니다.</p>
+						<p>하나의 파일이 업로드가 완료되면 다음 파일을 업로드하는 순차적인 방식을 따르기 때문에 모든 업로드가 완료되면, 응답 데이터는 파일의 개수 만큼 생성됩니다.</p>
+						<p>통상 HTTP multipart 데이터는 최대 2GB 바이트를 넘을 수 없도록 서버에서 제한된 경우가 많기 때문에, 파일당 크기는 2GB보다 작아야 합니다.</p>
+						<table>
+							<thead>
+								<tr>
+									<th>구분</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>장점</td>
+									<td>
+										<p>전체 파일 크기의 합은 제한이 없습니다.</p>
+										<p>ORAF 업로드 모드에 비해 서버의 응답성이 높아 전체 체감 성능이 향상됩니다. (개별 파일의 크기가 작은 경우)</p>
+										<p>한 번에 하나의 파일만 전송이 되므로, 서버 측에서 처리할 때, 루프(loop) 작업이 없습니다.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>단점</td>
+									<td>
+										<p>파일의 개수 만큼 서버로의 요청이 있으므로, 서버에서는 요청 정보만으로 업로드할 파일의 개수 및 전체 크기를 파악할 수 없습니다.</p>
+										<p>전송 과정에서 서버 혹은 네트워크 상에 문제가 발생하면, 서버에 먼저 업로드된 파일들이 남아 있을 수 있습니다.</p>
+										<p>개별 파일의 크기가 크다면 역시 데이터의 크기가 커지므로 네트워크 트래픽을 장시간 점유하는 문제가 동일하게 발생합니다.</p>
+										<p>서버 측 개발이 ORAF보다 복잡합니다.</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt class="dep">EXNJ</dt>
+					<dd>
+						<p>EXNJ는 대용량 업로드를 위한 방식으로써, 개별 혹은 전체 파일의 크기가 2GB를 넘는 경우에 사용됩니다.</p>
+						<p>OROF처럼 한 번이 아닌 여러 요청에 걸쳐 파일을 업로드 하는 점은 동일합니다.</p>
+						<p>그러나 파일 개수 만큼 업로드 요청을 나누는 것이 아니라, 정해진 블럭(청크) 단위로 업로드 요청을 나눕니다.</p>
+						<p>요청에 대한 응답의 수는 블럭 수 만큼 발생하지만, 실제로 운영을 위해 사용해야 할 응답 데이터는 파일의 개수 만큼 생성됩니다. (자사 서버 컴포넌트와 연동하는 경우)</p>
+						<pre class="prettyprint">
+var dx = dx5.get(id);
+// 업로드 방식을 대용량으로 설정합니다.
+dx.setUploadMode("EXNJ");
+// 파일을 분할하는 블록 크기를 바이트 단위로 설정합니다.
+dx.setUploadBlockSize(10 * 1024 * 1024);
+</pre>
+						<p class="notice">EXNJ 모드를 지원하려면 서버는 DEXTUploadNJ 제품이 필요합니다.</p>
+						<p class="notice">좀 더 자세한 내용은 <a href="./upload-extension.html">대용량 파일 업로드</a> 문서를 참고하세요.</p>
+						<table>
+							<thead>
+								<tr>
+									<th>구분</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>장점</td>
+									<td>
+										<p>개별 및 전체 파일 크기에 대한 제한이 없습니다.</p>
+										<p>ORAF / OROF 업로드 모드에 비해 서버의 응답성이 높아 전체 체감 성능이 크게 향상됩니다.</p>
+										<p>블럭 단위를 조절하여 서버 자체 용량 필터에 걸리지 않도록 처리할 수 있습니다.</p>
+										<p>이어 올리기가 가능합니다.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>단점</td>
+									<td>
+										<p>블럭 개수 만큼 서버로의 요청이 있으므로, 서버에서는 요청 정보만으로 업로드할 파일의 개수 및 전체 크기를 파악할 수 없습니다.</p>
+										<p>블럭 단위가 작아질수록 요청의 개수가 늘어납니다.</p>
+										<p>전송 과정에서 서버 혹은 네트워크 상에 문제가 발생하면, 서버에 먼저 업로드된 파일들이 남아 있을 수 있습니다.</p>
+										<p>쪼개진 블럭을 합쳐야 하는 문제가 있어, 서버 측 개발이 매우 복잡합니다. (자사 컴포넌트 연동 시, 매우 쉽게 처리됩니다.)</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+				</dl>
+			</div>
+		</div>
+  </div>
+	<div class="footer">Copyright ⓒ DEVPIA Inc. All rights reserved</div>
+</body>
+</html>

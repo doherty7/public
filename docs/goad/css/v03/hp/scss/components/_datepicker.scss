@@ -1,0 +1,220 @@
+$datepicker-border-color: #e6e6e6;
+$datepicker-width: 250px;
+
+.datepicker {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+
+	.form-datepicker {
+		padding-right: 45px;
+	}
+
+	.btn {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		padding: 0 10px;
+	}
+
+	@if ($responsive) {
+		@include media-breakpoint-down(sm) {
+			display: block;
+
+			.form-datepicker {
+				width: 100% !important;
+			}
+		}
+	}
+}
+
+#inseq-datepicker {
+	position: absolute;
+	width: $datepicker-width;
+	padding: 12px;
+	border: 1px solid $datepicker-border-color;
+	font-size: 14px;
+	background-color: #fff;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+	z-index: 1500;
+
+	caption {
+		height: 0;
+		font-size: 0;
+		line-height: 0;
+		overflow: hidden;
+	}
+
+	table {
+		table-layout: auto;
+		margin-top: 0;
+		width: 100%;
+		text-align: center;
+		border: 0px solid #000;
+		color: #000;
+		line-height: 2;
+
+		a {
+			line-height: 2;
+		}
+
+		th {
+			height: auto;
+			background: none;
+			padding: 0 0 0.5em;
+			border: 0;
+			margin: 0;
+			color: #000;
+			text-align: center;
+			line-height: 20px;
+		}
+
+		td {
+			padding: 0 !important;
+			margin: 0;
+			height: auto;
+			text-align: center;
+			border: 0;
+			line-height: 1;
+		}
+
+		tbody {
+			td {
+				height: 28px;
+				color: #767676;
+
+				a {
+					width: 28px;
+					height: 28px;
+					line-height: 28px;
+
+					display: block;
+					color: #000;
+					text-decoration: none;
+
+					&.today {
+						border-radius: 50%;
+						color: #fff !important;
+						background-color: $primary;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+
+	#tableCalendarTitle {
+		margin-bottom: 8px;
+
+		td {
+			font-size: 16px;
+
+			a {
+				font-size: inherit;
+			}
+		}
+	}
+
+	#tableMonthTitle td a {
+		font-size: 16px;
+	}
+
+	#tableYearTitle {
+		margin-bottom: 5px;
+
+		td {
+			font-size: 16px;
+		}
+	}
+
+	#tableCalendarTitle,
+	#tableYear,
+	#tableMonthTitle,
+	#tableMonth {
+		a {
+			color: #000;
+		}
+	}
+
+	#tableCalendar {
+
+		th,
+		td {
+			&:first-child {
+				color: #cf2121;
+
+				a {
+					color: inherit;
+				}
+			}
+
+			&:last-child {
+				color: #0072cf;
+
+				a {
+					color: inherit;
+				}
+			}
+		}
+	}
+
+	.prev,
+	.next {
+		width: 21px;
+		height: 21px;
+		border-radius: 11px;
+		line-height: 21px;
+		border: 0;
+		padding: 0;
+		background: #959595 url(#{$url-img}/ico-arrow-left-white@2x.png) no-repeat;
+		background-size: 21px 21px;
+		text-indent: -9999px;
+		text-align: left;
+		overflow: hidden;
+
+		&:hover {
+			background-color: $primary;
+		}
+	}
+
+	.prev {
+		float: left;
+		margin-left: 30px;
+		background-position: right center;
+	}
+
+	.next {
+		float: right;
+		margin-right: 30px;
+		background-image: url(#{$url-img}/ico-arrow-right-white@2x.png);
+		background-position: left center;
+	}
+
+	.btn-cal-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		opacity: .6;
+
+		a {
+			display: block;
+			width: 26px;
+			height: 28px;
+			// opacity: .5;
+			color: transparent;
+			background: url(#{$url-img}/ico-times-md@2x.png) no-repeat center center;
+			background-size: 14px 14px;
+		}
+	}
+
+	@if ($responsive) {
+		@include media-breakpoint-down(sm) {
+			// right: $mobile-spacing !important;
+			// left: auto !important;
+
+			left: 50% !important;
+			margin-left: -$datepicker-width * 0.5 !important;
+		}
+	}
+}

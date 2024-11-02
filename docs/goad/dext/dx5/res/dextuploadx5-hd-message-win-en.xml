@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+    <ui>
+        <e_hdm_ui_id_list_header_column_item id="100">Items</e_hdm_ui_id_list_header_column_item>
+
+        <e_hdm_ui_id_env_download_path id="120">Download path</e_hdm_ui_id_env_download_path>
+        <e_hdm_ui_id_env_activate_item_added id="121">Activate program when adding item</e_hdm_ui_id_env_activate_item_added>
+        <e_hdm_ui_id_env_download_autostart_added_item id="122">Auto download starting when new item added</e_hdm_ui_id_env_download_autostart_added_item>
+        <e_hdm_ui_id_env_delete_tempfile_item_delete id="123">Delete temporary files when deleting items(Resume function is not supported for the same item)</e_hdm_ui_id_env_delete_tempfile_item_delete>
+        <e_hdm_ui_id_env_auto_start_reamin_file id="124">Auto-start items that were being downloaded when adding previous items</e_hdm_ui_id_env_auto_start_reamin_file>
+        <e_hdm_ui_id_env_save_reamin_groupbox id="125">File information saving options</e_hdm_ui_id_env_save_reamin_groupbox>
+        <e_hdm_ui_id_env_save_reamin_flag_wait_stop id="126">Wait/Stop</e_hdm_ui_id_env_save_reamin_flag_wait_stop>
+        <e_hdm_ui_id_env_save_reamin_flag_run id="127">Downloading</e_hdm_ui_id_env_save_reamin_flag_run>
+        <e_hdm_ui_id_env_save_reamin_flag_complete id="128">Complete</e_hdm_ui_id_env_save_reamin_flag_complete>
+        <e_hdm_ui_id_env_save_reamin_flag_error id="129">Error</e_hdm_ui_id_env_save_reamin_flag_error>
+        <e_hdm_ui_id_env_btn_text_ok id="130">Ok</e_hdm_ui_id_env_btn_text_ok>
+        <e_hdm_ui_id_env_btn_text_cancel id="131">Cancel</e_hdm_ui_id_env_btn_text_cancel>
+
+        <e_hdm_ui_item_info_copy_to_clipboard id="140">Copy to clipboard</e_hdm_ui_item_info_copy_to_clipboard>
+
+        <e_hdm_window_text_item_info id="150">Item Info</e_hdm_window_text_item_info>
+        <e_hdm_window_text_environment id="151">DEXTUploadX5 HDM Environment</e_hdm_window_text_environment>
+
+        <e_hdm_balloon_text_donwload_complete id="160">Donwload complete</e_hdm_balloon_text_donwload_complete>
+    </ui>
+
+    <msgbox_caption>
+        <e_hdm_msgbox_caption_id_notification id="100">Notify</e_hdm_msgbox_caption_id_notification>
+        <e_hdm_msgbox_caption_id_confirm id="101">Confirm</e_hdm_msgbox_caption_id_confirm>
+        <e_hdm_msgbox_caption_id_error id="102">Error</e_hdm_msgbox_caption_id_error>
+        <e_hdm_msgbox_caption_select_save_path id="110">HDM Select save path</e_hdm_msgbox_caption_select_save_path>
+
+    </msgbox_caption>
+
+    <msgbox_text>
+        <e_hdm_msgbox_text_id_not_exist_selected_item id="100">No selected items.</e_hdm_msgbox_text_id_not_exist_selected_item>
+        <e_hdm_msgbox_text_id_not_exist_complete_item id="101">No complete items.</e_hdm_msgbox_text_id_not_exist_complete_item>
+        <e_hdm_msgbox_text_id_delete_continue id="102">%d file(s) will delete. Continue?</e_hdm_msgbox_text_id_delete_continue>
+        <e_hdm_msgbox_text_id_copy_to_clipboard id="103">Item information was copied to clipboard.</e_hdm_msgbox_text_id_copy_to_clipboard>
+        <e_hdm_msgbox_text_id_remainfile_start id="104">The file that was in the process of downloading exists. Do you want to proceed?</e_hdm_msgbox_text_id_remainfile_start>
+    </msgbox_text>
+
+    <popupmenu>
+        <e_hdm_popupmenu_text_id_down id="100">Download</e_hdm_popupmenu_text_id_down>
+        <e_hdm_popupmenu_text_id_down_start id="101">Start</e_hdm_popupmenu_text_id_down_start>
+        <e_hdm_popupmenu_text_id_down_stop id="102">Stop</e_hdm_popupmenu_text_id_down_stop>
+        <e_hdm_popupmenu_text_id_down_start_auto id="103">Auto</e_hdm_popupmenu_text_id_down_start_auto>
+        <e_hdm_popupmenu_text_id_down_stop_auto id="104">Auto</e_hdm_popupmenu_text_id_down_stop_auto>
+        <e_hdm_popupmenu_text_id_down_start_selected id="105">Selected</e_hdm_popupmenu_text_id_down_start_selected>
+        <e_hdm_popupmenu_text_id_down_stop_selected id="106">Selected</e_hdm_popupmenu_text_id_down_stop_selected>
+
+        <e_hdm_popupmenu_text_id_delete id="110">Remove</e_hdm_popupmenu_text_id_delete>
+        <e_hdm_popupmenu_text_id_delete_all id="111">All</e_hdm_popupmenu_text_id_delete_all>
+        <e_hdm_popupmenu_text_id_delete_select id="112">Select</e_hdm_popupmenu_text_id_delete_select>
+        <e_hdm_popupmenu_text_id_delete_complete id="113">Complete</e_hdm_popupmenu_text_id_delete_complete>
+
+        <e_hdm_popupmenu_text_id_item_move id="120">Move</e_hdm_popupmenu_text_id_item_move>
+        <e_hdm_popupmenu_text_id_item_move_top id="121">Top</e_hdm_popupmenu_text_id_item_move_top>
+        <e_hdm_popupmenu_text_id_item_move_up id="122">Up</e_hdm_popupmenu_text_id_item_move_up>
+        <e_hdm_popupmenu_text_id_item_move_down id="123">Down</e_hdm_popupmenu_text_id_item_move_down>
+        <e_hdm_popupmenu_text_id_item_move_bottom id="124">Bottom</e_hdm_popupmenu_text_id_item_move_bottom>
+
+        <e_hdm_popupmenu_text_id_item_info id="130">Item Info</e_hdm_popupmenu_text_id_item_info>
+
+        <e_hdm_popupmenu_text_id_set_env id="140">Environment</e_hdm_popupmenu_text_id_set_env>
+
+    </popupmenu>
+
+    <error>
+        <e_rid_err_success id="0">OK</e_rid_err_success>
+
+        <e_rid_err_invalid_command id="100">Unsupported request.</e_rid_err_invalid_command>
+
+        <e_rid_err_execute_fail id="110">DEXTUplaodxX5-HDM.exe Execution failure.</e_rid_err_execute_fail>
+
+        <e_rid_err_select_save_path_cancel id="120">Cancel storage path change.</e_rid_err_select_save_path_cancel>
+
+        <e_rid_err_arguments_not_specified_url id="130">Download destination URL not specified.</e_rid_err_arguments_not_specified_url>
+        <e_rid_err_arguments_not_authkey id="131">Authentication authkey value not specified.</e_rid_err_arguments_not_authkey>
+        <e_rid_err_arguments_not_specified_filetitle id="132">Download file name not specified.</e_rid_err_arguments_not_specified_filetitle>
+        <e_rid_err_arguments_not_specified_size id="133">No download file size specified.</e_rid_err_arguments_not_specified_size>
+
+        <e_rid_err_download_not_exist_downloadable_item id="140">No items available to start downloading.</e_rid_err_download_not_exist_downloadable_item>
+        <e_rid_err_download_concurrnt_down_count_exceeded id="141">Concurrent download item limit exceeded.</e_rid_err_download_concurrnt_down_count_exceeded>
+        <e_rid_err_download_exist_down_start_fail_item id="142">There is an item that failed to start downloading.</e_rid_err_download_exist_down_start_fail_item>
+        <e_rid_err_license_authkey_format_invalid id="143">The authentication key format is invalid.</e_rid_err_license_authkey_format_invalid>
+        <e_rid_err_license_eval_expire id="144">Your trial period has expired.</e_rid_err_license_eval_expire>
+        <e_rid_err_license_invalid_auth_info id="145">It is not a normal authentication information.</e_rid_err_license_invalid_auth_info>
+        <e_rid_err_license_invalid_host id="146">It is not a registered domain(or IP).</e_rid_err_license_invalid_host>
+        <e_rid_err_notsupport_content_range_unit id="147">Content-Range unit can only support bytes.</e_rid_err_notsupport_content_range_unit>
+        <e_rid_err_mismatch_file_size id="148">There is a mismatch between the download destination file and the file that exists on the server.</e_rid_err_mismatch_file_size>
+        <e_rid_err_invalid_status_code id="149">Unsupported response code.</e_rid_err_invalid_status_code>
+
+        <e_rid_err_arguments_not_specified_textxml_uri id="150">TextXML resource uri not specified.</e_rid_err_arguments_not_specified_textxml_uri>
+        <e_rid_err_default_res_xml_load_fail id="151">Default string resource XML read failure(%s).</e_rid_err_default_res_xml_load_fail>
+        <e_rid_err_res_xml_uri_load_fail id="152">Failed to read from string resource URI(%s)</e_rid_err_res_xml_uri_load_fail>
+        <e_rid_err_authkey_can_not_use_hd id="153">AuthKey can not use hd.</e_rid_err_authkey_can_not_use_hd>
+        <e_rid_err_illigal_download_path id="154">Unsupported download path.(%s)</e_rid_err_illigal_download_path>
+
+        <e_rid_erro_download_not_exist_downloading_item id="180">No downloads are in progress.</e_rid_erro_download_not_exist_downloading_item>
+        <e_rid_err_download_exist_down_stop_fail_item id="181">Some items failed to stop downloading.</e_rid_err_download_exist_down_stop_fail_item>
+
+        <e_rid_err_selected_item_delete_fail id="190">Failed to delete selected item.</e_rid_err_selected_item_delete_fail>
+        <e_rid_err_item_delete_fail id="191">Failed to delete item.</e_rid_err_item_delete_fail>
+
+        <e_rid_err_check_title_already_exist id="200">A file with the same name has been added.</e_rid_err_check_title_already_exist>
+        <e_rid_err_check_title_form_not_exist id="201">check_title form does not exist.</e_rid_err_check_title_form_not_exist>
+        <e_rid_err_check_title_form_value_not_exist id="202">check_title form value does not exist.</e_rid_err_check_title_form_value_not_exist>
+        <e_rid_err_new_save_path_form_not_exist id="203">new_save_path form does not exist.</e_rid_err_new_save_path_form_not_exist>
+        <e_rid_err_new_save_path_form_value_not_exist id="204">new_save_path form value does not exist.</e_rid_err_new_save_path_form_value_not_exist>
+
+        <e_rid_err_content_range_format_not_support id="220">Unsupported Content-Range format.</e_rid_err_content_range_format_not_support>
+        <e_rid_err_transfer_encoding_support_only_chunked id="221">Transfer-Encoding header is support only chunked.</e_rid_err_transfer_encoding_support_only_chunked>
+        <e_rid_err_missmatch_download_result_size id="222">The specified file size does not match the download complete file size.</e_rid_err_missmatch_download_result_size>
+
+        <e_rid_err_update_version_not_specified id="1000">No update version was specified.</e_rid_err_update_version_not_specified>
+        <e_rid_err_update_file_url_not_specified id="1001">No update file url was specified.</e_rid_err_update_file_url_not_specified>
+        <e_rid_err_update_hdm_already_running id="1002">You must exit DEXTUpload X5 HDM to proceed with the automatic update.</e_rid_err_update_hdm_already_running>
+        <e_rid_err_update_version_not_match id="1003">The installation file version does not match the update version.</e_rid_err_update_version_not_match>
+    </error>
+
+</root>

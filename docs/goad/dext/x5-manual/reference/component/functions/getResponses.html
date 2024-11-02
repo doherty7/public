@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>getResponses</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; Component Object &gt; Methods &gt; getResponses</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">getResponses</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>1.0.0.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 지원</dd>
+					<dt>형식</dt>
+					<dd>						
+						<pre class="prettyprint">
+responses = object.getResponses([index]);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>index</td>
+									<td>Number</td>
+									<td>[옵션] 응답 데이터의 순서</td>									
+								</tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>반환 값</dt>
+					<dd>
+						<ul>
+							<li>파라미터가 주어지면: 주어진 순서에 해당하는 응답 문자열</li>
+							<li>파라미터가 없으면: 모든 응답 문자열을 갖는 배열</li>
+						</ul>
+					</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>업로드 후 서버로부터 받은 응답 데이터를 반환합니다.</p>
+						<p>응답 데이터는 onDX5UploadCompleted 콜백 함수가 호출된 후에 얻을 수 있습니다.</p>
+						<p>로컬 자원이 업로드가 되면, 서버는 응답 데이터를 기록하며, 모든 업로드가 완료되면 
+						onDX5UploadCompleted 함수가 호출됩니다. 업로드가 완료된 이벤트가 발생한 후에
+						getResponses 함수를 사용하여 응답 데이터를 얻을 수 있습니다.</p>
+						<p class="notice">응답 데이터는 문자열입니다.</p>
+						<p class="notice">"ORAF" 업로드 방식일 때는, 단 하나의 문자열만 반환되므로, 반환되는 배열의 길이는 1입니다.</p>
+						<p class="notice">"OROF", "EXNJ" 업로드 방식일 때는, 업로드된 파일의 개수만큼 반환되므로, 반환되는 배열의 길이는 파일의 개수와 동일합니다.</p>
+						<p class="notice">파라미터가 주어진다면, 배열이 아닌 파라미터 순서에 해당하는 응답 문자열을 반환합니다.</p>
+						<pre class="prettyprint">
+function onDX5UploadCompleted(id) {
+  // 첫 번째 응답 문자열을 반환합니다.
+  var response = dx.getResponses(0);
+  console.log(response);
+}</pre>				
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

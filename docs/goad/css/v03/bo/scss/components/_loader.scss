@@ -1,0 +1,149 @@
+/* loader */
+.modal-loader {
+	transition-duration: 0.3s;
+
+	.popup-inner {
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
+		padding: 30px;
+		transform: translateY(0) !important;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+
+		.msg {
+			p {
+				color: #fff;
+				font-size: 16px;
+				font-weight: bold;
+
+				em {
+					color: $secondary;
+					font-style: normal;
+				}
+			}
+		}
+	}
+
+	.percent {
+		color: #fff;
+		font-weight: bold;
+		margin-top: 40px;
+
+		i {
+			font-style: normal;
+		}
+	}
+
+	.ball-triangle-path {
+		width: 66px;
+		height: 66px;
+		display: inline-block;
+		position: relative;
+	}
+
+	.msg {
+		&+.ball-triangle-path {
+			margin-top: 40px;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		font-style: $font-family-title;
+	}
+}
+
+.ball-triangle-path {
+	&>div {
+		box-sizing: content-box;
+		animation-fill-mode: both;
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		border: 3px solid $primary;
+
+		&:nth-of-type(1) {
+			top: 50px;
+		}
+
+		&:nth-of-type(2) {
+			left: 25px;
+		}
+
+		&:nth-of-type(3) {
+			top: 50px;
+			left: 50px;
+		}
+
+		&:nth-child(1) {
+			animation-name: ball-triangle-path-1;
+			animation-delay: 0;
+			animation-duration: 2s;
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite;
+		}
+
+		&:nth-child(2) {
+			animation-name: ball-triangle-path-2;
+			animation-delay: 0;
+			animation-duration: 2s;
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite;
+		}
+
+		&:nth-child(3) {
+			animation-name: ball-triangle-path-3;
+			animation-delay: 0;
+			animation-duration: 2s;
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite;
+		}
+	}
+}
+
+/* 로딩바 */
+@keyframes ball-triangle-path-1 {
+	33% {
+		transform: translate(25px, -50px);
+	}
+
+	66% {
+		transform: translate(50px, 0px);
+	}
+
+	100% {
+		transform: translate(0px, 0px);
+	}
+}
+
+@keyframes ball-triangle-path-2 {
+	33% {
+		transform: translate(25px, 50px);
+	}
+
+	66% {
+		transform: translate(-25px, 50px);
+	}
+
+	100% {
+		transform: translate(0px, 0px);
+	}
+}
+
+@keyframes ball-triangle-path-3 {
+	33% {
+		transform: translate(-50px, 0px);
+	}
+
+	66% {
+		transform: translate(-25px, -50px);
+	}
+
+	100% {
+		transform: translate(0px, 0px);
+	}
+}

@@ -1,0 +1,47 @@
+.container {
+	@include clearfix;
+	@include container;
+}
+
+#container {
+	@include clearfix;
+	@include container;
+	min-height: calc(100vh - #{$header-height + $breadcrumb-height + $footer-height});
+	padding-bottom: 90px;
+
+	&.sub {
+		margin-top: 60px;
+	}
+
+	#sidebar {
+		float: left;
+		width: $sidebar-width;
+	}
+
+	#content {
+		float: right;
+		width: calc(100% - #{$sidebar-width + $sidebar-margin});
+	}
+
+	@include media-breakpoint-down(md) {
+		width: 100%;
+
+		&.sub {
+			margin-top: 40px;
+		}
+
+		#content {
+			float: none;
+			width: 100%;
+			padding: 0 20px;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		padding-bottom: 30px;
+
+		&.sub {
+			margin-top: 50px;
+		}
+	}
+}

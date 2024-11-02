@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/* 
+ *  2019.04.30 이상준 추가  
+ *  공통 CSS 로 활용
+ */
+/* 수정시 반드시 이상준에게 문의후 수정할것 */
+@import url("kpf_font.css");
+@import url("kpf_element.css");
+@import url("./v02/common_new.css");
+@import url("./v02/content.css");
+@import url("./v02/table_new.css");     /*  통합 table.css    */
+@import url("./v02/button_new.css");    /*  통합 button.css   */
+@import url("./v02/kpf_new.css");       /*  통합 공통 css  */
+@import url("./kpf_media.css");         /*  media 별 css  */

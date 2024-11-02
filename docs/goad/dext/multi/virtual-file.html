@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+			dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+			dx.addVirtualFile({ vindex: "IDX0003", name: "코스모스.jpg", size: 195779 });
+			
+			dx.setUIStyle({
+			    headerVisible: true, statusBarVisible: true
+			    , headerHeight: 28, itemHeight: 48
+			    });	
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 가상 파일</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">가상 파일을 등록하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>가상 파일이란  사용자 로컬 PC에 존재하지 않으며, 실체가 없는 가상의 파일을 말합니다.</p>
+						<p>일반적으로 가상 파일은 이미 업로드한 파일에 대한 정보를 남기는 용도로 사용하곤 합니다. 즉 서버에 존재하는 파일이라는 표시로써 사용됩니다.</p>						
+						<p>실제로 로컬에 존재하지 않는 파일이므로, 파일 업로드 대상이 아닙니다.</p>
+						<p>가상 파일을 등록하려면 addVirtualFile 함수를 사용하거나 addVirtualFileList 함수를 사용합니다.</p>
+						<p>가상 파일은 json 객체 형식으로 등록이 됩니다.</p>
+						<ul class="notice">
+							<li>vindex: 가상 파일을 구분 짓는 유일한 키로써, 어떤 형식이라도 상관이 없지만, 중복되지 않아야 합니다. (필수항목)</li> 
+							<li>name: 가상 파일의 이름입니다. (필수항목)</li>
+							<li>size: 가상 파일의 크기이며 byte 단위를 사용합니다. (필수항목)</li>
+							<li>lock: 잠금 상태가 true이면 파일을 삭제할 수 없습니다.</li>
+						</ul>
+						<pre class="prettyprint">
+var dx = dx5.get(id);
+// 개별로 등록할 때
+dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+dx.addVirtualFile({ vindex: "IDX0003", name: "코스모스.jpg", size: 195779 });
+
+// 여러 개를 한 번에 등록할 때
+dx.addVirtualFileList([
+  { vindex: "IDX0001", name: "가상파일.txt", size: 12345 },
+  { vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true },
+  { vindex: "IDX0003", name: "코스모스.jpg", size: 195779 }
+]);
+</pre>
+							<p>가상 파일은 onDX5Created 콜백 함수에서 등록하는 경우가 많으며,</p>
+							<p class="notice">등록함수인 addVirtualFile, addVirtualFileList는 비동기 방식으로 파일을 등록하기 때문에
+							두 함수 다음에 오는 코드가 먼저 실행될 수 있음을 주의하도록 합니다.</p>
+						</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files"
+		});
+	</script>
+</body>
+</html>

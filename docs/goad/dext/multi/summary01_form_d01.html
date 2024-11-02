@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+<!-- <link rel="stylesheet" href="../common/styles/default.css"/> 20190415 삭제 -->
+<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+<!-- 20190415 추가 -->
+<link rel="stylesheet" href="../../css/common_new.css"/>
+<link rel="stylesheet" href="../../css/content.css"/>
+<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery.form.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.json.js"></script>
+<script type="text/javascript" src="../../js/IssgaUtil.js"></script>
+<script type="text/javascript" src="../../js/issgaCommon.js"></script>
+<script type="text/javascript" src="../../js/dateUtil.js"></script>
+<script type="text/javascript" src="../../js/jquery.easing.1.3.js"></script>
+<script src="../../js/slick.js"></script>
+<script src="../../js/common.js"></script>
+<!-- // 20190415 추가 -->
+<script src="../common/js/prettify/prettify.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="../dx5/dextuploadx5-configuration.js"></script>
+<script src="../dx5/dextuploadx5.js"></script>
+
+</head>
+<body class="adminLayout">
+<noscript>자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다.</noscript>
+<!-- //전체 레이어 시작 -->
+<div id="wrap">
+	<ul class="blind">
+		<li><a href="#contents">본문 바로가기(Skip Contents)</a></li>
+	</ul>
+	<!-- header 시작 -->
+	<header id="header" class="adminheader">
+		<nav class="head">
+			<h1><a href="/" title="홈으로 가기"><img src="../../img/common/logo2.png" alt="한국언론진흥재단" /></a></h1>
+			<ul class="submenu">
+				<li><span class="userNm">관리자 님</span> <a href="#" title="로그아웃" style="float:right;">로그아웃</a></li>
+				<!-- <li><a href="" title="마이페이지">마이페이지</a></li> -->
+				<li class="portal"><a href="/" title="포탈 홈페이지"><img src="../../img/common/homeicon.png" alt="포탈 홈페이지">포탈 홈페이지</a></li>
+			</ul>
+		</nav>
+	</header><!-- //header -->
+<!-- //header 끝 -->
+
+<!-- 현재위치 네비게이션 시작 -->
+<div class="subnavi">
+	<ul>
+		<li>HOME</li>
+		<li>집행관리</li>
+		<li>검수목록</li>
+	</ul>
+</div>
+
+<!-- container 시작 -->
+<div id="container" class="adminContainer on">
+<!-- 좌측메뉴 시작 -->
+	<!-- Localnavi Adminlnb-->
+	<section id="Adminlnb" class="lnbEvent">
+		<div class="lnbmenu">
+			<div class="AdminlnbTitle">
+				<h3>통합지원시스템</h3>
+			</div>
+			<dl>
+				<dt><a href="#LINK">게시판 관리<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">공지/공고</a></p>
+					<p><a href="#LINK">QnA</a></p>
+				</dd>
+				<dt>
+				<a href="#LINK">자료실 관리<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">법령자료실</a></p>
+					<p><a href="#LINK">정책/보고서</a></p>
+					<p><a href="#LINK">부수공사 현황</a></p>
+					<p><a href="#LINK">정부광고 통계</a></p>
+				</dd>
+				<dt>
+					<a href="#LINK">팝업/배너 관리<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">팝업 관리</a></p>
+					<p><a href="#LINK">배너 관리</a></p>
+				</dd>
+				<dt>
+				<a href="#LINK">회원 관리<span></span></a></dt>
+					<dd>
+						<p><a href="#LINK">회원목록</a></p>
+						<p><a href="#LINK">회원가입신청목록</a></p>
+						<p><a href="#LINK">회원기관변경요청목록</a></p>
+					</dd>
+					<dt><a href="#LINK">재단 담당자 관리<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">부서별담당매체관리</a></p>
+					<p><a href="#LINK">재단 담당자 목록</a></p>
+				</dd>
+				<dt>
+				<a href="#LINK">사용자 권한 관리<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">사용자 그룹 메뉴권한 관리</a></p>
+					<p><a href="#LINK">메뉴 프로그램 관리</a></p>
+					<p><a href="#LINK">사용자 그룹 관리</a></p>
+				</dd>
+				<dt>
+				<a href="#LINK">코드 관리<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">공통코드 관리</a></p>
+				</dd>
+				<dt>
+				<a href="#LINK">로그 조회<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">컨텐츠 만족도</a></p>
+				</dd>
+				<dt>
+				<a href="#LINK">개발 관리<span></span></a></dt>
+				<dd>
+					<p><a href="#LINK">콤보박스</a></p>
+				</dd>
+			</dl>
+		</div>
+		<a href="javascript:void(0);" class="adminLnbBtn"><img src="../../img/fo/lnbBtn.png" alt="네비게이션 버튼"></a>
+	</section>
+	<!-- Localnavi -->
+	<!-- //좌측메뉴 끝 -->
+	<!-- content 시작 -->
+	<section id="contents" class="adminContents">
+		<div class="AdminBorder">
+			<h2 class="borderTitle">대용량 파일전송을 위한 Design 예제</h2><!-- 타이틀 -->
+			<!-- table -->
+			<!--form action="/sample/dext/service/form-process.do" method="post"-->
+			<!-- <form action="/sample/dext/service/nj_form-process.ext" method="post" name="f1"> -->
+            <form action="/KPFDextUpload" method="post" name="f1"> 
+                <table class="tbl_view">
+					<colgroup>
+						<col width="150">
+						<col width="*">
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">데이터1</th>
+							<td><input type="text" id="text1" name="text1" value="text data"/></td>
+						</tr>
+						<tr>
+							<th scope="row">데이터2</th>
+							<td>
+								<div class="radio-container dp_inb"><input type="radio" id="rdCate1" name="rdCate" checked><label for="rdCate1"><span></span>A</label></div>
+								<div class="radio-container dp_inb"><input type="radio" id="rdCate2" name="rdCate"><label for="rdCate2"><span></span>B</label></div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">데이터3</th>
+							<td>
+								<div class="checkbox-container">
+									<input type="checkbox" id="stateChk1" checked><label for="stateChk1">Bird</label>
+									<input type="checkbox" id="stateChk2"><label for="stateChk2">Lion</label>
+									<input type="checkbox" id="stateChk3"><label for="stateChk3">Shark</label>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">데이터4</th>
+							<td>
+								<select name="select1" style="width:150px;">
+									<option value="Small">Small</option>
+									<option value="Big">Big</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">파일 첨부</th>
+							<td>
+									<!-- 20190508 수정 -->
+									<div class="clear">
+										<div class="f_left">
+											<a href="javascript:;" id="btn-add-files" class="btn_basics gray">추가</a>
+											<a href="javascript:;" id="btn-delete-checked" class="btn_lines red">삭제</a>
+										</div>
+										<div class="f_right">
+											<a href="javascript:;" class="btn_basics blue">등록</a>
+										</div>
+									</div>
+									<!-- // 20190508 수정 -->
+									<!--a href="javascript:;" id="btn-revoke-all" onclick="DX5revokeAll();" class="btn_lines red">삭제 복구</a-->
+									<!--a href="javascript:;" id="btn-upload" class="btn_basics">업로드</a-->
+									<input type="hidden" id="newFileKeys" name="newFileKeys"/>
+									<input type="hidden" id="deleteFileKeys" name="deleteFileKeys"/>
+									<!-- 20190508 수정 -->
+									<div class="wrap_dext">
+										<div id="dext5-container" style="width:100%; height:200px; margin-top:5px;"></div>
+										<!--p>업로드(저장) 기능은 현재 준비 중...</p-->
+										<div class="box_attach">
+											<strong>추가 정보</strong>
+											<div class="scroll">
+												<div><input type="text" placeholder="추가 정보 입력" title="추가 정보 입력" style="width:100%;"></div>
+												<div><input type="text" placeholder="추가 정보 입력" title="추가 정보 입력" style="width:100%;"></div>
+												<div><input type="text" placeholder="추가 정보 입력" title="추가 정보 입력" style="width:100%;"></div>
+												<div><input type="text" placeholder="추가 정보 입력" title="추가 정보 입력" style="width:100%;"></div>
+											</div>
+											<div class="bottom"></div>
+										</div>
+									</div>
+									<!-- // 20190508 수정 -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<!-- button area -->
+			<div class="btn_area ar">
+					<a href="#" class="btn_basic blue" id="btn_form_save">등록</a>
+					<a href="#" class="btn_line">취소</a>
+			</div>
+			<!-- // button area -->
+			<!-- // table -->
+		</div><!-- AdminBorder -->
+	</section>
+	<!-- //contents -->
+</div>
+<!-- //footer 시작 -->
+
+	<footer id="footer" class="mainFooter">
+		<div class="footLogo">
+			<ul>
+				<li><a href="#" target="_blank"><img src="../../img/main/footLogo1.png" alt="문화체육관광부"></a></li>
+				<li><a href="#" target="_blank"><span style="display:inline-block; padding-top:10px; color: #212121;font-size:18px;font-weight:700;line-height:35px;">정기간행물 등록관리시스템</span></a></li>
+				<li><a href="#" target="_blank"><img src="../../img/main/footLogo3.png" alt="한국언론진흥재단"></a></li>
+			</ul>
+		</div>
+		<div class="foot">
+			<ul>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#">개인정보처리방침</a></li>
+				<li><a href="#">저작권정책</a></li>
+				<li><a href="#">뷰어다운로드</a></li>
+				<li><a href="#" target="_blank">옥외광고맵</a></li>
+			</ul>
+			<div class="copy" x-ms-format-detection="none">
+			Copyright ⓒ 2019 KOREA PRESS FOUNDATION. ALL RIGHTS RESERVED<br>서울특별시 중구 세종대로 124, 대표 : 민병욱, 사업자등록번호 : 104-82-11163, 대표전화번호 : 02-2001-7114~8
+			</div>
+		</div>
+	</footer><!-- //footer -->
+	<!-- //footer 끝 -->
+</div>
+<!-- //전체 레이어 끝 -->
+
+<script>
+        dx5.create({ 
+               mode: "multi"
+            ,  id: "dext5"
+            ,  parentId: "dext5-container"
+        	,  btnUploadAuto: "btn_form_save"              //--**  저장 버튼
+        	,  btnFile: "btn-add-files"                    //--**  파일 추가 버튼
+        	,  btnDeleteChecked: "btn-delete-checked"      //--**  Check 항목 삭제 버튼
+        	,  useProfile  :   true                        //--**  다운로드 경로 설정을 물을때 
+        });
+
+        function onDX5Error(id, code, msg) {    // 컴포넌트 사용 중에 오류가 발생하면 호출됩니다.
+        	alert(id + " => " +  code + "\n" + msg); 
+        }
+        
+        function onDX5Created(id) {             // 컴포넌트가 생성되면 호출됩니다.
+                var dx = dx5.get(id);             
+                
+                // dx.setUploadURL(dx5.canonicalize("/sample/dext/service/upload-file.do"));
+                //dx.setUploadURL(dx5.canonicalize("/sample/dext/service/nj_extension-upload.ext"));
+                dx.setUploadURL("http://localhost:8080/KPFDextUpload");
+                //dx.setUploadURL("http://211.43.216.177/KPFDextUpload");
+                //dx.setUploadURL("/KPFDextUpload");
+                
+                
+                //dx.setUploadMode("ORAF");                                                       // ORAF(기본)는 업로드할 파일 모두를 하나의 요청에 담아 전송합니다.
+                dx.setUploadMode("EXNJ");                                                       // 업로드 방식을 *대용량*으로 설정합니다.
+
+                dx.setUploadBlockSize(10 * 1024 * 1024);
+                
+                // 여러 개를 한 번에 등록할 때
+                //dx.addVirtualFileList([
+                //  { vindex: "IDX0001", name: "가상파일.txt", size: 12345 },
+                //  { vindex: "IDX0002", name: "가상파일2.txt", size: 45678, lock: true },
+                //  { vindex: "IDX0003", name: "가상파일-코스모스_이미지.jpg", size: 195779, downUrl: "http://.../service/common-download.do?key=FID0003" }
+                //]);
+        
+        
+                var vDX5ExtFilter = "*.jpg;*.jpeg;*.gif;*.bmp;*.png;*.txt;*.zip";               // 파일 추가시 허용 가능한 확장자 정의
+                dx.setExtensionFilter(vDX5ExtFilter, false);
+                dx.setAllowNoExtension(false);                                                  // 확장자가 없는 파일을 허용하지 않습니다.
+
+                dx.setUIStyle({
+                    headerVisible: true, statusBarVisible: true, headerHeight: 35, itemHeight: 35,
+                    headerSolidColor: "#f6f6f6", headerFontColor: "#000000", statusBarSolidColor: "#edeef0", statusBarFontColor: "#000000", itemFontColor: "#666666",
+                    borderColor: "#dddddd", headerLineColor: "#dddddd", gridLineColor: "#dddddd", columnLineColor: "#dddddd", statusBarLineColor: "#dddddd",
+                    itemFontSize: 15
+                    });
+
+                // alert('정상적으로 초기화 되었습니다.\nSetting OK.')
+                
+        }
+        
+        function onDX5ItemsAdded(id, count){
+        	alert(id);
+        }
+        
+        function onDX5UploadStopped(id) { alert("업로드가 중단되었습니다."); }
+                        
+        function onDX5UploadCompleted(id) {     // 업로드가 완료되면 호출됩니다.
+            alert("completed:"+dx5.get(id).getResponses());
+            alert("여기서부터 DB 작업 시작 합니다.");
+            //submit(dx5.get(id).getResponses()[0]);
+            //submit(dx5.get(id).getResponses().join(";"));
+        }
+        
+        function submit(response) {
+                var formObj = document.getElementsByTagName("form")[0];
+                formObj.newFileKeys.value = response || "";
+                alert('파일전송 완료 -' || response)
+                formObj.submit();
+        }
+        
+        function transfer() {
+                var dx = dx5.get("dext5");
+                if (dx.hasUploadableItems()) {
+                    dx.upload("AUTO");
+                } else {
+                    alert("메타정보 따로이 등록함. temp에 위치한 파일을 실 위치로 복사 혹은 이동함")
+                	//submit(null);
+                }
+        }
+</script>
+
+ </body>
+</html>

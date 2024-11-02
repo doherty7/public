@@ -1,0 +1,35 @@
+﻿.dx5-pop-dn {
+  padding:0;
+  margin:0;
+  position: fixed;
+  left: -100px;
+  top: -100px;
+  height: 1px;
+  width: 1px;
+  background-color: rgba(94, 110, 141, 0.75);
+}
+
+.dx5-pop-dn.is-visible {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.dx5-pop-dn-container {
+  position: relative;
+  width: 90%;
+  height: 300px;
+  max-width: 530px;
+  max-height:300px;
+  margin: 4em auto;
+  background: #FFF;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (min-width: 1170px) {
+  .dx5-pop-dn-container {
+    margin: 8em auto;
+  }
+}

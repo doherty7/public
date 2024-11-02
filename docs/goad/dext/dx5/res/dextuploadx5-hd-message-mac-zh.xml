@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+    <ui>
+        <e_hdm_ui_id_list_header_column_item id="100" osx_text="项目" />
+
+        <e_hdm_ui_id_env_download_path id="120" osx_text="保存途径" />
+        <e_hdm_ui_id_env_activate_item_added id="121" osx_text="在添加项目时，激活程序。" />
+        <e_hdm_ui_id_env_download_autostart_added_item id="122" osx_text="在添加新项目时，立刻开始下载。" />
+        <e_hdm_ui_id_env_delete_tempfile_item_delete id="123" osx_text="在删除项目时，也删除临时文件。（不支持‘接着下载’功能）" />
+        <e_hdm_ui_id_env_auto_start_reamin_file id="124" osx_text="开始程序时，自动下载未完成状态的项目。" />
+        <e_hdm_ui_id_env_save_reamin_groupbox id="125" osx_text="文件信息保存Option" />
+        <e_hdm_ui_id_env_save_reamin_flag_wait_stop id="126" osx_text="等待/暂停" />
+        <e_hdm_ui_id_env_save_reamin_flag_run id="127" osx_text="正在下载中" />
+        <e_hdm_ui_id_env_save_reamin_flag_complete id="128" osx_text="完成" />
+        <e_hdm_ui_id_env_save_reamin_flag_error id="129" osx_text="错误" />
+        <e_hdm_ui_id_env_btn_text_ok id="130" osx_text="确认" />
+        <e_hdm_ui_id_env_btn_text_cancel id="131" osx_text="取消" />
+
+        <e_hdm_ui_item_info_copy_to_clipboard id="140" osx_text="复制到剪贴板" />
+
+        <e_hdm_window_text_item_info id="150" osx_text="确认项目信息" />
+        <e_hdm_window_text_environment id="151" osx_text="环境设定" />
+
+        <e_hdm_balloon_text_donwload_complete id="160" osx_text="下载完成" />
+    </ui>
+
+    <msgbox_caption>
+        <e_hdm_msgbox_caption_id_notification id="100" osx_text="通知" />
+        <e_hdm_msgbox_caption_id_confirm id="101" osx_text="确认" />
+        <e_hdm_msgbox_caption_id_error id="102" osx_text="错误" />
+        <e_hdm_msgbox_caption_select_save_path id="110" osx_text="选择HDM保存径路" />
+
+    </msgbox_caption>
+
+    <msgbox_text>
+        <e_hdm_msgbox_text_id_not_exist_selected_item id="100" osx_text="没有被选择的项目。" />
+        <e_hdm_msgbox_text_id_not_exist_complete_item id="101" osx_text="没有已完成的项目。" />
+        <e_hdm_msgbox_text_id_delete_continue id="102" osx_text="%d个项目要被删除了。要继续做吗？" />
+        <e_hdm_msgbox_text_id_copy_to_clipboard id="103" osx_text="信息已复制到剪贴板了。" />
+        <e_hdm_msgbox_text_id_remainfile_start id="104" osx_text="在下载中的项目已存在。想要接着下载吗？" />
+    </msgbox_text>
+
+    <popupmenu>
+        <e_hdm_popupmenu_text_id_down id="100" osx_text="下载" />
+        <e_hdm_popupmenu_text_id_down_start id="101" osx_text="开始" />
+        <e_hdm_popupmenu_text_id_down_stop id="102" osx_text="暂停" />
+        <e_hdm_popupmenu_text_id_down_start_auto id="103" osx_text="自动" />
+        <e_hdm_popupmenu_text_id_down_stop_auto id="104" osx_text="自动" />
+        <e_hdm_popupmenu_text_id_down_start_selected id="105" osx_text="被选择的项目" />
+        <e_hdm_popupmenu_text_id_down_stop_selected id="106" osx_text="被选择的项目" />
+
+        <e_hdm_popupmenu_text_id_delete id="110" osx_text="删除" />
+        <e_hdm_popupmenu_text_id_delete_all id="111" osx_text="全体" />
+        <e_hdm_popupmenu_text_id_delete_select id="112" osx_text="被选择的项目" />
+        <e_hdm_popupmenu_text_id_delete_complete id="113" osx_text="已完成的项目" />
+
+        <e_hdm_popupmenu_text_id_item_move id="120" osx_text="移动" />
+        <e_hdm_popupmenu_text_id_item_move_top id="121" osx_text="最高位" />
+        <e_hdm_popupmenu_text_id_item_move_up id="122" osx_text="向上" />
+        <e_hdm_popupmenu_text_id_item_move_down id="123" osx_text="向下" />
+        <e_hdm_popupmenu_text_id_item_move_bottom id="124" osx_text="最低位" />
+
+        <e_hdm_popupmenu_text_id_item_info id="130" osx_text="项目信息" />
+
+        <e_hdm_popupmenu_text_id_set_env id="140" osx_text="环境设定" />
+
+    </popupmenu>
+
+    <error>
+        <e_rid_err_success id="0" osx_text="OK" />
+
+        <e_rid_err_invalid_command id="100" osx_text="不是可以支持的要请。" />
+
+        <e_rid_err_execute_fail id="110" osx_text="DEXTUplaodxX5-HDM.exe 运行失败" />
+
+        <e_rid_err_select_save_path_cancel id="120" osx_text="取消保存径路变更" />
+
+        <e_rid_err_arguments_not_specified_url id="130" osx_text="未指定下载对象的URL。" />
+        <e_rid_err_arguments_not_authkey id="131" osx_text="未指定认证authkey值。" />
+        <e_rid_err_arguments_not_specified_filetitle id="132" osx_text="未指定下载文件的名称。" />
+        <e_rid_err_arguments_not_specified_size id="133" osx_text="未指定下载文件的大小。" />
+
+        <e_rid_err_download_not_exist_downloadable_item id="140" osx_text="没有可以下载的项目。" />
+        <e_rid_err_download_concurrnt_down_count_exceeded id="141" osx_text=" 超过了'同时下载项目限制'" />
+        <e_rid_err_download_exist_down_start_fail_item id="142" osx_text="有一些项目无法开始下载。" />
+        <e_rid_err_license_authkey_format_invalid id="143" osx_text="验证密钥的形式不正确。" />
+        <e_rid_err_license_eval_expire id="144" osx_text="Demo版的使用期限已过期。" />
+        <e_rid_err_license_invalid_auth_info id="145" osx_text="不是正常的认证信息。" />
+        <e_rid_err_license_invalid_host id="146" osx_text="不是注册的域名。" />
+        <e_rid_err_notsupport_content_range_unit id="147" osx_text="Content-Range unit只可以支持bytes。" />
+        <e_rid_err_mismatch_file_size id="148" osx_text="下载对象文件的大小与在服务器上存在的文件的不一致。" />
+        <e_rid_err_invalid_status_code id="149" osx_text="不支持的答应编码。" />
+
+        <e_rid_err_arguments_not_specified_textxml_uri id="150" osx_text="未指定字符串资源URL。" />
+        <e_rid_err_default_res_xml_load_fail id="151" osx_text="读取基本字符串资源(XML)失败。(%@)." />
+        <e_rid_err_res_xml_uri_load_fail id="152" osx_text="无法从字符串资源的URI读取。(%@)" />
+        <e_rid_err_authkey_can_not_use_hd id="153" osx_text="是不支持HD功能的验证密钥 。" />
+
+        <e_rid_erro_download_not_exist_downloading_item id="180" osx_text="没有在下载中的项目。" />
+        <e_rid_err_download_exist_down_stop_fail_item id="181" osx_text="有一些下载失败的项目。" />
+
+        <e_rid_err_selected_item_delete_fail id="190" osx_text="删除被选的项目失败。" />
+        <e_rid_err_item_delete_fail id="191" osx_text="删除项目失败。" />
+
+        <e_rid_err_check_title_already_exist id="200" osx_text="已有名称相同的文件。" />
+        <e_rid_err_check_title_form_not_exist id="201" osx_text="没有check_title form。 " />
+        <e_rid_err_check_title_form_value_not_exist id="202" osx_text="没有check_title form的值。" />
+        <e_rid_err_new_save_path_form_not_exist id="203" osx_text="没有new_save_path form。 " />
+        <e_rid_err_new_save_path_form_value_not_exist id="204" osx_text="没有new_save_path form的值。" />
+
+        <e_rid_err_content_range_format_not_support id="220" osx_text="不支持的Content-Range格式。" />
+        <e_rid_err_transfer_encoding_support_only_chunked id="221" osx_text="Transfer-Encoding标头仅支持chunked。" />
+        <e_rid_err_missmatch_download_result_size id="222" osx_text="指定的文件大小与下载完整文件大小不匹配。" />
+
+        <e_rid_err_update_version_not_specified id="1000" osx_text="未指定更新版本。" />
+        <e_rid_err_update_file_url_not_specified id="1001" osx_text="未指定更新文件URL。" />
+        <e_rid_err_update_hdm_already_running id="1002" osx_text="您必须退出DEXTUpload X5 HDM才能继续进行自动更新。" />
+        <e_rid_err_update_version_not_match id="1003" osx_text="安装文件版本与更新版本不匹配。" />
+
+        <e_rid_err_maketempfile_already_exist_path id="2000" osx_text="文件夹/文件（如临时文件）存在于同一路径中。" />
+        <e_rid_err_maketempfile_create_failed id="2001" osx_text="临时文件创建失败" />
+        <e_rid_err_maketempfile_open_failed id="2002" osx_text="无法打开临时文件" />
+    </error>
+
+</root>

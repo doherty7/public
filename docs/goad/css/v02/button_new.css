@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+/* 
+ *  2019.06.03 이상준 추가  
+ *  공통 BUTTON CSS 
+ */
+
+/* 기존 */
+/* .btn{ 
+    width: 222px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display:inline-block;zoom:1;*display:inline;_display:inline;
+    vertical-align: top;
+    margin: 0 6px;
+    border:1px solid #dddddd;`
+    color: #999;
+    } */
+.btn { display:inline-block; padding:0 25px; height:34px; min-width:80px; line-height:32px; text-align:center; color:#fff!important; background:#3c465a; }   
+.btn:hover{text-decoration:none; background:#636b7b;}
+.btnS{ width: auto!important; height: 35px!important; line-height: 35px!important;margin: 0;}
+.popbtn{width: 180px;}
+.btnW{ color: #fff!important; border:none;}
+.btnW:hover{color: #fff;}
+.btnWrap{ text-align: right; margin-bottom:10px}
+.btnWrap a{ margin-right:5px!important;}
+.pbtn{ padding:0 10px 0;width: auto !important;}
+
+.btn .ml10 { margin-left:0!important }
+.btnWrap .ml10 { margin-left:0!important }
+
+/* mypage.css */
+/* 
+.btnWrap{
+    text-align: right !important;
+    } 
+.btnW{
+    color: #fff;
+    border:none;
+    font-weight: 700;
+    }
+*/
+
+/* BUTTOM 관련 V02 관련  */
+/* button */
+
+/* basic size button */
+.btn_basic {display:inline-block; padding:0 25px; height:34px; min-width:80px; line-height:32px; text-align:center; color:#fff; background:#3c465a;vertical-align: bottom}
+.btn_basic:hover {text-decoration:none; background:#636b7b;}
+.btn_basic.disabled {cursor:default; background:#cccfd3 !important;}
+.btn_basic.blue {background:#0863b0;}
+.btn_basic.blue:hover {background:#2d7abc;}
+.btn_line {display:inline-block; padding:0 25px; height:34px; min-width:80px; line-height:30px; text-align:center; color:#3c465a; border:1px solid #3c465a; background-color:#fff}
+.btn_line:hover {text-decoration:none; background:#ebeced;}
+.btn_line.disabled {cursor:default; color:#fff !important; border-color:#bfc1c5 !important; background:#cccfd3 !important;}
+.btn_line.red {border-color:#e83a95; color:#e83a95;}
+.btn_line.red:hover {background:#f9e7f0;}
+.btn_line.size_s {padding:0 10px; min-width:auto; height:22px; line-height:22px; font-size:13px;}
+.btn_area {margin-top:15px; text-align:center;}
+.btn_area:after {content:""; display:inline-block; clear:both;}
+.btn_area a:last-child {margin-right:0 !important;}
+.btn_add {vertical-align:middle; display:inline-block; width:30px; height:30px; border:1px solid #353e5b; background:url(../../img/common/ico_add.png) center center no-repeat;}
+.btn_add:hover {background-color:#ebeced;}
+.btn_line.reply:before {content:""; display:inline-block; margin-right:6px; width:13px; height:10px; background:url(../../img/common/ico_reply_btn.png) no-repeat;}
+.btn_minus{position: relative; vertical-align:middle; display:inline-block; width:30px; height:30px; border:1px solid #353e5b;}
+.btn_minus:after {content: '';position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 2px; background: #34405a;}
+.btn_minus:hover {background-color:#ebeced;}
+/* small size button */
+.btn_basics {display:inline-block; vertical-align:middle; padding:0 20px; height:30px; line-height:30px; text-align:center; color:#fff; background:#3c465a;}
+.btn_basics:hover {text-decoration:none; background:#636b7b;}
+.btn_basics.disabled {cursor:default; background:#cccfd3 !important;}
+.btn_basics.blue {background:#0863b0;}
+.btn_basics.blue:hover {background:#2d7abc;}
+.btn_basics.gray {background:#666;color:#fff}
+.btn_basics.gray:hover {background:#949494;}
+.btn_lines {display:inline-block; vertical-align:middle; padding:0 20px; height:30px; line-height:28px; text-align:center; color:#3c465a; border:1px solid #3c465a;}
+.btn_lines:hover {text-decoration:none; background:#ebeced;}
+.btn_lines.disabled {cursor:default; color:#fff !important; border-color:#bfc1c5 !important; background:#cccfd3 !important;}
+.btn_lines.red {border-color:#e83a95; color:#e83a95;}
+.btn_lines.red:hover {background:#f9e7f0;}
+.btn_search {display:inline-block; vertical-align:middle; width:30px; height:30px; background:#666 url(../../img/common/ico_search.png) center center no-repeat;}
+.btn_search:hover {background-color:#949494;}
+.btn_searchs {display:inline-block; vertical-align:middle; width:22px; height:22px; margin-left:10px; background:#666 url(../../img/common/ico_search_s.png) center center no-repeat;}
+.btn_searchs:hover {background-color:#949494;}
+
+/* BUTTOM 관련 이상준 추가  */
+
+.btn_area a {margin-right:5px!important}
+.btn_area2 {margin: 0 auto 35px auto; text-align:center}
+.btn_area2 a {margin-right:5px!important}
+
+.f_left a {margin-right:5px!important}
+.f_right a {margin-right:5px!important}
+
+/*  button css 처리   */
+.borderSearchBox {padding: 10px 27px!important}
+.borderSearchBox button { display:none }
+.borderSearchBox button > img { display:none }
+.BOSearchBoxDetail button { display:none }
+.BOSearchBoxDetail button > img { display:none }
+.borderSearchBoxDetail button { display:none }
+.borderSearchBoxDetail button > img { display:none }
+
+/* 구매, 검수 */
+.btn_puex {font-size:12px;display:inline-block; vertical-align:middle; padding:0 10px; height:25px; line-height:25px; text-align:center; color:#fff; background:#3c465a;}
+.btn_puex:hover {text-decoration:none; background:#636b7b;}
+.btn_puex .disabled {cursor:default; background:#cccfd3 !important;}
+.btn_puex .blue {background:#0863b0;}
+.btn_puex .blue:hover {background:#2d7abc;}
+.btn_puex .gray {background:#666;}
+.btn_puex .gray:hover {background:#949494;}
+
+.btn_puex_line {font-size:12px;display:inline-block; vertical-align:middle; padding:0 10px; height:25px; line-height:25px; text-align:center; color:#3c465a; border:1px solid #3c465a;}
+.btn_puex_line:hover {text-decoration:none; background:#ebeced;}
+.btn_puex_line .disabled {cursor:default; color:#fff !important; border-color:#bfc1c5 !important; background:#cccfd3 !important;}
+.btn_puex_line .red {border-color:#e83a95; color:#e83a95;}
+.btn_puex_line .red:hover {background:#f9e7f0;}

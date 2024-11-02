@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+    <title>addVirtualFile</title>
+    <link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+    <link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+    <script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="man_product">DEXTUploadX5</div>
+        <div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle" /></a>레퍼런스 &gt; Component Object &gt; Methods &gt; addVirtualFile</div>
+    </div>
+    <div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+    <div class="cnb">
+        <div class="main">
+            <div class="inner_content">
+                <h1 class="man_title">addVirtualFile</h1>
+                <dl>
+                    <dt>최소지원버전</dt>
+                    <dd>1.0.0.0</dd>
+                    <dt>지원환경</dt>
+                    <dd>멀티 모듈, IE 모듈 지원</dd>
+                    <dt>형식</dt>
+                    <dd>
+                        <pre class="prettyprint">
+object.addVirtualFile(vf);</pre>
+                    </dd>
+                    <dt>파라미터</dt>
+                    <dd>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>이름</th>
+                                    <th>형식</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>vf</td>
+                                    <td>Object</td>
+                                    <td>
+                                        <p>등록할 가상 파일 정보를 갖는 json 객체</p>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>이름</th>
+                                                    <th>지원</th>
+                                                    <th>형식</th>
+                                                    <th>설명</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>vindex</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>가상 파일을 구분 짓는 유일 키로써, 어떤 형식이라도 상관이 없지만, 중복되지 않아야 합니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>name</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>가상 파일의 이름입니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>size</td>
+                                                    <td>공통</td>
+                                                    <td>Number</td>
+                                                    <td>파일의 크기(바이트 단위)입니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>lock</td>
+                                                    <td>공통</td>
+                                                    <td>Boolean</td>
+                                                    <td>
+                                                        <p>가상 파일이 잠겨있는지 여부를 설정합니다.</p>
+                                                        <p>값이 true이면 삭제가 되지 않습니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>folder</td>
+                                                    <td>IE</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>폴더 구조 다운로드에 사용되는 속성으로, 가상 파일이 속한 폴더 이름입니다.</p>
+                                                        <p class="notice">IE 모듈에서만 사용됩니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>url</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>가상 파일을 가리키는 실제 웹 경로입니다. 스키마를 포함한 전체 경로로 설정해야 합니다.</p>
+                                                        <p class="notice">1.4.1.0 이전 제품은 IE 모듈에서만 지원되는 속성으로써, 대상을 다운로드하거나 열 때 사용됩니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>downUrl</td>
+                                                    <td>멀티</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>가상 파일을 가리키는 실제 웹 경로입니다. 스키마를 포함한 전체 경로로 설정해야 합니다.</p>
+                                                        <p class="notice">멀티 모듈에서만 다운로드 용으로 사용됩니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>openUrl</td>
+                                                    <td>멀티</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>가상 파일을 가리키는 실제 웹 경로입니다. 스키마를 포함한 전체 경로로 설정해야 합니다.</p>
+                                                        <p class="notice">멀티 모듈에서만 열기 용으로 사용됩니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>thumbUrl</td>
+                                                    <td>멀티</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>가상 파일의 섬네일 이미지를 가리키는 실제 웹 경로입니다. 스키마를 포함한 전체 경로로 설정해야 합니다.</p>
+                                                        <p class="notice">멀티 모듈 TILE 스타일에서 섬네일을 표현하기 위해 사용됩니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>checked (1.3.2.0부터 지원)</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>체크된 상태인지를 설정합니다.</p>
+                                                        <p>true이면 체크가 된 상태로 등록됩니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>eventUriStart (2.0.0.0부터 지원)</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>HD 응용프로그램을 사용하여 파일 다운로드를 이용할 때 사용되는 이벤트 주소를 설정합니다.</p>
+                                                        <p>이벤트 주소는 웹 주소로써, 스키마(http, https)가 포함된 전체 URL이어야 합니다.</p>
+                                                        <p>HD 응용프로그램은 항목을 다운로드할 때, 이 속성이 설정되어 있으면 다운로드를 수행하기 전에 해당 주소로 GET 요청을 보냅니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>eventUriStop (2.0.0.0부터 지원)</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>HD 응용프로그램을 사용하여 파일 다운로드를 이용할 때 사용되는 이벤트 주소를 설정합니다.</p>
+                                                        <p>이벤트 주소는 웹 주소로써, 스키마(http, https)가 포함된 전체 URL이어야 합니다.</p>
+                                                        <p>HD 응용프로그램은 항목을 다운로드할 때, 이 속성이 설정되어 있으면 다운로드가 중지되면 해당 주소로 GET 요청을 보냅니다. <span class="notice">(오류로 인한 중지가 아니라, 사용자 액션에 의한 중지를 의미합니다.)</span></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>eventUriEnd (2.0.0.0부터 지원)</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>HD 응용프로그램을 사용하여 파일 다운로드를 이용할 때 사용되는 이벤트 주소를 설정합니다.</p>
+                                                        <p>이벤트 주소는 웹 주소로써, 스키마(http, https)가 포함된 전체 URL이어야 합니다.</p>
+                                                        <p>HD 응용프로그램은 항목을 다운로드할 때, 이 속성이 설정되어 있으면 다운로드가 완료되면 해당 주소로 GET 요청을 보냅니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>chunkSize (2.0.0.0부터 지원)/td>
+                                                    <td>공통</td>
+                                                    <td>Number</td>
+                                                    <td>
+                                                        <p>HD 응용프로그램을 사용하여 파일 다운로드를 이용할 때 파일이 분할 되는 크기를 설정합니다.</p>
+                                                        <p>
+                                                            HD 응용프로그램을 파일을 다운로드할 때, 한 요청으로 파일을 한 번에 다운로드하지 않고, 주어진 크기만큼 나눠서 다운로드를 수행합니다.
+                                                            파일을 나눠서 다운로드를 하면 파일 다운로드 시간은 조금 더 오래 걸릴 수 있지만, 서버를 좀 더 안정적으로 운영할 수 있습니다.
+                                                            다운로드할 파일의 크기가 크다면 해당 파일이 다운로드 완료될 때까지 대역폭을 붙잡고 있기 때문에, 성능상 문제가 발생할 수 있습니다.
+                                                            이런 경우에 파일을 분할하면, 서버로의 다운로드 요청이 나눠지기 때문에, 일부 사용자가 서버 리소스를 장시간 점유하는 현상이 줄어들게 됩니다.
+                                                        </p>
+                                                        <p>지정이 되어 있지 않으면 -1 값으로 설정이 되며, -1 또는 0인 경우에는 파일을 분할하지 않고 하나의 요청으로 다 받습니다. 더불어 분할 크기는 MB 단위로만 지정해야 합니다.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>hdTitle (2.1.2.0부터 지원)</td>
+                                                    <td>공통</td>
+                                                    <td>String</td>
+                                                    <td>
+                                                        <p>HD 응용프로그램을 사용하여 파일 다운로드를 이용할 때 윈도우 타이틀에 출력되는 텍스트를 나타냅니다.</p>
+                                                        <p>파일이 다운로드 될 때, HD 응용프로그램의 윈도우 타이틀 영역에 텍스트와 파일 이름이 출력되는데, 지정된 값이 없다면 제품 이름과 버전이 출력됩니다. </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                    <dt>반환 값</dt>
+                    <dd></dd>
+                    <dt>설명</dt>
+                    <dd>
+                        <p>가상 파일을 등록합니다.</p>
+                        <p>가상 파일이란 사용자 로컬 PC에 존재하지 않으며, 실체가 없는 가상의 파일을 말합니다.</p>
+                        <p>일반적으로 가상 파일은 이미 업로드한 파일에 대한 정보를 남기는 용도로 사용하곤 합니다. 즉 서버에 존재하는 파일이라는 표시로써 사용됩니다.</p>
+                        <p>실제로 로컬에 존재하지 않는 파일이므로, 파일 업로드 대상이 아닙니다.</p>
+                        <p>가상 파일을 등록하려면 addVirtualFile 함수를 사용하거나 addVirtualFileList 함수를 사용합니다.</p>
+                        <pre class="prettyprint">
+function onDX5Created(id) {
+    // 가상 파일은 일반적으로 컴포넌트가 생성된 시점에 등록을 합니다.
+    var dx = dx5.get(id);
+    // 개별로 등록할 때
+    dx.addVirtualFile({ vindex: "IDX0001", name: "가상파일.txt", size: 12345 });
+    dx.addVirtualFile({ vindex: "IDX0002", name: "잠긴-가상파일.txt", size: 45678, lock: true });
+    dx.addVirtualFile({ vindex: "IDX0003", name: "코스모스.jpg", size: 195779 });
+    // 여러 개를 한 번에 등록할 때
+    dx.addVirtualFileList([
+        { vindex: "IDX0004", name: "가상파일.txt", size: 12345 },
+        { vindex: "IDX0005", name: "잠긴-가상파일.txt", size: 45678, lock: true },
+        { vindex: "IDX0006", name: "코스모스.jpg", size: 195779 }
+    ]);
+}</pre>
+                        <p class="notice">가상 파일이 등록될 때는 onDX5BeforeItemsAdd, onDX5BeforeItemAdding, onDX5ItemsAdded 콜백 함수를 호출하지 않습니다.</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

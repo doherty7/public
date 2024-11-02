@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="72px" height="57.6px" viewBox="0 0 72 57.6" enable-background="new 0 0 72 57.6" xml:space="preserve">
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="34.6265" y1="49.1426" x2="34.6265" y2="57.1465">
+		<stop  offset="0" style="stop-color:#D9313B"/>
+		<stop  offset="1" style="stop-color:#700E1F;stop-opacity:0.95"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M34.627,49.143c-2.211,0-4.002,1.791-4.002,4.006c0,2.203,1.791,3.998,4.002,3.998
+		c2.209,0,4.001-1.795,4.001-3.998C38.628,50.934,36.836,49.143,34.627,49.143z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="36.7168" y1="0.4531" x2="36.7168" y2="12.9453">
+		<stop  offset="0" style="stop-color:#D9313B"/>
+		<stop  offset="1" style="stop-color:#700E1F;stop-opacity:0.95"/>
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M28.996,4.484c0,0,8.918-0.078,16.041,8.461c0,0-3.191-11.029-10.739-12.414
+		C30.445-0.174,26.964,4.131,28.996,4.484z"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="36" y1="7.501" x2="36" y2="43.9243">
+		<stop  offset="0" style="stop-color:#D9313B"/>
+		<stop  offset="1" style="stop-color:#700E1F;stop-opacity:0.95"/>
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M52.93,18.865c-2.205-2.127-4.617-2.287-7.061-2.357l-0.002-0.004
+		c-3.213-4.57-11.943-10.354-22.004-8.721c-7.299,1.186-5.977,7.375-6.043,8.561c11.621-2.166,16.303-0.426,18.037,0.711
+		l0.002,0.002c-15.02,2.439-16.154,11.779-16.345,13.482c-0.819,7.582,3.349,11.861,8.793,13.053
+		c9.231,2.029,22.897-5.287,20.251-20.477c0.557,0.094,1.119,0.191,1.705,0.313c1.449,0.301,3.762,1.777,3.762,1.777
+		S54.943,21.117,52.93,18.865z M32.065,37.295c-0.231-0.043-0.452-0.102-0.665-0.174c-4.974-2.076-4.613-13.479,8.998-14.494
+		l0.003,0.006C45.047,28.488,40.297,38.779,32.065,37.295z"/>
+</g>
+</svg>

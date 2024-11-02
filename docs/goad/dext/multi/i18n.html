@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 국제화</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">언어 설정에 맞도록 리소스를 변경하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>DEXTUploadX5는 한국어를 기본으로 작성된 컴포넌트입니다.</p>
+						<p>그러나 브라우저의 navigator 객체로부터 얻을 수 있는 language 값이 한국어가 아닌 경우, 해당 언에 맞는 리소스를 찾습니다.</p>
+						<p>그러므로 다국어 환경을 유념하여 서비스를 한다면, 지원하려는 언어 리소스를 직접 만들어서 등록해주어야 합니다.</p>
+						<pre class="prettyprint">
+# DEXTUploadX5 리소스 위치에는 기본적으로 한국어, 영어, 일본어, 중국어 메시지 리소스가 포함되어 있습니다.
+dextuploadx5-svg-message-ko.txt
+dextuploadx5-svg-message-en.txt
+dextuploadx5-svg-message-ja.txt
+dextuploadx5-svg-message-zh.txt
+# 만일 다른 언어 리소스를 사용하려면 알맞은 언어 리소스를 같이 위치에 등록해야 합니다.
+dextuploadx5-svg-message-fr.txt
+</pre>
+						<p class="notice">navigator.language, navigator.browserLanguage, navigator.systemLanguage 순으로 찾습니다.</p>
+						<P>&nbsp;</P>
+						<p>dx5.create 함수를 사용하여 컴포넌트를 생성할 때, 사용할 언어 리소스를 강제로 지정할 수 있습니다.</p>
+						<p>강제로 언어가 지정되면, 브라우저 언어와 상관없이 해당 언어 리소스를 찾습니다.</p>
+						<pre class="prettyprint">
+// 자동으로 언어를 선택합니다.
+dx5.create({ mode: "multi", id: "dext5-1", parentId: "dext5-container1" });
+// 한국어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-2", parentId: "dext5-container2", lang: "ko" });
+// 영어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-3", parentId: "dext5-container3", lang: "en" });
+// 일본어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-4", parentId: "dext5-container4", lang: "ja" });
+// 중국어로 설정합니다.
+dx5.create({ mode: "multi", id: "dext5-5", parentId: "dext5-container5", lang: "zh" });
+</pre>
+						<p class="notice">브라우저의 언어를 지원하는 리소스가 없다면 오류가 발생할 수 있습니다.</p>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<p>자동</p>
+						<div id="dext5-container1" style="width:500px; height:150px;"></div>
+						<p>&nbsp;</p>
+						<p>한국어</p>
+						<div id="dext5-container2" style="width:500px; height:150px;"></div>
+						<p>&nbsp;</p>
+						<p>영어</p>
+						<div id="dext5-container3" style="width:500px; height:150px;"></div>
+						<p>&nbsp;</p>
+						<p>일본어</p>
+						<div id="dext5-container4" style="width:500px; height:150px;"></div>
+						<p>&nbsp;</p>
+						<p>중국어</p>
+						<div id="dext5-container5" style="width:500px; height:150px;"></div>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		dx5.create({ mode: "multi", id: "dext5-1", parentId: "dext5-container1" });
+		dx5.create({ mode: "multi", id: "dext5-2", parentId: "dext5-container2", lang: "ko" });
+		dx5.create({ mode: "multi", id: "dext5-3", parentId: "dext5-container3", lang: "en" });
+		dx5.create({ mode: "multi", id: "dext5-4", parentId: "dext5-container4", lang: "ja" });
+		dx5.create({ mode: "multi", id: "dext5-5", parentId: "dext5-container5", lang: "zh" });
+	</script>
+</body>
+</html>

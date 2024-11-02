@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	version="1.1"
+	id="UIC-DEXTUPLOADX5-PROGRESSIVE"
+	onload="onLoadHandler(evt)" width="100%" height="100%">
+    <script type="application/ecmascript" xlink:href="../module/dextuploadx5-common.js"/>
+    <script type="application/ecmascript" xlink:href="../module/dextuploadx5-svg.js"/>
+    <script type="application/ecmascript" xlink:href="./dextuploadx5-dn-1-app.js"/>
+    <style type="text/css">
+        * { box-sizing: border-box; }
+        * { font-family: '맑은 고딕', Tahoma }
+        .css-txt-range { font-size: 8.5pt; fill: #346787; }
+        .css-txt-speed { font-size: 18pt; fill: #224357; font-weight: bold; }
+        .css-txt-unit { font-size: 8.5pt; fill: #b7b7b7; }
+        .css-txt-filename { font-size: 9pt; fill: #ffffff; }
+        .css-txt-title { font-size: 9pt; font-weight: bold; fill: #ffffff; }
+        .css-txt-title-sub { font-size: 8.5pt; fill: #F6C187; }
+        .css-txt-value { font-size: 8.5pt; fill: #96a2a9; }
+        .css-btn-cancel { font-size: 0.8em; font-weight: bold; fill: #506470; }
+        .css-txt-progressive { font-size: 9pt; fill: #fff; }
+    </style>
+    <svg id="UIC-MAIN-AREA" x="0" y="0" width="100%" height="100%">
+        <svg x="0" y="0" height="100%" width="50%">
+            <rect x="0" y="0" width="100%" height="100%" fill="#f7f7f7"/>
+            <rect x="42" y="208" width="10" height="4" fill="#ff9b2f "/>
+            <text class="css-txt-range" x="59" y="214">Current File</text>
+            <rect x="142" y="208" width="10" height="4" fill="#1fb3ff "/>
+            <text class="css-txt-range" x="159" y="214">Total Files</text>
+            <path stroke="#cccccc" stroke-width="1" stroke-linecap="butt" fill="#ffffff" d="M125,166 a62,62 0 0,1 -0,-124 a62,62 0 0,1 0,124 v10"/>
+            <path id="UIC-PROGRESSIVE-CUR-SIZE" stroke="#ff9b2f" stroke-width="5" stroke-linecap="butt" fill="none" d=""/>
+            <path id="UIC-PROGRESSIVE-TOT-SIZE" stroke="#1fb3ff" stroke-width="5" stroke-linecap="butt" fill="none" d=""/>
+            <text class="css-txt-speed" x="125" y="127" text-anchor="middle">
+                <tspan id="UIC-PROGRESSIVE-SPEED-VALUE">0.0</tspan>
+            </text>
+            <text class="css-txt-unit" x="125" y="145" text-anchor="middle">
+                <tspan id="UIC-PROGRESSIVE-SPEED-UNIT">MB/S</tspan>
+            </text>
+            <svg x="96" y="70" width="58" height="30" viewBox="0 0 30 11">
+                <path d="M0.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M2.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M4.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M6.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M8.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M10.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M12.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M14.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M16.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M18.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M20.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M22.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M24.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M26.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path d="M28.5,10.5 v-2" fill="none" stroke-width="1" stroke="#bfe07f" />
+                <path id="UIC-SPEED-BAR-0" d="M0.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-1" d="M2.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-2" d="M4.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-3" d="M6.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-4" d="M8.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-5" d="M10.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-6" d="M12.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-7" d="M14.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-8" d="M16.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-9" d="M18.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-10" d="M20.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-11" d="M22.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-12" d="M24.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-13" d="M26.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+                <path id="UIC-SPEED-BAR-14" d="M28.5,8.5 v0" fill="none" stroke-width="1" stroke="#80c200" />
+            </svg>
+        </svg>
+        <svg id="UIC-RIGHT" x="50%" y="0" width="50%" height="100%">
+            <rect x="0" y="0" width="100%" height="100%" fill="#506470"/>
+            <svg x="20" y="0" height="56" layout-dx5="width:100%-40px;">
+                <title id="UIC-AT-FILENAME"></title>
+                <text id="UIC-TXT-FILENAME" class="css-txt-filename" x="0" y="50%">File Name</text>
+            </svg>
+            <text id="UIC-TITLE-SIZE" class="css-txt-title" x="20" y="57">SIZE</text>
+            <text class="css-txt-value" x="20" y="74">
+                <tspan class="css-txt-title-sub">CURRENT</tspan>
+                <tspan class="css-txt-value" id="UIC-TXT-CURRENT-SIZE">0 / 0</tspan>
+            </text>
+            <text class="css-txt-value" x="20" y="89">
+                <tspan class="css-txt-title-sub">TOTAL</tspan>
+                <tspan class="css-txt-value" id="UIC-TXT-TOTAL-SIZE">0 / 0</tspan>
+            </text>
+            <text id="UIC-TITLE-TIME" x="20" y="111" class="css-txt-title">LAPSE-TIME</text>
+            <text x="20" y="128">
+                <tspan class="css-txt-title-sub">CURRENT</tspan>
+                <tspan class="css-txt-value" id="UIC-TXT-CURRENT-TIME-VALUE">00:00:00 / 00:00:40</tspan>
+            </text>
+            <text x="20" y="143">
+                <tspan class="css-txt-title-sub">TOTAL</tspan>
+                <tspan class="css-txt-value" id="UIC-TXT-TOTAL-TIME-VALUE">00:00:00 / 00:00:00</tspan>
+            </text>
+            <text id="UIC-TITLE-COUNT" x="20" y="165" class="css-txt-title">FILES COUNT</text>
+            <text class="css-txt-value" x="20" y="180">
+                <tspan id="UIC-TXT-COUNT-VALUE">0 / 0</tspan>
+            </text>
+            <g id="UIC-BTN-CANCEL" style="cursor:pointer;">
+                <rect x="20" y="189" layout-dx5="width:100%-40px;" height="25" fill="#f7f7f7"/>
+                <text id="UIC-TITLE-CANCEL" y="206" class="css-btn-cancel" x="50%" text-anchor="middle">CANCEL</text>
+            </g>
+        </svg>
+        <svg id="UIC-WAIT-INFO" x="0" width="100%" height="34" style="display:none;" layout-dx5="y:50%-17px;">
+            <rect x="0" y="0" width="100%" height="100%" stroke="none" fill="#4CAF50"/>
+            <text id="UIC-TXT-WAIT" x="50%" y="23" text-anchor="middle" class="css-txt-progressive">Waiting server response...</text>
+        </svg>
+    </svg>
+</svg>

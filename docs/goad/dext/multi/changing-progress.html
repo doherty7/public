@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>DEXTUploadX5 Basic Samples (with DEXTUploadNJ)</title>
+	<link rel="stylesheet" href="../common/styles/default.css"/>
+	<link rel="stylesheet" href="../common/js/prettify/tomorrow.css"/>
+	<script src="../common/js/prettify/prettify.js"></script>
+	<script src="../common/js/common.js"></script>
+	<script src="../dx5/dextuploadx5-configuration.js"></script>
+	<script src="../dx5/dextuploadx5.js"></script>
+	<script>
+		function onDX5Error(id, code, msg) {
+			alert(id + " => " +  code + "\n" + msg);
+		}
+
+		function onDX5Created(id) {
+			var dx = dx5.get(id);
+			dx.setUploadURL(dx5.canonicalize("/sample/dext/service/common-upload.do"));
+		}
+		
+		function onDX5UploadStopped(id) {
+			alert("업로드가 중단되었습니다.");
+		}
+				
+		function onDX5UploadCompleted(id) {	
+			alert("업로드가 완료되었습니다.\n응답 데이터는 다음과 같습니다.\n" + dx5.get(id).getResponses().join("\n"));
+		}
+		
+		function uploadModeHandler(cbo) {
+			var mode = cbo.options[cbo.selectedIndex].value;
+			dx5.get("dext5").setUploadMode(mode);
+			alert(dx5.get("dext5").getUploadMode() + "(으)로 변경되었습니다.");
+		}
+		
+		function onChangeProgressiveHandler(cbo) {
+			var ptype = cbo.options[cbo.selectedIndex].value;
+			document.location.hash = ptype;
+			document.location.reload();
+		}
+	</script>
+</head>
+<body>
+	<div id="Container">
+		<header><div class="logobg"></div></header>
+			<div id="root"><a href="../index.html">Home</a> &gt; <a href="../index.html#tlb-multi">멀티 버전</a> &gt; 진행창 변경하기</div>
+			<div id="MainCenter">
+		  	<article>	
+				<div class="exTit">진행창을 변경하는 예제입니다.</div>
+				<dl>
+					<dt>설명</dt>
+					<dd>
+						<p>DEXTUploadX5 멀티 버전은 세 가지 형태의 진행창을 제공합니다.</p>
+						<p>dx5.create 함수로 컴포넌트를 생성할 때, progressType 속성 값을 '0', '1', '2', '3'로 설정할 수 있습니다.</p>
+						<pre class="prettyprint">
+// '1'번 진행창을 사용합니다. 기본값은 '0'입니다.
+dx5.create({
+  mode: "multi", id: "dext5", parentId: "dext5-container", ..., progressType: "1"
+});
+</pre>
+					</dd>
+					<dt>예제</dt>
+					<dd>
+						<div id="dext5-container" style="width:500px; height:300px;"></div>
+						<p>&nbsp;</p>
+						<p>
+							<button id="btn-add-files">파일 추가</button>
+						</p>
+						<p>&nbsp;</p>						
+						<p>
+							<select id="cbo-upload-mode" onchange="uploadModeHandler(this);">
+								<option value="ORAF">ORAF: 하나의 요청으로 파일 모두 전송</option>
+								<option value="OROF">OROF: 업로드할 파일 개수 만큼 요청</option>
+							</select>
+							<button id="btn-upload">업로드(자동)</button>
+						</p>
+						<p>&nbsp;</p>
+						<p class="notice">멀티 버전에서 ORAF 방식으로 파일을 업로드할 경우, 개별 파일 단위로 상태 값을 구분하여 표시하지 못합니다.</p>
+						<p class="notice">그런 이유로 인해 ORAF 방식으로 업로드할 경우, '1', '2', '3'번 진행창은 개별 단위로 수치 표현을 제대로 하지 못합니다.</p>
+						<p class="notice">그러므로 ORAF에서는 '0'번 만을 사용하는 것을 권장하며, OROF/EXNJ 방식의 경우에는 '0', '1', '2', '3'번 진행창을 모두 사용할 수 있습니다.</p>
+						<p>진행창을 변경하면, 페이지가 다시 로드되고, 진행창이 변경됩니다.</p>		
+						<p>
+							<select id="cbo-progress-type" onchange="onChangeProgressiveHandler(this);">
+								<option value="0">'0'번(기본형)</option>
+								<option value="1">'1'번</option>
+								<option value="2">'2'번</option>
+								<option value="3">'3'번</option>
+							</select>
+						</p>
+					</dd>
+				</dl>
+			</article>
+		</div>
+		<footer>
+	    	<div>Copyright ⓒ (주) 데브피아. All rights reserved.</div>
+		</footer>
+	</div>
+	<script>
+		var hval = document.location.hash; 
+		hval = hval.indexOf("#") == 0 ? hval.substring(1) : "0";
+		document.getElementById("cbo-progress-type").selectedIndex = parseInt(hval, 10);
+		dx5.create({
+			mode: "multi", id: "dext5", parentId: "dext5-container", btnFile: "btn-add-files", btnUploadAuto: "btn-upload", progressType: hval
+		});
+	</script>
+</body>
+</html>

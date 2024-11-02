@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+	<title>isHDRunning</title>
+	<link rel="stylesheet" href="../../../common/css/global.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/js/prettify/tomorrow.css" type="text/css" />
+	<script type="text/javascript" src="../../../common/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../../../common/js/prettify/prettify.js"></script>	
+	<script type="text/javascript" src="../../../common/js/init_reference.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="man_product">DEXTUploadX5</div>
+		<div class="man_navi"><a id="btn-mobile-menu" href="#"><img src="../../../common/images/menu.svg" alt="menu toggle"/></a>레퍼런스 &gt; dx5 Object &gt; Methods &gt; isHDRunning</div>
+	</div>
+	<div class="snb"><iframe src="../../../menu.html" frameborder="0"></iframe></div>
+	<div class="cnb">
+		<div class="main">
+			<div class="inner_content">
+				<h1 class="man_title">isHDRunning</h1>
+				<dl>
+					<dt>최소지원버전</dt>
+					<dd>2.3.5.0</dd>
+					<dt>지원환경</dt>
+					<dd>멀티 모듈, IE 모듈 모두 지원</dd>
+					<dt>형식</dt>
+					<dd>
+						<pre class="prettyprint">dx5.isHDRunning(success, fail);</pre>
+					</dd>
+					<dt>파라미터</dt>
+					<dd>
+						<table>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>형식</th>
+									<th>설명</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>success</td>
+									<td>function</td>
+									<td>
+										<p>HD 응용프로그램이 실행 중이면 호출되는 콜백 함수입니다.</p>
+									</td>
+								</tr>
+                                <tr>
+                                    <td>fail</td>
+                                    <td>function</td>
+                                    <td>
+                                        <p>HD 응용프로그램이 실행 중이 아니라면 호출되는 콜백 함수입니다.</p>
+                                    </td>
+                                </tr>
+							</tbody>
+						</table>
+					</dd>
+					<dt>설명</dt>
+					<dd>
+						<p>HD 응용프로그램이 현재 실행 중인지를 확인할 때 사용하는 함수입니다.</p>
+						<p>함수를 호출하여 성공적인 응답을 얻는다면 success 파라미터로 등록된 콜백함수가 호출이 되며, 실패한다면 fail 파라미터로 등록된 콜백함수가 호출됩니다.</p>
+						<pre class="prettyprint">
+function checkHDRunning() {
+    dx5.isHDRunning(function (ver) {
+        // 성공하면 버전을 나타내는 문자열을 파라미터로 얻을 수 있습니다.
+        alert(ver);
+    }, function (code, msg) {
+        // 실패하면 실패 코드와 메시지를 얻을 수 있습니다.
+        alert(code + ": " + msg);
+    });
+}</pre>
+                        <p class="notice">isHDRunning 함수는 현재 HD 응용프로그램의 실행 여부만을 확인합니다. 그러므로 HD 응용프로그램의 설치 여부는 알 수는 없습니다.</p>
+                        <p class="notice">응답이 실패하는 경우 브라우저 콘솔에는 다음과 같은 추가 오류 정보가 출력될 수 있으며, HD 설치 여부에 따라 메시지가 달라질 수 있습니다.</p>
+                        <pre class="prettyprint">
+# Chrome
+POST http://localhost:35959/DEXTUploadX5_HDM 404 (Not Found)
+Access to XMLHttpRequest at 'http://localhost:35959/DEXTUploadX5_HDM' from origin 'http://(omission)' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+# MS Edge
+SEC7120: [CORS] 원본 'http://(omission)'이(가) 'http://localhost:35959/DEXTUploadX5_HDM'에서 cross-origin  리소스에 대한 Access-Control-Allow-Origin response header에서 'http://localhost:4876'을(를) 찾지 못했습니다.
+HTTP404: NOT FOUND - 요청한 URI(Uniform Resource Identifier)와 일치하는 항목을 서버에서 찾지 못했습니다.
+(XHR)POST - http://localhost:35959/DEXTUploadX5_HDM
+# FF
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:35959/DEXTUploadX5_HDM. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing).
+# Opera
+Failed to load resource: the server responded with a status of 404 (Not Found)
+Access to XMLHttpRequest at 'http://localhost:35959/DEXTUploadX5_HDM' from origin 'http://(omission)' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+</pre>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="footer">Copyright ⓒDEVPIA Inc. All rights reserved</div>
+</body>
+</html>

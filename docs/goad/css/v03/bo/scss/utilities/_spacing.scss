@@ -1,0 +1,365 @@
+/* 간격 */
+
+$dirs: (top: t, left: l, right: r, bottom: b);
+$total: 21;
+$gap: 5px;
+
+@for $i from 0 to $total {
+	.m-#{$i} {
+		margin: $i * $gap !important;
+	}
+}
+
+@for $i from 0 to $total {
+	.p-#{$i} {
+		padding: $i * $gap !important;
+	}
+}
+
+@each $dir,
+$value in $dirs {
+	@for $i from 0 to $total {
+		.m#{$value}-#{$i} {
+			margin-#{$dir}: $i * $gap !important;
+		}
+	}
+}
+
+@each $dir,
+$value in $dirs {
+	@for $i from 0 to $total {
+		.p#{$value}-#{$i} {
+			padding-#{$dir}: $i * $gap !important;
+		}
+	}
+}
+
+// PC 전용 마진
+@include media-breakpoint-up(lg) {
+	@for $i from 0 to $total {
+		.m-lg-#{$i} {
+			margin: $i * $gap !important;
+		}
+	}
+
+	@for $i from 0 to $total {
+		.p-lg-#{$i} {
+			padding: $i * $gap !important;
+		}
+	}
+
+	@each $dir,
+	$value in $dirs {
+		@for $i from 0 to $total {
+			.m#{$value}-lg-#{$i} {
+				margin-#{$dir}: $i * $gap !important;
+			}
+		}
+	}
+
+	@each $dir,
+	$value in $dirs {
+		@for $i from 0 to $total {
+			.p#{$value}-lg-#{$i} {
+				padding-#{$dir}: $i * $gap !important;
+			}
+		}
+	}
+}
+
+// 모바일 전용 마진
+@include media-breakpoint-down(md) {
+	@for $i from 0 to $total {
+		.m-md-#{$i} {
+			margin: $i * $gap !important;
+		}
+	}
+
+	@for $i from 0 to $total {
+		.p-md-#{$i} {
+			padding: $i * $gap !important;
+		}
+	}
+
+	@each $dir,
+	$value in $dirs {
+		@for $i from 0 to $total {
+			.m#{$value}-md-#{$i} {
+				margin-#{$dir}: $i * $gap !important;
+			}
+		}
+	}
+
+	@each $dir,
+	$value in $dirs {
+		@for $i from 0 to $total {
+			.p#{$value}-md-#{$i} {
+				padding-#{$dir}: $i * $gap !important;
+			}
+		}
+	}
+}
+
+// 타이틀
+.title1 {
+	@include media-breakpoint-up(lg) {
+		margin: 65px 0 22px;
+	}
+
+	@include media-breakpoint-down(md) {
+		margin: 40px 0 20px;
+	}
+
+	+.title2 {
+		@include media-breakpoint-up(lg) {
+			margin-top: -7px;
+		}
+
+		@include media-breakpoint-down(md) {
+			margin-top: 21px;
+		}
+	}
+
+
+	+.indent {
+		@include media-breakpoint-up(lg) {
+			margin-left: 18px;
+		}
+
+		@include media-breakpoint-down(md) {
+			margin-left: 16px;
+		}
+	}
+}
+
+.title2 {
+	@include media-breakpoint-up(lg) {
+		margin: 47px 0 22px 18px;
+	}
+
+	@include media-breakpoint-down(md) {
+		margin: 31px 0 26px 16px;
+	}
+
+	+.indent {
+		@include media-breakpoint-up(lg) {
+			margin-left: 37px;
+
+			>p,
+			>.list {
+				&:first-child {
+					margin-top: -5px;
+				}
+			}
+		}
+
+		@include media-breakpoint-down(md) {
+			margin-left: 32px;
+
+			>p,
+			>.list {
+				&:first-child {
+					margin-top: -4px;
+				}
+			}
+		}
+	}
+
+	&.ml-0 {
+		+.indent {
+			@include media-breakpoint-up(lg) {
+				margin-left: 20px;
+			}
+
+			@include media-breakpoint-down(md) {
+				margin-left: 16px;
+			}
+		}
+	}
+}
+
+// 불릿 목록
+@include media-breakpoint-up(lg) {
+
+	.content-body p,
+	.list {
+		margin: 4px 0;
+
+		@if ($lang !=ko) {
+			margin: 5px 0;
+		}
+	}
+
+	.list {
+		>li {
+			+li {
+				margin-top: 5px;
+
+				@if ($lang !=ko) {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
+
+@include media-breakpoint-down(md) {
+
+	.content-body p,
+	.list {
+
+		@if ($lang !=ko) {
+			margin: 2px 0;
+		}
+
+		@else {
+			margin: 8px 0;
+		}
+	}
+
+	.list {
+		>li {
+			+li {
+
+				@if ($lang !=ko) {
+					margin-top: 6px;
+				}
+
+				@else {
+					margin-top: 8px;
+				}
+			}
+		}
+	}
+}
+
+// 버튼
+.btn:not(.btn-block) {
+	+.btn {
+		margin-left: 6px;
+	}
+}
+
+// 탭 + 탭
+.tab-menu {
+	+.tab-menu {
+		margin-top: -20px;
+	}
+}
+
+.tab-content {
+
+	.sr-only:first-child+.tab-menu,
+	>.tab-menu:first-child {
+		margin-top: -20px;
+	}
+}
+
+.tab-category {
+	@include media-breakpoint-up(lg) {
+		+.bbs-search-box {
+			margin-top: 20px;
+		}
+
+		+.mt-spacing-sm {
+			margin-top: 10px;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		+.bbs-search-box {
+			margin-top: 10px;
+		}
+
+		+.mt-spacing-sm {
+			margin-top: 5px;
+		}
+	}
+}
+
+/* 테이블 + 테이블 신규*/
+.table {
+	+.table {
+		margin-top: 30px;
+	}
+
+	@include media-breakpoint-down(md) {
+		+.table {
+			margin-top: 15px;
+		}
+	}
+}
+
+.list {
+	+.download {
+		margin-top: 25px;
+	}
+}
+
+.bbs-search {
+	@include media-breakpoint-up(lg) {
+		+.ordering-wrap {
+			margin-top: -30px;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		+.ordering-wrap {
+			margin-top: -20px;
+		}
+	}
+}
+
+/* 리스트 타입 - 리스트 사이 간격 30px*/
+.list-gap {
+	>li {
+		+li {
+			margin-top: 19px;
+		}
+	}
+}
+
+
+@if ($lang==en) {
+
+	/* 다국어 - 영문 */
+	.title1 {
+		+.title-square {
+			@include media-breakpoint-up(lg) {
+				margin-top: 22px;
+			}
+
+			@include media-breakpoint-down(md) {
+				margin-top: 28px;
+			}
+		}
+	}
+
+	.title-square {
+		+.indent {
+			margin-left: 16px;
+
+			.list {
+				margin-left: 10px;
+			}
+		}
+
+		&.ml-0 {
+			+.indent {
+				margin-left: 0;
+
+				.list {
+					margin-left: 10px;
+				}
+			}
+		}
+
+		@include media-breakpoint-up(lg) {
+			margin: 53px 0 23px 16px;
+		}
+
+		@include media-breakpoint-down(md) {
+			margin: 40px 0 17px 15px;
+		}
+	}
+}
